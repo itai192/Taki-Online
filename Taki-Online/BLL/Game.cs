@@ -40,8 +40,15 @@ namespace BLL
     }
     public abstract class Card
     {
-        private Color color;
-
+        protected Color color;
+        public Card()
+        {
+            this.color=Color.none;
+        }
+        public Card(Color color)
+        {
+            this.color=color;
+        }
         public virtual bool CanPutOn(Card card)//if you can put card, on this
         {
             if(card.color==Color.none)
@@ -49,6 +56,10 @@ namespace BLL
                 return true;
             }
             return this.color == card.color;
+        }
+        public virtual bool CanBePutOn(Card card)
+        {
+            return card.CanPutOn(this);
         }
         public virtual void Play(Game game)
         { 
@@ -58,7 +69,7 @@ namespace BLL
     {
         private List<Card> hand;
         
-        public void Draw(Game game)
+        public void DrawCards(Game game)
         {
             int drawAmount = 1 + game.penelty;
             game.penelty = 0;
@@ -67,6 +78,41 @@ namespace BLL
                 hand.Add(game.TakeCardFromDeck());
             }
         }
+    }
+    public class Reverse:Card
+    {
+        public Reverse(Color color):base(color){
+        }
+
+        public override bool CanPutOn(Card card)
+        {
+            return base.CanPutOn(card)||card is Reverse;
+        }
+        public override void Play(Game game)
+        {
+            game.order=!game.order;
+        }
+    }
+    public class NumberCard:Card
+    {
+        private int value;
+        public NumberCard(Color color, int value):base(color)
+        {
+            this.value=value;
+        }
+        public override bool CanPutOn(Card card)
+        {
+            bool sameNum = (card is NumberCard) ? ((NumberCard)card).value==this.value:false;
+            return sameNum||base.CanPutOn(card);
+        }
+    }
+    public class PlusTwo:Card
+    {
+        
+    }
+    public class Taki:Card
+    {
+
     }
 
 }
