@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections;
+using System.Diagnostics;
 namespace BLL
 {
     public enum Color
@@ -19,7 +20,11 @@ namespace BLL
         private int turn;//turn
         public bool order { get; set; }//positive or negative relative to the order
         public int penelty {get; set;}//extra cards when you draw
-        private bool isOpenTaki;
+        
+        public Game(List<Player> players)
+        {
+            this.players= new List<Player>(players);
+        }
         public Card TakeCardFromDeck()
         {
             if(deck.Count==0)
@@ -32,9 +37,13 @@ namespace BLL
         {
             turn = (order ? (turn + 1) : (turn - 1 + players.Count)) % players.Count;
         }
+        public void PrevTurn()
+        {
+            turn = (!order ? (turn + 1) : (turn - 1 + players.Count)) % players.Count;
+        }
         private void Reshuffle()
         {
-
+            //to implement
         }
 
     }
@@ -61,15 +70,15 @@ namespace BLL
         {
             return card.CanPutOn(this);
         }
-        public virtual void Play(Game game)
-        { 
+        public virtual void Ability(Game game)
+        {
         }
     }
-    public class Player
+    public abstract class Player
     {
         private List<Card> hand;
         
-        public void DrawCards(Game game)
+        /*public void DrawCards(Game game)
         {
             int drawAmount = 1 + game.penelty;
             game.penelty = 0;
@@ -77,7 +86,8 @@ namespace BLL
             {
                 hand.Add(game.TakeCardFromDeck());
             }
-        }
+        }*/
+        public abstract Card DoTurn(Game game, String nullCardText);
     }
     public class Reverse:Card
     {
@@ -88,9 +98,20 @@ namespace BLL
         {
             return base.CanPutOn(card)||card is Reverse;
         }
-        public override void Play(Game game)
+        public override void Ability(Game game)
         {
             game.order=!game.order;
+        }
+    }
+    public class Stop:Card
+    {
+        public override bool CanPutOn(Card card)
+        {
+            return base.CanPutOn(card)||card is Stop;
+        }
+        public override void Ability(Game game)
+        {
+            game.NextTurn();
         }
     }
     public class NumberCard:Card
@@ -114,5 +135,4 @@ namespace BLL
     {
 
     }
-
 }
