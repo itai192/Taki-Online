@@ -68,6 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Home.aspx" />
+    <Content Include="Sign in.aspx" />
+    <Content Include="Sign up.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +88,20 @@
       <DependentUpon>Master Page.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sign in.aspx.cs">
+      <DependentUpon>Sign in.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sign in.aspx.designer.cs">
+      <DependentUpon>Sign in.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sign up.aspx.cs">
+      <DependentUpon>Sign up.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sign up.aspx.designer.cs">
+      <DependentUpon>Sign up.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Master Page.Master" />

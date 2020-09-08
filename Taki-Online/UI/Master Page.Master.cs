@@ -9,6 +9,7 @@ namespace UI
 {
     public partial class Master_Page : System.Web.UI.MasterPage
     {
+
         protected void Page_Init(object sender, EventArgs e)
         {
             TableRow up = Table1.Rows[0];
