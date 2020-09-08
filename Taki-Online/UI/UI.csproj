@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Account.aspx" />
     <Content Include="Game.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
     <Content Include="Ladders.aspx" />
     <Content Include="Manager.aspx" />
@@ -90,6 +91,9 @@
     </Compile>
     <Compile Include="Game.aspx.designer.cs">
       <DependentUpon>Game.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
