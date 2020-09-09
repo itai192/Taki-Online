@@ -151,7 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
-      <Project>{de4750e1-2e6c-4926-b481-d3ebcb302751}</Project>
+      <Project>{0c4c1a96-e443-429c-bb8d-541fe84d7c93}</Project>
       <Name>BLL</Name>
     </ProjectReference>
   </ItemGroup>
