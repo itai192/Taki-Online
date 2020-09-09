@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
-
+using BLL;
+using System.Configuration;
 namespace UI
 {
     public class Global : System.Web.HttpApplication
@@ -13,6 +14,7 @@ namespace UI
         protected void Application_Start(object sender, EventArgs e)
         {
 
+            BLL.BLL_Helper.SetSourceAndProvider(ConfigurationSettings.AppSettings["source"], ConfigurationSettings.AppSettings["provider"]);
         }
 
         protected void Session_Start(object sender, EventArgs e)
