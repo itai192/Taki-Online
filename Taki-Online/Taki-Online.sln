@@ -7,14 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{9E60
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{DE4750E1-2E6C-4926-B481-D3EBCB302751}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{187944BC-2240-4C1B-B8F3-4FB02AB1CDAD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WS", "WS\WS.csproj", "{9C26DA6C-68B7-4A3D-B553-7B1CCAFE4366}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3BA6F3A8-6198-4C15-B345-0A192105B870}"
 	ProjectSection(SolutionItems) = preProject
 		..\Taki DB.accdb = ..\Taki DB.accdb
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{32A16F28-050C-4B15-A26C-BB75CA8C6296}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,14 +30,14 @@ Global
 		{DE4750E1-2E6C-4926-B481-D3EBCB302751}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE4750E1-2E6C-4926-B481-D3EBCB302751}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE4750E1-2E6C-4926-B481-D3EBCB302751}.Release|Any CPU.Build.0 = Release|Any CPU
-		{187944BC-2240-4C1B-B8F3-4FB02AB1CDAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{187944BC-2240-4C1B-B8F3-4FB02AB1CDAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{187944BC-2240-4C1B-B8F3-4FB02AB1CDAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{187944BC-2240-4C1B-B8F3-4FB02AB1CDAD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9C26DA6C-68B7-4A3D-B553-7B1CCAFE4366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9C26DA6C-68B7-4A3D-B553-7B1CCAFE4366}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C26DA6C-68B7-4A3D-B553-7B1CCAFE4366}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C26DA6C-68B7-4A3D-B553-7B1CCAFE4366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32A16F28-050C-4B15-A26C-BB75CA8C6296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32A16F28-050C-4B15-A26C-BB75CA8C6296}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32A16F28-050C-4B15-A26C-BB75CA8C6296}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32A16F28-050C-4B15-A26C-BB75CA8C6296}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
