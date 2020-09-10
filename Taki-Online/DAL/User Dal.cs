@@ -12,10 +12,10 @@ namespace DAL
         /// adds a user
         /// </summary>
         /// <returns>user ID</returns>
-        public static int AddUser()
+        public static int AddUser(string email, string password, bool isManager)
         {
-            string sql = "";
-            return DalHelper.Insert();
+            string sql = $"INSERT into Users (Email, Password, IsManeger) VALUES '{email}', '{password}', isManager";
+            return DalHelper.Insert(sql);
         }
     }
 }
