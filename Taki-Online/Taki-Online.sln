@@ -8,9 +8,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WS", "WS\WS.csproj", "{9C26DA6C-68B7-4A3D-B553-7B1CCAFE4366}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3BA6F3A8-6198-4C15-B345-0A192105B870}"
-	ProjectSection(SolutionItems) = preProject
-		..\Taki DB.accdb = ..\Taki DB.accdb
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{32A16F28-050C-4B15-A26C-BB75CA8C6296}"
 EndProject
