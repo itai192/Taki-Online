@@ -107,7 +107,7 @@ namespace DAL
                 }
                 catch(Exception ex)
                 {
-                    throw ex.;
+                    throw ex;
                 }
             }
             return rd; 
