@@ -60,7 +60,7 @@ namespace DAL
         /// </summary>
         /// <param name="arr">the array</param>
         /// <returns>a string of the contents of the array seperated by commas</returns>
-        private static string ArrayToStringWithCommas(string[] arr)
+        public static string ArrayToStringWithCommas(string[] arr)
         {
             string ret = "";
             for (int i = 0; i < arr.Length; i++)
@@ -110,18 +110,28 @@ namespace DAL
         /// <returns></returns>
         public static string SimpleUpdateQuery(string table, string[] columns, string[] values, string whereCondition)
         {
-            string[] SetValues = 
+            if(columns.Length!=values.Length)
+            {
+                ThrowArraysNotInSameLengthExeption(columns, values);
+            }
+            string[] SetValues = new string[columns.Length];
+            for (int i = 0; i < SetValues.Length; i++)
+            {
+                SetValues[i] = $"{columns[i]}={values[i]}";
+            }
+            return SimpleUpdateQuery(table, ArrayToStringWithCommas(SetValues), whereCondition);
         }
         /// <summary>
         /// a method that returns a simple update query based over the parameters
         /// </summary>
         /// <param name="table">the table to update</param>
-        /// <param name="setVals"></param>
-        /// <param name="whereCondition"></param>
-        public string SimpleUpdateQuery(string table, string setVals, string whereCondition)
+        /// <param name="setVals">a string of the set values</param>
+        /// <param name="whereCondition">the where condition (without the word WHERE)</param>
+        public static string SimpleUpdateQuery(string table, string setVals, string whereCondition)
         {
-
+            return $"UPDATE {table} SET {setVals} WHERE {whereCondition}";
         }
+
         public static bool Update(string sql)//works for all update sql and checks if the db changed, if it did than the update worked and returns true, else false
         {
            int num = h.WriteData(sql);
