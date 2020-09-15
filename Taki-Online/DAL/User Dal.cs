@@ -17,6 +17,10 @@ namespace DAL
             string sql = $"INSERT into Users (Email, Password, IsManeger) VALUES '{email}', '{password}', {isManager}";
             return DalHelper.Insert(sql);
         }
+        public static void UpdateUser(string email, string password, bool isManagerr)
+        {
+
+        }
 
     }
 }

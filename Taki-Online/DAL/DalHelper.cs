@@ -7,16 +7,16 @@ using System.Data;
 namespace DAL
 {
   public class DalHelper
-    {  
+    {
         //note: you dont really need to read the following comment its mostly a joke(still true though)
         //Have you ever been exhausted by those annoying sql senteses? and when you are done with them
         //you would usually need to go to that depressing DBHelper in order to connect the two,
-    // WELL NO MORE - Dal Helper is here to make your life better, easier and filled with joy
-    // just provide us with the right sql and return! Yes exactly! DAL commands will only take 2 rows
-    // from now on and it is all because DALHelper is just Sooooooooo amazing 
-    // NO MORE Closeconnectiosn! the dal helper does it for you! 
-    //~Alon Metuky's speech.
-    
+        // WELL NO MORE - Dal Helper is here to make your life better, easier and filled with joy
+        // just provide us with the right sql and return! Yes exactly! DAL commands will only take 2 rows
+        // from now on and it is all because DALHelper is just Sooooooooo amazing 
+        // NO MORE Closeconnectiosn! the dal helper does it for you! 
+        //~Alon Metuky's speech.
+        public static string table;
         public static string provider;
         public static string source;
         static DBHelper h; //only the dal helper is using the dbhelper
@@ -54,6 +54,72 @@ namespace DAL
             {
                 h.CloseConnection();
             }
+        }
+        /// <summary>
+        /// a method that takes a string of arrays and returns a string of them seperated by commas
+        /// </summary>
+        /// <param name="arr">the array</param>
+        /// <returns>a string of the contents of the array seperated by commas</returns>
+        private static string ArrayToStringWithCommas(string[] arr)
+        {
+            string ret = "";
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (i != 0)
+                {
+                    ret += ", ";
+                }
+                ret += arr[i];
+
+            }
+            return ret;
+        }
+        /// <summary>
+        /// throws an arrays not in same length exception
+        /// </summary>
+        /// <param name="arr1">an array expected to be the same length as the other array</param>
+        /// <param name="arr2">an array expected to be the same length as the other array</param>
+        public static void ThrowArraysNotInSameLengthExeption(Array arr1,Array arr2)
+        {
+            Exception e = new Exception("expected arrays to be in same length");
+            e.Data["arr1"] = arr1;
+            e.Data["arr2"] = arr2;
+        }
+        /// <summary>
+        /// a method that returns a simple insert query based over the parameters
+        /// </summary>
+        /// <param name="table">table name</param>
+        /// <param name="columns">the columns you want to insert in order</param>
+        /// <param name="values">the values to be inserted into the columns in order</param>
+        /// <returns>a simple insert sentence based over the parameters</returns>
+        public static string SimpleInsertQuery(string table, string[] columns, string[] values)
+        {
+            if(columns.Length!=values.Length)
+            {
+                ThrowArraysNotInSameLengthExeption(columns,values);
+            }
+            return $"INSERT INTO {table} ({ArrayToStringWithCommas(columns)}) VALUES {ArrayToStringWithCommas(values)}";
+        }
+        /// <summary>
+        /// a method that returns a simple update query based over the parameters
+        /// </summary>
+        /// <param name="table">the table to update</param>
+        /// <param name="columns">the columns you want to update in order</param>
+        /// <param name="values">the values to be updateded into the columns in order</param>
+        /// <param name="whereCondition">the where condition (without the word WHERE)</param>
+        /// <returns></returns>
+        public static string SimpleUpdateQuery(string table, string[] columns, string[] values, string whereCondition)
+        {
+            string[] SetValues = 
+        }
+        /// <summary>
+        /// a method that returns a simple update query based over the parameters
+        /// </summary>
+        /// <param name="table">the table to update</param>
+        /// <param name="setVals"></param>
+        /// <param name="whereCondition"></param>
+        public string SimpleUpdateQuery(string table, string setVals, string whereCondition)
+        {
 
         }
         public static bool Update(string sql)//works for all update sql and checks if the db changed, if it did than the update worked and returns true, else false
