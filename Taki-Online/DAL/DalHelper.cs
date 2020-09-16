@@ -135,14 +135,16 @@ namespace DAL
         /// excecutes an update query
         /// </summary>
         /// <param name="sql">an sql query</param>
-        /// <returns>returns true if the query succeeded</returns>
-        public static void Update(string sql)//works for all update sql and checks if the db changed, if it did than the update worked and returns true, else false
+        /// <returns>returns how many columns have been updated</returns>
+        public static int Update(string sql)//works for all update sql and checks if the db changed, if it did than the update worked and returns true, else false
         {
             int num = h.WriteData(sql);
             h.CloseConnection();
             if(num ==DBHelper.WRITEDATA_ERROR)
-            {  
+            {
+                throw new Exception("Error Updating");
             }
+            return num;
         }
         public static DataTable SelectTable(string sql)//works for all select sql that selects a table and returns that table
         {
