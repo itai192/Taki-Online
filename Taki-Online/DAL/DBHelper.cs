@@ -50,16 +50,10 @@ namespace DAL
         //Open connection to the database.
         public void OpenConnection()
         {
-            try
             {
                 this.conn.Open();
                 connOpen = true;
             }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
-            
         }
         //Execute UPDATE or INSERT sql commands and return number of rows affected.         
         //return WRITEDATA_ERROR on failure
@@ -125,7 +119,7 @@ namespace DAL
             }
             
                 
-            if (this.connOpen)
+            if(this.connOpen)
             {
                 if (this.WriteData(sql) != WRITEDATA_ERROR)
                 {
