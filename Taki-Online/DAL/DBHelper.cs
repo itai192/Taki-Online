@@ -95,15 +95,9 @@ namespace DAL
 
             if (this.connOpen)
             {
-                try
-                {
                 OleDbCommand cmd = new OleDbCommand(sql, conn);
                 rd = cmd.ExecuteReader();
-                }
-                catch(Exception ex)
-                {
-                    throw ex;
-                }
+                
             }
             return rd; 
         }
