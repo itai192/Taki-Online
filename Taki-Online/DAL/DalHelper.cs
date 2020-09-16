@@ -107,7 +107,7 @@ namespace DAL
         /// <param name="columns">the columns you want to update in order</param>
         /// <param name="values">the values to be updateded into the columns in order</param>
         /// <param name="whereCondition">the where condition (without the word WHERE)</param>
-        /// <returns></returns>
+        /// <returns>a simple update sentence based over the parameters</returns>
         public static string SimpleUpdateQuery(string table, string[] columns, string[] values, string whereCondition)
         {
             if(columns.Length!=values.Length)
@@ -131,16 +131,18 @@ namespace DAL
         {
             return $"UPDATE {table} SET {setVals} WHERE {whereCondition}";
         }
-
-        public static bool Update(string sql)//works for all update sql and checks if the db changed, if it did than the update worked and returns true, else false
+        /// <summary>
+        /// excecutes an update query
+        /// </summary>
+        /// <param name="sql">an sql query</param>
+        /// <returns>returns true if the query succeeded</returns>
+        public static void Update(string sql)//works for all update sql and checks if the db changed, if it did than the update worked and returns true, else false
         {
-           int num = h.WriteData(sql);
+            int num = h.WriteData(sql);
             h.CloseConnection();
-            if(num ==-1)
-           {
-              return false;
-           }
-              return true;
+            if(num ==DBHelper.WRITEDATA_ERROR)
+            {  
+            }
         }
         public static DataTable SelectTable(string sql)//works for all select sql that selects a table and returns that table
         {

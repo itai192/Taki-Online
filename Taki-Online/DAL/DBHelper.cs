@@ -61,7 +61,8 @@ namespace DAL
             }
             
         }
-        //Execute UPDATE or INSERT sql commands and return number of rows affected.         //return WRITEDATA_ERROR on failure
+        //Execute UPDATE or INSERT sql commands and return number of rows affected.         
+        //return WRITEDATA_ERROR on failure
         public int WriteData(string sql)
         {
             int ret = WRITEDATA_ERROR;
@@ -145,17 +146,10 @@ namespace DAL
         //The function returns the data table or null on failure. 
         public DataTable GetDataTable(string sql)
         {
-            try
-            {
                 DataTable tbl = new DataTable();
                 OleDbDataReader rd = ReadData(sql);
                 tbl.Load(rd);
                 return tbl;
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
         }
 
         //This function reads from the database a data set fully cached in memory using an array of standard SQL SELECT statements.         
