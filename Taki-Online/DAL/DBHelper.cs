@@ -75,9 +75,9 @@ namespace DAL
                     rd = cmd.ExecuteReader();
                     ret = rd.RecordsAffected;
                 }
-                catch(Exception ex)
+                catch
                 {
-                    ret = WRITEDATA_ERROR;
+                    return WRITEDATA_ERROR;
                 }
             }
             return ret;
