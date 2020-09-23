@@ -17,8 +17,7 @@
                     <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/Home.aspx">Home</asp:LinkButton></asp:TableCell>
             </asp:TableRow>
                 <asp:TableRow runat="server">
-                    <asp:TableCell runat="server"><asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+                    <asp:TableCell runat="server"><asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
                         
 </asp:TableCell>
                 </asp:TableRow>
