@@ -13,7 +13,7 @@ namespace UI
         protected void Page_Init(object sender, EventArgs e)
         {
             TableRow up = Table1.Rows[0];
-            if(Session["User"] is User)
+            if (Session["User"] is User)
             {
                 User u = (User)Session["User"];
                 up.Cells.Add(CreateLinkCell(@"..\Ladders.aspx", "Ladders"));
@@ -23,11 +23,11 @@ namespace UI
                 {
                     up.Cells.Add(CreateLinkCell(@"..\Manager.aspx", "Manager"));
                 }
-                up.Cells.Add(CreateLinkCell(@"..\Account.aspx","Account"));
+                up.Cells.Add(CreateLinkCell(@"..\Account.aspx", "Account"));
             }
             else
             {
-                up.Cells.Add(CreateLinkCell(@"..\Sign up.aspx","Sign up"));
+                up.Cells.Add(CreateLinkCell(@"..\Sign up.aspx", "Sign up"));
                 up.Cells.Add(CreateLinkCell(@"..\Sign in.aspx", "Sign in"));
             }
         }
@@ -38,7 +38,7 @@ namespace UI
         protected TableCell CreateLinkCell(string link,string text)
         {
             TableCell cell = new TableCell();
-            LinkButton btn = new LinkButton();
+            Button btn = new Button();
             btn.PostBackUrl = link;
             btn.Text = text;
             cell.Controls.Add(btn);
