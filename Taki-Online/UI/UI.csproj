@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account.aspx" />
+    <Content Include="CSS Control test.aspx" />
     <Content Include="Game.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
@@ -84,6 +85,13 @@
     </Compile>
     <Compile Include="Account.aspx.designer.cs">
       <DependentUpon>Account.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CSS Control test.aspx.cs">
+      <DependentUpon>CSS Control test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CSS Control test.aspx.designer.cs">
+      <DependentUpon>CSS Control test.aspx</DependentUpon>
     </Compile>
     <Compile Include="Game.aspx.cs">
       <DependentUpon>Game.aspx</DependentUpon>
