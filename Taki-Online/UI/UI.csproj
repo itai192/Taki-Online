@@ -76,6 +76,7 @@
     <Content Include="Manager.aspx" />
     <Content Include="Sign in.aspx" />
     <Content Include="Sign up.aspx" />
+    <Content Include="Style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
