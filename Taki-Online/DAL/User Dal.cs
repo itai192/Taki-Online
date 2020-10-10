@@ -12,19 +12,25 @@ namespace DAL
         /// adds a user
         /// </summary>
         /// <returns>user ID</returns>
-        public static int AddUser(string email, string password, bool isManager)
+        public static int AddUser(string email, string password, UserType type, string fName, string lName, DateTime bDate)
         {
-            string sql = DalHelper.SimpleInsertQuery("Users", new string[] { "Email","Password","IsManager" } , new string[] { $"'{email}'",$"'{password}'",isManager.ToString()});
+            string sql = DalHelper.SimpleInsertQuery("Users", new string[] { "Email","[Password]","Type","[First Name]","[Last Name]","Date Of Birth" } , new string[] { $"'{email}'",$"'{password}'",type.ToString("d"),$"'{fName}'",$"'{lName}'",bDate.ToOADate().ToString()});
             return DalHelper.Insert(sql);
         }
-        public static bool UpdateUser(string email, string password, bool isManager,int ID)
+        /* static bool UpdateUser(string email, string password, bool isManager,int ID)
         {
             string sql = DalHelper.SimpleUpdateQuery("Users", new string[] { "Email", "Password", "IsManager" }, new string[] { $"'{email}'", $"'{password}'", isManager.ToString()},$"ID={ID}");
             return DalHelper.Update(sql)==1;
         }
-        public static DataRow SelectUser(int ID)
+        ToFix
+        */
+        public static DataRow SelectUser(string username)
         {
-            return DalHelper.SelectRow($"SELECT * FROM Users WHERE ID={ID}");
+            return DalHelper.SelectRow($"SELECT * FROM Users WHERE ID='{username}'");
+        }
+        public static DataRow SelectUsernameWithPassword(string username, string password)
+        {
+            return DalHelper.SelectRow($"SELECT * FROM Users WHERE Username='{username}' AND [Password]='{password}'");
         }
 
     }
