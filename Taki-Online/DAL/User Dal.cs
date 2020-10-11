@@ -12,10 +12,10 @@ namespace DAL
         /// adds a user
         /// </summary>
         /// <returns>user ID</returns>
-        public static int AddUser(string email, string password, int type, string fName, string lName, DateTime bDate)
+        public static void AddUser(string email, string password, int type, string fName, string lName, DateTime bDate,string username)
         {
-            string sql = DalHelper.SimpleInsertQuery("Users", new string[] { "Email","[Password]","Type","[First Name]","[Last Name]","Date Of Birth" } , new string[] { $"'{email}'",$"'{password}'",type.ToString(),$"'{fName}'",$"'{lName}'",bDate.ToOADate().ToString()});
-            return DalHelper.Insert(sql);
+            string sql = DalHelper.SimpleInsertQuery("Users", new string[] { "Email","[Password]","Type","[First Name]","[Last Name]","[Date Of Birth]","Username" } , new string[] { $"'{email}'", $"'{password}'", type.ToString(), $"'{fName}'", $"'{lName}'", bDate.ToOADate().ToString(), $"'{username}'" });
+            DalHelper.insertWithoutCreatingID(sql);
         }
         /* static bool UpdateUser(string email, string password, bool isManager,int ID)
         {

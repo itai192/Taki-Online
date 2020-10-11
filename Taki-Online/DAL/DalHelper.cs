@@ -98,7 +98,7 @@ namespace DAL
             {
                 ThrowArraysNotInSameLengthExeption(columns,values);
             }
-            return $"INSERT INTO {table} ({ArrayToStringWithCommas(columns)}) VALUES {ArrayToStringWithCommas(values)}";
+            return $"INSERT INTO {table} ({ArrayToStringWithCommas(columns)}) VALUES ({ArrayToStringWithCommas(values)})";
         }
         /// <summary>
         /// a method that returns a simple update query based over the parameters

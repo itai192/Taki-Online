@@ -20,9 +20,16 @@ namespace BLL
         {
 
         }
-        public User(string username, UserType type, string email, DateTime BirthDate, string fName, string lName)
+        public User(string username, UserType type, string email, DateTime BirthDate, string fName, string lName,string password)
         {
-
+            level = 1;
+            xp = 0;
+            this.BirthDate = BirthDate;
+            this.fName = fName;
+            this.lName = lName;
+            this.type = type;
+            this.username = username;
+            DAL.UserDal.AddUser(email, password, (int)type, fName, lName, BirthDate,username);
         }
         public User(DataRow dr)
         {

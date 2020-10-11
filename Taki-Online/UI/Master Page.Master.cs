@@ -57,7 +57,7 @@ namespace UI
         protected void LogOut(object sender, EventArgs e)
         {
             Session["User"] = null;
-            Response.Redirect(@"..\Home.aspx");
+            Response.Redirect(@"~\Home.aspx");
         }
     }
 }

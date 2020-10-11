@@ -6,6 +6,7 @@ using System.Web.Security;
 using System.Web.SessionState;
 using BLL;
 using System.Configuration;
+using System.IO;
 namespace UI
 {
     public class Global : System.Web.HttpApplication
@@ -13,8 +14,9 @@ namespace UI
 
         protected void Application_Start(object sender, EventArgs e)
         {
-
-            BLL.BLL_Helper.SetSourceAndProvider(ConfigurationSettings.AppSettings["source"], ConfigurationSettings.AppSettings["provider"]);
+            Directory.SetCurrentDirectory(Server.MapPath("~"));
+            string strong = Directory.GetCurrentDirectory();
+            BLL.BLL_Helper.CreateDBHelperInDalHelper(ConfigurationManager.AppSettings["path"], ConfigurationManager.AppSettings["provider"]);
         }
 
         protected void Session_Start(object sender, EventArgs e)
