@@ -42,13 +42,13 @@ namespace UI
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// email control.
+        /// username control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox email;
+        protected global::System.Web.UI.WebControls.TextBox username;
 
         /// <summary>
         /// Label2 control.
@@ -69,13 +69,22 @@ namespace UI
         protected global::System.Web.UI.WebControls.TextBox password;
 
         /// <summary>
-        /// Button1 control.
+        /// RequiredFieldValidator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+
+        /// <summary>
+        /// SignIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SignIn;
 
         /// <summary>
         /// CustomValidator1 control.

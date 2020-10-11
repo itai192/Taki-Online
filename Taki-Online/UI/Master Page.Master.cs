@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BLL;
+
 namespace UI
 {
     public partial class Master_Page : System.Web.UI.MasterPage
@@ -19,7 +20,7 @@ namespace UI
                 up.Cells.Add(CreateLinkCell(@"..\Ladders.aspx", "Ladders"));
                 up.Cells.Add(CreateLinkCell(@"..\Game.aspx", "Play!"));
                 up.Cells.Add(CreateButtonCell(LogOut, "Log Out"));
-                if (u.isManager)
+                if (u.type==UserType.Manager)
                 {
                     up.Cells.Add(CreateLinkCell(@"..\Manager.aspx", "Manager"));
                 }

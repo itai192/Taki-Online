@@ -111,8 +111,6 @@ namespace DAL
             {
                 this.OpenConnection();
             }
-            
-                
             if(this.connOpen)
             {
                 if (this.WriteData(sql) != WRITEDATA_ERROR)

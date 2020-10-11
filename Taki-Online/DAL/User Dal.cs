@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 using System.Data;
 namespace DAL
 {
-    class UserDal
+    public class UserDal
     {
         /// <summary>
         /// adds a user
         /// </summary>
         /// <returns>user ID</returns>
-        public static int AddUser(string email, string password, UserType type, string fName, string lName, DateTime bDate)
+        public static int AddUser(string email, string password, int type, string fName, string lName, DateTime bDate)
         {
-            string sql = DalHelper.SimpleInsertQuery("Users", new string[] { "Email","[Password]","Type","[First Name]","[Last Name]","Date Of Birth" } , new string[] { $"'{email}'",$"'{password}'",type.ToString("d"),$"'{fName}'",$"'{lName}'",bDate.ToOADate().ToString()});
+            string sql = DalHelper.SimpleInsertQuery("Users", new string[] { "Email","[Password]","Type","[First Name]","[Last Name]","Date Of Birth" } , new string[] { $"'{email}'",$"'{password}'",type.ToString(),$"'{fName}'",$"'{lName}'",bDate.ToOADate().ToString()});
             return DalHelper.Insert(sql);
         }
         /* static bool UpdateUser(string email, string password, bool isManager,int ID)
@@ -22,7 +22,7 @@ namespace DAL
             string sql = DalHelper.SimpleUpdateQuery("Users", new string[] { "Email", "Password", "IsManager" }, new string[] { $"'{email}'", $"'{password}'", isManager.ToString()},$"ID={ID}");
             return DalHelper.Update(sql)==1;
         }
-        ToFix
+        To Fix
         */
         public static DataRow SelectUser(string username)
         {
