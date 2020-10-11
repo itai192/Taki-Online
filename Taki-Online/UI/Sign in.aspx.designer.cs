@@ -87,13 +87,13 @@ namespace UI
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
-        /// SignIn control.
+        /// Login control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SignIn;
+        protected global::System.Web.UI.WebControls.Button Login;
 
         /// <summary>
         /// Error control.

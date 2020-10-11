@@ -36,7 +36,7 @@ namespace BLL
             username = dr["username"].ToString();
             type = (UserType)dr["Type"];
             email = dr["Email"].ToString();
-            BirthDate = DateTime.FromOADate((double)dr["Date Of Birth"]);
+            BirthDate = (DateTime)dr["Date Of Birth"];
             level = (int)dr["Level"];
             xp = (int)dr["xp"];
             fName = dr["First Name"].ToString();
