@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 using DAL;
 namespace BLL
 {
@@ -17,6 +18,15 @@ namespace BLL
         {
             SetSourceAndProvider(source, provider);
             DalHelper.CreateDBHelper();
+        }
+        public static List<T> DataTableToList<T>(DataTable dt, string field)
+        {
+            List<T> l = new List<T>();
+            foreach(DataRow dr in dt.Rows)
+            {
+                l.Add(dr.Field<T>(field));
+            }
+            return l;
         }
     }
 }

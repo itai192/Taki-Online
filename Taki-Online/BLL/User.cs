@@ -15,11 +15,24 @@ namespace BLL
         public int xp { get; }
         public string fName { get; }
         public string lName {get;}
-
-
+        //public List<string> AcceptedFriends
+        //{
+        //    get
+        //    {
+        //        return List<string> = new List<string>();
+        //    }
+        //}
+        public List<string> UnopenedFriendRequests
+        {
+            get { return BLL_Helper.DataTableToList<string>(DAL.Friends_Dal.FriendRequestsWithStatusRecieved(username, (int)FriendRequestStatus.Unopened), Friends_Dal.SENDERFLD); }
+        }
         public User(string username, string password) : this(UserDal.SelectUsernameWithPassword(username, password))
         {
 
+        }
+        public void AddFriend(string username)
+        {
+            //later
         }
         public User(string username, UserType type, string email, DateTime BirthDate, string fName, string lName,string password)
         {
