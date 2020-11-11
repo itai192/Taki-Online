@@ -32,6 +32,5 @@ namespace DAL
         {
             return DalHelper.SelectRow($"SELECT * FROM Users WHERE Username='{username}' AND [Password]='{password}'");
         }
-
     }
 }

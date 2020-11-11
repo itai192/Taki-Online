@@ -16,6 +16,7 @@ namespace BLL
         public string fName { get; }
         public string lName {get;}
 
+
         public User(string username, string password) : this(UserDal.SelectUsernameWithPassword(username, password))
         {
 

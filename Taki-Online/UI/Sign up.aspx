@@ -41,7 +41,15 @@
                     <asp:Calendar ID="Calendar" runat="server" SelectionMode="Day"></asp:Calendar><asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Please insert your birth date"  OnServerValidate="CalanderValidation" ControlToValidate="Username" ValidationGroup="signup"></asp:CustomValidator>
                 </asp:TableCell>
             </asp:TableRow>
+            <asp:TableRow runat="server">
+                <asp:TableCell runat="server">
+                    <asp:Label ID="Label8" runat="server" Text="Photo" AssociatedControlID="Photo"></asp:Label></asp:TableCell>
+                <asp:TableCell runat="server">
+                    <asp:FileUpload ID="Photo" runat="server" AllowMultiple="False" />
+                </asp:TableCell>
+            </asp:TableRow>
         </asp:Table>
-        <asp:Button ID="SignUp" runat="server" Text="SIGN UP" OnClick="signup" /><asp:Label ID="error" runat="server" Text=""></asp:Label>
+        <asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="False" />
+        <asp:Button ID="SignUp" runat="server" Text="SIGN UP" OnClick="signup" ValidationGroup="SignUp" /><asp:Label ID="error" runat="server" Text=""></asp:Label>
     </asp:Panel>
 </asp:Content>
