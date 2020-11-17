@@ -27,6 +27,7 @@ namespace UI
             try
             {
                 BLL.User u = new User(Username.Text, UserType.User, email.Text, Calendar.SelectedDate, FName.Text, LName.Text,Password.Text);
+                
                 Session["User"] = u;
                 Response.Redirect(@"~\Home.aspx");
             }

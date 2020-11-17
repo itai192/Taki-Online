@@ -3,6 +3,8 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:MultiView ID="MultiView1" runat="server"><asp:View>
-        fuck</asp:View></asp:MultiView>
+    list<asp:ListView ID="F1" runat="server" OnSelectedIndexChanged="F1_SelectedIndexChanged"><ItemTemplate></ItemTemplate></asp:ListView>
+    <br />
+    grid
+    <asp:GridView ID="F2" runat="server"></asp:GridView>
 </asp:Content>

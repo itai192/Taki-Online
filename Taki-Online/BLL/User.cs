@@ -19,8 +19,8 @@ namespace BLL
         {
             get
             {
-                List<string> l1 = BLL_Helper.DataTableToList<string>(DAL.Friends_Dal.FriendRequestsWithStatusRecieved(username, (int)FriendRequestStatus.Accepted), Friends_Dal.RECIPIANTFLD);
-                List<string> l2 = BLL_Helper.DataTableToList<string>(DAL.Friends_Dal.FriendRequestsWithStatusSent(username, (int)FriendRequestStatus.Accepted), Friends_Dal.SENDERFLD);
+                List<string> l1 = BLL_Helper.DataTableToList<string>(DAL.Friends_Dal.FriendRequestsWithStatusRecieved(username, (int)FriendRequestStatus.Accepted), Friends_Dal.SENDERFLD );
+                List<string> l2 = BLL_Helper.DataTableToList<string>(DAL.Friends_Dal.FriendRequestsWithStatusSent(username, (int)FriendRequestStatus.Accepted), Friends_Dal.RECIPIANTFLD);
                 return BLL_Helper.UniteLists(l1, l2);
             }
         }

@@ -49,7 +49,6 @@
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>
-        <asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="False" />
         <asp:Button ID="SignUp" runat="server" Text="SIGN UP" OnClick="signup" ValidationGroup="SignUp" /><asp:Label ID="error" runat="server" Text=""></asp:Label>
     </asp:Panel>
 </asp:Content>
