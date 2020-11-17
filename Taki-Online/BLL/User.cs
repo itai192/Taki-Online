@@ -15,13 +15,15 @@ namespace BLL
         public int xp { get; }
         public string fName { get; }
         public string lName {get;}
-        //public List<string> AcceptedFriends
-        //{
-        //    get
-        //    {
-        //        return List<string> = new List<string>();
-        //    }
-        //}
+        public List<string> AcceptedFriends
+        {
+            get
+            {
+                List<string> l1 = BLL_Helper.DataTableToList<string>(DAL.Friends_Dal.FriendRequestsWithStatusRecieved(username, (int)FriendRequestStatus.Accepted), Friends_Dal.RECIPIANTFLD);
+                List<string> l2 = BLL_Helper.DataTableToList<string>(DAL.Friends_Dal.FriendRequestsWithStatusSent(username, (int)FriendRequestStatus.Accepted), Friends_Dal.SENDERFLD);
+                return BLL_Helper.UniteLists(l1, l2);
+            }
+        }
         public List<string> UnopenedFriendRequests
         {
             get { return BLL_Helper.DataTableToList<string>(DAL.Friends_Dal.FriendRequestsWithStatusRecieved(username, (int)FriendRequestStatus.Unopened), Friends_Dal.SENDERFLD); }

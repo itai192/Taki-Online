@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="Panel1" runat="server">
+    <asp:Panel ID="Panel1" runat="server" DefaultButton="Login">
         <asp:Table ID="Table1" runat="server">
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server"><asp:Label ID="Label1" runat="server" Text="Label" AssociatedControlID="username">Username:</asp:Label></asp:TableCell>

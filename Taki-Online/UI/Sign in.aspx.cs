@@ -11,7 +11,6 @@ namespace UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
         }
         protected void SignIn(object sender, EventArgs e)
         {

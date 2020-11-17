@@ -11,7 +11,7 @@ namespace DAL
         public const string USERSTBL = "Users";
         public const string ARTICLESTBL = "Articles";
         public const string GAMEINVITESTBL = "[Game Invitations]";
-        public const string FRIENDREQUESTSTBL = "[Friend Request Statuses]";
+        public const string FRIENDREQUESTSTBL = "[Friends Request Statuses]";
         public const string GAMESTBL = "Games";
         public const string RANKINGHISTORYTBL = "[Ranking History]";
         public const string SEASONSTBL = "Seasons";

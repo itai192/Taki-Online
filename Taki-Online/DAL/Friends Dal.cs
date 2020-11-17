@@ -50,5 +50,6 @@ namespace DAL
         {
             return DalHelper.SelectTable(FriendRequestSQL + $" WHERE {REQUESTSTATUSEFLD} = {status} AND {RECIPIANTFLD} = '{username}'");
         }
+        //public static DataTable
     }
 }

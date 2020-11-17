@@ -28,5 +28,12 @@ namespace BLL
             }
             return l;
         }
+        public static List<T> UniteLists<T>(List<T> l1, List<T> l2)
+        {
+            List<T> l = new List<T>();
+            l.AddRange(l1);
+            l.AddRange(l2);
+            return l;
+        }
     }
 }
