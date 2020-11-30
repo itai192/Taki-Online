@@ -24,6 +24,13 @@ namespace BLL
                 return BLL_Helper.UniteLists(l1, l2);
             }
         }
+        public List<string> DeclinedFriends
+        {
+            get
+            {
+                return BLL_Helper.DataTableToList<string>(DAL.Friends_Dal.FriendRequestsWithStatusRecieved(username, (int)FriendRequestStatus.Declined),Friends_Dal.SENDERFLD);
+            }
+        }
         public List<string> UnopenedFriendRequests
         {
             get { return BLL_Helper.DataTableToList<string>(DAL.Friends_Dal.FriendRequestsWithStatusRecieved(username, (int)FriendRequestStatus.Unopened), Friends_Dal.SENDERFLD); }

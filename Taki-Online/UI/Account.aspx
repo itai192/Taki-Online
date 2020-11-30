@@ -3,8 +3,28 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    list<asp:ListView ID="F1" runat="server" OnSelectedIndexChanged="F1_SelectedIndexChanged"><ItemTemplate></ItemTemplate></asp:ListView>
-    <br />
-    grid
-    <asp:GridView ID="F2" runat="server"></asp:GridView>
+    <%--grid
+    <asp:GridView ID="FriendRequests" runat="server" AutoGenerateColumns="False" 
+        Caption="Friend requests" AllowPaging="True" OnSelectedIndexChanged="FriendRequests_SelectedIndexChanged">
+        <Columns>
+            <asp:ButtonField Text="Button" ButtonType="Button" />
+            <asp:ButtonField Text="Button" ButtonType="Button" />
+            <asp:TemplateField HeaderText="Username"></asp:TemplateField>
+        </Columns>
+    </asp:GridView>--%>
+    <asp:DataList ID="FriendRequests" runat="server" OnItemCommand="FriendRequests_ItemCommand">
+        <HeaderTemplate>
+            Friend Requests
+        </HeaderTemplate>
+        <ItemTemplate>
+            <asp:Label ID="FrUsername" runat="server" Text="<%# Container.DataItem %>"></asp:Label>
+            <asp:Button ID="Accept" runat="server" Text="Button" />
+            <asp:Button ID="Decline" runat="server" Text="Button" />
+        </ItemTemplate>
+    </asp:DataList>
+    Friends
+    <asp:BulletedList ID="Friends" runat="server"></asp:BulletedList>
+    multyview
+
+    <asp:MultiView ID="Stats" runat="server"></asp:MultiView>
 </asp:Content>

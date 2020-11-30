@@ -15,21 +15,30 @@ namespace UI
     {
 
         /// <summary>
-        /// F1 control.
+        /// FriendRequests control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView F1;
+        protected global::System.Web.UI.WebControls.DataList FriendRequests;
 
         /// <summary>
-        /// F2 control.
+        /// Friends control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView F2;
+        protected global::System.Web.UI.WebControls.BulletedList Friends;
+
+        /// <summary>
+        /// Stats control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.MultiView Stats;
     }
 }

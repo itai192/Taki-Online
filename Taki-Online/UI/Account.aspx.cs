@@ -11,22 +11,23 @@ namespace UI
     {
         protected void Page_Init(object sender, EventArgs e)
         {
-            if(Session["User"]==null)
-            {
-                Response.Redirect("~/Home.aspx");
-            }
-            User user = (User)Session["User"];
-            F1.DataSource = user.AcceptedFriends;
-            F2.DataSource = user.AcceptedFriends;
+            
             
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            F1.DataBind();
-            F2.DataBind();
+            if (Session["User"] == null)
+            {
+                Response.Redirect("~/Home.aspx");
+            }
+            User user = (User)Session["User"];
+            FriendRequests.DataSource=user.UnopenedFriendRequests;
+            FriendRequests.DataBind();
+            Friends.DataSource = user.AcceptedFriends;
+            Friends.DataBind();
         }
 
-        protected void F1_SelectedIndexChanged(object sender, EventArgs e)
+        protected void FriendRequests_ItemCommand(object source, DataListCommandEventArgs e)
         {
 
         }
