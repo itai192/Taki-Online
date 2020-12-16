@@ -33,6 +33,24 @@ namespace UI
         protected global::System.Web.UI.WebControls.BulletedList Friends;
 
         /// <summary>
+        /// Usernamelbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Usernamelbl;
+
+        /// <summary>
+        /// Levellbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Levellbl;
+
+        /// <summary>
         /// Stats control.
         /// </summary>
         /// <remarks>

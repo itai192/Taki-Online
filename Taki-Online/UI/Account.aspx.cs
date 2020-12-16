@@ -25,6 +25,8 @@ namespace UI
             FriendRequests.DataBind();
             Friends.DataSource = user.AcceptedFriends;
             Friends.DataBind();
+            Usernamelbl.Text = user.username;
+            Levellbl.Text = user.level.ToString();
         }
 
         protected void FriendRequests_ItemCommand(object source, DataListCommandEventArgs e)

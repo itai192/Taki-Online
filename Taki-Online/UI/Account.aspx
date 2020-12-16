@@ -24,7 +24,13 @@
     </asp:DataList>
     Friends
     <asp:BulletedList ID="Friends" runat="server"></asp:BulletedList>
+    Username:<asp:Label ID="Usernamelbl" runat="server" Text=""></asp:Label><br />
+    Level:<asp:Label ID="Levellbl" runat="server" Text=""></asp:Label>
+    XP:
+
+    <br />
     multyview
 
     <asp:MultiView ID="Stats" runat="server"></asp:MultiView>
+    
 </asp:Content>
