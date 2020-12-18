@@ -10,8 +10,8 @@
         </HeaderTemplate>
         <ItemTemplate>
             <asp:Label ID="FrUsername" runat="server" Text="<%# Container.DataItem %>"></asp:Label>
-            <asp:Button ID="Accept" runat="server" Text="Button" />
-            <asp:Button ID="Decline" runat="server" Text="Button" />
+            <asp:Button ID="Accept" runat="server" Text="Accept" CommandName="Accept" />
+            <asp:Button ID="Decline" runat="server" Text="Decline" CommandName="Decline" />
         </ItemTemplate>
     </asp:DataList>
     Friends
