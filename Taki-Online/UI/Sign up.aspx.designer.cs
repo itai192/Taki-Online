@@ -33,13 +33,13 @@ namespace UI
         protected global::System.Web.UI.WebControls.Table Table2;
 
         /// <summary>
-        /// Label3 control.
+        /// EmailLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label EmailLbl;
 
         /// <summary>
         /// email control.
@@ -51,31 +51,31 @@ namespace UI
         protected global::System.Web.UI.WebControls.TextBox email;
 
         /// <summary>
-        /// RegularExpressionValidator1 control.
+        /// ValidEmailValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator ValidEmailValidator;
 
         /// <summary>
-        /// RequiredFieldValidator6 control.
+        /// RequiredEmailValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredEmailValidator;
 
         /// <summary>
-        /// Label4 control.
+        /// UsernameLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.Label UsernameLbl;
 
         /// <summary>
         /// Username control.
@@ -87,22 +87,22 @@ namespace UI
         protected global::System.Web.UI.WebControls.TextBox Username;
 
         /// <summary>
-        /// RequiredFieldValidator4 control.
+        /// RequiredUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredUsername;
 
         /// <summary>
-        /// Label5 control.
+        /// PasswordLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
+        protected global::System.Web.UI.WebControls.Label PasswordLbl;
 
         /// <summary>
         /// Password control.
@@ -114,14 +114,14 @@ namespace UI
         protected global::System.Web.UI.WebControls.TextBox Password;
 
         /// <summary>
-        /// RegularExpressionValidator2 control.
+        /// Password Validator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
-
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator Password Validator;
+        
         /// <summary>
         /// RequiredFieldValidator1 control.
         /// </summary>
@@ -150,22 +150,31 @@ namespace UI
         protected global::System.Web.UI.WebControls.TextBox CPassword;
 
         /// <summary>
-        /// RequiredFieldValidator5 control.
+        /// ComparePasswords control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
+        protected global::System.Web.UI.WebControls.CompareValidator ComparePasswords;
 
         /// <summary>
-        /// Label7 control.
+        /// RequiredPasswordAgain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label7;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredPasswordAgain;
+
+        /// <summary>
+        /// FirstNameLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FirstNameLbl;
 
         /// <summary>
         /// FName control.
@@ -177,13 +186,13 @@ namespace UI
         protected global::System.Web.UI.WebControls.TextBox FName;
 
         /// <summary>
-        /// RequiredFieldValidator3 control.
+        /// FirstNameValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator FirstNameValidator;
 
         /// <summary>
         /// Label1 control.
@@ -204,22 +213,22 @@ namespace UI
         protected global::System.Web.UI.WebControls.TextBox LName;
 
         /// <summary>
-        /// RequiredFieldValidator2 control.
+        /// LastNameValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator LastNameValidator;
 
         /// <summary>
-        /// Label2 control.
+        /// CalanderLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label CalanderLbl;
 
         /// <summary>
         /// Calendar control.
@@ -231,22 +240,22 @@ namespace UI
         protected global::System.Web.UI.WebControls.Calendar Calendar;
 
         /// <summary>
-        /// CustomValidator1 control.
+        /// BirthdayValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator1;
+        protected global::System.Web.UI.WebControls.CustomValidator BirthdayValidator;
 
         /// <summary>
-        /// Label8 control.
+        /// PhotoLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label8;
+        protected global::System.Web.UI.WebControls.Label PhotoLbl;
 
         /// <summary>
         /// Photo control.
