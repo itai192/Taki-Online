@@ -99,9 +99,6 @@
       <DependentUpon>Loading bar.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Custom Controls\Loading bar.ascx.designer.cs">
-      <DependentUpon>Loading bar.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Game.aspx.cs">
       <DependentUpon>Game.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -171,6 +168,9 @@
       <Project>{0c4c1a96-e443-429c-bb8d-541fe84d7c93}</Project>
       <Name>BLL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\UserPhotos\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

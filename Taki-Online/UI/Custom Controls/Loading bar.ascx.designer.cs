@@ -9,7 +9,8 @@
 
 
 
-public partial class  {
+public partial class Loading_bar
+{
 
     /// <summary>
     /// div1 control.

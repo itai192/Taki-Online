@@ -27,7 +27,7 @@ namespace UI
             try
             {
                 BLL.User u = new User(Username.Text, UserType.User, email.Text, Calendar.SelectedDate, FName.Text, LName.Text,Password.Text);
-                SavePhoto(Photo.);
+                //SavePhoto(Photo.PostedFile,);
                 Session["User"] = u;
                 Response.Redirect(@"~\Home.aspx");
             }
@@ -36,9 +36,9 @@ namespace UI
                 error.Text = "couldn't sign up, " +ex.Message;
             }
         }
-        public void SavePhoto(HttpPostedFile file)
+        public void SavePhoto(HttpPostedFile file, string name)
         {
-
+            string path = @"";
         }
     }
 }
