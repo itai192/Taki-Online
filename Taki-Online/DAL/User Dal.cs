@@ -8,13 +8,15 @@ namespace DAL
 {
     public class UserDal
     {
+        //field names
+        public const string XPFLD = "XP", LEVELFLD = "Level", FIRSTNAMEFLD = "[First Name]", LASTNAMEFLD = "[Last Name]", BIRTHDATEFLD = "[Date Of Birth]", USERNAMEFLD = "Username", EMAILFLD = "Email", PASSWORDFLD = "[Password]", TYPEFLD = "Type", PICTUREFLD = "Picture";
         /// <summary>
         /// adds a user
         /// </summary>
         /// <returns>user ID</returns>
         public static void AddUser(string email, string password, int type, string fName, string lName, DateTime bDate,string username)
         {
-            string sql = DalHelper.SimpleInsertQuery(Constants.USERSTBL, new string[] { "Email","[Password]","Type","[First Name]","[Last Name]","[Date Of Birth]","Username" } , new string[] { $"'{email}'", $"'{password}'", type.ToString(), $"'{fName}'", $"'{lName}'", bDate.ToOADate().ToString(), $"'{username}'" });
+            string sql = DalHelper.SimpleInsertQuery(Constants.USERSTBL, new string[] { EMAILFLD,PASSWORDFLD,TYPEFLD,FIRSTNAMEFLD,LASTNAMEFLD,BIRTHDATEFLD,USERNAMEFLD } , new string[] { $"'{email}'", $"'{password}'", type.ToString(), $"'{fName}'", $"'{lName}'", bDate.ToOADate().ToString(), $"'{username}'" });
             DalHelper.insertWithoutCreatingID(sql);
         }
         /* static bool UpdateUser(string email, string password, bool isManager,int ID)
@@ -26,11 +28,11 @@ namespace DAL
         */
         public static DataRow SelectUser(string username)
         {
-            return DalHelper.SelectRow($"SELECT * FROM {Constants.USERSTBL} WHERE ID='{username}'");
+            return DalHelper.SelectRow($"SELECT * FROM {Constants.USERSTBL} WHERE {USERNAMEFLD}='{username}'");
         }
         public static DataRow SelectUsernameWithPassword(string username, string password)
         {
-            return DalHelper.SelectRow($"SELECT * FROM {Constants.USERSTBL} WHERE Username='{username}' AND [Password]='{password}'");
+            return DalHelper.SelectRow($"SELECT * FROM {Constants.USERSTBL} WHERE {USERNAMEFLD}='{username}' AND {PASSWORDFLD}='{password}'");
         }
     }
 }

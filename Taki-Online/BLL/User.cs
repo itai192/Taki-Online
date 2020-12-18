@@ -7,7 +7,7 @@ namespace BLL
 {
     public class User
     {
-        public string username { get; }
+        public string username { get;  }
         public UserType type { get; }
         public string email { get; }
         public DateTime BirthDate { get; }
@@ -15,6 +15,7 @@ namespace BLL
         public int xp { get; }
         public string fName { get; }
         public string lName {get;}
+        public string Picture { get; }
         public List<string> AcceptedFriends
         {
             get
@@ -60,12 +61,12 @@ namespace BLL
         }
         public User(DataRow dr)
         {
-            username = dr["username"].ToString();
-            type = (UserType)dr["Type"];
-            email = dr["Email"].ToString();
+            username = dr[UserDal.USERNAMEFLD].ToString();
+            type = (UserType)dr[UserDal.TYPEFLD];
+            email = dr[UserDal.EMAILFLD].ToString();
             BirthDate = (DateTime)dr["Date Of Birth"];
-            level = (int)dr["Level"];
-            xp = (int)dr["xp"];
+            level = (int)dr[UserDal.LEVELFLD];
+            xp = (int)dr[UserDal.XPFLD];
             fName = dr["First Name"].ToString();
             lName = dr["Last Name"].ToString();
         }

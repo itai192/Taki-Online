@@ -30,7 +30,7 @@
                 </asp:TableCell>
                 <asp:TableCell runat="server">
                     <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="Password Validator" ValidationGroup="signup" runat="server" ErrorMessage="Your passowrd is too short please enter at least 5 charecters" ValidationExpression="[\S]{5,}" ControlToValidate="Password" Display="Dynamic"></asp:RegularExpressionValidator><asp:RequiredFieldValidator ValidationGroup="signup" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please insert your password " ControlToValidate="Password" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="PasswordValidator" ValidationGroup="signup" runat="server" ErrorMessage="Your passowrd is too short please enter at least 5 charecters" ValidationExpression="[\S]{5,}" ControlToValidate="Password" Display="Dynamic"></asp:RegularExpressionValidator><asp:RequiredFieldValidator ValidationGroup="signup" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please insert your password " ControlToValidate="Password" Display="Dynamic"></asp:RequiredFieldValidator>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">

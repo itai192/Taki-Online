@@ -8,10 +8,8 @@ namespace DAL
 {
     public class Friends_Dal
     {
-        public const string SENDERFLD = "Sender";
-        public const string RECIPIANTFLD = "Recipiant";
-        public const string REQUESTSTATUSEFLD = "[Request status]";
-        public const string TIMESENTFLD = "[Time Sent]";
+        public const string SENDERFLD = "Sender", RECIPIANTFLD = "Recipiant", REQUESTSTATUSEFLD = "[Request status]", TIMESENTFLD = "[Time Sent]";
+        
         public static bool FriendRequestExists(string username1, string username2)
         {
             return DalHelper.IsExist($"SELECT * FROM {Constants.FRIENDREQUESTSTBL} WHERE ({RECIPIANTFLD} = {username1} AND {SENDERFLD} = {username2}) OR ({RECIPIANTFLD} = {username2} AND {SENDERFLD} = {username1})");
