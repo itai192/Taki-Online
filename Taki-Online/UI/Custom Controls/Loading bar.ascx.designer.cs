@@ -7,17 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
-
-public partial class Loading_bar
+namespace UI.Custom_Controls
 {
 
-    /// <summary>
-    /// div1 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-protected global::System.Web.UI.HtmlControls.HtmlGenericControl div1;
+
+    public partial class Loading_Bar
+    {
+
+        /// <summary>
+        /// Out control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Out;
+    }
 }

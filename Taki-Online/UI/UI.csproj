@@ -69,7 +69,7 @@
   <ItemGroup>
     <Content Include="Account.aspx" />
     <Content Include="CSS Control test.aspx" />
-    <Content Include="Custom Controls\Loading bar.ascx" />
+    <Content Include="Custom Controls\Loading Bar.ascx" />
     <Content Include="Game.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
@@ -95,9 +95,12 @@
     <Compile Include="CSS Control test.aspx.designer.cs">
       <DependentUpon>CSS Control test.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Custom Controls\Loading bar.ascx.cs">
-      <DependentUpon>Loading bar.ascx</DependentUpon>
+    <Compile Include="Custom Controls\Loading Bar.ascx.cs">
+      <DependentUpon>Loading Bar.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Custom Controls\Loading Bar.ascx.designer.cs">
+      <DependentUpon>Loading Bar.ascx</DependentUpon>
     </Compile>
     <Compile Include="Game.aspx.cs">
       <DependentUpon>Game.aspx</DependentUpon>
