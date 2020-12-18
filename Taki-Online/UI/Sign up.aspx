@@ -45,10 +45,11 @@
                 <asp:TableCell runat="server">
                     <asp:Label ID="Label8" runat="server" Text="Photo" AssociatedControlID="Photo"></asp:Label></asp:TableCell>
                 <asp:TableCell runat="server">
-                    <asp:FileUpload ID="Photo" runat="server" AllowMultiple="False" />
+                    <asp:FileUpload ID="Photo" runat="server" AllowMultiple="False" /><asp:CustomValidator ID="CustomValidator2" runat="server" ErrorMessage="CustomValidator"></asp:CustomValidator>
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>
+        <asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="False" />
         <asp:Button ID="SignUp" runat="server" Text="SIGN UP" OnClick="signup" ValidationGroup="SignUp" /><asp:Label ID="error" runat="server" Text=""></asp:Label>
     </asp:Panel>
 </asp:Content>
