@@ -152,6 +152,7 @@
     <Compile Include="Sign up.aspx.designer.cs">
       <DependentUpon>Sign up.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UIHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Master Page.Master" />

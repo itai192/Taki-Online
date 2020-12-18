@@ -35,6 +35,10 @@ namespace BLL
         {
             get { return BLL_Helper.DataTableToList<string>(DAL.Friends_Dal.FriendRequestsWithStatusRecieved(username, (int)FriendRequestStatus.Unopened), Friends_Dal.SENDERFLD); }
         }
+        public User(string username) : this(UserDal.SelectUser(username))
+        {
+
+        }
         public User(string username, string password) : this(UserDal.SelectUsernameWithPassword(username, password))
         {
 

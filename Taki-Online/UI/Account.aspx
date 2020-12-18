@@ -3,15 +3,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <%--grid
-    <asp:GridView ID="FriendRequests" runat="server" AutoGenerateColumns="False" 
-        Caption="Friend requests" AllowPaging="True" OnSelectedIndexChanged="FriendRequests_SelectedIndexChanged">
-        <Columns>
-            <asp:ButtonField Text="Button" ButtonType="Button" />
-            <asp:ButtonField Text="Button" ButtonType="Button" />
-            <asp:TemplateField HeaderText="Username"></asp:TemplateField>
-        </Columns>
-    </asp:GridView>--%>
+    
     <asp:DataList ID="FriendRequests" runat="server" OnItemCommand="FriendRequests_ItemCommand">
         <HeaderTemplate>
             Friend Requests
@@ -29,6 +21,7 @@
     XP:
 
     <br />
+    image:<asp:Image runat="server"></asp:Image>
     multyview
 
     <asp:MultiView ID="Stats" runat="server"></asp:MultiView>

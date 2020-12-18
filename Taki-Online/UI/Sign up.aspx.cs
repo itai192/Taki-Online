@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 using BLL;
 namespace UI
 {
@@ -15,7 +16,7 @@ namespace UI
         }
        public void CalanderValidation(object source, ServerValidateEventArgs args)
         {
-            if (Calendar.SelectedDate == null|| Calendar.SelectedDate == new DateTime(0001, 1, 1, 0, 0, 0))
+            if (Calendar.SelectedDate == null|| Calendar.SelectedDate == new DateTime(0001, 1, 1, 0, 0, 0)|| Calendar.SelectedDate>=DateTime.Now)
                 args.IsValid = false;
             else
             {
@@ -27,18 +28,15 @@ namespace UI
             try
             {
                 BLL.User u = new User(Username.Text, UserType.User, email.Text, Calendar.SelectedDate, FName.Text, LName.Text,Password.Text);
-                //SavePhoto(Photo.PostedFile,);
                 Session["User"] = u;
+                SavePhoto(Photo.PostedFile,);
                 Response.Redirect(@"~\Home.aspx");
             }
             catch(Exception ex)
             {
-                error.Text = "couldn't sign up, " +ex.Message;
+                error.Text = "couldn't sign up, " + ex.Message;
             }
         }
-        public void SavePhoto(HttpPostedFile file, string name)
-        {
-            string path = @"";
-        }
+        
     }
 }
