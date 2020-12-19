@@ -174,7 +174,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\UserPhotos\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="UserPhotos\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

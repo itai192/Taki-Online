@@ -19,9 +19,10 @@
     </asp:DataList>
     Friends
     <asp:BulletedList ID="Friends" runat="server"></asp:BulletedList>
+    <asp:Image runat="server" ID="ProfilePic" Height="20em" Width="20em"></asp:Image>
         <asp:Table ID="Details" runat="server">
             <asp:TableRow runat="server">
-                <asp:TableCell><asp:Image runat="server" ID="ProfilePic"></asp:Image></asp:TableCell>
+                <asp:TableCell></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server">Username:</asp:TableCell>
