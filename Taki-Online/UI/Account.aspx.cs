@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
 using BLL;
 namespace UI
 {
@@ -25,8 +26,11 @@ namespace UI
             FriendRequests.DataBind();
             Friends.DataSource = user.AcceptedFriends;
             Friends.DataBind();
-            Usernamelbl.Text = user.username;
+            UsernameLbl.Text = user.username;
             Levellbl.Text = user.level.ToString();
+            XpBar.progress = user.xp;
+            XpBar.outOf = user.XPUntilNextLevel();
+            ProfilePic.ImageUrl = ConfigurationManager.AppSettings["userPhotos"] + user.Picture;
         }
 
         protected void FriendRequests_ItemCommand(object source, DataListCommandEventArgs e)

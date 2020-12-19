@@ -33,13 +33,31 @@ namespace UI
         protected global::System.Web.UI.WebControls.BulletedList Friends;
 
         /// <summary>
-        /// Usernamelbl control.
+        /// Details control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Usernamelbl;
+        protected global::System.Web.UI.WebControls.Table Details;
+
+        /// <summary>
+        /// ProfilePic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ProfilePic;
+
+        /// <summary>
+        /// UsernameLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label UsernameLbl;
 
         /// <summary>
         /// Levellbl control.
@@ -51,13 +69,13 @@ namespace UI
         protected global::System.Web.UI.WebControls.Label Levellbl;
 
         /// <summary>
-        /// LoadingBar control.
+        /// XpBar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::UI.Custom_Controls.Loading_Bar LoadingBar;
+        protected global::UI.Custom_Controls.Loading_Bar XpBar;
 
         /// <summary>
         /// Stats control.

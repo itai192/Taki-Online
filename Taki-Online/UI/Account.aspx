@@ -19,12 +19,26 @@
     </asp:DataList>
     Friends
     <asp:BulletedList ID="Friends" runat="server"></asp:BulletedList>
-    Username:<asp:Label ID="Usernamelbl" runat="server" Text=""></asp:Label><br />
-    Level:<asp:Label ID="Levellbl" runat="server" Text=""></asp:Label>
-    XP:<uc1:LoadingBar runat="server" ID="LoadingBar" />
+        <asp:Table ID="Details" runat="server">
+            <asp:TableRow runat="server">
+                <asp:TableCell><asp:Image runat="server" ID="ProfilePic"></asp:Image></asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow runat="server">
+                <asp:TableCell runat="server">Username:</asp:TableCell>
+                <asp:TableCell runat="server"><asp:Label ID="UsernameLbl" runat="server" Text=""></asp:Label></asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow runat="server">
+                <asp:TableCell runat="server">Level:</asp:TableCell>
+                <asp:TableCell runat="server"><asp:Label ID="Levellbl" runat="server" Text=""></asp:Label></asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow runat="server">
+                <asp:TableCell runat="server">XP:</asp:TableCell>
+                <asp:TableCell runat="server"><uc1:LoadingBar runat="server" ID="XpBar" /></asp:TableCell>
+            </asp:TableRow>
+            
+        </asp:Table>
 
-    <br />
-    image:<asp:Image runat="server"></asp:Image>
+    
     multyview
 
     <asp:MultiView ID="Stats" runat="server"></asp:MultiView>

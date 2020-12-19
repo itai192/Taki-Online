@@ -47,11 +47,11 @@ namespace BLL
         }
         public void LevelUpIfCan()
         {
-            if (_xp >= XPUntilNextLevel())
-            {
-                xp -= XPUntilNextLevel();
+            int xpuntill = XPUntilNextLevel();
+            if (_xp >= xpuntill)
+            { 
                 level++;
-                
+                xp-=xpuntill;
             }
         }
         public int XPUntilNextLevel()
@@ -104,6 +104,7 @@ namespace BLL
             _xp = (int)dr[UserDal.XPFLD];
             fName = dr["First Name"].ToString();
             lName = dr["Last Name"].ToString();
+            Picture = dr[UserDal.PICTUREFLD].ToString();
         }
     }
 }
