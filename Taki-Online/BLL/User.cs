@@ -7,12 +7,32 @@ namespace BLL
 {
     public class User
     {
+        const int InitailXpNeeded=50;
         public string username { get;  }
         public UserType type { get; }
         public string email { get; }
         public DateTime BirthDate { get; }
-        public int level { get; }
-        public int xp { get; }
+        private int _level;
+        public int level { get { return _level; } 
+            set 
+            {
+                //update level
+            } 
+        }
+        private int _xp;
+        public int xp 
+        {
+            get
+            {
+                return _xp;
+            }
+            set
+            {
+                _xp = xp;
+                LevelUpIfCan();
+                //update
+            }
+        }
         public string fName { get; }
         public string lName {get;}
         public string Picture { get; }
@@ -24,6 +44,21 @@ namespace BLL
                 List<string> l2 = BLL_Helper.DataTableToList<string>(DAL.Friends_Dal.FriendRequestsWithStatusSent(username, (int)FriendRequestStatus.Accepted), Friends_Dal.RECIPIANTFLD);
                 return BLL_Helper.UniteLists(l1, l2);
             }
+        }
+        public void LevelUpIfCan()
+        {
+            if (_xp >= XPUntilNextLevel())
+            {
+                xp -= XPUntilNextLevel();
+                level++;
+                
+            }
+        }
+        public int XPUntilNextLevel()
+        {
+            if (level == 1)
+                return InitailXpNeeded;
+            return (int)(InitailXpNeeded * Math.Pow(2,level-2));
         }
         public List<string> DeclinedFriends
         {
@@ -51,7 +86,7 @@ namespace BLL
         public User(string username, UserType type, string email, DateTime BirthDate, string fName, string lName,string password)
         {
             level = 1;
-            xp = 0;
+            _xp = 0;
             this.BirthDate = BirthDate;
             this.fName = fName;
             this.lName = lName;
@@ -66,7 +101,7 @@ namespace BLL
             email = dr[UserDal.EMAILFLD].ToString();
             BirthDate = (DateTime)dr["Date Of Birth"];
             level = (int)dr[UserDal.LEVELFLD];
-            xp = (int)dr[UserDal.XPFLD];
+            _xp = (int)dr[UserDal.XPFLD];
             fName = dr["First Name"].ToString();
             lName = dr["Last Name"].ToString();
         }

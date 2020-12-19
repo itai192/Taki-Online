@@ -15,6 +15,8 @@
         </asp:Table>
         <asp:Button ID="Login" runat="server" Text="SIGN IN" ValidationGroup="signin" OnClick="SignIn" /><asp:Label ID="Error" runat="server" ></asp:Label>
         <hr />
-        <asp:Label ID="Label3" runat="server" Text="Label" AssociatedControlID="signUp">new user?</asp:Label><asp:Button ID="signUp" runat="server" Text="SIGN UP" PostBackUrl="~/Sign up.aspx" />
+        <asp:Label ID="Label3" runat="server" Text="Label" AssociatedControlID="signUp">new user?</asp:Label>
+        <br/>
+        <asp:Button ID="signUp" runat="server" Text="SIGN UP" PostBackUrl="~/Sign up.aspx" />
     </asp:Panel>
 </asp:Content>

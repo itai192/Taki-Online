@@ -1,4 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master Page.Master" AutoEventWireup="true" CodeBehind="Account.aspx.cs" Inherits="UI.Account" %>
+
+<%@ Register Src="~/Custom Controls/Loading Bar.ascx" TagPrefix="uc1" TagName="LoadingBar" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
 </asp:Content>
@@ -18,7 +21,7 @@
     <asp:BulletedList ID="Friends" runat="server"></asp:BulletedList>
     Username:<asp:Label ID="Usernamelbl" runat="server" Text=""></asp:Label><br />
     Level:<asp:Label ID="Levellbl" runat="server" Text=""></asp:Label>
-    XP:
+    XP:<uc1:LoadingBar runat="server" ID="LoadingBar" />
 
     <br />
     image:<asp:Image runat="server"></asp:Image>
