@@ -15,12 +15,12 @@ namespace UI
     {
 
         /// <summary>
-        /// Loading1 control.
+        /// LoadingBar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl Loading1;
+        protected global::UI.Custom_Controls.Loading_Bar LoadingBar;
     }
 }
