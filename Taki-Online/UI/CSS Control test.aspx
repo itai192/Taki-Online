@@ -5,5 +5,5 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <uc1:LoadingBar runat="server" ID="LoadingBar" />
+    <uc1:LoadingBar runat="server" outOf="3" progress="1" inColor="Red" outColor="Green" />
 </asp:Content>

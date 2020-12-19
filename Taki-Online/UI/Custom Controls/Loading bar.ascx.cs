@@ -12,8 +12,8 @@ namespace UI.Custom_Controls
     public partial class Loading_Bar : System.Web.UI.UserControl
     {
         
-        public Color outColor = Color.Blue;
-        public Color inColor = Color.Green;
+        public Color outColor { get; set; } = Color.Blue;
+        public Color inColor { get; set; } = Color.Green;
         private int _outOf = 1;
         private int _progress = 1;
         public int outOf 
