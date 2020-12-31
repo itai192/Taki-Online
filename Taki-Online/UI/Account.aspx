@@ -33,12 +33,13 @@
                 <asp:TableCell runat="server">XP:</asp:TableCell>
                 <asp:TableCell runat="server"><uc1:LoadingBar runat="server" ID="XpBar" /></asp:TableCell>
             </asp:TableRow>
-            
+            <asp:TableRow runat="server">
+                <asp:TableCell runat="server">Add Friends:</asp:TableCell>
+                <asp:TableCell runat="server"><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><asp:Button ID="AddFriendBtn" runat="server" Text="Button" /><asp:Label ID="FriendErrorLbl" runat="server" Text="Label"></asp:Label></asp:TableCell>
+            </asp:TableRow>
         </asp:Table>
 
     
-    multyview
-
-    <asp:MultiView ID="Stats" runat="server"></asp:MultiView>
+    
     
 </asp:Content>
