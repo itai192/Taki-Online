@@ -34,5 +34,9 @@ namespace DAL
         {
             return DalHelper.SelectRow($"SELECT * FROM {Constants.USERSTBL} WHERE {USERNAMEFLD}='{username}' AND {PASSWORDFLD}='{password}'");
         }
+        public static void UpdateUserPic(string username, string Picture)
+        {
+            DalHelper.Update(DalHelper.SimpleUpdateQuery(Constants.USERSTBL, new string[] { PICTUREFLD }, new string[] { Picture }, $"{USERNAMEFLD} = {username}"));
+        }
     }
 }

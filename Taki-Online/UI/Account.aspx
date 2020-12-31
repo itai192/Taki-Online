@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master Page.Master" AutoEventWireup="true" CodeBehind="Account.aspx.cs" Inherits="UI.Account" %>
 <%@ Register Src="~/Custom Controls/Loading Bar.ascx" TagPrefix="uc1" TagName="LoadingBar" %>
+<%@ Register Src="~/Custom Controls/ProfilePicture.ascx" TagPrefix="uc1" TagName="ProfilePicture" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -16,7 +18,7 @@
     </asp:DataList>
     Friends
     <asp:BulletedList ID="Friends" runat="server"></asp:BulletedList>
-    <asp:Image runat="server" ID="ProfilePic" Height="20em" Width="20em"></asp:Image>
+    <uc1:profilepicture runat="server" id="ProfilePicture" />
         <asp:Table ID="Details" runat="server">
             <asp:TableRow runat="server">
                 <asp:TableCell></asp:TableCell>

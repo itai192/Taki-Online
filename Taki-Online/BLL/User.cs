@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using DAL;
 using System.Data;
+using System.IO;
 namespace BLL
 {
     public class User
@@ -13,6 +14,7 @@ namespace BLL
         public string email { get; }
         public DateTime BirthDate { get; }
         private int _level;
+        private string _picture;
         public int level { get { return _level; } 
             set 
             {
@@ -35,7 +37,16 @@ namespace BLL
         }
         public string fName { get; }
         public string lName {get;}
-        public string Picture { get; }
+        public string picture {
+            get
+            {
+                return _picture;
+            }
+            set
+            {
+                
+            }
+                }
         public List<string> AcceptedFriends
         {
             get

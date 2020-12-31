@@ -70,6 +70,7 @@
     <Content Include="Account.aspx" />
     <Content Include="CSS Control test.aspx" />
     <Content Include="Custom Controls\Loading Bar.ascx" />
+    <Content Include="Custom Controls\ProfilePicture.ascx" />
     <Content Include="Game.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
@@ -101,6 +102,13 @@
     </Compile>
     <Compile Include="Custom Controls\Loading Bar.ascx.designer.cs">
       <DependentUpon>Loading Bar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Custom Controls\ProfilePicture.ascx.cs">
+      <DependentUpon>ProfilePicture.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Custom Controls\ProfilePicture.ascx.designer.cs">
+      <DependentUpon>ProfilePicture.ascx</DependentUpon>
     </Compile>
     <Compile Include="Game.aspx.cs">
       <DependentUpon>Game.aspx</DependentUpon>
