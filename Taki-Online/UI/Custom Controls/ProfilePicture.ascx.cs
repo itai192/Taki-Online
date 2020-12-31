@@ -9,9 +9,9 @@ namespace UI.Custom_Controls
 {
     public partial class WebUserControl1 : System.Web.UI.UserControl
     {
-        public string pictureName;
-        public Unit height;
-        public Unit width;
+        public string pictureName { get; set; }
+        public Unit height { get; set; }
+        public Unit width { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
 

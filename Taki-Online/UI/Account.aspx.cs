@@ -30,7 +30,7 @@ namespace UI
             Levellbl.Text = user.level.ToString();
             XpBar.progress = user.xp;
             XpBar.outOf = user.XPUntilNextLevel();
-            ProfilePic.ImageUrl = ConfigurationManager.AppSettings["userPhotos"] + user.Picture;
+            ProfilePicture.pictureName = user.picture;
         }
 
         protected void FriendRequests_ItemCommand(object source, DataListCommandEventArgs e)

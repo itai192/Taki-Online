@@ -105,6 +105,7 @@ namespace BLL
             this.username = username;
             DAL.UserDal.AddUser(email, password, (int)type, fName, lName, BirthDate,username);
         }
+        
         public User(DataRow dr)
         {
             username = dr[UserDal.USERNAMEFLD].ToString();
@@ -115,7 +116,7 @@ namespace BLL
             _xp = (int)dr[UserDal.XPFLD];
             fName = dr["First Name"].ToString();
             lName = dr["Last Name"].ToString();
-            Picture = dr[UserDal.PICTUREFLD].ToString();
+            picture = dr[UserDal.PICTUREFLD].ToString();
         }
     }
 }

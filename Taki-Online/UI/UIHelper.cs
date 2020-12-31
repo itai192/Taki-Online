@@ -10,14 +10,20 @@ namespace UI
     {
         public static void SavePhoto(HttpPostedFile file, string name)
         {
-            string path = ConfigurationManager.AppSettings["UserPhotos"];
-            if (File.Exists(path + name))
-                File.Delete(path + name);
             string extention = Path.GetExtension(file.FileName);
+            string path = ConfigurationManager.AppSettings["UserPhotos"];
+            if (File.Exists(path + name +extention))
+                File.Delete(path + name+extention);
             if (extention == ".png" || extention == ".jpg" || extention == ".jpeg")
                 file.SaveAs(path + name + extention);
             else
                 throw new Exception("Couldn't Upload File, file type is not supported");
+        }
+        public static void DeletePhoto(string name)
+        {
+            string path = ConfigurationManager.AppSettings["UserPhotos"];
+            if (File.Exists(path + name))
+                File.Delete(path + name);
         }
     }
 }
