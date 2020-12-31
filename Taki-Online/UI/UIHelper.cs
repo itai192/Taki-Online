@@ -8,22 +8,27 @@ namespace UI
 {
     public static class UIHelper
     {
+        static string PhotoPath= ConfigurationManager.AppSettings["UserPhotos"];
         public static void SavePhoto(HttpPostedFile file, string name)
         {
             string extention = Path.GetExtension(file.FileName);
-            string path = ConfigurationManager.AppSettings["UserPhotos"];
-            if (File.Exists(path + name +extention))
-                File.Delete(path + name+extention);
+            if (File.Exists(PhotoPath + name +extention))
+                File.Delete(PhotoPath + name+extention);
             if (extention == ".png" || extention == ".jpg" || extention == ".jpeg")
-                file.SaveAs(path + name + extention);
+                file.SaveAs(PhotoPath + name + extention);
             else
                 throw new Exception("Couldn't Upload File, file type is not supported");
         }
         public static void DeletePhoto(string name)
         {
-            string path = ConfigurationManager.AppSettings["UserPhotos"];
-            if (File.Exists(path + name))
-                File.Delete(path + name);
+            if (File.Exists(PhotoPath + name))
+                File.Delete(PhotoPath + name);
+        }
+        public static string RenamePhoto(string FileName, string renameTo)
+        {
+            string extention = Path.GetExtension(FileName);
+            File.Move(PhotoPath + FileName, PhotoPath + renameTo + extention);
+            return renameTo + extention;
         }
     }
 }
