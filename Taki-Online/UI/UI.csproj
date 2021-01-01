@@ -71,6 +71,7 @@
     <Content Include="CSS Control test.aspx" />
     <Content Include="Custom Controls\Loading Bar.ascx" />
     <Content Include="Custom Controls\ProfilePicture.ascx" />
+    <Content Include="Custom Controls\ProfilePictureUpload.ascx" />
     <Content Include="Game.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
@@ -109,6 +110,13 @@
     </Compile>
     <Compile Include="Custom Controls\ProfilePicture.ascx.designer.cs">
       <DependentUpon>ProfilePicture.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Custom Controls\ProfilePictureUpload.ascx.cs">
+      <DependentUpon>ProfilePictureUpload.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Custom Controls\ProfilePictureUpload.ascx.designer.cs">
+      <DependentUpon>ProfilePictureUpload.ascx</DependentUpon>
     </Compile>
     <Compile Include="Game.aspx.cs">
       <DependentUpon>Game.aspx</DependentUpon>

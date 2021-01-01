@@ -64,7 +64,7 @@
                 </asp:TableCell>
                 <asp:TableCell runat="server">
                     <asp:Calendar ID="Calendar" runat="server" SelectionMode="Day"></asp:Calendar>
-                    <asp:CustomValidator ID="BirthdayValidator" runat="server" ErrorMessage="Please insert your birth date"  OnServerValidate="CalanderValidation"  ValidationGroup="signup"></asp:CustomValidator>
+                    <asp:CustomValidator ID="BirthdayValidator" runat="server" ErrorMessage="Please insert a valid birth date"  OnServerValidate="CalanderValidation"  ValidationGroup="signup"></asp:CustomValidator>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">
@@ -78,6 +78,6 @@
             </asp:TableRow>
         </asp:Table>
         <asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="False" />
-        <asp:Button ID="SignUp" runat="server" Text="SIGN UP" OnClick="signup" ValidationGroup="SignUp" /><asp:Label ID="error" runat="server" Text=""></asp:Label>
+        <asp:Button ID="SignUp" runat="server" Text="SIGN UP" OnClick="signup" ValidationGroup="signup" /><asp:Label ID="error" runat="server" Text=""></asp:Label>
     </asp:Panel>
 </asp:Content>
