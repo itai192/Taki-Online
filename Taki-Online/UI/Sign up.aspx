@@ -1,4 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master Page.Master" AutoEventWireup="true" CodeBehind="Sign up.aspx.cs" Inherits="UI.Sign_up" %>
+
+<%@ Register Src="~/Custom Controls/ProfilePictureUpload.ascx" TagPrefix="uc1" TagName="ProfilePictureUpload" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -69,15 +72,14 @@
             </asp:TableRow>
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server">
-                    <asp:Label ID="PhotoLbl" runat="server" Text="Photo" AssociatedControlID="Photo"></asp:Label>
+                    <asp:Label ID="PhotoLbl" runat="server" Text="Photo"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell runat="server">
-                    <asp:FileUpload ID="Photo" runat="server" AllowMultiple="False" />
-                    <asp:CustomValidator ID="CustomValidator2" runat="server" ErrorMessage="CustomValidator"></asp:CustomValidator>
+                    <uc1:ProfilePictureUpload runat="server" ID="ProfilePictureUpload" />
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>
-        <asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="False" />
+        
         <asp:Button ID="SignUp" runat="server" Text="SIGN UP" OnClick="signup" ValidationGroup="signup" /><asp:Label ID="error" runat="server" Text=""></asp:Label>
     </asp:Panel>
 </asp:Content>

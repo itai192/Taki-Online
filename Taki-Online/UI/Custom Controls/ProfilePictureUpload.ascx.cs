@@ -16,11 +16,19 @@ namespace UI.Custom_Controls
         }
         public void uploadPhoto()
         {
-            if(ProfilePictureFileUpload.HasFile&& Session["User"] is User)
+            try
             {
-                User user = (User)Session["User"];
-                string picture = UIHelper.SavePhoto(ProfilePictureFileUpload.PostedFile, user.username );
-                user.picture = picture;
+                if (ProfilePictureFileUpload.HasFile && Session["User"] is User)
+                {
+                    User user = (User)Session["User"];
+                    string picture = UIHelper.SavePhoto(ProfilePictureFileUpload.PostedFile, user.username);
+                    user.picture = picture;
+                }
+            }
+            catch(Exception ex)
+            {
+                Errorlbl.Text = ex.Message;
+                Errorlbl.Visible = true;
             }
         }
     }

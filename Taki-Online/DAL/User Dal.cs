@@ -17,7 +17,8 @@ namespace DAL
         public static void AddUser(string email, string password, int type, string fName, string lName, DateTime bDate,string username)
         {
             string sql = DalHelper.SimpleInsertQuery(Constants.USERSTBL, new string[] { EMAILFLD,PASSWORDFLD,TYPEFLD,FIRSTNAMEFLD,LASTNAMEFLD,BIRTHDATEFLD,USERNAMEFLD } , new string[] { $"'{email}'", $"'{password}'", type.ToString(), $"'{fName}'", $"'{lName}'", bDate.ToOADate().ToString(), $"'{username}'" });
-            DalHelper.insertWithoutCreatingID(sql);
+            if (!DalHelper.insertWithoutCreatingID(sql))
+                throw new Exception("Couldn't Add User To db");
         }
         /* static bool UpdateUser(string email, string password, bool isManager,int ID)
         {

@@ -16,7 +16,7 @@ namespace UI
         }
        public void CalanderValidation(object source, ServerValidateEventArgs args)
         {
-            if (Calendar.SelectedDate == null|| Calendar.SelectedDate == new DateTime(0001, 1, 1, 0, 0, 0)|| DateTime.Today - Calendar.SelectedDate.AddYears(4)>=TimeSpan.Zero)
+            if (Calendar.SelectedDate == null|| Calendar.SelectedDate == new DateTime(0001, 1, 1, 0, 0, 0)|| DateTime.Today - Calendar.SelectedDate.AddYears(4)<=TimeSpan.Zero)
                 args.IsValid = false;
             else
             {
@@ -29,6 +29,7 @@ namespace UI
             {
                 BLL.User u = new User(Username.Text, UserType.User, email.Text, Calendar.SelectedDate, FName.Text, LName.Text,Password.Text);
                 Session["User"] = u;
+                ProfilePictureUpload.uploadPhoto();
                 Response.Redirect(@"~\Home.aspx");
             }
             catch(Exception ex)
