@@ -9,13 +9,14 @@ namespace UI
     public static class UIHelper
     {
         static string PhotoPath= ConfigurationManager.AppSettings["UserPhotos"];
-        public static void SavePhoto(HttpPostedFile file, string name)
+        public static string SavePhoto(HttpPostedFile file, string name)
         {
             string extention = Path.GetExtension(file.FileName);
-            if (File.Exists(PhotoPath + name +extention))
-                File.Delete(PhotoPath + name+extention);
+            DeletePhoto(name + extention);
             if (extention == ".png" || extention == ".jpg" || extention == ".jpeg")
+            {   
                 file.SaveAs(PhotoPath + name + extention);
+                return name + extention;
             else
                 throw new Exception("Couldn't Upload File, file type is not supported");
         }
