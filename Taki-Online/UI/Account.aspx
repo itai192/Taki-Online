@@ -2,6 +2,10 @@
 <%@ Register Src="~/Custom Controls/Loading Bar.ascx" TagPrefix="uc1" TagName="LoadingBar" %>
 <%@ Register Src="~/Custom Controls/ProfilePicture.ascx" TagPrefix="uc1" TagName="ProfilePicture" %>
 
+
+<%@ Register Src="~/Custom Controls/ProfilePictureUpload.ascx" TagPrefix="uc1" TagName="ProfilePictureUpload" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -19,6 +23,9 @@
     Friends
     <asp:BulletedList ID="Friends" runat="server"></asp:BulletedList>
     <uc1:profilepicture runat="server" id="ProfilePicture" />
+    <br/>
+    <uc1:ProfilePictureUpload runat="server" ID="ProfilePictureUpload" />
+        <asp:Button ID="UploadPhotoBtn" runat="server" Text="Upload Photo" OnClick="UploadPicBtn_Click" />
         <asp:Table ID="Details" runat="server">
             <asp:TableRow runat="server">
                 <asp:TableCell></asp:TableCell>

@@ -42,6 +42,24 @@ namespace UI
         protected global::UI.Custom_Controls.WebUserControl1 ProfilePicture;
 
         /// <summary>
+        /// ProfilePictureUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UI.Custom_Controls.ProfilePictureUpload ProfilePictureUpload;
+
+        /// <summary>
+        /// UploadPhotoBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button UploadPhotoBtn;
+
+        /// <summary>
         /// Details control.
         /// </summary>
         /// <remarks>

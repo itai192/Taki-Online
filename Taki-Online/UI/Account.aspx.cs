@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
 using BLL;
+using UI.Custom_Controls;
 namespace UI
 {
     public partial class Account : System.Web.UI.Page
@@ -37,5 +38,12 @@ namespace UI
         {
 
         }
+
+        protected void UploadPicBtn_Click(object sender, EventArgs e)
+        {
+            ProfilePictureUpload.UploadPhoto();
+        }
+
+        
     }
 }

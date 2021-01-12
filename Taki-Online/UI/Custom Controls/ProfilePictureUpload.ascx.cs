@@ -14,10 +14,11 @@ namespace UI.Custom_Controls
         {
 
         }
-        public void uploadPhoto()
+        public void UploadPhoto()
         {
             try
             {
+                Errorlbl.Visible = false;
                 if (ProfilePictureFileUpload.HasFile && Session["User"] is User)
                 {
                     User user = (User)Session["User"];

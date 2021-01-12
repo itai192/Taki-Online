@@ -29,7 +29,7 @@ namespace UI
             {
                 BLL.User u = new User(Username.Text, UserType.User, email.Text, Calendar.SelectedDate, FName.Text, LName.Text,Password.Text);
                 Session["User"] = u;
-                ProfilePictureUpload.uploadPhoto();
+                ProfilePictureUpload.UploadPhoto();
                 Response.Redirect(@"~\Home.aspx");
             }
             catch(Exception ex)

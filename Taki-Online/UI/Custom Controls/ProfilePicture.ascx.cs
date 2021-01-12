@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
+using System.IO;
 namespace UI.Custom_Controls
 {
     public partial class WebUserControl1 : System.Web.UI.UserControl
@@ -17,7 +18,7 @@ namespace UI.Custom_Controls
 
             if (string.IsNullOrEmpty(pictureName))
             {
-                ProfilePicture.ImageUrl = ConfigurationManager.AppSettings["userPics"] + ConfigurationManager.AppSettings["defaultPic"];
+                ProfilePicture.ImageUrl = Path.GetFullPath(ConfigurationManager.AppSettings["userPhotos"]) + ConfigurationManager.AppSettings["defaultPicture"];
             }
             else
             {
