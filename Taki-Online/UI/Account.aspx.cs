@@ -36,12 +36,13 @@ namespace UI
 
         protected void FriendRequests_ItemCommand(object source, DataListCommandEventArgs e)
         {
-
+            
         }
 
         protected void UploadPicBtn_Click(object sender, EventArgs e)
         {
             ProfilePictureUpload.UploadPhoto();
+            Response.Redirect("~/Account.aspx");
         }
 
         

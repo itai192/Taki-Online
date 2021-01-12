@@ -18,7 +18,8 @@ namespace BLL
         public int level { get { return _level; } 
             set 
             {
-                //update level
+                _level = value;
+                //update
             } 
         }
         private int _xp;
@@ -44,7 +45,8 @@ namespace BLL
             }
             set
             {
-                
+                DAL.UserDal.UpdateUserPic(username, value);
+                _picture = value;
             }
                 }
         public List<string> AcceptedFriends
@@ -112,11 +114,11 @@ namespace BLL
             type = (UserType)dr[UserDal.TYPEFLD];
             email = dr[UserDal.EMAILFLD].ToString();
             BirthDate = (DateTime)dr["Date Of Birth"];
-            level = (int)dr[UserDal.LEVELFLD];
+            _level = (int)dr[UserDal.LEVELFLD];
             _xp = (int)dr[UserDal.XPFLD];
             fName = dr["First Name"].ToString();
             lName = dr["Last Name"].ToString();
-            picture = dr[UserDal.PICTUREFLD].ToString();
+            _picture = dr[UserDal.PICTUREFLD].ToString();
         }
     }
 }

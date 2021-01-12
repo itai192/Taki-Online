@@ -37,7 +37,7 @@ namespace DAL
         }
         public static void UpdateUserPic(string username, string Picture)
         {
-            DalHelper.Update(DalHelper.SimpleUpdateQuery(Constants.USERSTBL, new string[] { PICTUREFLD }, new string[] { Picture }, $"{USERNAMEFLD} = {username}"));
+            DalHelper.Update(DalHelper.SimpleUpdateQuery(Constants.USERSTBL, new string[] { PICTUREFLD }, new string[] { $"'{Picture}'" }, $"{USERNAMEFLD} = '{username}'"));
         }
         public static bool ExistUsername(string username)
         {

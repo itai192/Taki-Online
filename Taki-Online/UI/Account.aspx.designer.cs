@@ -24,6 +24,15 @@ namespace UI
         protected global::System.Web.UI.WebControls.DataList FriendRequests;
 
         /// <summary>
+        /// Friendslbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Friendslbl;
+
+        /// <summary>
         /// Friends control.
         /// </summary>
         /// <remarks>
@@ -121,5 +130,23 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label FriendErrorLbl;
+
+        /// <summary>
+        /// Charts Panel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Charts Panel;
+        
+        /// <summary>
+        /// ctl00 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart ctl00;
     }
 }

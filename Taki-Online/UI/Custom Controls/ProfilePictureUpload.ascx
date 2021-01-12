@@ -1,2 +1,2 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ProfilePictureUpload.ascx.cs" Inherits="UI.Custom_Controls.ProfilePictureUpload" %>
-<asp:FileUpload ID="ProfilePictureFileUpload" runat="server"/><asp:Label ID="Errorlbl" runat="server" ClientIDMode="Inherit" EnableViewState="False" Visible="False"></asp:Label>
+<asp:FileUpload ID="ProfilePictureFileUpload" runat="server"/><asp:Label ID="Errorlbl" runat="server" ClientIDMode="Predictable" EnableViewState="False" Visible="False"></asp:Label>

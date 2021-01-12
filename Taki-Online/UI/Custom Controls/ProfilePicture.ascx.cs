@@ -18,11 +18,11 @@ namespace UI.Custom_Controls
 
             if (string.IsNullOrEmpty(pictureName))
             {
-                ProfilePicture.ImageUrl = Path.GetFullPath(ConfigurationManager.AppSettings["userPhotos"]) + ConfigurationManager.AppSettings["defaultPicture"];
+                ProfilePicture.ImageUrl = @"..\" + ConfigurationManager.AppSettings["userPhotos"] + ConfigurationManager.AppSettings["defaultPicture"];
             }
             else
             {
-                ProfilePicture.ImageUrl = ConfigurationManager.AppSettings["userPics"] + pictureName;
+                ProfilePicture.ImageUrl = @"..\" + ConfigurationManager.AppSettings["userPhotos"] + pictureName;
             }
             ProfilePicture.Width = width;
             ProfilePicture.Height = height;

@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master Page.Master" AutoEventWireup="true" CodeBehind="Account.aspx.cs" Inherits="UI.Account" %>
+
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 <%@ Register Src="~/Custom Controls/Loading Bar.ascx" TagPrefix="uc1" TagName="LoadingBar" %>
 <%@ Register Src="~/Custom Controls/ProfilePicture.ascx" TagPrefix="uc1" TagName="ProfilePicture" %>
 
@@ -20,12 +22,16 @@
             <asp:Button ID="Decline" runat="server" Text="Decline" CommandName="Decline" />
         </ItemTemplate>
     </asp:DataList>
-    Friends
-    <asp:BulletedList ID="Friends" runat="server"></asp:BulletedList>
-    <uc1:profilepicture runat="server" id="ProfilePicture" />
+    <br />
+    <asp:Label ID="Friendslbl" runat="server" Text="Friends"></asp:Label>
     <br/>
-    <uc1:ProfilePictureUpload runat="server" ID="ProfilePictureUpload" />
-        <asp:Button ID="UploadPhotoBtn" runat="server" Text="Upload Photo" OnClick="UploadPicBtn_Click" />
+    <asp:BulletedList ID="Friends" runat="server"></asp:BulletedList>
+    <br />
+    <uc1:profilepicture runat="server" id="ProfilePicture" height="30 em" pictureName="30 em" />
+    <br/>
+    <uc1:ProfilePictureUpload runat="server" ID="ProfilePictureUpload" ViewStateMode="Disabled" />
+     
+        <asp:Button ID="UploadPhotoBtn" runat="server" Text="Upload Photo" OnClick="UploadPicBtn_Click"  />
         <asp:Table ID="Details" runat="server">
             <asp:TableRow runat="server">
                 <asp:TableCell></asp:TableCell>
@@ -47,8 +53,19 @@
                 <asp:TableCell runat="server"><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><asp:Button ID="AddFriendBtn" runat="server" Text="Button" /><asp:Label ID="FriendErrorLbl" runat="server" Text="Label"></asp:Label></asp:TableCell>
             </asp:TableRow>
         </asp:Table>
+    <asp:Panel ID="ChartsPanel" runat="server">
 
     
+    <asp:Chart runat="server" ID="ctl00">
+        <Series>
+            <asp:Series Name="Series1" ChartType="Line"></asp:Series>
+        </Series>
+        <ChartAreas>
+            <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
+        </ChartAreas>
+    </asp:Chart>
+
+    </asp:Panel>
     
     
 </asp:Content>

@@ -18,7 +18,6 @@ namespace UI.Custom_Controls
         {
             try
             {
-                Errorlbl.Visible = false;
                 if (ProfilePictureFileUpload.HasFile && Session["User"] is User)
                 {
                     User user = (User)Session["User"];
