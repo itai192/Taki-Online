@@ -29,8 +29,8 @@ namespace UI
             Friends.DataBind();
             UsernameLbl.Text = user.username;
             Levellbl.Text = user.level.ToString();
-            XpBar.progress = user.xp;
             XpBar.outOf = user.XPUntilNextLevel();
+            XpBar.progress = user.xp;
             ProfilePicture.pictureName = user.picture;
         }
 

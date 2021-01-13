@@ -87,6 +87,42 @@ namespace UI
         protected global::System.Web.UI.WebControls.Label UsernameLbl;
 
         /// <summary>
+        /// ChngUsernameTxt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ChngUsernameTxt;
+
+        /// <summary>
+        /// UserErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label UserErrorLbl;
+
+        /// <summary>
+        /// RequiredUsername control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredUsername;
+
+        /// <summary>
+        /// ChngUsernameBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ChngUsernameBtn;
+
+        /// <summary>
         /// Levellbl control.
         /// </summary>
         /// <remarks>
@@ -132,21 +168,12 @@ namespace UI
         protected global::System.Web.UI.WebControls.Label FriendErrorLbl;
 
         /// <summary>
-        /// Charts Panel control.
+        /// ChartsPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel ChartsPanel;
-        
-        /// <summary>
-        /// ctl00 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart ctl00;
     }
 }

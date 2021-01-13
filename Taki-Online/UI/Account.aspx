@@ -56,14 +56,14 @@
     <asp:Panel ID="ChartsPanel" runat="server">
 
     
-    <asp:Chart runat="server" ID="ctl00">
+    <%--<asp:Chart runat="server" ID="ctl00">
         <Series>
             <asp:Series Name="Series1" ChartType="Line"></asp:Series>
         </Series>
         <ChartAreas>
             <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
         </ChartAreas>
-    </asp:Chart>
+    </asp:Chart>--%>
 
     </asp:Panel>
     

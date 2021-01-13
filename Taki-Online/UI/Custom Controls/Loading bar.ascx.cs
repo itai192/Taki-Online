@@ -17,7 +17,8 @@ namespace UI.Custom_Controls
         private int _outOf = 1;
         private int _progress = 1;
         public int outOf 
-        { get
+        { 
+            get
             {
                 return _outOf;
             }
