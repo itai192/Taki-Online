@@ -43,6 +43,9 @@ namespace DAL
         {
             return DalHelper.IsExist($"SELECT * FROM {Constants.USERSTBL} WHERE {USERNAMEFLD} = {username}");
         }
-
+        public static void UpdateUsername(string oldUsername, string newUsername)
+        {
+            DalHelper.Update(DalHelper.SimpleUpdateQuery(Constants.USERSTBL, new string[] {USERNAMEFLD}, new string[] {$"'{newUsername}'" }, $"{USERNAMEFLD} = '{oldUsername}'" ));
+        }
     }
 }

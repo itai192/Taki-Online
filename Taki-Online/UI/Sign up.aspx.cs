@@ -12,6 +12,10 @@ namespace UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(!IsPostBack)
+            {
+                BuildYearSelect();
+            }
             Validate();
         }
        public void CalanderValidation(object source, ServerValidateEventArgs args)
@@ -37,6 +41,22 @@ namespace UI
                 error.Text = "couldn't sign up, " + ex.Message;
             }
         }
+        protected void BuildYearSelect()
+        {
+            int year = DateTime.Now.Year;
+            for(int i = year; i>year-150;i--)
+            {
+                YearSelect.Items.Add(new ListItem(i.ToString()));
+            }
+            YearSelect.Items.FindByText(year.ToString()).Selected = true;
+        }
+
         
+
+        protected void YearSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Calendar.VisibleDate = new DateTime(int.Parse(YearSelect.SelectedValue), Calendar.SelectedDate.Month, 1);
+            
+        }
     }
 }

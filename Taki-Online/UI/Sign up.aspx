@@ -66,8 +66,10 @@
                     <asp:Label ID="CalanderLbl" runat="server" Text="Birth Date:" AssociatedControlID="Calendar"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell runat="server">
-                    <asp:Calendar ID="Calendar" runat="server" SelectionMode="Day"></asp:Calendar>
+                    <asp:Calendar ID="Calendar" runat="server" SelectionMode="Day"  ></asp:Calendar>
                     <asp:CustomValidator ID="BirthdayValidator" runat="server" ErrorMessage="Please insert a valid birth date"  OnServerValidate="CalanderValidation"  ValidationGroup="signup"></asp:CustomValidator>
+                    <br/>
+                    <asp:Label ID="YearLbl" runat="server" Text="Select Year"></asp:Label><asp:DropDownList ID="YearSelect" runat="server" AutoPostBack="True" CausesValidation="True" OnSelectedIndexChanged="YearSelect_SelectedIndexChanged"></asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">
@@ -79,7 +81,6 @@
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>
-        
         <asp:Button ID="SignUp" runat="server" Text="SIGN UP" OnClick="signup" ValidationGroup="signup" /><asp:Label ID="error" runat="server" Text=""></asp:Label>
     </asp:Panel>
 </asp:Content>

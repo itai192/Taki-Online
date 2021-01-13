@@ -138,7 +138,7 @@ namespace UI
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Charts Panel;
+        protected global::System.Web.UI.WebControls.Panel ChartsPanel;
         
         /// <summary>
         /// ctl00 control.
