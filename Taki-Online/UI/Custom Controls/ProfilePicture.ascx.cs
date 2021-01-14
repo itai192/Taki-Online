@@ -13,9 +13,8 @@ namespace UI.Custom_Controls
         public string pictureName { get; set; }
         public Unit height { get; set; }
         public Unit width { get; set; }
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_PreRender(object sender, EventArgs e)
         {
-
             if (string.IsNullOrEmpty(pictureName))
             {
                 ProfilePicture.ImageUrl = @"..\" + ConfigurationManager.AppSettings["userPhotos"] + ConfigurationManager.AppSettings["defaultPicture"];
@@ -27,5 +26,8 @@ namespace UI.Custom_Controls
             ProfilePicture.Width = width;
             ProfilePicture.Height = height;
         }
+        
+
+        
     }
 }

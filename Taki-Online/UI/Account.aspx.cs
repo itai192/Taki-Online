@@ -11,26 +11,29 @@ namespace UI
 {
     public partial class Account : System.Web.UI.Page
     {
+        private User user;
         protected void Page_Init(object sender, EventArgs e)
-        {
-            
-            
-        }
-        protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["User"] == null)
             {
                 Response.Redirect("~/Home.aspx");
             }
-            User user = (User)Session["User"];
-            FriendRequests.DataSource=user.UnopenedFriendRequests;
+        }
+        
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            user = (User)Session["User"];
+            FriendRequests.DataSource = user.UnopenedFriendRequests;
             FriendRequests.DataBind();
             Friends.DataSource = user.AcceptedFriends;
             Friends.DataBind();
-            UsernameLbl.Text = user.username;
             Levellbl.Text = user.level.ToString();
             XpBar.outOf = user.XPUntilNextLevel();
             XpBar.progress = user.xp;
+        }
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
+            UsernameLbl.Text = user.username;
             ProfilePicture.pictureName = user.picture;
         }
 
@@ -38,13 +41,23 @@ namespace UI
         {
             
         }
+        
 
         protected void UploadPicBtn_Click(object sender, EventArgs e)
         {
             ProfilePictureUpload.UploadPhoto();
-            Response.Redirect("~/Account.aspx");
         }
 
-        
+        protected void ChngUsername_Click(object sender, EventArgs e)
+        {
+            user.username = ChngUsernameTxt.Text;
+            user.picture = UIHelper.RenamePhoto(user.picture, user.username);
+        }
+
+        protected void UsernameValidator_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            if (UserHelper.UserExists(args.Value))
+                args.IsValid = false;
+        }
     }
 }

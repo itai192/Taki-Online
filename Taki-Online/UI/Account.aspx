@@ -27,7 +27,7 @@
     <br/>
     <asp:BulletedList ID="Friends" runat="server"></asp:BulletedList>
     <br />
-    <uc1:profilepicture runat="server" id="ProfilePicture" height="30 em" pictureName="30 em" />
+    <uc1:profilepicture runat="server" id="ProfilePicture" height="15 em" width="15 em" />
     <br/>
     <uc1:ProfilePictureUpload runat="server" ID="ProfilePictureUpload" ViewStateMode="Disabled" />
      
@@ -41,6 +41,11 @@
                 <asp:TableCell runat="server"><asp:Label ID="UsernameLbl" runat="server" Text=""></asp:Label></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">
+                <asp:TableCell runat="server">Change Username:</asp:TableCell>
+                <asp:TableCell runat="server">
+                    <asp:TextBox ID="ChngUsernameTxt" runat="server" ></asp:TextBox><asp:Button ID="ChngUsernameBtn" runat="server" Text="Change!" ValidationGroup="ChangeUserName" OnClick="ChngUsername_Click"/><asp:CustomValidator OnServerValidate="UsernameValidator_ServerValidate" ID="UserExists" runat="server" ErrorMessage="A user With that name already exists" ControlToValidate="ChngUsernameTxt" ValidationGroup="ChangeUserName" Display="Dynamic"></asp:CustomValidator><asp:RequiredFieldValidator  ValidationGroup="ChangeUserName" ID="RequiredUsername" runat="server" ErrorMessage="Please insert a username" ControlToValidate="ChngUsernameTxt" Display="Dynamic"></asp:RequiredFieldValidator></asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow runat="server">
                 <asp:TableCell runat="server">Level:</asp:TableCell>
                 <asp:TableCell runat="server"><asp:Label ID="Levellbl" runat="server" Text=""></asp:Label></asp:TableCell>
             </asp:TableRow>
@@ -50,9 +55,10 @@
             </asp:TableRow>
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server">Add Friends:</asp:TableCell>
-                <asp:TableCell runat="server"><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><asp:Button ID="AddFriendBtn" runat="server" Text="Button" /><asp:Label ID="FriendErrorLbl" runat="server" Text="Label"></asp:Label></asp:TableCell>
+                <asp:TableCell runat="server"><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><asp:Button ID="AddFriendBtn" runat="server" Text="Button" OnClick="ChngUsername_Click" /><asp:Label ID="FriendErrorLbl" runat="server" Text="Label"></asp:Label></asp:TableCell>
             </asp:TableRow>
         </asp:Table>
+    
     <asp:Panel ID="ChartsPanel" runat="server">
 
     

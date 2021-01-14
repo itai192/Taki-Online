@@ -9,7 +9,18 @@ namespace BLL
     public class User
     {
         const int InitailXpNeeded=50;
-        public string username { get;  }
+        private string _username;
+        public string username { 
+            get
+            {
+                return _username;
+            }
+            set
+            {
+                UserDal.UpdateUsername(_username, value);
+                _username = value;
+            }
+        }
         public UserType type { get; }
         public string email { get; }
         public DateTime BirthDate { get; }
@@ -110,7 +121,7 @@ namespace BLL
         
         public User(DataRow dr)
         {
-            username = dr[UserDal.USERNAMEFLD].ToString();
+            _username = dr[UserDal.USERNAMEFLD].ToString();
             type = (UserType)dr[UserDal.TYPEFLD];
             email = dr[UserDal.EMAILFLD].ToString();
             BirthDate = (DateTime)dr["Date Of Birth"];
@@ -119,6 +130,13 @@ namespace BLL
             fName = dr["First Name"].ToString();
             lName = dr["Last Name"].ToString();
             _picture = dr[UserDal.PICTUREFLD].ToString();
+        }
+    }
+    public static class UserHelper
+    {
+        public static bool UserExists(string username)
+        {
+            return UserDal.ExistUsername(username);
         }
     }
 }

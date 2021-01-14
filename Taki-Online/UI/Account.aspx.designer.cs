@@ -96,13 +96,22 @@ namespace UI
         protected global::System.Web.UI.WebControls.TextBox ChngUsernameTxt;
 
         /// <summary>
-        /// UserErrorLbl control.
+        /// ChngUsernameBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserErrorLbl;
+        protected global::System.Web.UI.WebControls.Button ChngUsernameBtn;
+
+        /// <summary>
+        /// UserExists control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator UserExists;
 
         /// <summary>
         /// RequiredUsername control.
@@ -112,15 +121,6 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredUsername;
-
-        /// <summary>
-        /// ChngUsernameBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ChngUsernameBtn;
 
         /// <summary>
         /// Levellbl control.
