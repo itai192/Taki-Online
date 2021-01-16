@@ -132,11 +132,5 @@ namespace BLL
             _picture = dr[UserDal.PICTUREFLD].ToString();
         }
     }
-    public static class UserHelper
-    {
-        public static bool UserExists(string username)
-        {
-            return UserDal.ExistUsername(username);
-        }
-    }
+    
 }

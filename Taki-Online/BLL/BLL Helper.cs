@@ -35,6 +35,9 @@ namespace BLL
             l.AddRange(l2);
             return l;
         }
-        
+        public static bool UserExists(string username)
+        {
+            return UserDal.ExistUsername(username);
+        }
     }
 }

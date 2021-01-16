@@ -56,7 +56,7 @@ namespace UI
 
         protected void UsernameValidator_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            if (UserHelper.UserExists(args.Value))
+            if (BLL_Helper.UserExists(args.Value))
                 args.IsValid = false;
         }
     }

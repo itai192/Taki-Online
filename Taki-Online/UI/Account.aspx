@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master Page.Master" AutoEventWireup="true" CodeBehind="Account.aspx.cs" Inherits="UI.Account" %>
-
 <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 <%@ Register Src="~/Custom Controls/Loading Bar.ascx" TagPrefix="uc1" TagName="LoadingBar" %>
 <%@ Register Src="~/Custom Controls/ProfilePicture.ascx" TagPrefix="uc1" TagName="ProfilePicture" %>
@@ -55,7 +54,9 @@
             </asp:TableRow>
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server">Add Friends:</asp:TableCell>
-                <asp:TableCell runat="server"><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><asp:Button ID="AddFriendBtn" runat="server" Text="Button" OnClick="ChngUsername_Click" /><asp:Label ID="FriendErrorLbl" runat="server" Text="Label"></asp:Label></asp:TableCell>
+                <asp:TableCell runat="server"><asp:TextBox ID="AddFriendTxt" runat="server"></asp:TextBox>
+                <asp:Button ID="AddFriendBtn" runat="server" Text="Button" OnClick="ChngUsername_Click" />
+                <asp:CustomValidator ID="FriendValidator" runat="server" ErrorMessage=""></asp:CustomValidator></asp:TableCell>
             </asp:TableRow>
         </asp:Table>
     

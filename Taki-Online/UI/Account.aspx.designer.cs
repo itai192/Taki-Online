@@ -141,13 +141,13 @@ namespace UI
         protected global::UI.Custom_Controls.Loading_Bar XpBar;
 
         /// <summary>
-        /// TextBox1 control.
+        /// AddFriendTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox AddFriendTxt;
 
         /// <summary>
         /// AddFriendBtn control.
@@ -159,14 +159,14 @@ namespace UI
         protected global::System.Web.UI.WebControls.Button AddFriendBtn;
 
         /// <summary>
-        /// FriendErrorLbl control.
+        /// Friend Validator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label FriendErrorLbl;
-
+        protected global::System.Web.UI.WebControls.CustomValidator FriendValidator;
+        
         /// <summary>
         /// ChartsPanel control.
         /// </summary>
