@@ -12,7 +12,7 @@ namespace DAL
         
         public static bool FriendRequestExists(string username1, string username2)
         {
-            return DalHelper.IsExist($"SELECT * FROM {Constants.FRIENDREQUESTSTBL} WHERE ({RECIPIANTFLD} = {username1} AND {SENDERFLD} = {username2}) OR ({RECIPIANTFLD} = {username2} AND {SENDERFLD} = {username1})");
+            return DalHelper.IsExist($"SELECT * FROM {Constants.FRIENDREQUESTSTBL} WHERE ({RECIPIANTFLD} = '{username1}' AND {SENDERFLD} = '{username2}') OR ({RECIPIANTFLD} = '{username2}' AND {SENDERFLD} = '{username1}')");
         }
         public static void AddFriend(string sender, string recipiant)
         {

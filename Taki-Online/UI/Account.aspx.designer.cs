@@ -24,6 +24,15 @@ namespace UI
         protected global::System.Web.UI.WebControls.DataList FriendRequests;
 
         /// <summary>
+        /// FriendRequestErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FriendRequestErrorLbl;
+
+        /// <summary>
         /// Friendslbl control.
         /// </summary>
         /// <remarks>
@@ -159,14 +168,32 @@ namespace UI
         protected global::System.Web.UI.WebControls.Button AddFriendBtn;
 
         /// <summary>
-        /// Friend Validator control.
+        /// FriendAddMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FriendAddMsg;
+
+        /// <summary>
+        /// UserNotExist control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator UserNotExist;
+
+        /// <summary>
+        /// FriendValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator FriendValidator;
-        
+
         /// <summary>
         /// ChartsPanel control.
         /// </summary>

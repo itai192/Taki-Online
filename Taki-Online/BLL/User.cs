@@ -103,9 +103,34 @@ namespace BLL
         {
 
         }
-        public void AddFriend(string username)
+        public string AddFriend(string username)
         {
-            //later
+            if (DeclinedFriends.Contains(username))
+            {
+                Friends_Dal.ChangeStatus(username, this.username, (int)FriendRequestStatus.Accepted);
+                return "Your'e now friends with"+username;
+            }
+            else if (!Friends_Dal.FriendRequestExists(username, this.username))
+            {
+                Friends_Dal.AddFriend(this.username, username);
+                return "Your friend request has been sent successfuly to "+username;
+            }
+            return "there already exists a friend request between you and" + username;
+            
+        }
+        public void AcceptFriendRequestFrom(string username)
+        {
+            if (UnopenedFriendRequests.Contains(username))
+                Friends_Dal.ChangeStatus(username, this.username, (int)FriendRequestStatus.Accepted);
+            else
+                throw new Exception("You Have No Friend Invitation From This Friend");
+        }
+        public void DeclineFriendRequestFrom(string username)
+        {
+            if (UnopenedFriendRequests.Contains(username))
+                Friends_Dal.ChangeStatus(username, this.username, (int)FriendRequestStatus.Declined);
+            else
+                throw new Exception("You Have No Friend Invitation From This Friend");
         }
         public User(string username, UserType type, string email, DateTime BirthDate, string fName, string lName,string password)
         {

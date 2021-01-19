@@ -23,10 +23,6 @@ namespace UI
         protected void Page_Load(object sender, EventArgs e)
         {
             user = (User)Session["User"];
-            FriendRequests.DataSource = user.UnopenedFriendRequests;
-            FriendRequests.DataBind();
-            Friends.DataSource = user.AcceptedFriends;
-            Friends.DataBind();
             Levellbl.Text = user.level.ToString();
             XpBar.outOf = user.XPUntilNextLevel();
             XpBar.progress = user.xp;
@@ -35,11 +31,31 @@ namespace UI
         {
             UsernameLbl.Text = user.username;
             ProfilePicture.pictureName = user.picture;
+            FriendRequests.DataSource = user.UnopenedFriendRequests;
+            FriendRequests.DataBind();
+            Friends.DataSource = user.AcceptedFriends;
+            Friends.DataBind();
         }
 
         protected void FriendRequests_ItemCommand(object source, DataListCommandEventArgs e)
         {
-            
+            try
+            {
+                switch (e.CommandName)
+                {
+                    case "Accept":
+                        user.AcceptFriendRequestFrom(e.CommandArgument.ToString());
+                        break;
+                    case "Decline":
+                        user.DeclineFriendRequestFrom(e.CommandArgument.ToString());
+                        break;
+                }
+            }
+            catch(Exception ex)
+            {
+                FriendRequestErrorLbl.Text = ex.Message;
+                FriendRequestErrorLbl.Visible = true;
+            }
         }
         
 
@@ -50,8 +66,11 @@ namespace UI
 
         protected void ChngUsername_Click(object sender, EventArgs e)
         {
-            user.username = ChngUsernameTxt.Text;
-            user.picture = UIHelper.RenamePhoto(user.picture, user.username);
+            if (IsValid)
+            {
+                user.username = ChngUsernameTxt.Text;
+                user.picture = UIHelper.RenamePhoto(user.picture, user.username);
+            }
         }
 
         protected void UsernameValidator_ServerValidate(object source, ServerValidateEventArgs args)
@@ -59,5 +78,25 @@ namespace UI
             if (BLL_Helper.UserExists(args.Value))
                 args.IsValid = false;
         }
+        protected void FriendValidator_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            if (!BLL_Helper.UserExists(args.Value))
+                args.IsValid = false;
+        }
+        protected void AddFriend(object sender, EventArgs e)
+        {
+            if (IsValid)
+            {
+                try
+                {
+                    FriendAddMsg.Text = user.AddFriend(AddFriendTxt.Text);
+                }
+                catch (Exception ex)
+                {
+                    FriendAddMsg.Text = ex.Message;
+                }
+            }
+        }
+
     }
 }

@@ -29,8 +29,12 @@ namespace UI
         public static string RenamePhoto(string FileName, string renameTo)
         {
             string extention = Path.GetExtension(FileName);
-            File.Move(Path.GetFullPath(PhotoPath) + FileName, Path.GetFullPath(PhotoPath) + renameTo + extention);
-            return renameTo + extention;
+            if (File.Exists(Path.GetFullPath(PhotoPath) + FileName))
+            {
+                File.Move(Path.GetFullPath(PhotoPath) + FileName, Path.GetFullPath(PhotoPath) + renameTo + extention);
+                return renameTo + extention;
+            }
+            return string.Empty;
         }
     }
 }

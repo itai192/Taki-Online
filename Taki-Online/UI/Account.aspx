@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master Page.Master" AutoEventWireup="true" CodeBehind="Account.aspx.cs" Inherits="UI.Account" %>
+﻿<%@ Page Title="" Language="C#" EnableEventValidation="True" MasterPageFile="~/Master Page.Master" AutoEventWireup="true" CodeBehind="Account.aspx.cs" Inherits="UI.Account" %>
 <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 <%@ Register Src="~/Custom Controls/Loading Bar.ascx" TagPrefix="uc1" TagName="LoadingBar" %>
 <%@ Register Src="~/Custom Controls/ProfilePicture.ascx" TagPrefix="uc1" TagName="ProfilePicture" %>
@@ -17,12 +17,12 @@
         </HeaderTemplate>
         <ItemTemplate>
             <asp:Label ID="FrUsername" runat="server" Text="<%# Container.DataItem %>"></asp:Label>
-            <asp:Button ID="Accept" runat="server" Text="Accept" CommandName="Accept" />
-            <asp:Button ID="Decline" runat="server" Text="Decline" CommandName="Decline" />
+            <asp:Button ID="Accept" runat="server" Text="Accept" CommandName="Accept" CommandArgument="<%# Container.DataItem %>" />
+            <asp:Button ID="Decline" runat="server" Text="Decline" CommandName="Decline" CommandArgument="<%# Container.DataItem %>" />
         </ItemTemplate>
-    </asp:DataList>
+    </asp:DataList><asp:Label ID="FriendRequestErrorLbl" runat="server" Visible="False"></asp:Label>
     <br />
-    <asp:Label ID="Friendslbl" runat="server" Text="Friends"></asp:Label>
+    <asp:Label ID="Friendslbl" runat="server" Text="Friends" ViewStateMode="Disabled"></asp:Label>
     <br/>
     <asp:BulletedList ID="Friends" runat="server"></asp:BulletedList>
     <br />
@@ -55,7 +55,7 @@
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server">Add Friends:</asp:TableCell>
                 <asp:TableCell runat="server"><asp:TextBox ID="AddFriendTxt" runat="server"></asp:TextBox>
-                <asp:Button ID="AddFriendBtn" runat="server" Text="Button" OnClick="ChngUsername_Click" />
+                <asp:Button ID="AddFriendBtn" runat="server" Text="Send Friend Request" OnClick="AddFriend" ValidationGroup="AddFriend" /><asp:Label ID="FriendAddMsg" runat="server" ViewStateMode="Disabled"></asp:Label><asp:CustomValidator ID="UserNotExist" runat="server" ValidationGroup="AddFriend" ErrorMessage="A user with this name doesn't exist" ControlToValidate="AddFriendTxt" OnServerValidate="FriendValidator_ServerValidate" Display="Dynamic"></asp:CustomValidator>
                 <asp:CustomValidator ID="FriendValidator" runat="server" ErrorMessage=""></asp:CustomValidator></asp:TableCell>
             </asp:TableRow>
         </asp:Table>
