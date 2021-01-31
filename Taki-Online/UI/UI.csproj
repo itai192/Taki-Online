@@ -69,11 +69,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account.aspx" />
-    <Content Include="Cards\+.svg" />
-    <Content Include="Cards\+2.svg" />
     <Content Include="Cards\Color Changer.svg" />
     <Content Include="Cards\Direction changer.svg" />
     <Content Include="Cards\king.svg" />
+    <Content Include="Cards\Plus.svg" />
+    <Content Include="Cards\Plus2.svg" />
     <Content Include="Cards\stop.svg" />
     <Content Include="CSS Control test.aspx" />
     <Content Include="Custom Controls\Loading Bar.ascx" />

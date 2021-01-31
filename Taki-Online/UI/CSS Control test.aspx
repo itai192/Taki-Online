@@ -6,5 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:LoadingBar runat="server" outOf="3" progress="1" inColor="Red" outColor="Green" />
-    <asp:Image ID="Image1" runat="server" CssClass="red" ImageUrl="~/Cards/+2.svg" Height="50" Width="50" />
+  <object type="image/svg+xml" data="Cards/Plus2.svg" class="Red" width="500" height="500">
+  </object>
+    <a href="Cards/Plus2.svg">Cards/Plus2.svg</a>
 </asp:Content>
