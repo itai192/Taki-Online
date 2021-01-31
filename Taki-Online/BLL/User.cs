@@ -84,6 +84,9 @@ namespace BLL
                 return InitailXpNeeded;
             return (int)(InitailXpNeeded * Math.Pow(2,level-2));
         }
+        /// <summary>
+        /// users that this user has declined friend requests from
+        /// </summary>
         public List<string> DeclinedFriends
         {
             get
