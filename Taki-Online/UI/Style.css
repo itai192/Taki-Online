@@ -7,8 +7,11 @@
         width: 0%;
     }
 }
-
-.Red
-{
-    
+.Card {
+    width: 50px;
+    height: 150px;
+    padding: 75px;
+    background-color: ivory;
+    box-shadow: 1px 1px 10px grey;
+    border-radius: 5%;
 }

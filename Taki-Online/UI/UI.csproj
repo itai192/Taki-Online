@@ -92,6 +92,7 @@
     <Content Include="Cards\Stop\Red.svg" />
     <Content Include="Cards\Stop\Yellow.svg" />
     <Content Include="CSS Control test.aspx" />
+    <Content Include="Custom Controls\Card.ascx" />
     <Content Include="Custom Controls\Loading Bar.ascx" />
     <Content Include="Custom Controls\ProfilePicture.ascx" />
     <Content Include="Custom Controls\ProfilePictureUpload.ascx" />
@@ -119,6 +120,13 @@
     </Compile>
     <Compile Include="CSS Control test.aspx.designer.cs">
       <DependentUpon>CSS Control test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Custom Controls\Card.ascx.cs">
+      <DependentUpon>Card.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Custom Controls\Card.ascx.designer.cs">
+      <DependentUpon>Card.ascx</DependentUpon>
     </Compile>
     <Compile Include="Custom Controls\Loading Bar.ascx.cs">
       <DependentUpon>Loading Bar.ascx</DependentUpon>
