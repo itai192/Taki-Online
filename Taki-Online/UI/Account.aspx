@@ -11,7 +11,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
-    <asp:DataList ID="FriendRequests" runat="server" OnItemCommand="FriendRequests_ItemCommand">
+    <asp:DataList ID="FriendRequests" runat="server" OnItemCommand="FriendRequests_ItemCommand" OnItemCreated="FriendRequests_ItemCreated">
         <HeaderTemplate>
             Friend Requests
         </HeaderTemplate>
@@ -28,13 +28,26 @@
     <br />
     <uc1:profilepicture runat="server" id="ProfilePicture" height="15 em" width="15 em" />
     <br/>
+    <asp:TextBox ID="FindFriendTxtBox" runat="server"></asp:TextBox><br />
+    <asp:ListView ID="ListView1" runat="server">
+        <LayoutTemplate>
+            <asp:Table ID="Table1" runat="server">
+                <asp:TableHeaderRow>
+                    <asp:TableCell>Users</asp:TableCell>
+                </asp:TableHeaderRow>
+                <asp:TableRow ID="itemPlaceholder" runat="server" />
+            </asp:Table>
+        </LayoutTemplate>
+        <ItemTemplate>
+            <asp:TableRow>
+                <asp:TableCell></asp:TableCell>
+            </asp:TableRow>
+        </ItemTemplate>
+    </asp:ListView>
     <uc1:ProfilePictureUpload runat="server" ID="ProfilePictureUpload" ViewStateMode="Disabled" />
      
         <asp:Button ID="UploadPhotoBtn" runat="server" Text="Upload Photo" OnClick="UploadPicBtn_Click"  />
         <asp:Table ID="Details" runat="server">
-            <asp:TableRow runat="server">
-                <asp:TableCell></asp:TableCell>
-            </asp:TableRow>
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server">Username:</asp:TableCell>
                 <asp:TableCell runat="server"><asp:Label ID="UsernameLbl" runat="server" Text=""></asp:Label></asp:TableCell>

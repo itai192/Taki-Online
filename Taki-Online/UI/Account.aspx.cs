@@ -12,6 +12,9 @@ namespace UI
     public partial class Account : System.Web.UI.Page
     {
         private User user;
+        private List<string> DeclinedFriends;
+        private List<string> UnopenedFriendRequests;
+        private List<string> AcceptedFriends;
         protected void Page_Init(object sender, EventArgs e)
         {
             if (Session["User"] == null)
@@ -57,13 +60,10 @@ namespace UI
                 FriendRequestErrorLbl.Visible = true;
             }
         }
-        
-
         protected void UploadPicBtn_Click(object sender, EventArgs e)
         {
             ProfilePictureUpload.UploadPhoto();
         }
-
         protected void ChngUsername_Click(object sender, EventArgs e)
         {
             if (IsValid)
@@ -97,6 +97,9 @@ namespace UI
                 }
             }
         }
-
+        protected void FriendRequests_ItemCreated(object sender, DataListItemEventArgs e)
+        {
+            
+        }
     }
 }
