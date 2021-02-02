@@ -4,6 +4,10 @@ using System.Collections;
 using System.Diagnostics;
 namespace BLL
 {
+    public interface IGetCardText
+    {
+        string GetCardText();
+    }
     public enum Color
     {
         none,
@@ -114,8 +118,12 @@ namespace BLL
             game.NextTurn();
         }
     }
-    public class NumberCard:Card
+    public class NumberCard:Card, IGetCardText
     {
+        public string GetCardText()
+        {
+            return value.ToString();
+        }
         private int value;
         public NumberCard(Color color, int value):base(color)
         {
@@ -126,13 +134,24 @@ namespace BLL
             bool sameNum = (card is NumberCard) ? ((NumberCard)card).value==this.value:false;
             return sameNum||base.CanPutOn(card);
         }
+        
     }
     public class PlusTwo:Card
     {
-        
+        //
     }
-    public class Taki:Card
+    public class Taki:Card, IGetCardText
     {
-
+        public string GetCardText()
+        {
+            return "Ta"+Environment.NewLine+"ki";
+        }
+    }
+    public class King:Card
+    {
+    }
+    public class ColorChanger:Card
+    {
+        //
     }
 }
