@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BLL;
 
 namespace UI
 {
@@ -11,7 +12,8 @@ namespace UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Card.card = new BLL.NumberCard(Color.red, 4);
         }
+        
     }
 }

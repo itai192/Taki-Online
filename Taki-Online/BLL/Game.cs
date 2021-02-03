@@ -53,7 +53,7 @@ namespace BLL
     }
     public abstract class Card
     {
-        protected Color color;
+        public Color color { get; }
         public Card()
         {
             this.color=Color.none;
@@ -140,12 +140,9 @@ namespace BLL
     {
         //
     }
-    public class Taki:Card, IGetCardText
+    public class Taki:Card
     {
-        public string GetCardText()
-        {
-            return "Ta"+Environment.NewLine+"ki";
-        }
+        
     }
     public class King:Card
     {

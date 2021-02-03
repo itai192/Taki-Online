@@ -5,24 +5,59 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BLL;
+using System.Configuration;
 namespace UI.Custom_Controls
 {
     public class CardEventArgs:EventArgs
     {
-        public Card card { get; set; }
+        public BLL.Card card { get; set; }
     }
     public partial class Card : System.Web.UI.UserControl
     {
-        public Card card;
+        public BLL.Card card { get; set; }
         public delegate void CardEventHandler(object sender, CardEventArgs e);
-        public event CardEventHandler Click;
-        protected void Page_Init(object sender, EventArgs e)
+        public event EventHandler Click;
+
+        
+        protected Button CreateButtonCard(string text, Color c)
         {
-            //if()
+            Button button = new Button();
+            button.Text = text;
+            button.CssClass = "Card " + colorToColorName(c);
+            button.Click += OnClick;
+            return button;
+        }
+        protected ImageButton CreateImageButtonCard(string name, Color c)
+        {
+            ImageButton imgbtn = new ImageButton();
+            imgbtn.ImageUrl = GetCardImagePath(name, c);
+            imgbtn.Click += OnClick;
+            imgbtn.CssClass = "Card";
+            return imgbtn;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            Button1.Text= "Ta" + Environment.NewLine + "ki"; 
+            if (card != null)
+            {
+                if (card is IGetCardText)
+                {
+                    IGetCardText c = (IGetCardText)card;
+                    this.Controls.Add(CreateButtonCard(c.GetCardText(), card.color));
+                }
+                else
+                {
+                    string cardName = typeof(Card).Name;
+                    Color c = card.color;
+                    this.Controls.Add(CreateImageButtonCard(cardName, c));
+                }
+            }
+        }
+        public string GetCardImagePath(string name,Color c)
+        {
+            string path = ConfigurationManager.AppSettings["Cards"];
+            string folder = ConfigurationManager.AppSettings[name];
+            string ColorPath = @"\" + colorToColorName(c);
+            return path + folder + ColorPath;
         }
         
         public string colorToColorName(Color c)
@@ -31,7 +66,7 @@ namespace UI.Custom_Controls
             {
                 case Color.none:
                 {
-                    return "default";
+                    return "Default";
                 }
                 case Color.red:
                 {
@@ -50,20 +85,27 @@ namespace UI.Custom_Controls
                     return "Yellow";
                 }
                 default:
-                    return "";
+                    return "Default";
             }
         }
 
         protected void OnClick(object sender, ImageClickEventArgs e)
         {
+            OnClick(sender, (EventArgs)e);
+        }
+        protected void OnClick(object sender, EventArgs e)
+        {
             CardEventArgs ea = new CardEventArgs();
             ea.card = card;
-            Click.Invoke(this, ea);
+            if(Click!=null)
+                Click.Invoke(this, ea);
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
 
         }
+
+        
     }
 }

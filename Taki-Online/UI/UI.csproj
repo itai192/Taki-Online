@@ -69,13 +69,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account.aspx" />
-    <Content Include="Cards\Color Changer.svg" />
+    <Content Include="Cards\Color Changer\Default.svg" />
     <Content Include="Cards\Direction Changer\Blue.svg" />
     <Content Include="Cards\Direction Changer\Default.svg" />
     <Content Include="Cards\Direction Changer\Green.svg" />
     <Content Include="Cards\Direction Changer\Red.svg" />
     <Content Include="Cards\Direction Changer\Yellow.svg" />
-    <Content Include="Cards\king.svg" />
+    <Content Include="Cards\King\Default.svg" />
     <Content Include="Cards\Plus2\Blue.svg" />
     <Content Include="Cards\Plus2\Default.svg" />
     <Content Include="Cards\Plus2\Green.svg" />
