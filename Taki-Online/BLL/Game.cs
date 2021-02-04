@@ -16,18 +16,49 @@ namespace BLL
         blue,
         yellow
     }
+    public enum ActionType
+    {
+        putCard,
+        DrawCard,
+        endAction
+    }
+    public class Action
+    {
+        public ActionType type { get; }
+        public Card card { get; }
+        public Player player { get; }
+        public Action()
+        { }
+        public Action(ActionType type, Card card, Player player)
+        {
+            this.type = type;
+            this.card = card;
+            this.player = player;
+        }
+    }
     public class Game
     {
         private Stack<Card> deck;
         private Stack<Card> pile;
         private List<Player> players;
         private int turn;//turn
+        private Card activeCard;
         public bool order { get; set; }//positive or negative relative to the order
         public int penelty {get; set;}//extra cards when you draw
-        
-        public Game(List<Player> players)
+        public void ChangeActiveCard(Card card)
         {
-            this.players= new List<Player>(players);
+            activeCard = card;
+            if(card!=null)
+            {
+                activeCard.StartAbility(this);
+            }
+        }
+        public Game()
+        {
+            order = true;
+            this.players= new List<Player>();
+            activeCard = null;
+            turn = 0;
         }
         public Card TakeCardFromDeck()
         {
@@ -41,13 +72,44 @@ namespace BLL
         {
             turn = (order ? (turn + 1) : (turn - 1 + players.Count)) % players.Count;
         }
-        public void PrevTurn()
+        public void TryDoAction()
         {
-            turn = (!order ? (turn + 1) : (turn - 1 + players.Count)) % players.Count;
+            //ToImplement
         }
         private void Reshuffle()
         {
-            //to implement
+            Card top = pile.Pop();
+            List<Card> list = new List<Card>();
+            
+            while(pile.Count!=0)
+            {
+                list.Add(pile.Pop());
+            }
+
+            foreach(Card c in list)
+            {
+                deck.Push(c);
+            }
+            ShuffleDeck();
+        }
+        private void ShuffleDeck()
+        {
+            List<Card> l = new List<Card>();
+            while(deck.Count !=0)
+            {
+                l.Add(deck.Pop());
+            }
+            Random random = new Random();
+            while (l.Count!=0)
+            {
+                int num = random.Next(l.Count);
+                deck.Push(l[num]);
+                l.RemoveAt(num);
+            }
+        }
+        public void AddPlayer()
+        {
+
         }
 
     }
@@ -74,15 +136,26 @@ namespace BLL
         {
             return card.CanPutOn(this);
         }
-        public virtual void Ability(Game game)
+        public virtual void EndAbility(Game game)
         {
+            game.ChangeActiveCard(null);
+            game.NextTurn();
+        }
+        public virtual void StartAbility(Game game)
+        {
+            this.EndAbility(game);
+        }
+        public virtual void AddCardAbility(Game game, Card card)
+        {
+            
         }
     }
-    public abstract class Player
+    public class Player
     {
         private List<Card> hand;
-        
-        /*public void DrawCards(Game game)
+        private Queue<Action> actionsToDo;
+        private Game game;
+        public void DrawCards(Game game)
         {
             int drawAmount = 1 + game.penelty;
             game.penelty = 0;
@@ -90,8 +163,11 @@ namespace BLL
             {
                 hand.Add(game.TakeCardFromDeck());
             }
-        }*/
-        public abstract Card DoTurn(Game game, String nullCardText);
+        }
+        public void putCard(int index)
+        {
+            
+        }
     }
     public class Reverse:Card
     {
@@ -102,9 +178,10 @@ namespace BLL
         {
             return base.CanPutOn(card)||card is Reverse;
         }
-        public override void Ability(Game game)
+        public override void EndAbility(Game game)
         {
             game.order=!game.order;
+            base.EndAbility(game);
         }
     }
     public class Stop:Card
@@ -113,9 +190,10 @@ namespace BLL
         {
             return base.CanPutOn(card)||card is Stop;
         }
-        public override void Ability(Game game)
+        public override void EndAbility(Game game)
         {
             game.NextTurn();
+            base.EndAbility(game);
         }
     }
     public class NumberCard:Card, IGetCardText
@@ -134,7 +212,6 @@ namespace BLL
             bool sameNum = (card is NumberCard) ? ((NumberCard)card).value==this.value:false;
             return sameNum||base.CanPutOn(card);
         }
-        
     }
     public class PlusTwo:Card
     {
@@ -142,10 +219,11 @@ namespace BLL
     }
     public class Taki:Card
     {
-        
+        //
     }
     public class King:Card
     {
+        //
     }
     public class ColorChanger:Card
     {

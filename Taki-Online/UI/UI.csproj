@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account.aspx" />
+    <Content Include="CardAnimations.js" />
     <Content Include="Cards\Color Changer\Default.svg" />
     <Content Include="Cards\Direction Changer\Blue.svg" />
     <Content Include="Cards\Direction Changer\Default.svg" />
