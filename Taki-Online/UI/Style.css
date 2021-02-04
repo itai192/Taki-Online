@@ -23,6 +23,25 @@
     -webkit-text-stroke-color: black;
     display: block;
     box-sizing: content-box;
+    position:absolute;
+    top:500px;
+    left:500px;
+    border:none;
+}
+.Panel
+{
+    position:relative;
+    width:1000px;
+    height:1000px;
+}
+#Deck
+{
+    left:300px;
+    top:100px;
+}
+#Pile {
+    left: 600px;
+    top: 100px;
 }
 .AnimatableCard{
     transition-property:left,top;

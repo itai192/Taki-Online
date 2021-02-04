@@ -7,9 +7,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <uc1:LoadingBar runat="server" outOf="3" progress="1" inColor="Red" outColor="Green" />
-    <uc1:Card runat="server" ID="Card" />
     
+    
+    <uc1:LoadingBar runat="server" outOf="3" progress="1" inColor="Red" outColor="Green" />
+    <asp:Panel ID="Panel1" runat="server"  CssClass="Panel">
+    <uc1:Card runat="server" ID="Pile" />
+    <uc1:Card runat="server" ID="Deck" />
+    <uc1:Card runat="server" ID="Card"  />
+    <script type="text/javascript" src="CardAnimations.js"></script></asp:Panel>
 </asp:Content>
 
 

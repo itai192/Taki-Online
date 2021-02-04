@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BLL;
 using System.Configuration;
+using System.ComponentModel;
 namespace UI.Custom_Controls
 {
     public class CardEventArgs:EventArgs
@@ -14,11 +15,13 @@ namespace UI.Custom_Controls
     }
     public partial class Card : System.Web.UI.UserControl
     {
-        public BLL.Card card { get; set; }
-        public delegate void CardEventHandler(object sender, CardEventArgs e);
-        public event EventHandler Click;
 
+        public BLL.Card card { get; set; }
         
+        public delegate void CardEventHandler(object sender, CardEventArgs e);
+        [Browsable(true)]
+        public event CardEventHandler Click;
+        private WebControl control;
         protected Button CreateButtonCard(string text, Color c)
         {
             Button button = new Button();
@@ -35,6 +38,10 @@ namespace UI.Custom_Controls
             imgbtn.CssClass = "Card";
             return imgbtn;
         }
+        public void PutCard()
+        {
+            control.CssClass += " Put";
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (card != null)
@@ -42,14 +49,18 @@ namespace UI.Custom_Controls
                 if (card is IGetCardText)
                 {
                     IGetCardText c = (IGetCardText)card;
-                    this.Controls.Add(CreateButtonCard(c.GetCardText(), card.color));
+                    control = CreateButtonCard(c.GetCardText(), card.color);
                 }
                 else
                 {
-                    string cardName = typeof(Card).Name;
+                    string cardName = card.GetType().Name;
                     Color c = card.color;
-                    this.Controls.Add(CreateImageButtonCard(cardName, c));
+                    control = CreateImageButtonCard(cardName, c);
                 }
+                this.Controls.Add(control);
+                control.ClientIDMode=ClientIDMode.Static;
+                control.ID = this.ID;
+
             }
         }
         public string GetCardImagePath(string name,Color c)
@@ -57,7 +68,7 @@ namespace UI.Custom_Controls
             string path = ConfigurationManager.AppSettings["Cards"];
             string folder = ConfigurationManager.AppSettings[name];
             string ColorPath = @"\" + colorToColorName(c);
-            return path + folder + ColorPath;
+            return path + folder + ColorPath+".svg";
         }
         
         public string colorToColorName(Color c)
