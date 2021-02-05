@@ -4,18 +4,7 @@ using System.Collections;
 using System.Diagnostics;
 namespace BLL
 {
-    public interface IGetCardText
-    {
-        string GetCardText();
-    }
-    public enum Color
-    {
-        none,
-        red,
-        green,
-        blue,
-        yellow
-    }
+    
     public enum ActionType
     {
         putCard,
@@ -43,6 +32,11 @@ namespace BLL
         private List<Player> players;
         private int turn;//turn
         private Card activeCard;
+        public Card leadingCard
+        {
+            get { return pile.Peek(); }//temporery
+        }
+
         public bool order { get; set; }//positive or negative relative to the order
         public int penelty {get; set;}//extra cards when you draw
         public void ChangeActiveCard(Card card)
@@ -59,6 +53,8 @@ namespace BLL
             this.players= new List<Player>();
             activeCard = null;
             turn = 0;
+            pile = new Stack<Card>();
+            pile.Push(new BLL.NumberCard(Color.yellow, 5));//temporery
         }
         public Card TakeCardFromDeck()
         {
@@ -113,120 +109,24 @@ namespace BLL
         }
 
     }
-    public abstract class Card
-    {
-        public Color color { get; }
-        public Card()
-        {
-            this.color=Color.none;
-        }
-        public Card(Color color)
-        {
-            this.color=color;
-        }
-        public virtual bool CanPutOn(Card card)//if you can put card, on this
-        {
-            if(card.color==Color.none)
-            {
-                return true;
-            }
-            return this.color == card.color;
-        }
-        public virtual bool CanBePutOn(Card card)
-        {
-            return card.CanPutOn(this);
-        }
-        public virtual void EndAbility(Game game)
-        {
-            game.ChangeActiveCard(null);
-            game.NextTurn();
-        }
-        public virtual void StartAbility(Game game)
-        {
-            this.EndAbility(game);
-        }
-        public virtual void AddCardAbility(Game game, Card card)
-        {
-            
-        }
-    }
     public class Player
     {
         private List<Card> hand;
         private Queue<Action> actionsToDo;
         private Game game;
-        public void DrawCards(Game game)
-        {
-            int drawAmount = 1 + game.penelty;
-            game.penelty = 0;
-            for (int i = 0; i < drawAmount; i++)
-            {
-                hand.Add(game.TakeCardFromDeck());
-            }
-        }
+        //public void DrawCards(Game game)
+        //{
+        //    int drawAmount = 1 + game.penelty;
+        //    game.penelty = 0;
+        //    for (int i = 0; i < drawAmount; i++)
+        //    {
+        //        hand.Add(game.TakeCardFromDeck());
+        //    }
+        //}
         public void putCard(int index)
         {
             
         }
     }
-    public class Reverse:Card
-    {
-        public Reverse(Color color):base(color){
-        }
-
-        public override bool CanPutOn(Card card)
-        {
-            return base.CanPutOn(card)||card is Reverse;
-        }
-        public override void EndAbility(Game game)
-        {
-            game.order=!game.order;
-            base.EndAbility(game);
-        }
-    }
-    public class Stop:Card
-    {
-        public override bool CanPutOn(Card card)
-        {
-            return base.CanPutOn(card)||card is Stop;
-        }
-        public override void EndAbility(Game game)
-        {
-            game.NextTurn();
-            base.EndAbility(game);
-        }
-    }
-    public class NumberCard:Card, IGetCardText
-    {
-        public string GetCardText()
-        {
-            return value.ToString();
-        }
-        private int value;
-        public NumberCard(Color color, int value):base(color)
-        {
-            this.value=value;
-        }
-        public override bool CanPutOn(Card card)
-        {
-            bool sameNum = (card is NumberCard) ? ((NumberCard)card).value==this.value:false;
-            return sameNum||base.CanPutOn(card);
-        }
-    }
-    public class PlusTwo:Card
-    {
-        //
-    }
-    public class Taki:Card
-    {
-        //
-    }
-    public class King:Card
-    {
-        //
-    }
-    public class ColorChanger:Card
-    {
-        //
-    }
+    
 }

@@ -13,15 +13,9 @@ namespace UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Card.card = new BLL.NumberCard(Color.red, 4);
-            Pile.card = new BLL.NumberCard(Color.yellow,5);
-            Deck.card = new BLL.Reverse(Color.yellow);
-            Card.Click += Use;
+            
         }
-        protected void Use(object sender, CardEventArgs e)
-        {
-            ((UI.Custom_Controls.Card)sender).PutCard();
-        }
+        
         
     }
 }

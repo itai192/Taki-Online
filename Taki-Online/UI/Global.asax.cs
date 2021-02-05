@@ -11,13 +11,13 @@ namespace UI
 {
     public class Global : System.Web.HttpApplication
     {
-        public BLL.Game game;
+        
         protected void Application_Start(object sender, EventArgs e)
         {
             Directory.SetCurrentDirectory(Server.MapPath("~"));
             string strong = Directory.GetCurrentDirectory();
             BLL.BLL_Helper.CreateDBHelperInDalHelper(ConfigurationManager.AppSettings["path"], ConfigurationManager.AppSettings["provider"]);
-            BLL.Game game = new BLL.Game();
+            Application["Game"] = new BLL.Game();
         }
 
         protected void Session_Start(object sender, EventArgs e)

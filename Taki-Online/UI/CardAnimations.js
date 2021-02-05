@@ -27,6 +27,8 @@ function animate() {
     for (var i = 0; i < ToPut.length; i++)
     {
         var CardToPut = ToPut[i];
+        CardToPut.style.left = Card.offsetLeft + "px";
+        CardToPut.style.top = Card.offsetTop + "px";
         CardToPut.classList.add("AnimatableCard")
         CardToPut.style.left=pilePosX+"px";
         CardToPut.style.top=pilePosY+"px";
