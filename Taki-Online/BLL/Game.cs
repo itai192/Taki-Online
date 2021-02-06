@@ -8,16 +8,13 @@ namespace BLL
     public enum ActionType
     {
         putCard,
-        DrawCard,
-        endAction
+        DrawCard
     }
     public class Action
     {
         public ActionType type { get; }
         public Card card { get; }
         public Player player { get; }
-        public Action()
-        { }
         public Action(ActionType type, Card card, Player player)
         {
             this.type = type;
@@ -30,13 +27,16 @@ namespace BLL
         private Stack<Card> deck;
         private Stack<Card> pile;
         private List<Player> players;
-        private int turn;//turn
+        public int turn { get; private set; }
         private Card activeCard;
         public Card leadingCard
         {
             get { return pile.Peek(); }//temporery
         }
-
+        public Player GetPlayerTurn()
+        {
+            return players[turn];
+        }
         public bool order { get; set; }//positive or negative relative to the order
         public int penelty {get; set;}//extra cards when you draw
         public void ChangeActiveCard(Card card)
@@ -54,6 +54,17 @@ namespace BLL
             activeCard = null;
             turn = 0;
             pile = new Stack<Card>();
+            foreach(Color c in Enum.GetValues(typeof(Color)))
+            {
+                if(c!=Color.none)
+                {
+                    for(int i = 1;i<=9;i++)
+                    {
+                        Card card = new NumberCard(c, i);
+
+                    }
+                }
+            }
             pile.Push(new BLL.NumberCard(Color.yellow, 5));//temporery
         }
         public Card TakeCardFromDeck()
@@ -68,9 +79,26 @@ namespace BLL
         {
             turn = (order ? (turn + 1) : (turn - 1 + players.Count)) % players.Count;
         }
-        public void TryDoAction()
+        private void BroadcastAction(Action action)
         {
-            //ToImplement
+            Action lessInfoAction=null;//for actions which players don't need to know about
+            if(action.type==ActionType.DrawCard)
+            {
+                lessInfoAction = new Action(action.type, null, action.player);
+            }
+            foreach(Player p in players)
+            {
+                if (action.type == ActionType.DrawCard && p!= action.player)
+                    p.AddAction(lessInfoAction);
+                else
+                {
+                    p.AddAction(action);
+                }
+            }
+        }
+        public void TryDoAction(Action a)
+        {
+            
         }
         private void Reshuffle()
         {
@@ -107,7 +135,6 @@ namespace BLL
         {
 
         }
-
     }
     public class Player
     {
@@ -123,7 +150,11 @@ namespace BLL
         //        hand.Add(game.TakeCardFromDeck());
         //    }
         //}
-        public void putCard(int index)
+        public void AddAction(Action action)
+        {
+            actionsToDo.Enqueue(action);
+        }
+        public void putCard()
         {
             
         }

@@ -10,8 +10,8 @@
     <uc1:Card runat="server" ID="Pile" />
     <uc1:Card runat="server" ID="Deck" />
     <uc1:Card runat="server" ID="Card"  />
-    <uc1:Card runat="server" ID="Card2"  />
+    <uc1:Card runat="server" ID="Card2" IsButton="True" />
     </div>
-    <asp:Label ID="Statuslbl" runat="server" Text=""></asp:Label>
+    <asp:Label ID="Statuslbl" runat="server" Text=""  ></asp:Label>
     <script type="text/javascript" src="CardAnimations.js"></script>
 </asp:Content>

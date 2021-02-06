@@ -50,9 +50,9 @@ namespace BLL
         {
             this.EndAbility(game);
         }
-        public virtual void AddCardAbility(Game game, Card card)
+        public virtual void ProcessPlayerAction(Game game, Action a)
         {
-
+            if()
         }
     }
     public class Reverse : Card

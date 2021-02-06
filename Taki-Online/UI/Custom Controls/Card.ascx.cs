@@ -17,11 +17,15 @@ namespace UI.Custom_Controls
     {
 
         public BLL.Card card { get; set; }
-        
+
         public delegate void CardEventHandler(object sender, CardEventArgs e);
         [Browsable(true)]
         public event CardEventHandler Click;
         private WebControl control;
+        public bool IsButton
+        {
+            get; set;
+        } = false;
         protected Button CreateButtonCard(string text, Color c)
         {
             Button button = new Button();
@@ -30,6 +34,7 @@ namespace UI.Custom_Controls
             button.Click += OnClick;
             return button;
         }
+
         protected ImageButton CreateImageButtonCard(string name, Color c)
         {
             ImageButton imgbtn = new ImageButton();
@@ -37,6 +42,23 @@ namespace UI.Custom_Controls
             imgbtn.Click += OnClick;
             imgbtn.CssClass = "Card";
             return imgbtn;
+        }
+        protected Panel CreatePanelCard(string text, Color c)
+        {
+            Panel panel = new Panel();
+            Label lbl = new Label();
+            lbl.Text = text;
+            
+            panel.CssClass = "Card " + colorToColorName(c);
+            panel.Controls.Add(lbl);
+            return panel;
+        }
+        protected Image CreateImageCard(string name, Color c)
+        {
+            Image img = new Image();
+            img.ImageUrl = GetCardImagePath(name, c);
+            img.CssClass = "Card";
+            return img;
         }
         public void PutCard()
         {
@@ -49,18 +71,31 @@ namespace UI.Custom_Controls
                 if (card is IGetCardText)
                 {
                     IGetCardText c = (IGetCardText)card;
-                    control = CreateButtonCard(c.GetCardText(), card.color);
+                    if (this.IsButton)
+                    {
+                        control = CreateButtonCard(c.GetCardText(), card.color);
+                    }
+                    else
+                    {
+                        control = CreatePanelCard(c.GetCardText(), card.color);
+                    }
                 }
                 else
                 {
                     string cardName = card.GetType().Name;
                     Color c = card.color;
-                    control = CreateImageButtonCard(cardName, c);
+                    if (this.IsButton)
+                    {
+                        control = CreateImageButtonCard(cardName, c);
+                    }
+                    else
+                    {
+                        control = CreateImageCard(cardName, c);
+                    }
                 }
                 this.Controls.Add(control);
                 control.ClientIDMode=ClientIDMode.Static;
                 control.ID = this.ID;
-
             }
         }
         public string GetCardImagePath(string name,Color c)

@@ -20,6 +20,7 @@ namespace UI
             Card2.card = new BLL.NumberCard(Color.yellow, 9);
             Card.Click += TryUse;
             Card2.Click += TryUse;
+            
         }
         protected void TryUse(object sender, CardEventArgs e)
         {
@@ -31,5 +32,7 @@ namespace UI
             else
                 Statuslbl.Text = "Can't put that card";
         }
+
+       
     }
 }
