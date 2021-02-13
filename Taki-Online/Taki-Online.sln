@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{0C4C1A96-E443-429C-BB8D-541FE84D7C93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Custom Controls", "Custom Controls\Custom Controls.csproj", "{FC9E594B-9070-447B-BCED-A2F19DD7334A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,10 +35,6 @@ Global
 		{0C4C1A96-E443-429C-BB8D-541FE84D7C93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C4C1A96-E443-429C-BB8D-541FE84D7C93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C4C1A96-E443-429C-BB8D-541FE84D7C93}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FC9E594B-9070-447B-BCED-A2F19DD7334A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC9E594B-9070-447B-BCED-A2F19DD7334A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC9E594B-9070-447B-BCED-A2F19DD7334A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC9E594B-9070-447B-BCED-A2F19DD7334A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
