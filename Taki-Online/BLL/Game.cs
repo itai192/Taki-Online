@@ -24,12 +24,22 @@ namespace BLL
     }
     public class Game
     {
+        private class GamePlayer:Player
+        {
+            public GamePlayer(Game game):base(game)
+            {
+            }
+            public void AddAction(Action action)
+            {
+                actionsToDo.Enqueue(action);
+            }
+        }
         private Stack<Card> deck;
         private Stack<Card> pile;
-        private List<Player> players;
+        private List<GamePlayer> players;
         public int turn { get; private set; }
         private Card activeCard;
-        public Card leadingCard
+        public Card GetleadingCard
         {
             get { return pile.Peek(); }//temporery
         }
@@ -37,8 +47,8 @@ namespace BLL
         {
             return players[turn];
         }
-        public bool order { get; set; }//positive or negative relative to the order
-        public int penelty {get; set;}//extra cards when you draw
+        public bool order {get; private set; }//positive or negative relative to the order
+        public int penelty {get; private set;}//extra cards when you draw
         public void ChangeActiveCard(Card card)
         {
             activeCard = card;
@@ -50,7 +60,7 @@ namespace BLL
         public Game()
         {
             order = true;
-            this.players= new List<Player>();
+            this.players= new List<GamePlayer>();
             activeCard = null;
             turn = 0;
             pile = new Stack<Card>();
@@ -138,25 +148,26 @@ namespace BLL
     }
     public class Player
     {
-        private List<Card> hand;
-        private Queue<Action> actionsToDo;
-        private Game game;
-        //public void DrawCards(Game game)
-        //{
-        //    int drawAmount = 1 + game.penelty;
-        //    game.penelty = 0;
-        //    for (int i = 0; i < drawAmount; i++)
-        //    {
-        //        hand.Add(game.TakeCardFromDeck());
-        //    }
-        //}
-        public void AddAction(Action action)
+        protected List<Card> hand;
+        protected Queue<Action> actionsToDo;
+        protected Game game;
+        public Player(Game game)
         {
-            actionsToDo.Enqueue(action);
+            this.game=game;
+            actionsToDo=new Queue<Action>();
+            hand=new List<Card>();
         }
-        public void putCard()
+        public void DrawCards()
         {
-            
+        game.TryDoAction(new Action(ActionType.DrawCard,null,this));
+        }
+        // public void AddAction(Action action)
+        // {
+        //     actionsToDo.Enqueue(action);
+        // }
+        public void putCard(Card card)
+        {
+            game.TryDoAction(new Action(ActionType.putCard,card,this))
         }
     }
     
