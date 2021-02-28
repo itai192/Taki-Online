@@ -18,43 +18,7 @@ namespace BLL
         blue,
         yellow
     }
-    public abstract class Card
-    {
-        public Color color { get; }
-        public Card()
-        {
-            this.color = Color.none;
-        }
-        public Card(Color color)
-        {
-            this.color = color;
-        }
-        public virtual bool CanPutOn(Card card)//if you can put card, on this
-        {
-            if (card.color == Color.none)
-            {
-                return true;
-            }
-            return this.color == card.color;
-        }
-        public virtual bool CanBePutOn(Card card)
-        {
-            return card.CanPutOn(this);
-        }
-        public virtual void EndAbility(Game game)
-        {
-            game.ChangeActiveCard(null);
-            game.NextTurn();
-        }
-        public virtual void StartAbility(Game game)
-        {
-            this.EndAbility(game);
-        }
-        public virtual void ProcessPlayerAction(Game game, Action a)
-        {
-            if()
-        }
-    }
+    
     public class Reverse : Card
     {
         public Reverse(Color color) : base(color)

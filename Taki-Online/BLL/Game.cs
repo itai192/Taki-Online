@@ -22,24 +22,14 @@ namespace BLL
             this.player = player;
         }
     }
-    public class Game
+    public partial class Game
     {
-        private class GamePlayer:Player
-        {
-            public GamePlayer(Game game):base(game)
-            {
-            }
-            public void AddAction(Action action)
-            {
-                actionsToDo.Enqueue(action);
-            }
-        }
         private Stack<Card> deck;
         private Stack<Card> pile;
         private List<GamePlayer> players;
         public int turn { get; private set; }
         private Card activeCard;
-        public Card GetleadingCard
+        public Card leadingCard
         {
             get { return pile.Peek(); }//temporery
         }
@@ -77,15 +67,24 @@ namespace BLL
             }
             pile.Push(new BLL.NumberCard(Color.yellow, 5));//temporery
         }
-        public Card TakeCardFromDeck()
+        private Card TakeCardsFromDeck(Player p)
         {
-            if(deck.Count==0)
+            
+            for(int i =0; i<=penelty;i++)
             {
+                if(deck.Count==0)
+                {
                 Reshuffle();
+                }
+                Card c = deck.Pop();
+                if(p is GamePlayer)
+                {
+                    GamePlayer gp=(GamePlayer)p;
+                    
+                }
             }
-            return deck.Pop();
         }
-        public void NextTurn()
+        private void NextTurn()
         {
             turn = (order ? (turn + 1) : (turn - 1 + players.Count)) % players.Count;
         }
@@ -96,7 +95,7 @@ namespace BLL
             {
                 lessInfoAction = new Action(action.type, null, action.player);
             }
-            foreach(Player p in players)
+            foreach (GamePlayer p in players)
             {
                 if (action.type == ActionType.DrawCard && p!= action.player)
                     p.AddAction(lessInfoAction);
@@ -144,30 +143,6 @@ namespace BLL
         public void AddPlayer()
         {
 
-        }
-    }
-    public class Player
-    {
-        protected List<Card> hand;
-        protected Queue<Action> actionsToDo;
-        protected Game game;
-        public Player(Game game)
-        {
-            this.game=game;
-            actionsToDo=new Queue<Action>();
-            hand=new List<Card>();
-        }
-        public void DrawCards()
-        {
-        game.TryDoAction(new Action(ActionType.DrawCard,null,this));
-        }
-        // public void AddAction(Action action)
-        // {
-        //     actionsToDo.Enqueue(action);
-        // }
-        public void putCard(Card card)
-        {
-            game.TryDoAction(new Action(ActionType.putCard,card,this))
         }
     }
     
