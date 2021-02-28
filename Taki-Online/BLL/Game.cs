@@ -22,7 +22,7 @@ namespace BLL
             this.player = player;
         }
     }
-    public partial class Game
+    public partial class Games
     {
         private Stack<Card> deck;
         private Stack<Card> pile;
@@ -67,7 +67,7 @@ namespace BLL
             }
             pile.Push(new BLL.NumberCard(Color.yellow, 5));//temporery
         }
-        private Card TakeCardsFromDeck(Player p)
+        private void TakeCardsFromDeck(Player p)
         {
             
             for(int i =0; i<=penelty;i++)
@@ -80,7 +80,6 @@ namespace BLL
                 if(p is GamePlayer)
                 {
                     GamePlayer gp=(GamePlayer)p;
-                    
                 }
             }
         }

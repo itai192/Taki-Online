@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public partial class Game
+    public class Game
     {
         public abstract class Card
         {
@@ -46,4 +46,5 @@ namespace BLL
             }
         }
     }
+    
 }
