@@ -10,14 +10,7 @@ namespace BLL
     {
         string GetCardText();
     }
-    public enum Color
-    {
-        none,
-        red,
-        green,
-        blue,
-        yellow
-    }
+    
     
     public class Reverse : Card
     {
@@ -29,7 +22,7 @@ namespace BLL
         {
             return base.CanPutOn(card) || card is Reverse;
         }
-        public override void EndAbility(Game game)
+        internal protected override void EndAbility(Game game)
         {
             game.order = !game.order;
             base.EndAbility(game);
@@ -41,7 +34,7 @@ namespace BLL
         {
             return base.CanPutOn(card) || card is Stop;
         }
-        public override void EndAbility(Game game)
+        internal protected override void EndAbility(Game game)
         {
             game.NextTurn();
             base.EndAbility(game);

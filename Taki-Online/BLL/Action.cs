@@ -5,11 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 namespace BLL
 {
-    public enum ActionType
-    {
-        putCard,
-        DrawCard
-    }
     public class Action
     {
         public ActionType type { get; }

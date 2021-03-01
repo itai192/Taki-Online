@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Action.cs" />
     <Compile Include="BLL Helper.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="Cards.cs" />

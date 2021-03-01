@@ -2,44 +2,31 @@
 using System.Collections.Generic;
 using System.Collections;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
+[assembly: InternalsVisibleTo("Card.cs")]
+[assembly: InternalsVisibleTo("Cards.cs")]
 namespace BLL
 {
-    
-    public enum ActionType
-    {
-        putCard,
-        DrawCard
-    }
-    public class Action
-    {
-        public ActionType type { get; }
-        public Card card { get; }
-        public Player player { get; }
-        public Action(ActionType type, Card card, Player player)
-        {
-            this.type = type;
-            this.card = card;
-            this.player = player;
-        }
-    }
-    public partial class Games
+    public partial class Game
     {
         private Stack<Card> deck;
         private Stack<Card> pile;
         private List<GamePlayer> players;
         public int turn { get; private set; }
         private Card activeCard;
+        public bool hasLastPlayerPutCard
+        { get; internal set;}
         public Card leadingCard
         {
             get { return pile.Peek(); }//temporery
         }
-        public Player GetPlayerTurn()
+        internal Player GetPlayerTurn()
         {
             return players[turn];
         }
-        public bool order {get; private set; }//positive or negative relative to the order
-        public int penelty {get; private set;}//extra cards when you draw
-        public void ChangeActiveCard(Card card)
+        public bool order {get; internal set; }//positive or negative relative to the order
+        public int penelty {get; internal set;}//extra cards when you draw
+        internal void ChangeActiveCard(Card card)
         {
             activeCard = card;
             if(card!=null)
@@ -50,10 +37,11 @@ namespace BLL
         public Game()
         {
             order = true;
-            this.players= new List<GamePlayer>();
+            this.players = new List<GamePlayer>();
             activeCard = null;
             turn = 0;
             pile = new Stack<Card>();
+            hasLastPlayerPutCard = false;
             foreach(Color c in Enum.GetValues(typeof(Color)))
             {
                 if(c!=Color.none)
@@ -61,31 +49,35 @@ namespace BLL
                     for(int i = 1;i<=9;i++)
                     {
                         Card card = new NumberCard(c, i);
-
+                        
                     }
                 }
             }
             pile.Push(new BLL.NumberCard(Color.yellow, 5));//temporery
         }
-        private void TakeCardsFromDeck(Player p)
+        internal void TakeCardsFromDeck(Player p)
         {
-            
-            for(int i =0; i<=penelty;i++)
+            for(int i = 0; i<=penelty;i++)
             {
                 if(deck.Count==0)
                 {
-                Reshuffle();
+                    Reshuffle();
                 }
                 Card c = deck.Pop();
                 if(p is GamePlayer)
                 {
                     GamePlayer gp=(GamePlayer)p;
+                    gp.AddCardToHand(c);
                 }
+                BroadcastAction(new Action(ActionType.DrawCard,c,p));
             }
+            penelty = 0;
+            NextTurn();
         }
-        private void NextTurn()
+        internal void NextTurn()
         {
             turn = (order ? (turn + 1) : (turn - 1 + players.Count)) % players.Count;
+            hasLastPlayerPutCard = false;
         }
         private void BroadcastAction(Action action)
         {
@@ -104,9 +96,28 @@ namespace BLL
                 }
             }
         }
-        public void TryDoAction(Action a)
+        public void TryDoAction(Action action)
         {
-            
+            if(action.player==GetPlayerTurn())
+            {
+                if (activeCard != null)
+                {
+                    activeCard.ProcessPlayerAction(this, action);
+                    if (action.type == ActionType.putCard)
+                        hasLastPlayerPutCard = true;
+                }
+                else 
+                {
+                    if (action.type == ActionType.DrawCard)
+                    {
+                        TakeCardsFromDeck(action.player);
+                    }
+                }
+            }
+            else
+            {
+                throw new Exception("You can't play in another player's turn");
+            }
         }
         private void Reshuffle()
         {
@@ -143,6 +154,7 @@ namespace BLL
         {
 
         }
+        
     }
     
 }

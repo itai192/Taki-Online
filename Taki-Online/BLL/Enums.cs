@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
+    public enum ActionType
+    {
+        putCard,
+        DrawCard
+    }
     public enum UserType
     {
         User,
@@ -30,5 +35,12 @@ namespace BLL
         Accepted,
         Declined
     }
-    
+    public enum Color
+    {
+        none,
+        red,
+        green,
+        blue,
+        yellow
+    }
 }

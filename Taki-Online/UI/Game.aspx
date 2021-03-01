@@ -9,7 +9,7 @@
     <div class="Panel">
     <uc1:Card runat="server" ID="Pile" />
     <uc1:Card runat="server" ID="Deck" />
-    <uc1:Card runat="server" ID="Card"  />
+    <uc1:Card runat="server" ID="Card" IsButton="true" />
     <uc1:Card runat="server" ID="Card2" IsButton="True" />
     </div>
     <asp:Label ID="Statuslbl" runat="server" Text=""  ></asp:Label>
