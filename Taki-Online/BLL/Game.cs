@@ -27,10 +27,10 @@ namespace BLL
         }
         public bool order {get; internal set; }//positive or negative relative to the order
         public int penelty {get; internal set;}//extra cards when you draw
-        internal void ChangeActiveCard(Card card)
+        internal void ChangeActiveCard()
         {
-            activeCard = card;
-            if(card!=null)
+            activeCard = leadingCard;
+            if(activeCard!=null)
             {
                 activeCard.StartAbility(this);
             }
@@ -140,7 +140,7 @@ namespace BLL
                     BroadcastAction(action);
                     if (activeCard == null)
                     {
-                        ChangeActiveCard(leadingCard);
+                        ChangeActiveCard();
                     }
                 }
                 else
