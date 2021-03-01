@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 namespace BLL
 {
 
+
     public abstract class Card
     {
         public Color color { get; protected set; }
@@ -36,9 +37,13 @@ namespace BLL
             game.ChangeActiveCard(null);
             game.NextTurn();
         }
-        internal protected void StartAbility(Game game)
+        internal protected virtual void StartAbility(Game game)
         {
             this.EndAbility(game);
+        }
+        internal protected virtual Exception WhereCanPutCard()
+        {
+            return new Exception($"You can put {this} only on Cards of the same color");
         }
         internal protected virtual void ProcessPlayerAction(Game game, Action a)
         {

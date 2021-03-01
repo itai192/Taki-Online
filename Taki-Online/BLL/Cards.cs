@@ -10,7 +10,10 @@ namespace BLL
     {
         string GetCardText();
     }
-    
+    public interface IAbilityCard
+    {
+        //to implement
+    }
     
     public class Reverse : Card
     {
@@ -55,6 +58,14 @@ namespace BLL
         {
             bool sameNum = (card is NumberCard) ? ((NumberCard)card).value == this.value : false;
             return sameNum || base.CanPutOn(card);
+        }
+        protected internal override Exception WhereCanPutCard()
+        {
+            return new Exception($"You can only put {this} on cards that are either {color} or {value}");
+        }
+        public override string ToString()
+        {
+            return $"{color} {value}";
         }
     }
     public class PlusTwo : Card

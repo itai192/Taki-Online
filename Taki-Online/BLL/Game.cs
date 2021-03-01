@@ -9,6 +9,7 @@ namespace BLL
 {
     public partial class Game
     {
+        const int NUMCARDS=8;
         private Stack<Card> deck;
         private Stack<Card> pile;
         private List<GamePlayer> players;
@@ -49,7 +50,6 @@ namespace BLL
                     for(int i = 1;i<=9;i++)
                     {
                         Card card = new NumberCard(c, i);
-                        
                     }
                 }
             }
@@ -104,7 +104,10 @@ namespace BLL
                 {
                     activeCard.ProcessPlayerAction(this, action);
                     if (action.type == ActionType.putCard)
+                    {
+                        BroadcastAction(action);
                         hasLastPlayerPutCard = true;
+                    }
                 }
                 else 
                 {
@@ -112,12 +115,40 @@ namespace BLL
                     {
                         TakeCardsFromDeck(action.player);
                     }
+                    if(action.type==ActionType.putCard)
+                    {
+                        if(action.card.CanBePutOn(leadingCard))
+                        {
+                            PutCard(action);
+                        }
+                    }
                 }
             }
             else
             {
                 throw new Exception("You can't play in another player's turn");
             }
+        }
+        private void PutCard(Action action)
+        {
+            if (action.type == ActionType.putCard)
+            {
+                GamePlayer player = (GamePlayer)action.player;
+                if (player.HasCard(action.card))
+                {
+                    pile.Push(player.TakeCard(action.card));
+                    BroadcastAction(action);
+                    if (activeCard == null)
+                    {
+                        ChangeActiveCard(leadingCard);
+                    }
+                }
+                else
+                    throw new Exception("Player doesn't have that card");
+            }
+            else
+                throw new Exception("Action is not put card");
+
         }
         private void Reshuffle()
         {
@@ -150,9 +181,15 @@ namespace BLL
                 l.RemoveAt(num);
             }
         }
-        public void AddPlayer()
+        public Player AddPlayer()
         {
-
+            GamePlayer player = new GamePlayer(this);
+            players.Add(player);
+            for(int i = 0;i<NUMCARDS;i++)
+            {
+                TakeCardsFromDeck(player);
+            }
+            return player;
         }
         
     }
