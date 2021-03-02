@@ -35,6 +35,10 @@ namespace BLL
                 activeCard.StartAbility(this);
             }
         }
+        internal void ClearActiveCard()
+        {
+            activeCard = null;
+        }
         public Game()
         {
             order = true;

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Action.cs" />
     <Compile Include="BLL Helper.cs" />
+    <Compile Include="Broadcast.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="Cards.cs" />
     <Compile Include="Enums.cs" />

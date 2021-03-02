@@ -34,7 +34,7 @@ namespace BLL
         }
         internal protected virtual void EndAbility(Game game)
         {
-            game.ChangeActiveCard(null);
+            game.ClearActiveCard();
             game.NextTurn();
         }
         internal protected virtual void StartAbility(Game game)

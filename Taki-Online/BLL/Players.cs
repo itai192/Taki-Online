@@ -13,6 +13,10 @@ namespace BLL
             public GamePlayer(Game game) : base(game)
             {
             }
+            public void UpdatePlayerList(List<SimplePlayer> players)
+            {
+                this.players = players;
+            }
             public bool HasCard(Card card)
             {
                 return hand.Contains(card);
@@ -35,6 +39,7 @@ namespace BLL
             }
         }
     }
+
     public class Player
     {
         //private User user;
@@ -46,6 +51,22 @@ namespace BLL
             }
         }
         protected List<Card> hand;
+        public Card leadingCard
+        {
+            get;
+            internal set;
+        }
+        public bool order
+        {
+            get;
+            internal set;
+        }
+        public int turn
+        {
+            get;
+            internal set;
+        }
+        protected List<SimplePlayer> players;
         protected Queue<Action> actionsToDo;
         protected Game game;
         public Player(Game game)
@@ -62,11 +83,14 @@ namespace BLL
         {
             game.TryDoAction(new Action(ActionType.putCard, card, this));
         }
-
     }
     public class SimplePlayer
     {
         private Player player;
+        public bool IsPlayer(Player player)
+        {
+            return this.player == player;
+        }
         public SimplePlayer(Player p)
         {
             player = p;
@@ -87,4 +111,4 @@ namespace BLL
             set;
         }
     }
-    }
+}
