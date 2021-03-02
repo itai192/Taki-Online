@@ -12,7 +12,7 @@ namespace BLL
         {
             void DoBroadcast(Player player);
         }
-        public class ChangeTurnBroadcast:IPlayerBroadcast
+        public class ChangeTurnBroadcast : IPlayerBroadcast
         {
             private int turn;
             public void DoBroadcast(Player player)
@@ -35,7 +35,48 @@ namespace BLL
             public void DoBroadcast(Player player)
             {
                 GamePlayer p = (GamePlayer)player;
-                p.order=order;
+                p.order = order;
+            }
+        }
+        public class ActionBroadcast : IPlayerBroadcast
+        {
+            public Action action;
+            public SimplePlayer player
+            {
+                get { return action.player.ToSimplePlayer(); }
+            }
+            public ActionType type
+            {
+                get { return action.type; }
+            }
+            public ActionBroadcast(Action action)
+            {
+                this.action = action;
+            }
+            public void DoAction(Player player)
+            {
+                GamePlayer p = (GamePlayer)player;
+                if(this.player.IsPlayer(p))
+                {
+                    if(action.type== ActionType.putCard)
+                    {
+                        //
+                    }
+                    else if(action.type==ActionType.DrawCard)
+                    {
+                        //
+                    }
+                }
+                else
+                {
+                    if (action.type == ActionType.putCard)
+                    {
+
+                    }
+                    else if (action.type == ActionType.DrawCard)
+                    {
+                    }
+                }
             }
         }
     }

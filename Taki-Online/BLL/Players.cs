@@ -42,6 +42,11 @@ namespace BLL
 
     public class Player
     {
+        public SimplePlayer ToSimplePlayer()
+        {
+            return new SimplePlayer(this);
+        }
+
         //private User user;
         public int numberOfCards
         {
