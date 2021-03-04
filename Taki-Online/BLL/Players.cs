@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Runtime.CompilerServices;
+//[assembly: InternalsVisibleTo("Card.cs")]
+//[assembly: InternalsVisibleTo("Cards.cs")]
+[assembly: InternalsVisibleTo("Broadcasts.cs")]
 namespace BLL
 {
     public partial class Game
@@ -12,6 +15,23 @@ namespace BLL
         {
             public GamePlayer(Game game) : base(game)
             {
+            }
+            private SimplePlayer FindSimplePlayer(SimplePlayer player)
+            {
+                foreach(SimplePlayer pl in players)
+                {
+                    if (pl.Equals(player))
+                        return pl;
+                }
+                return null;
+            }
+            internal void AddACardToSimplePlayer(SimplePlayer player)
+            {
+                FindSimplePlayer(player).NumberOfCards++;
+            }
+            internal void SubtractACardFromSimplePlayer(SimplePlayer player)
+            {
+                FindSimplePlayer(player).NumberOfCards++;
             }
             public void UpdatePlayerList(List<SimplePlayer> players)
             {
@@ -33,9 +53,9 @@ namespace BLL
             {
                 this.hand.Add(c);
             }
-            public void AddAction(Action action)
+            public void AddBroadcast(IPlayerBroadcast broadcast)
             {
-                actionsToDo.Enqueue(action);
+                broadcastsToDo.Enqueue(broadcast);
             }
         }
     }
@@ -72,12 +92,12 @@ namespace BLL
             internal set;
         }
         protected List<SimplePlayer> players;
-        protected Queue<Action> actionsToDo;
+        protected Queue<Game.IPlayerBroadcast> broadcastsToDo;
         protected Game game;
         public Player(Game game)
         {
             this.game = game;
-            actionsToDo = new Queue<Action>();
+            broadcastsToDo = new Queue<Game.IPlayerBroadcast>();
             hand = new List<Card>();
         }
         public void DrawCards()

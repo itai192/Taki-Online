@@ -56,25 +56,15 @@ namespace BLL
             public void DoAction(Player player)
             {
                 GamePlayer p = (GamePlayer)player;
-                if(this.player.IsPlayer(p))
-                {
-                    if(action.type== ActionType.putCard)
-                    {
-                        //
-                    }
-                    else if(action.type==ActionType.DrawCard)
-                    {
-                        //
-                    }
-                }
-                else
+                if(!this.player.IsPlayer(p))
                 {
                     if (action.type == ActionType.putCard)
                     {
-
+                        p.SubtractACardFromSimplePlayer(this.player);
                     }
                     else if (action.type == ActionType.DrawCard)
                     {
+                        p.AddACardToSimplePlayer(this.player);
                     }
                 }
             }
