@@ -21,10 +21,6 @@ namespace BLL
         {
             get { return pile.Peek(); }//temporery
         }
-        internal Player GetPlayerTurn()
-        {
-            return players[turn];
-        }
         public bool order {get; internal set; }//positive or negative relative to the order
         public int penelty {get; internal set;}//extra cards when you draw
         internal void ChangeActiveCard()
@@ -39,6 +35,10 @@ namespace BLL
         {
             activeCard = null;
         }
+        internal Player GetPlayerTurn()
+        {
+            return players[turn];
+        }
         public Game()
         {
             order = true;
@@ -46,6 +46,7 @@ namespace BLL
             activeCard = null;
             turn = 0;
             pile = new Stack<Card>();
+            deck = new Stack<Card>();
             hasLastPlayerPutCard = false;
             foreach(Color c in Enum.GetValues(typeof(Color)))
             {
@@ -53,11 +54,12 @@ namespace BLL
                 {
                     for(int i = 1;i<=9;i++)
                     {
-                        Card card = new NumberCard(c, i);
+                        deck.Push(new NumberCard(c, i));
                     }
                 }
             }
-            pile.Push(new BLL.NumberCard(Color.yellow, 5));//temporery
+            this.ShuffleDeck();
+            pile.Push(deck.Pop());
         }
         internal void TakeCardsFromDeck(Player p)
         {
@@ -74,10 +76,36 @@ namespace BLL
             penelty = 0;
             NextTurn();
         }
+        public void UseEndAbility(Player player)
+        {
+            if(GetPlayerTurn().Equals(player))
+            {
+                if (activeCard != null)
+                {
+                    activeCard.EndAbility(this);
+                }
+                else
+                {
+                    throw new Exception("There is no card to end it's ability");
+                }
+            }
+            else
+            {
+                throw new Exception("You can't end an ability not in your turn");
+            }
+        }
         internal void NextTurn()
         {
             turn = (order ? (turn + 1) : (turn - 1 + players.Count)) % players.Count;
             hasLastPlayerPutCard = false;
+            Broadcast(new ChangeTurnBroadcast(turn));
+        }
+        private void Broadcast(IPlayerBroadcast broadcast)
+        {
+            foreach(Player p in players)
+            {
+                p.AddBroadcast(broadcast);
+            }
         }
         private void BroadcastAction(Action action)
         {

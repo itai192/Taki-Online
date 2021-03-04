@@ -66,37 +66,40 @@ namespace UI.Custom_Controls
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (card != null)
+            if (card is IGetCardText || card==null)
             {
-                if (card is IGetCardText)
+                IGetCardText c = (IGetCardText)card;
+                if (this.IsButton)
                 {
-                    IGetCardText c = (IGetCardText)card;
-                    if (this.IsButton)
-                    {
+                    if (c != null)
                         control = CreateButtonCard(c.GetCardText(), card.color);
-                    }
                     else
-                    {
-                        control = CreatePanelCard(c.GetCardText(), card.color);
-                    }
+                        control = CreateButtonCard(string.Empty,Color.none);
                 }
                 else
                 {
-                    string cardName = card.GetType().Name;
-                    Color c = card.color;
-                    if (this.IsButton)
-                    {
-                        control = CreateImageButtonCard(cardName, c);
-                    }
+                    if (c != null)
+                        control = CreatePanelCard(c.GetCardText(), card.color);
                     else
-                    {
-                        control = CreateImageCard(cardName, c);
-                    }
+                        control = CreatePanelCard(string.Empty, Color.none);
                 }
-                this.Controls.Add(control);
-                control.ClientIDMode=ClientIDMode.Static;
-                control.ID = this.ID;
             }
+            else
+            {
+                string cardName = card.GetType().Name;
+                Color c = card.color;
+                if (this.IsButton)
+                {
+                    control = CreateImageButtonCard(cardName, c);
+                }
+                else
+                {
+                    control = CreateImageCard(cardName, c);
+                }
+            }
+            this.Controls.Add(control);
+            control.ClientIDMode=ClientIDMode.Static;
+            control.ID = this.ID;
         }
         public string GetCardImagePath(string name,Color c)
         {

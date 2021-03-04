@@ -10,10 +10,10 @@ namespace BLL
     {
         string GetCardText();
     }
-    public interface IAbilityCard
-    {
-        //to implement
-    }
+    //public interface IAbilityCard
+    //{
+    //    //to implement
+    //}
     
     public class Reverse : Card
     {
@@ -45,6 +45,7 @@ namespace BLL
     }
     public class NumberCard : Card, IGetCardText
     {
+        const int MAXNUMBERCARD = 9;
         public string GetCardText()
         {
             return value.ToString();
@@ -61,7 +62,7 @@ namespace BLL
         }
         protected internal override Exception WhereCanPutCard()
         {
-            return new Exception($"You can only put {this} on cards that are either {color} or {value}");
+            return new Exception($"You can only put {this} on cards that are either {color.ToString("G")} or {value}");
         }
         public override string ToString()
         {

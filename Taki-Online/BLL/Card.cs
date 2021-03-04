@@ -43,7 +43,7 @@ namespace BLL
         }
         internal protected virtual Exception WhereCanPutCard()
         {
-            return new Exception($"You can put {this} only on Cards of the same color");
+            return new Exception($"You can put {this} only on Cards of the color {color.ToString("G")}");
         }
         internal protected virtual void ProcessPlayerAction(Game game, Action a)
         {

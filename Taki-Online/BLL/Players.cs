@@ -11,6 +11,33 @@ namespace BLL
 {
     public class Player
     {
+        //private User user;
+        public int numberOfCards
+        {
+            get
+            {
+                return hand.Count;
+            }
+        }
+        internal List<Card> hand;
+        public Card leadingCard
+        {
+            get;
+            internal set;
+        }
+        public bool order
+        {
+            get;
+            internal set;
+        }
+        public int turn
+        {
+            get;
+            internal set;
+        }
+        private List<SimplePlayer> players;
+        private Queue<Game.IPlayerBroadcast> broadcastsToDo;
+        private Game game;
         private SimplePlayer FindSimplePlayer(SimplePlayer player)
         {
             foreach (SimplePlayer pl in players)
@@ -20,6 +47,10 @@ namespace BLL
             }
             return null;
         }
+        public List<Card> GetHand()
+        {
+            return new List<Card>(hand);
+        }
         internal void AddACardToSimplePlayer(SimplePlayer player)
         {
             FindSimplePlayer(player).NumberOfCards++;
@@ -28,7 +59,7 @@ namespace BLL
         {
             FindSimplePlayer(player).NumberOfCards++;
         }
-        public void UpdatePlayerList(List<SimplePlayer> players)
+        internal void UpdatePlayerList(List<SimplePlayer> players)
         {
             this.players = players;
         }
@@ -56,39 +87,14 @@ namespace BLL
         {
             return new SimplePlayer(this);
         }
-
-        //private User user;
-        public int numberOfCards
-        {
-            get
-            {
-                return hand.Count;
-            }
-        }
-        protected List<Card> hand;
-        public Card leadingCard
-        {
-            get;
-            internal set;
-        }
-        public bool order
-        {
-            get;
-            internal set;
-        }
-        public int turn
-        {
-            get;
-            internal set;
-        }
-        protected List<SimplePlayer> players;
-        protected Queue<Game.IPlayerBroadcast> broadcastsToDo;
-        protected Game game;
-        public Player(Game game)
+        internal Player(Game game)
         {
             this.game = game;
             broadcastsToDo = new Queue<Game.IPlayerBroadcast>();
             hand = new List<Card>();
+            leadingCard = game.leadingCard;
+            order = game.order;
+
         }
         public void DrawCards()
         {
