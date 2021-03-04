@@ -9,59 +9,49 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("Broadcasts.cs")]
 namespace BLL
 {
-    public partial class Game
-    {
-        private class GamePlayer : Player
-        {
-            public GamePlayer(Game game) : base(game)
-            {
-            }
-            private SimplePlayer FindSimplePlayer(SimplePlayer player)
-            {
-                foreach(SimplePlayer pl in players)
-                {
-                    if (pl.Equals(player))
-                        return pl;
-                }
-                return null;
-            }
-            internal void AddACardToSimplePlayer(SimplePlayer player)
-            {
-                FindSimplePlayer(player).NumberOfCards++;
-            }
-            internal void SubtractACardFromSimplePlayer(SimplePlayer player)
-            {
-                FindSimplePlayer(player).NumberOfCards++;
-            }
-            public void UpdatePlayerList(List<SimplePlayer> players)
-            {
-                this.players = players;
-            }
-            public bool HasCard(Card card)
-            {
-                return hand.Contains(card);
-            }
-            public Card TakeCard(Card card)
-            {
-                if(hand.Remove(card))
-                {
-                    return card;
-                }
-                return null;
-            }
-            public void AddCardToHand(Card c)
-            {
-                this.hand.Add(c);
-            }
-            public void AddBroadcast(IPlayerBroadcast broadcast)
-            {
-                broadcastsToDo.Enqueue(broadcast);
-            }
-        }
-    }
-
     public class Player
     {
+        private SimplePlayer FindSimplePlayer(SimplePlayer player)
+        {
+            foreach (SimplePlayer pl in players)
+            {
+                if (pl.Equals(player))
+                    return pl;
+            }
+            return null;
+        }
+        internal void AddACardToSimplePlayer(SimplePlayer player)
+        {
+            FindSimplePlayer(player).NumberOfCards++;
+        }
+        internal void SubtractACardFromSimplePlayer(SimplePlayer player)
+        {
+            FindSimplePlayer(player).NumberOfCards++;
+        }
+        public void UpdatePlayerList(List<SimplePlayer> players)
+        {
+            this.players = players;
+        }
+        public bool HasCard(Card card)
+        {
+            return hand.Contains(card);
+        }
+        internal Card TakeCard(Card card)
+        {
+            if (hand.Remove(card))
+            {
+                return card;
+            }
+            return null;
+        }
+        internal void AddCardToHand(Card c)
+        {
+            this.hand.Add(c);
+        }
+        internal void AddBroadcast(Game.IPlayerBroadcast broadcast)
+        {
+            broadcastsToDo.Enqueue(broadcast);
+        }
         public SimplePlayer ToSimplePlayer()
         {
             return new SimplePlayer(this);
