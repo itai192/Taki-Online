@@ -12,7 +12,7 @@ namespace BLL
         const int NUMCARDS=8;
         private Stack<Card> deck;
         private Stack<Card> pile;
-        private List<GamePlayer> players;
+        private List<Player> players;
         public int turn { get; private set; }
         private Card activeCard;
         public bool hasLastPlayerPutCard
@@ -42,7 +42,7 @@ namespace BLL
         public Game()
         {
             order = true;
-            this.players = new List<GamePlayer>();
+            this.players = new List<Player>();
             activeCard = null;
             turn = 0;
             pile = new Stack<Card>();
@@ -68,11 +68,7 @@ namespace BLL
                     Reshuffle();
                 }
                 Card c = deck.Pop();
-                if(p is GamePlayer)
-                {
-                    GamePlayer gp=(GamePlayer)p;
-                    gp.AddCardToHand(c);
-                }
+                p.AddCardToHand(c);
                 BroadcastAction(new Action(ActionType.DrawCard,c,p));
             }
             penelty = 0;
@@ -85,18 +81,19 @@ namespace BLL
         }
         private void BroadcastAction(Action action)
         {
-            Action lessInfoAction=null;//for actions which players don't need to know about
+            ActionBroadcast broadcast = new ActionBroadcast(action);
+            ActionBroadcast lessInfoBroadcast=null;//for actions which players don't need to know about
             if(action.type==ActionType.DrawCard)
             {
-                lessInfoAction = new Action(action.type, null, action.player);
+                lessInfoBroadcast =new ActionBroadcast(new Action(action.type, null, action.player));
             }
-            foreach (GamePlayer p in players)
+            foreach (Player p in players)
             {
                 if (action.type == ActionType.DrawCard && p!= action.player)
-                    p.AddAction(lessInfoAction);
+                    p.AddBroadcast(lessInfoBroadcast);
                 else
                 {
-                    p.AddAction(action);
+                    p.AddBroadcast(broadcast);
                 }
             }
         }
@@ -137,7 +134,7 @@ namespace BLL
         {
             if (action.type == ActionType.putCard)
             {
-                GamePlayer player = (GamePlayer)action.player;
+                Player player = action.player;
                 if (player.HasCard(action.card))
                 {
                     pile.Push(player.TakeCard(action.card));
@@ -187,7 +184,7 @@ namespace BLL
         }
         public Player AddPlayer()
         {
-            GamePlayer player = new GamePlayer(this);
+            Player player = new Player(this);
             players.Add(player);
             for(int i = 0;i<NUMCARDS;i++)
             {
