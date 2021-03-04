@@ -94,7 +94,6 @@ namespace BLL
             hand = new List<Card>();
             leadingCard = game.leadingCard;
             order = game.order;
-
         }
         public void DrawCards()
         {

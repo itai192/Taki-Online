@@ -20,18 +20,21 @@ namespace UI
                 Session["Player"] = game.AddPlayer();
             }
             player = (BLL.Player)Session["Player"];
-            Card.card = new BLL.NumberCard(Color.red, 4);
             Pile.card = player.leadingCard;
             Deck.card =null;
             Deck.IsButton = true;
-            Deck.Click += TryTake;
-            Card2.card = new BLL.NumberCard(Color.yellow, 9);
-            Card.Click += TryUse;
-            Card2.Click += TryUse;
+            Deck.Click += TryTake;            
         }
-        protected void TryTake(object sender, CardEventArgs e)
+        protected void TryDraw(object sender, CardEventArgs e)
         {
-
+            try
+            {
+                player.DrawCards();
+            }
+            catch(Exception ex)
+            {
+                Statuslbl.Text = ex.Message;
+            }
         }
         
         protected void TryUse(object sender, CardEventArgs e)

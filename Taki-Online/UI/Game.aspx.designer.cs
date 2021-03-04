@@ -33,22 +33,13 @@ namespace UI
         protected global::UI.Custom_Controls.Card Deck;
 
         /// <summary>
-        /// Card control.
+        /// Repeater1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::UI.Custom_Controls.Card Card;
-
-        /// <summary>
-        /// Card2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UI.Custom_Controls.Card Card2;
+        protected global::System.Web.UI.WebControls.Repeater Repeater1;
 
         /// <summary>
         /// Statuslbl control.
