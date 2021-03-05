@@ -7,9 +7,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
-    <asp:Panel ID="Panel1" runat="server"  CssClass="Panel">
-    
+    <asp:Panel ID="Panel1" runat="server"  CssClass="Panel"></asp:Panel>
+    <uc1:LoadingBar runat="server" ID="LoadingBar" inColor="Red" outColor="Yellow" outOf="50" progress="30"/>
 </asp:Content>
 
 
