@@ -6,12 +6,24 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="Panel">
-    <uc1:Card runat="server" ID="Pile" />
-    <uc1:Card runat="server" ID="Deck" />
-    <uc1:Card runat="server" ID="Card" IsButton="true" />
-    <uc1:Card runat="server" ID="Card2" IsButton="True" />
-    </div>
-    <asp:Label ID="Statuslbl" runat="server" Text=""  ></asp:Label>
-    <script type="text/javascript" src="CardAnimations.js"></script>
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="Timer" EventName="Tick" />
+        </Triggers>
+        <ContentTemplate>
+            <asp:Timer ID="Timer" runat="server" Interval="2000" EnableViewState="False" OnTick="Timer_Tick"></asp:Timer>
+            <div class="Panel">
+            <uc1:Card runat="server" ID="Pile" />
+            <uc1:Card runat="server" ID="Deck" />
+            <asp:Repeater ID="Hand" runat="server" ItemType="Card" OnItemDataBound="Hand_ItemDataBound">
+                <ItemTemplate>
+                    <uc1:Card runat="server" ID="Card" IsButton="True" />
+                </ItemTemplate>
+            </asp:Repeater>
+            </div>
+            <asp:Label ID="Statuslbl" runat="server" Text=""  ></asp:Label>
+            <script type="text/javascript" src="CardAnimations.js"></script>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>

@@ -23,7 +23,9 @@ namespace UI
             Pile.card = player.leadingCard;
             Deck.card =null;
             Deck.IsButton = true;
-            Deck.Click += TryTake;            
+            Deck.Click += TryDraw;
+            Hand.DataSource = player.GetHand();
+            Hand.DataBind();
         }
         protected void TryDraw(object sender, CardEventArgs e)
         {
@@ -35,19 +37,37 @@ namespace UI
             {
                 Statuslbl.Text = ex.Message;
             }
+            
         }
-        
         protected void TryUse(object sender, CardEventArgs e)
         {
-            if (e.card.CanBePutOn(game.leadingCard))
+            try
             {
-                Statuslbl.Text = "Good";
+                player.putCard(e.card);
                 ((UI.Custom_Controls.Card)sender).PutCard();
             }
-            else
-                Statuslbl.Text = "Can't put that card";
+            catch(Exception ex)
+            {
+                Statuslbl.Text = ex.Message;
+            }
+            
         }
 
-       
+        protected void Hand_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            UI.Custom_Controls.Card card = (UI.Custom_Controls.Card) e.Item.FindControl("Card");
+            card.Click += TryUse;
+            card.card = (BLL.Card)e.Item.DataItem;
+        }
+
+        protected void Timer_Tick(object sender, EventArgs e)
+        {
+            if (player.HasUndoneBroadcasts())
+            {
+                BLL.Game.IPlayerBroadcast broadcast = player.NextBroadcast();
+                player.DoBroadcast();
+            }
+            Pile.card = player.leadingCard;
+        }
     }
 }

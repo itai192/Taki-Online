@@ -8,16 +8,16 @@
     }
 }
 .Card {
-    width: 100px !important;
-    height: 200px !important;
+    width: 100px;
+    height: 200px;
     padding: 45px;
     background-color: ivory;
     box-shadow: 1px 1px 10px grey;
     border-radius: 5%;
     font-family: Arial;
-    font-size: 120px;
+    font-size: 180px;
     font-weight: bold;
-    text-shadow: 1px 8px 0 black, 1px 6px 0 black, 1px 4px 0 black, 1px 2px 0 black,-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    text-shadow: 4px 8px 0 black, 4px 6px 0 black, 4px 4px 0 black, 4px 2px 0 black,-4px -2px 0 black, -4px 1px 0 black, -4px 1px 0 black, 4px 1px 0 black;
     -webkit-text-stroke-width: 4px;
     -webkit-text-stroke-color: black;
     display:flex;
@@ -38,7 +38,7 @@
 .Panel
 {
     position:relative;
-    width:1000px;
+    width:2000px;
     height:800px;
 }
 #Deck {

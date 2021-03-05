@@ -1,4 +1,6 @@
-﻿animate();
+﻿function pageLoad() {
+    animate();
+}
 function animate() {
     var ToDraw = document.getElementsByClassName("Draw");
     var ToPut= document.getElementsByClassName("Put");

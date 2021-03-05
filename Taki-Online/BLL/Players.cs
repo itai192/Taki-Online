@@ -67,6 +67,24 @@ namespace BLL
         {
             return hand.Contains(card);
         }
+        public bool HasUndoneBroadcasts()
+        {
+            return broadcastsToDo.Count > 0;
+        }
+        public Game.IPlayerBroadcast NextBroadcast()
+        {
+            if (HasUndoneBroadcasts())
+                return broadcastsToDo.Peek();
+            return null;
+        }
+        public void DoBroadcast()
+        {
+            if (HasUndoneBroadcasts())
+            {
+                Game.IPlayerBroadcast broadcastToDo = broadcastsToDo.Dequeue();
+                broadcastToDo.DoBroadcast(this);
+            }
+        }
         internal Card TakeCard(Card card)
         {
             if (hand.Remove(card))

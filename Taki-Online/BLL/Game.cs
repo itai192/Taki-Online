@@ -69,9 +69,16 @@ namespace BLL
                 {
                     Reshuffle();
                 }
-                Card c = deck.Pop();
-                p.AddCardToHand(c);
-                BroadcastAction(new Action(ActionType.DrawCard,c,p));
+                if (deck.Count > 0)
+                {
+                    Card c = deck.Pop();
+                    p.AddCardToHand(c);
+                    BroadcastAction(new Action(ActionType.DrawCard, c, p));
+                }
+                else
+                {
+                    throw new Exception("not enough cards in deck");
+                }
             }
             penelty = 0;
             NextTurn();
@@ -150,6 +157,10 @@ namespace BLL
                         {
                             PutCard(action);
                         }
+                        else
+                        {
+                            throw action.card.WhereCanPutCard();
+                        }
                     }
                 }
             }
@@ -216,9 +227,38 @@ namespace BLL
             players.Add(player);
             for(int i = 0;i<NUMCARDS;i++)
             {
-                TakeCardsFromDeck(player);
+                if (deck.Count > 0)
+                    player.AddCardToHand(deck.Pop());
+                else
+                {
+                    Reshuffle();
+                    if (deck.Count > 0)
+                        player.AddCardToHand(deck.Pop());
+                    else
+                    {
+                        throw new Exception("not enough cards in deck");
+                    }
+                }
             }
+            UpdatePlayerListsInAllPlayers();
             return player;
+        }
+        public List<SimplePlayer> GetSimplePlayerList()
+        {
+            List<SimplePlayer> list = new List<SimplePlayer>();
+            foreach(Player p in players)
+            {
+                list.Add(p.ToSimplePlayer());
+            }
+            return list;
+        }
+        public void UpdatePlayerListsInAllPlayers()
+        {
+            List<SimplePlayer> list = GetSimplePlayerList();
+            foreach(Player p in players)
+            {
+                p.UpdatePlayerList(list);
+            }
         }
         
     }

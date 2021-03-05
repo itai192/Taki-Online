@@ -64,6 +64,10 @@ namespace BLL
                         player.AddACardToSimplePlayer(this.player);
                     }
                 }
+                if(action.type==ActionType.putCard)
+                {
+                    player.leadingCard = action.card;
+                }
             }
         }
     }
