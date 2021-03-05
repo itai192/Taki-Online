@@ -27,6 +27,7 @@ namespace UI
             Hand.DataSource = player.GetHand();
             Hand.DataBind();
         }
+        
         protected void TryDraw(object sender, CardEventArgs e)
         {
             try

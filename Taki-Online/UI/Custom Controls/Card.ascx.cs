@@ -64,7 +64,7 @@ namespace UI.Custom_Controls
         {
             control.CssClass += " Put";
         }
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Init(object sender, EventArgs e)
         {
             if (card is IGetCardText || card==null)
             {
