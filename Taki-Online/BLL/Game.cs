@@ -205,6 +205,7 @@ namespace BLL
                 deck.Push(c);
             }
             ShuffleDeck();
+            pile.Push(top);
         }
         private void ShuffleDeck()
         {

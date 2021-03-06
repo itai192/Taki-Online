@@ -51,7 +51,6 @@ namespace UI
             {
                 Statuslbl.Text = ex.Message;
             }
-            
         }
 
         protected void Hand_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -69,6 +68,7 @@ namespace UI
                 player.DoBroadcast();
             }
             Pile.card = player.leadingCard;
+            Pile.LoadCard();
         }
     }
 }

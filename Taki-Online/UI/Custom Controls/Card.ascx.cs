@@ -62,19 +62,22 @@ namespace UI.Custom_Controls
         }
         public void PutCard()
         {
+            IsButton = false;
+            LoadCard();
             control.CssClass += " Put";
         }
-        protected void Page_Init(object sender, EventArgs e)
+        public void LoadCard()
         {
-            if (card is IGetCardText || card==null)
+            if (card is IGetCardText || card == null)
             {
+                Controls.Clear();
                 IGetCardText c = (IGetCardText)card;
                 if (this.IsButton)
                 {
                     if (c != null)
                         control = CreateButtonCard(c.GetCardText(), card.color);
                     else
-                        control = CreateButtonCard(string.Empty,Color.none);
+                        control = CreateButtonCard(string.Empty, Color.none);
                 }
                 else
                 {
@@ -98,8 +101,12 @@ namespace UI.Custom_Controls
                 }
             }
             this.Controls.Add(control);
-            control.ClientIDMode=ClientIDMode.Static;
+            control.ClientIDMode = ClientIDMode.Static;
             control.ID = this.ID;
+        }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            LoadCard();
         }
         public string GetCardImagePath(string name,Color c)
         {
