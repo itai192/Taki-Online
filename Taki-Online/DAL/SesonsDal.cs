@@ -1,17 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL
 {
-    class SesonsDal
+    public class SesonsDal
     {
-        public const string SEASONID = "[Season ID]", STARTDAT = "[Start Date]", ENDDATE = "[End Date]";
+        public const string SEASONID = "[Season ID]", STARTDATE = "[Start Date]", ENDDATE = "[End Date]";
         public static int CreateNewSeason(DateTime startDate, DateTime endDate)
         {
-            return DalHelper.Insert(DalHelper.SimpleInsert)
+            return DalHelper.Insert(DalHelper.SimpleInsertQuery(Constants.SEASONSTBL,new string[] {STARTDATE,ENDDATE}, new string[] {startDate.ToOADate().ToString(), endDate.ToOADate().ToString() }));
+        }
+        public static int GetCurrentSeason()
+        {
+            return (int)DalHelper.SelectRow($"SELECT * FROM {Constants.SEASONSTBL} WHERE {DateTime.Now.ToOADate().ToString()} BETWEEN {STARTDATE} AND {ENDDATE}")[SEASONID];
         }
     }
 }
