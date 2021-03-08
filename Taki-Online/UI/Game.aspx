@@ -12,7 +12,7 @@
             <asp:AsyncPostBackTrigger ControlID="Timer" EventName="Tick" />
         </Triggers>
         <ContentTemplate>
-            <asp:Timer ID="Timer" runat="server" Interval="2000" EnableViewState="False" OnTick="Timer_Tick"></asp:Timer>
+            <asp:Timer ID="Timer" runat="server" Interval="750" EnableViewState="False" OnTick="Timer_Tick"></asp:Timer>
             <div class="Panel">
             <uc1:Card runat="server" ID="Pile" />
             <uc1:Card runat="server" ID="Deck" />

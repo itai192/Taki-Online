@@ -9,6 +9,16 @@ namespace BLL
 {
     public class BLL_Helper
     {
+        public static List<Rank> GetAllRanks()
+        {
+            DataTable dt = RankDal.GetAllRanks();
+            List<Rank> ranks = new List<Rank>();
+            foreach(DataRow dr in dt.Rows)
+            {
+                ranks.Add(new Rank(dr));
+            }
+            return ranks;
+        }
         public static void SetSourceAndProvider(string source, string provider)
         {
             DalHelper.SetProvider(provider);

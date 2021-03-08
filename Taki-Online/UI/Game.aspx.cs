@@ -34,6 +34,7 @@ namespace UI
             try
             {
                 player.DrawCards();
+                DoUpdate();
             }
             catch(Exception ex)
             {
@@ -45,6 +46,7 @@ namespace UI
         {
             try
             {
+                DoUpdate();
                 player.putCard(e.card);
                 ((UI.Custom_Controls.Card)sender).PutCard();
             }
@@ -62,6 +64,10 @@ namespace UI
         }
 
         protected void Timer_Tick(object sender, EventArgs e)
+        {
+            DoUpdate();
+        }
+        public void DoUpdate()
         {
             if (player.HasUndoneBroadcasts())
             {

@@ -61,7 +61,7 @@
             </asp:TableRow>
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server">XP:</asp:TableCell>
-                <asp:TableCell runat="server"><uc1:LoadingBar runat="server" ID="XpBar" /></asp:TableCell>
+                <asp:TableCell runat="server"><uc1:LoadingBar runat="server" ID="XpBar" inColor="Aqua" outColor="Red" /></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server">Add Friends:</asp:TableCell>

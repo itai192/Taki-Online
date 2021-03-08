@@ -24,7 +24,11 @@ namespace DAL
         }
         public static int GetRankLowestValue(int rankID)
         {
-            return (int)DalHelper.SelectRow($"SELECT * FROM {Constants.RANKINGTBL} WHERE [Rank ID] = {rankID}")["Lowest Elo"];
+            return (int)GetRank(rankID)["Lowest Elo"];
+        }
+        public static DataRow GetRank(int rankID)
+        {
+            return DalHelper.SelectRow($"SELECT * FROM {Constants.RANKINGTBL} WHERE [Rank ID] = {rankID}");
         }
     }
 }
