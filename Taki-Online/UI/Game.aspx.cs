@@ -15,9 +15,10 @@ namespace UI
         protected void Page_Load(object sender, EventArgs e)
         {
             game = (BLL.Game)Application["Game"];
-            if(!IsPostBack)
+            if(Session["Player"]==null)
             {
                 Session["Player"] = game.AddPlayer();
+                Response.Redirect("Game.aspx");
             }
             player = (BLL.Player)Session["Player"];
             Pile.card = player.leadingCard;
