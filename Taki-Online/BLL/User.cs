@@ -64,8 +64,8 @@ namespace BLL
         {
             get
             {
-                List<string> l1 = BLL_Helper.DataTableToList<string>(DAL.Friends_Dal.FriendRequestsWithStatusRecieved(username, (int)FriendRequestStatus.Accepted), Friends_Dal.SENDERFLD );
-                List<string> l2 = BLL_Helper.DataTableToList<string>(DAL.Friends_Dal.FriendRequestsWithStatusSent(username, (int)FriendRequestStatus.Accepted), Friends_Dal.RECIPIANTFLD);
+                List<string> l1 = BLL_Helper.DataTableToList<string>(DAL.FriendsDal.FriendRequestsWithStatusRecieved(username, (int)FriendRequestStatus.Accepted), FriendsDal.SENDERFLD );
+                List<string> l2 = BLL_Helper.DataTableToList<string>(DAL.FriendsDal.FriendRequestsWithStatusSent(username, (int)FriendRequestStatus.Accepted), FriendsDal.RECIPIANTFLD);
                 return BLL_Helper.UniteLists(l1, l2);
             }
         }
@@ -91,12 +91,12 @@ namespace BLL
         {
             get
             {
-                return BLL_Helper.DataTableToList<string>(DAL.Friends_Dal.FriendRequestsWithStatusRecieved(username, (int)FriendRequestStatus.Declined),Friends_Dal.SENDERFLD);
+                return BLL_Helper.DataTableToList<string>(DAL.FriendsDal.FriendRequestsWithStatusRecieved(username, (int)FriendRequestStatus.Declined),FriendsDal.SENDERFLD);
             }
         }
         public List<string> UnopenedFriendRequests
         {
-            get { return BLL_Helper.DataTableToList<string>(DAL.Friends_Dal.FriendRequestsWithStatusRecieved(username, (int)FriendRequestStatus.Unopened), Friends_Dal.SENDERFLD); }
+            get { return BLL_Helper.DataTableToList<string>(DAL.FriendsDal.FriendRequestsWithStatusRecieved(username, (int)FriendRequestStatus.Unopened), FriendsDal.SENDERFLD); }
         }
         public User(string username) : this(UserDal.SelectUser(username))
         {
@@ -110,12 +110,12 @@ namespace BLL
         {
             if (DeclinedFriends.Contains(username))
             {
-                Friends_Dal.ChangeStatus(username, this.username, (int)FriendRequestStatus.Accepted);
+                FriendsDal.ChangeStatus(username, this.username, (int)FriendRequestStatus.Accepted);
                 return "Your'e now friends with"+username;
             }
-            else if (!Friends_Dal.FriendRequestExists(username, this.username))
+            else if (!FriendsDal.FriendRequestExists(username, this.username))
             {
-                Friends_Dal.AddFriend(this.username, username);
+                FriendsDal.AddFriend(this.username, username);
                 return "Your friend request has been sent successfuly to "+username;
             }
             return "there already exists a friend request between you and" + username;
@@ -124,14 +124,14 @@ namespace BLL
         public void AcceptFriendRequestFrom(string username)
         {
             if (UnopenedFriendRequests.Contains(username))
-                Friends_Dal.ChangeStatus(username, this.username, (int)FriendRequestStatus.Accepted);
+                FriendsDal.ChangeStatus(username, this.username, (int)FriendRequestStatus.Accepted);
             else
                 throw new Exception("You Have No Friend Invitation From This Friend");
         }
         public void DeclineFriendRequestFrom(string username)
         {
             if (UnopenedFriendRequests.Contains(username))
-                Friends_Dal.ChangeStatus(username, this.username, (int)FriendRequestStatus.Declined);
+                FriendsDal.ChangeStatus(username, this.username, (int)FriendRequestStatus.Declined);
             else
                 throw new Exception("You Have No Friend Invitation From This Friend");
         }

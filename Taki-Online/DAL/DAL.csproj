@@ -43,10 +43,13 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="DalHelper.cs" />
+    <Compile Include="SesonsDal.cs" />
     <Compile Include="DBHelper.cs" />
-    <Compile Include="Friends Dal.cs" />
+    <Compile Include="FriendsDal.cs" />
+    <Compile Include="GameDal.cs" />
+    <Compile Include="PlayersInGamesDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User Dal.cs" />
+    <Compile Include="UserDal.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Taki DB.accdb">
