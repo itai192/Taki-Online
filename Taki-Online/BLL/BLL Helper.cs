@@ -9,6 +9,10 @@ namespace BLL
 {
     public class BLL_Helper
     {
+        public static DataTable GetAllPlayersInRankThisSeason(int rankID)
+        {
+            return DAL.UsersInGamesDal.FindAllPlayersInRankInSeason(rankID, DAL.SesonsDal.GetCurrentSeason());
+        }
         public static List<Rank> GetAllRanks()
         {
             DataTable dt = RankDal.GetAllRanks();

@@ -9,6 +9,8 @@ namespace DAL
 {
     public class UsersInGamesDal
     {
+        public static string FULLSELECT = "SELECT R2.[Rank ID], R2.[Rank Name], T2.Lowest, T2.[User], T2.Season, T2.ELO FROM Ranking AS R2 INNER JOIN(SELECT T.ELO, T.Season, T.[User], Max(R1.[Lowest Elo]) AS Lowest FROM Ranking AS R1 INNER JOIN (SELECT SUM([Users in Games].[elo Added])+[Ranking History].[Season Start Elo] AS ELO, [Ranking History].Season, [Ranking History].[User] FROM(Seasons INNER JOIN[Ranking History] ON Seasons.[Season ID] = [Ranking History].Season) INNER JOIN(Games INNER JOIN[Users in Games] ON Games.[Game ID] = [Users in Games].Game) ON([Ranking History].User = [Users in Games].User) AND(Games.[Time Played] BETWEEN  Seasons.[End Date] AND Seasons.[Start Date] ) GROUP BY[Ranking History].Season, [Ranking History].[User], [Ranking History].[Season Start Elo]) AS T ON R1.[Lowest Elo]< T.ELO GROUP BY T.ELO, T.Season, T.[User]) AS T2 ON T2.Lowest = R2.[Lowest Elo]";
+        public static string FULLORDER = "ORDER BY T2.ELO DESC";
         public static string RANKSELECT = $"SELECT SUM({Constants.USERSINGAMESTBL}.{ELO})+{Constants.RANKINGHISTORYTBL}.[Season Start Elo] AS ELO, {Constants.RANKINGHISTORYTBL}.Season, {Constants.RANKINGHISTORYTBL}.[User], {Constants.RANKINGTBL}.[Rank Name], {Constants.RANKINGTBL}.[Rank ID], Max({Constants.RANKINGTBL}.[Lowest Elo]) AS Lowest";
         public static string RANKFROM = $"FROM {Constants.RANKINGTBL}, (Seasons INNER JOIN {Constants.RANKINGHISTORYTBL} ON {Constants.SEASONSTBL}.[Season ID] = {Constants.RANKINGHISTORYTBL}.Season) INNER JOIN ({Constants.GAMESTBL} INNER JOIN {Constants.USERSINGAMESTBL} ON {Constants.GAMESTBL}.[Game ID] = {Constants.USERSINGAMESTBL}.{GAME}) ON ({Constants.RANKINGHISTORYTBL}.User = {Constants.USERSINGAMESTBL}.{USERNAME}) AND ({Constants.GAMESTBL}.[Time Played] BETWEEN  {Constants.SEASONSTBL}.[End Date] AND {Constants.SEASONSTBL}.[Start Date]  )";
         public static string RANKGROUPBY = $"GROUP BY {Constants.RANKINGHISTORYTBL}.Season, {Constants.RANKINGHISTORYTBL}.[User], {Constants.RANKINGHISTORYTBL}.[Season Start Elo], {Constants.RANKINGHISTORYTBL}.[Rank Name], Ranking.[Rank ID]";
@@ -42,7 +44,7 @@ namespace DAL
         }
         public static DataTable FindAllPlayersInRankInSeason(int rankID, int season)
         {
-            return DalHelper.SelectTable($"{RANKSELECT} {RANKFROM} WHERE {Constants.RANKINGTBL}.[Rank ID] = {rankID} AND {Constants.RANKINGHISTORYTBL}.Season = {season} {RANKGROUPBY} {RANKHAVING}");
+            return DalHelper.SelectTable($"{FULLSELECT} WHERE R2.[Rank ID]= {rankID} AND T2.Season = {season} {FULLORDER}");
         }
     }
 }

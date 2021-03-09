@@ -3,5 +3,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:DropDownList ID="RanksDropDown" runat="server" AutoPostBack="True" DataTextField="name" DataValueField="ID" ItemType="Rank"></asp:DropDownList>
-    <%--<asp:GridView ID="GridView1" runat="server"></asp:GridView>--%>
+    <asp:GridView ID="Leaderboard" runat="server" AutoGenerateColumns="False">
+        <Columns>
+            <asp:BoundField DataField="User" />
+            <asp:BoundField DataField="ELO" />
+        </Columns>
+    </asp:GridView>
 </asp:Content>

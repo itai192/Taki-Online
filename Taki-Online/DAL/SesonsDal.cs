@@ -11,7 +11,7 @@ namespace DAL
         }
         public static int GetCurrentSeason()
         {
-            return (int)DalHelper.SelectRow($"SELECT * FROM {Constants.SEASONSTBL} WHERE {DateTime.Now.ToOADate().ToString()} BETWEEN {STARTDATE} AND {ENDDATE}")[SEASONID];
+            return (int)DalHelper.SelectRow($"SELECT * FROM {Constants.SEASONSTBL} WHERE {DateTime.Now.ToOADate().ToString()} BETWEEN {STARTDATE} AND {ENDDATE}")["Season ID"];
         }
     }
 }
