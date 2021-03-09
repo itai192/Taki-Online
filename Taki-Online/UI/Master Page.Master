@@ -12,6 +12,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <h1>Taki Online</h1>
             <asp:Table ID="Table1" runat="server" Width="100%" GridLines="Both">
                 <asp:TableRow runat="server">
                     <asp:TableCell runat="server">
