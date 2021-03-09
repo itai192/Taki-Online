@@ -5,8 +5,8 @@
     <asp:DropDownList ID="RanksDropDown" runat="server" AutoPostBack="True" DataTextField="name" DataValueField="ID" ItemType="Rank"></asp:DropDownList>
     <asp:GridView ID="Leaderboard" runat="server" AutoGenerateColumns="False">
         <Columns>
-            <asp:BoundField DataField="User" />
-            <asp:BoundField DataField="ELO" />
+            <asp:BoundField DataField="User" HeaderText="Username" />
+            <asp:BoundField DataField="ELO" HeaderText="Elo" />
         </Columns>
     </asp:GridView>
 </asp:Content>
