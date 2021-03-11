@@ -64,6 +64,10 @@
                 <asp:TableCell runat="server"><uc1:LoadingBar runat="server" ID="XpBar" inColor="Aqua" outColor="Red" /></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">
+                <asp:TableCell runat="server">ELO this season:</asp:TableCell>
+                <asp:TableCell runat="server"><asp:Label ID="EloLbl" runat="server"></asp:Label></asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow runat="server">
                 <asp:TableCell runat="server">Add Friends:</asp:TableCell>
                 <asp:TableCell runat="server"><asp:TextBox ID="AddFriendTxt" runat="server"></asp:TextBox>
                 <asp:Button ID="AddFriendBtn" runat="server" Text="Send Friend Request" OnClick="AddFriend" ValidationGroup="AddFriend" /><asp:Label ID="FriendAddMsg" runat="server" ViewStateMode="Disabled"></asp:Label><asp:CustomValidator ID="UserNotExist" runat="server" ValidationGroup="AddFriend" ErrorMessage="A user with this name doesn't exist" ControlToValidate="AddFriendTxt" OnServerValidate="FriendValidator_ServerValidate" Display="Dynamic"></asp:CustomValidator>

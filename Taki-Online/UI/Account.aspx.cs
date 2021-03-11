@@ -29,6 +29,7 @@ namespace UI
             Levellbl.Text = user.level.ToString();
             XpBar.outOf = user.XPUntilNextLevel();
             XpBar.progress = user.xp;
+            EloLbl.Text = user.elo.ToString();
         }
         protected void Page_LoadComplete(object sender, EventArgs e)
         {

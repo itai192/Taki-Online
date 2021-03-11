@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UI
-{
-
-
-    public partial class Account
-    {
-
+namespace UI {
+    
+    
+    public partial class Account {
+        
         /// <summary>
         /// FriendRequests control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataList FriendRequests;
-
+        
         /// <summary>
         /// FriendRequestErrorLbl control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label FriendRequestErrorLbl;
-
+        
         /// <summary>
         /// Friendslbl control.
         /// </summary>
@@ -40,7 +38,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Friendslbl;
-
+        
         /// <summary>
         /// Friends control.
         /// </summary>
@@ -49,7 +47,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.BulletedList Friends;
-
+        
         /// <summary>
         /// ProfilePicture control.
         /// </summary>
@@ -58,7 +56,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::UI.Custom_Controls.WebUserControl1 ProfilePicture;
-
+        
         /// <summary>
         /// FindFriendTxtBox control.
         /// </summary>
@@ -67,7 +65,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox FindFriendTxtBox;
-
+        
         /// <summary>
         /// ListView1 control.
         /// </summary>
@@ -76,7 +74,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView ListView1;
-
+        
         /// <summary>
         /// ProfilePictureUpload control.
         /// </summary>
@@ -85,7 +83,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::UI.Custom_Controls.ProfilePictureUpload ProfilePictureUpload;
-
+        
         /// <summary>
         /// UploadPhotoBtn control.
         /// </summary>
@@ -94,7 +92,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button UploadPhotoBtn;
-
+        
         /// <summary>
         /// Details control.
         /// </summary>
@@ -103,7 +101,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table Details;
-
+        
         /// <summary>
         /// UsernameLbl control.
         /// </summary>
@@ -112,7 +110,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label UsernameLbl;
-
+        
         /// <summary>
         /// ChngUsernameTxt control.
         /// </summary>
@@ -121,7 +119,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ChngUsernameTxt;
-
+        
         /// <summary>
         /// ChngUsernameBtn control.
         /// </summary>
@@ -130,7 +128,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ChngUsernameBtn;
-
+        
         /// <summary>
         /// UserExists control.
         /// </summary>
@@ -139,7 +137,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator UserExists;
-
+        
         /// <summary>
         /// RequiredUsername control.
         /// </summary>
@@ -148,7 +146,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredUsername;
-
+        
         /// <summary>
         /// Levellbl control.
         /// </summary>
@@ -157,7 +155,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Levellbl;
-
+        
         /// <summary>
         /// XpBar control.
         /// </summary>
@@ -166,7 +164,16 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::UI.Custom_Controls.Loading_Bar XpBar;
-
+        
+        /// <summary>
+        /// EloLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label EloLbl;
+        
         /// <summary>
         /// AddFriendTxt control.
         /// </summary>
@@ -175,7 +182,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox AddFriendTxt;
-
+        
         /// <summary>
         /// AddFriendBtn control.
         /// </summary>
@@ -184,7 +191,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button AddFriendBtn;
-
+        
         /// <summary>
         /// FriendAddMsg control.
         /// </summary>
@@ -193,7 +200,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label FriendAddMsg;
-
+        
         /// <summary>
         /// UserNotExist control.
         /// </summary>
@@ -202,7 +209,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator UserNotExist;
-
+        
         /// <summary>
         /// FriendValidator control.
         /// </summary>
@@ -211,7 +218,7 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator FriendValidator;
-
+        
         /// <summary>
         /// ChartsPanel control.
         /// </summary>

@@ -21,7 +21,12 @@ namespace BLL
                 _username = value;
             }
         }
-        public int elo { get { return (int)UsersInGamesDal.FindPlayerRankInSeason(DAL.SesonsDal.GetCurrentSeason(), username)["ELO"]; } }
+        public int elo { get
+            {
+                int elo =  (int)(double)UsersInGamesDal.FindPlayerRankInSeason(DAL.SesonsDal.GetCurrentSeason(), username)["ELO"];
+                return elo;
+            }
+        }
         //public string rankName { get {return UsersInGamesDal.FindPlayerRankInSeason(DAL.SesonsDal.GetCurrentSeason(), username)[DAL.RankDal.]; } } 
         public UserType type { get; }
         public string email { get; }
