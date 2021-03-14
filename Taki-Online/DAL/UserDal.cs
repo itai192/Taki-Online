@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 namespace DAL
 {
@@ -14,19 +10,20 @@ namespace DAL
         /// adds a user
         /// </summary>
         /// <returns>user ID</returns>
-        public static void AddUser(string email, string password, int type, string fName, string lName, DateTime bDate,string username)
+        public static void AddUser(string email, string password, int type, string fName, string lName, DateTime bDate, string username)
         {
-            string sql = DalHelper.SimpleInsertQuery(Constants.USERSTBL, new string[] { EMAILFLD,PASSWORDFLD,TYPEFLD,FIRSTNAMEFLD,LASTNAMEFLD,BIRTHDATEFLD,USERNAMEFLD } , new string[] { $"'{email}'", $"'{password}'", type.ToString(), $"'{fName}'", $"'{lName}'", bDate.ToOADate().ToString(), $"'{username}'" });
+            string sql = DalHelper.SimpleInsertQuery(Constants.USERSTBL, new string[] { EMAILFLD, PASSWORDFLD, TYPEFLD, FIRSTNAMEFLD, LASTNAMEFLD, BIRTHDATEFLD, USERNAMEFLD }, new string[] { $"'{email}'", $"'{password}'", type.ToString(), $"'{fName}'", $"'{lName}'", bDate.ToOADate().ToString(), $"'{username}'" });
             if (!DalHelper.insertWithoutCreatingID(sql))
                 throw new Exception("Couldn't Add User To db");
         }
-        /* static bool UpdateUser(string email, string password, bool isManager,int ID)
+        public static void UpdateUserXP(int xp, string username)
         {
-            string sql = DalHelper.SimpleUpdateQuery("Users", new string[] { "Email", "Password", "IsManager" }, new string[] { $"'{email}'", $"'{password}'", isManager.ToString()},$"ID={ID}");
-            return DalHelper.Update(sql)==1;
+            DalHelper.Update(DalHelper.SimpleUpdateQuery(Constants.USERSTBL, $"{XPFLD} = {xp}", $"{USERNAMEFLD} = '{username}' "));
         }
-        To Fix
-        */
+        public static void UpdateUserLevel(int level, string username)
+        {
+            DalHelper.Update(DalHelper.SimpleUpdateQuery(Constants.USERSTBL, $"{LEVELFLD} = {level}", $"{USERNAMEFLD} = '{username}'"));
+        }
         public static DataRow SelectUser(string username)
         {
             return DalHelper.SelectRow($"SELECT * FROM {Constants.USERSTBL} WHERE {USERNAMEFLD}='{username}'");
@@ -45,7 +42,7 @@ namespace DAL
         }
         public static void UpdateUsername(string oldUsername, string newUsername)
         {
-            DalHelper.Update(DalHelper.SimpleUpdateQuery(Constants.USERSTBL, new string[] {USERNAMEFLD}, new string[] {$"'{newUsername}'" }, $"{USERNAMEFLD} = '{oldUsername}'" ));
+            DalHelper.Update(DalHelper.SimpleUpdateQuery(Constants.USERSTBL, new string[] { USERNAMEFLD }, new string[] { $"'{newUsername}'" }, $"{USERNAMEFLD} = '{oldUsername}'"));
         }
     }
 }

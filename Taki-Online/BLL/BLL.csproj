@@ -46,6 +46,7 @@
     <Compile Include="Broadcast.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="Cards.cs" />
+    <Compile Include="Elo.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Players.cs" />
