@@ -21,13 +21,19 @@ namespace BLL
                 _username = value;
             }
         }
+        public Rank rank
+        {
+            get
+            {
+                return new Rank(DAL.UsersInGamesDal.FindPlayerRankInSeason(DAL.SesonsDal.GetCurrentSeason(),username));
+            }
+        }
         public int elo { get
             {
                 int elo =  (int)(double)UsersInGamesDal.FindPlayerRankInSeason(DAL.SesonsDal.GetCurrentSeason(), username)["ELO"];
                 return elo;
             }
         }
-        //public string rankName { get {return UsersInGamesDal.FindPlayerRankInSeason(DAL.SesonsDal.GetCurrentSeason(), username)[DAL.RankDal.]; } } 
         public UserType type { get; }
         public string email { get; }
         public DateTime BirthDate { get; }
@@ -37,7 +43,7 @@ namespace BLL
             set 
             {
                 _level = value;
-                //update
+                DAL.UserDal.UpdateUserLevel(_level, username);
             } 
         }
         private int _xp;
@@ -51,7 +57,7 @@ namespace BLL
             {
                 _xp = xp;
                 LevelUpIfCan();
-                //update
+                DAL.UserDal.UpdateUserXP(_xp,username);
             }
         }
         public string fName { get; }
@@ -82,7 +88,7 @@ namespace BLL
             if (_xp >= xpuntill)
             { 
                 level++;
-                xp-=xpuntill;
+                _xp-=xpuntill;
             }
         }
         public int XPUntilNextLevel()
