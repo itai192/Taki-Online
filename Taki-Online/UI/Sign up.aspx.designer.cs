@@ -195,13 +195,13 @@ namespace UI
         protected global::System.Web.UI.WebControls.RequiredFieldValidator FirstNameValidator;
 
         /// <summary>
-        /// Label1 control.
+        /// LastNameLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label LastNameLbl;
 
         /// <summary>
         /// LName control.

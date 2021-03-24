@@ -16,6 +16,9 @@ namespace UI
             {
                 BuildYearSelect();
             }
+        }
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
             Validate();
         }
        public void CalanderValidation(object source, ServerValidateEventArgs args)
@@ -57,6 +60,11 @@ namespace UI
         {
             Calendar.VisibleDate = new DateTime(int.Parse(YearSelect.SelectedValue), Calendar.SelectedDate.Month, 1);
             
+        }
+
+        protected void DateSelectionChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
