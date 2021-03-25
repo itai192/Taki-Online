@@ -44,5 +44,9 @@ namespace DAL
         {
             DalHelper.Update(DalHelper.SimpleUpdateQuery(Constants.USERSTBL, new string[] { USERNAMEFLD }, new string[] { $"'{newUsername}'" }, $"{USERNAMEFLD} = '{oldUsername}'"));
         }
+        public static DataTable SearchUsername(string searchTerm)
+        {
+            return DalHelper.SelectTable($"SELECT * FROM {Constants.USERSTBL} WHERE {USERNAMEFLD} LIKE '%{searchTerm}%'");
+        }
     }
 }

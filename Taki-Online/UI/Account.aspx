@@ -3,18 +3,21 @@
 <%@ Register Src="~/Custom Controls/Loading Bar.ascx" TagPrefix="uc1" TagName="LoadingBar" %>
 <%@ Register Src="~/Custom Controls/ProfilePicture.ascx" TagPrefix="uc1" TagName="ProfilePicture" %>
 <%@ Register Src="~/Custom Controls/ProfilePictureUpload.ascx" TagPrefix="uc1" TagName="ProfilePictureUpload" %>
+<%@ Register Src="~/Custom Controls/UserCard.ascx" TagPrefix="uc1" TagName="UserCard" %>
+
+
+
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
     <asp:DataList ID="FriendRequests" runat="server" OnItemCommand="FriendRequests_ItemCommand" OnItemCreated="FriendRequests_ItemCreated">
         <HeaderTemplate>
             Friend Requests
         </HeaderTemplate>
         <ItemTemplate>
-            <asp:Label ID="FrUsername" runat="server" Text="<%# Container.DataItem %>"></asp:Label>
+            <uc1:UserCard runat="server" id="UserCard" />
             <asp:Button ID="Accept" runat="server" Text="Accept" CommandName="Accept" CommandArgument="<%# Container.DataItem %>" />
             <asp:Button ID="Decline" runat="server" Text="Decline" CommandName="Decline" CommandArgument="<%# Container.DataItem %>" />
         </ItemTemplate>

@@ -16,7 +16,6 @@
             <asp:TableCell runat="server">Rank:</asp:TableCell>
             <asp:TableCell runat="server"><asp:Label ID="RankLbl" runat="server" ></asp:Label></asp:TableCell>
         </asp:TableRow>
-        
     </asp:Table>
     
         

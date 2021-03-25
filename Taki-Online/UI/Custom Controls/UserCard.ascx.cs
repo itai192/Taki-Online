@@ -10,6 +10,10 @@ namespace UI.Custom_Controls
     public partial class UserCard : System.Web.UI.UserControl
     {
         private User _user;
+        public User tray
+        {
+            get;set;
+        }
         public User user
         {
             get

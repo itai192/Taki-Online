@@ -17,7 +17,7 @@ namespace BLL
         {
             DataTable dt = RankDal.GetAllRanks();
             List<Rank> ranks = new List<Rank>();
-            foreach(DataRow dr in dt.Rows)
+            foreach (DataRow dr in dt.Rows)
             {
                 ranks.Add(new Rank(dr));
             }
@@ -36,7 +36,7 @@ namespace BLL
         public static List<T> DataTableToList<T>(DataTable dt, string field)
         {
             List<T> l = new List<T>();
-            foreach(DataRow dr in dt.Rows)
+            foreach (DataRow dr in dt.Rows)
             {
                 l.Add(dr.Field<T>(field));
             }
@@ -52,6 +52,20 @@ namespace BLL
         public static bool UserExists(string username)
         {
             return UserDal.ExistUsername(username);
+        }
+        public static List<User> UserListFromDataTable(DataTable dt)
+        {
+            List<User> ret = new List<User>();
+            List<string> usernames = DataTableToList<string>(dt, DAL.UserDal.USERNAMEFLD);
+            foreach(string name in usernames)
+            {
+                ret.Add(new User(name));
+            }
+            return ret;
+        }
+        public static List<User> SearchUser(string searchTerm)
+        {
+            return UserListFromDataTable(DAL.UserDal.SearchUsername(searchTerm));
         }
     }
 }
