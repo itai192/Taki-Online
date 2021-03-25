@@ -33,22 +33,13 @@ namespace UI
         protected global::System.Web.UI.WebControls.Label FriendRequestErrorLbl;
 
         /// <summary>
-        /// Friendslbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Friendslbl;
-
-        /// <summary>
         /// Friends control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.BulletedList Friends;
+        protected global::System.Web.UI.WebControls.DataList Friends;
 
         /// <summary>
         /// ProfilePicture control.

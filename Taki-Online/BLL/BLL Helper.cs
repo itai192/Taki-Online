@@ -55,9 +55,12 @@ namespace BLL
         }
         public static List<User> UserListFromDataTable(DataTable dt)
         {
+            return UserListFromUsernameList(DataTableToList<string>(dt, DAL.UserDal.USERNAMEFLD));
+        }
+        public static List<User> UserListFromUsernameList(List<string> usernames)
+        {
             List<User> ret = new List<User>();
-            List<string> usernames = DataTableToList<string>(dt, DAL.UserDal.USERNAMEFLD);
-            foreach(string name in usernames)
+            foreach (string name in usernames)
             {
                 ret.Add(new User(name));
             }

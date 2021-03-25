@@ -37,7 +37,7 @@ namespace UI
             ProfilePicture.pictureName = user.picture;
             FriendRequests.DataSource = user.UnopenedFriendRequests;
             FriendRequests.DataBind();
-            Friends.DataSource = user.AcceptedFriends;
+            Friends.DataSource = BLL_Helper.UserListFromUsernameList(user.AcceptedFriends);
             Friends.DataBind();
         }
 
@@ -97,10 +97,6 @@ namespace UI
                     FriendAddMsg.Text = ex.Message;
                 }
             }
-        }
-        protected void FriendRequests_ItemCreated(object sender, DataListItemEventArgs e)
-        {
-            
         }
     }
 }

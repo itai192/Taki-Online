@@ -39,7 +39,7 @@ namespace DAL
         }
         public static DataRow FindPlayerRankInSeason(int season, string username)
         {
-            return DalHelper.SelectRow($"{RANKSELECT} {RANKFROM} WHERE {Constants.RANKINGHISTORYTBL}.[User] = '{username}' AND {Constants.RANKINGHISTORYTBL}.Season = {season} {RANKGROUPBY}");
+            return DalHelper.SelectRow($"{FULLSELECT} WHERE {Constants.RANKINGHISTORYTBL}.[User] = '{username}' AND {Constants.RANKINGHISTORYTBL}.Season = {season}");
         }
         public static DataTable FindAllPlayersInRankInSeason(int rankID, int season)
         {

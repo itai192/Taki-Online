@@ -25,7 +25,7 @@ namespace BLL
         {
             get
             {
-                return new Rank(DAL.UsersInGamesDal.FindPlayerRankInSeason(DAL.SesonsDal.GetCurrentSeason(),username));
+                return new Rank((int)DAL.UsersInGamesDal.FindPlayerRankInSeason(DAL.SesonsDal.GetCurrentSeason(),username)["Rank ID"]);
             }
         }
         public int elo { get

@@ -12,7 +12,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:DataList ID="FriendRequests" runat="server" OnItemCommand="FriendRequests_ItemCommand" OnItemCreated="FriendRequests_ItemCreated">
+    <asp:DataList ID="FriendRequests" runat="server" OnItemCommand="FriendRequests_ItemCommand">
         <HeaderTemplate>
             Friend Requests
         </HeaderTemplate>
@@ -21,11 +21,17 @@
             <asp:Button ID="Accept" runat="server" Text="Accept" CommandName="Accept" CommandArgument="<%# Container.DataItem %>" />
             <asp:Button ID="Decline" runat="server" Text="Decline" CommandName="Decline" CommandArgument="<%# Container.DataItem %>" />
         </ItemTemplate>
-    </asp:DataList><asp:Label ID="FriendRequestErrorLbl" runat="server" Visible="False"></asp:Label>
+    </asp:DataList>
+    <asp:Label ID="FriendRequestErrorLbl" runat="server" Visible="False"></asp:Label>
     <br />
-    <asp:Label ID="Friendslbl" runat="server" Text="Friends" ViewStateMode="Disabled"></asp:Label>
-    <br/>
-    <asp:BulletedList ID="Friends" runat="server"></asp:BulletedList>
+    <asp:DataList ID="Friends" runat="server">
+        <HeaderTemplate>
+            Friends
+        </HeaderTemplate>
+        <ItemTemplate>
+            <uc1:UserCard runat="server" id="UserCard1" user=<%# Container.DataItem %> />
+        </ItemTemplate>
+    </asp:DataList>
     <br />
     <uc1:profilepicture runat="server" id="ProfilePicture" height="15 em" width="15 em" />
     <br/>
