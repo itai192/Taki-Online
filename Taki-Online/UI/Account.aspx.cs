@@ -35,7 +35,7 @@ namespace UI
         {
             UsernameLbl.Text = user.username;
             ProfilePicture.pictureName = user.picture;
-            FriendRequests.DataSource = user.UnopenedFriendRequests;
+            FriendRequests.DataSource = BLL_Helper.UserListFromUsernameList(user.UnopenedFriendRequests);
             FriendRequests.DataBind();
             Friends.DataSource = BLL_Helper.UserListFromUsernameList(user.AcceptedFriends);
             Friends.DataBind();

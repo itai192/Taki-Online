@@ -35,7 +35,7 @@
     <br />
     <uc1:profilepicture runat="server" id="ProfilePicture" height="15 em" width="15 em" />
     <br/>
-    <asp:TextBox ID="FindFriendTxtBox" runat="server"></asp:TextBox><br />
+    
     <asp:ListView ID="ListView1" runat="server">
         <LayoutTemplate>
             <asp:Table ID="Table1" runat="server">
@@ -83,7 +83,16 @@
                 <asp:CustomValidator ID="FriendValidator" runat="server" ErrorMessage=""></asp:CustomValidator></asp:TableCell>
             </asp:TableRow>
         </asp:Table>
-    
+    <asp:DataList ID="DataList1" runat="server">
+        <HeaderTemplate>
+            Add Friends<br />
+            <asp:TextBox ID="FindFriendTxtBox" runat="server"></asp:TextBox><br />
+            <asp:Button ID="SearchFriendsBtn" runat="server" Text="Search!" />
+        </HeaderTemplate>
+        <ItemTemplate>
+            <uc1:UserCard runat="server" id="UserCard1" user=<%# Container.DataItem %> />
+        </ItemTemplate>
+    </asp:DataList>
     <asp:Panel ID="ChartsPanel" runat="server">
 
     
