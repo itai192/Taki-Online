@@ -17,7 +17,7 @@
             Friend Requests
         </HeaderTemplate>
         <ItemTemplate>
-            <uc1:UserCard runat="server" id="UserCard" />
+            <uc1:UserCard runat="server" id="UserCard1" />
             <asp:Button ID="Accept" runat="server" Text="Accept" CommandName="Accept" CommandArgument="<%# Container.DataItem %>" />
             <asp:Button ID="Decline" runat="server" Text="Decline" CommandName="Decline" CommandArgument="<%# Container.DataItem %>" />
         </ItemTemplate>

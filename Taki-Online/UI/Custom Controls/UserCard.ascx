@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserCard.ascx.cs" Inherits="UI.Custom_Controls.UserCard" %>
 <%@ Register src="ProfilePicture.ascx" tagname="ProfilePicture" tagprefix="uc1" %>
 <asp:Panel ID="Panel1" runat="server" Width="">
-    <uc1:ProfilePicture ID="ProfilePicture" runat="server" height="3lh" pictureName="3lh" width="3lh" ViewStateMode="Enabled" />
+    <uc1:ProfilePicture ID="ProfilePicture" runat="server" height="3em" pictureName="3lh" width="3em" ViewStateMode="Enabled" />
     <asp:Table ID="Details" runat="server">
         
         <asp:TableRow runat="server">
