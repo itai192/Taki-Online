@@ -25,12 +25,27 @@ namespace BLL
         {
             get
             {
-                return new Rank((int)DAL.UsersInGamesDal.FindPlayerRankInSeason(DAL.SesonsDal.GetCurrentSeason(),username)["Rank ID"]);
+                try
+                {
+                    return new Rank((int)DAL.UsersInGamesDal.FindPlayerRankInSeason(DAL.SesonsDal.GetCurrentSeason(), username)["Rank ID"]);
+                }
+                catch
+                {
+                    return new Rank((int)DAL.UsersInGamesDal.FindPlayerStartRankInSeason(DAL.SesonsDal.GetCurrentSeason(), username)["Rank ID"]);
+                }
             }
         }
         public int elo { get
             {
-                int elo =  (int)(double)UsersInGamesDal.FindPlayerRankInSeason(DAL.SesonsDal.GetCurrentSeason(), username)["ELO"];
+                try
+                {
+                    int elo = (int)(double)UsersInGamesDal.FindPlayerRankInSeason(DAL.SesonsDal.GetCurrentSeason(), username)["ELO"];
+                }
+                catch
+                {
+                    int elo = (int)(double)UsersInGamesDal.FindPlayerStartRankInSeason(DAL.SesonsDal.GetCurrentSeason(), username)["ELO"];
+                    return elo;
+                }
                 return elo;
             }
         }
@@ -171,6 +186,10 @@ namespace BLL
             fName = dr["First Name"].ToString();
             lName = dr["Last Name"].ToString();
             _picture = dr[UserDal.PICTUREFLD].ToString();
+        }
+        public override bool Equals(object obj)
+        {
+            return obj is User && ((User)obj).username==this.username;
         }
     }
     

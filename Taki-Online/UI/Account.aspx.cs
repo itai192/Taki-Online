@@ -26,6 +26,9 @@ namespace UI
         protected void Page_Load(object sender, EventArgs e)
         {
             user = (User)Session["User"];
+            UnopenedFriendRequests = user.UnopenedFriendRequests;
+            AcceptedFriends = user.AcceptedFriends;
+            DeclinedFriends = user.DeclinedFriends;
             Levellbl.Text = user.level.ToString();
             XpBar.outOf = user.XPUntilNextLevel();
             XpBar.progress = user.xp;
@@ -84,19 +87,52 @@ namespace UI
             if (!BLL_Helper.UserExists(args.Value))
                 args.IsValid = false;
         }
-        protected void AddFriend(object sender, EventArgs e)
+        //protected void AddFriend(object sender, EventArgs e)
+        //{
+        //    if (IsValid)
+        //    {
+        //        try
+        //        {
+        //            FriendAddMsg.Text = user.AddFriend(AddFriendTxt.Text);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            FriendAddMsg.Text = ex.Message;
+        //        }
+        //    }
+        //}
+
+        protected void GridSearchGridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (IsValid)
+            if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                try
+                User us = (User)e.Row.DataItem;
+                Button button = (Button)e.Row.FindControl("AddFriendBtn");
+                if (AcceptedFriends.Contains(us.username) || UnopenedFriendRequests.Contains(us.username))
                 {
-                    FriendAddMsg.Text = user.AddFriend(AddFriendTxt.Text);
+                    button.Enabled = false;
                 }
-                catch (Exception ex)
-                {
-                    FriendAddMsg.Text = ex.Message;
-                }
-            }
+        }
+    }
+
+        protected void SearchFriendsBtn_Click(object sender, EventArgs e)
+        {
+            List<User> results = BLL_Helper.SearchUser(FindFriendTxtBox.Text);
+            results.Remove(user);
+            ViewState["SearchTerm"] = FindFriendTxtBox.Text;
+            UserSearch.DataSource = results;
+            UserSearch.DataBind();
+        }
+
+        
+
+        protected void UserSearch_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            UserSearch.PageIndex=e.NewPageIndex;
+            List<User> results = BLL_Helper.SearchUser(ViewState["SearchTerm"].ToString());
+            results.Remove(user);
+            UserSearch.DataSource = results;
+            UserSearch.DataBind();
         }
     }
 }

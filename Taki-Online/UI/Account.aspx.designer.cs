@@ -51,15 +51,6 @@ namespace UI
         protected global::UI.Custom_Controls.WebUserControl1 ProfilePicture;
 
         /// <summary>
-        /// ListView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ListView1;
-
-        /// <summary>
         /// ProfilePictureUpload control.
         /// </summary>
         /// <remarks>
@@ -159,58 +150,40 @@ namespace UI
         protected global::System.Web.UI.WebControls.Label EloLbl;
 
         /// <summary>
-        /// AddFriendTxt control.
+        /// FindFriendTxtBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox AddFriendTxt;
+        protected global::System.Web.UI.WebControls.TextBox FindFriendTxtBox;
 
         /// <summary>
-        /// AddFriendBtn control.
+        /// SearchFriendsBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AddFriendBtn;
+        protected global::System.Web.UI.WebControls.Button SearchFriendsBtn;
 
         /// <summary>
-        /// FriendAddMsg control.
+        /// UserSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label FriendAddMsg;
+        protected global::System.Web.UI.WebControls.GridView UserSearch;
 
         /// <summary>
-        /// UserNotExist control.
+        /// RequiredSearchString control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator UserNotExist;
-
-        /// <summary>
-        /// FriendValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator FriendValidator;
-
-        /// <summary>
-        /// DataList1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList DataList1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredSearchString;
 
         /// <summary>
         /// ChartsPanel control.

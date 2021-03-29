@@ -30,5 +30,6 @@ namespace DAL
         {
             return DalHelper.SelectRow($"SELECT * FROM {Constants.RANKINGTBL} WHERE [Rank ID] = {rankID}");
         }
+
     }
 }
