@@ -13,8 +13,8 @@
         </HeaderTemplate>
         <ItemTemplate>
             <uc1:UserCard runat="server" id="UserCard1" user=<%# Container.DataItem %> />
-            <asp:Button ID="Accept" runat="server" Text="Accept" CommandName="Accept" CommandArgument="<%# Container.DataItem %>" />
-            <asp:Button ID="Decline" runat="server" Text="Decline" CommandName="Decline" CommandArgument="<%# Container.DataItem %>" />
+            <asp:Button ID="Accept" runat="server" Text="Accept" CommandName="Accept" CommandArgument='<%# Container.DataItem.ToString() %>' />
+            <asp:Button ID="Decline" runat="server" Text="Decline" CommandName="Decline" CommandArgument='<%# Container.DataItem.ToString() %>' />
         </ItemTemplate>
     </asp:DataList>
     <asp:Label ID="FriendRequestErrorLbl" runat="server" Visible="False"></asp:Label>
@@ -63,16 +63,16 @@
             <asp:TextBox ID="FindFriendTxtBox" runat="server" ControlToValidate="FindFriendTxtBox" ValidationGroup="SearchUsers"></asp:TextBox><br />
             <asp:Button ID="SearchFriendsBtn" runat="server" Text="Search!" OnClick="SearchFriendsBtn_Click" ValidationGroup="SearchUsers" />
     </div>
-    <asp:GridView ID="UserSearch" runat="server" GridLines="None" PageSize="4" ItemType="BLL.User" AutoGenerateColumns="False" ShowHeader="False" OnRowDataBound="GridSearchGridView_RowDataBound" EmptyDataText="No users were found" AllowPaging="True" OnPageIndexChanging="UserSearch_PageIndexChanging" ViewStateMode="Enabled" >
+    <asp:GridView ID="UserSearch" runat="server" GridLines="None" PageSize="4" ItemType="BLL.User" AutoGenerateColumns="False" ShowHeader="False" OnRowDataBound="GridSearchGridView_RowDataBound" EmptyDataText="No users were found" AllowPaging="True" OnPageIndexChanging="UserSearch_PageIndexChanging" OnRowCommand="UserSearch_RowCommand" ViewStateMode="Enabled" >
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <uc1:UserCard runat="server" ID="UserCard" user='<%#Item%>'/>
+                    <uc1:UserCard runat="server" ID="UserCard" user=<%#Item%>/>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:Button ID="AddFriendBtn" runat="server" Text="Add Friend" CommandName="AddFriend" />
+                    <asp:Button ID="AddFriendBtn" runat="server" Text="Add Friend" CommandName="AddFriend" CommandArgument=<%#Item.username%> />
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>

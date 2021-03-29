@@ -40,13 +40,14 @@ namespace BLL
                 try
                 {
                     int elo = (int)(double)UsersInGamesDal.FindPlayerRankInSeason(DAL.SesonsDal.GetCurrentSeason(), username)["ELO"];
+                    return elo;
                 }
                 catch
                 {
-                    int elo = (int)(double)UsersInGamesDal.FindPlayerStartRankInSeason(DAL.SesonsDal.GetCurrentSeason(), username)["ELO"];
+                    int elo = (int)UsersInGamesDal.FindPlayerStartRankInSeason(DAL.SesonsDal.GetCurrentSeason(), username)["ELO"];
                     return elo;
                 }
-                return elo;
+                
             }
         }
         public UserType type { get; }
@@ -126,6 +127,10 @@ namespace BLL
         {
             get { return BLL_Helper.DataTableToList<string>(DAL.FriendsDal.FriendRequestsWithStatusRecieved(username, (int)FriendRequestStatus.Unopened), FriendsDal.SENDERFLD); }
         }
+        public List<string> UnopenedSentFriendRequests
+        {
+            get { return BLL_Helper.DataTableToList<string>(DAL.FriendsDal.FriendRequestsWithStatusSent(username, (int)FriendRequestStatus.Unopened), FriendsDal.RECIPIANTFLD); }
+        }
         public User(string username) : this(UserDal.SelectUser(username))
         {
 
@@ -191,6 +196,9 @@ namespace BLL
         {
             return obj is User && ((User)obj).username==this.username;
         }
+        public override string ToString()
+        {
+            return username;
+        }
     }
-    
 }
