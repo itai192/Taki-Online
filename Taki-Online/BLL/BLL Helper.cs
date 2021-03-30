@@ -70,5 +70,9 @@ namespace BLL
         {
             return UserListFromDataTable(DAL.UserDal.SearchUsername(searchTerm));
         }
+        public static bool IsGameWithNameStarting(string name)
+        {
+            return DAL.GameDal.IsGameExistWithNameAndActivity(name, (int)GameStatus.Starting);
+        }
     }
 }

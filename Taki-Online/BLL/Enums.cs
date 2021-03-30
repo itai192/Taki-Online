@@ -16,13 +16,6 @@ namespace BLL
         User,
         Manager
     }
-    public enum GameType
-    {
-        Competetive,
-        Casual,
-        Custom,
-        PrivateCustom
-    }
     public enum GameStatus
     {
         Starting,
