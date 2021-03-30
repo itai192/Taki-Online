@@ -10,14 +10,20 @@ namespace UI
 {
     public partial class Game : System.Web.UI.Page
     {
-        BLL.Game game;
-        BLL.Player player;
+        public BLL.Game game;
+        public BLL.Player player;
+        public User user;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["User"]==null)
+            {
+                Response.Redirect("~/Home.aspx");
+            }
+            user = (User)Session["User"];
             game = (BLL.Game)Application["Game"];
             if(Session["Player"]==null)
             {
-                Session["Player"] = game.AddPlayer();
+                Session["Player"] = game.AddPlayer(user);
                 Response.Redirect("Game.aspx");
             }
             player = (BLL.Player)Session["Player"];
@@ -40,7 +46,6 @@ namespace UI
             {
                 Statuslbl.Text = ex.Message;
             }
-            
         }
         protected void TryUse(object sender, CardEventArgs e)
         {
