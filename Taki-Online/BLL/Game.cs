@@ -222,9 +222,24 @@ namespace BLL
                 l.RemoveAt(num);
             }
         }
-        public Player AddPlayer()
+        private bool IsUserInGame(User user)
         {
-            Player player = new Player(this);
+            foreach(Player p in players)
+            {
+                if(p.user.Equals(user))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public Player AddPlayer(User user)
+        {
+            if(IsUserInGame(user))
+            {
+                throw new Exception("This user is already in the game");
+            }
+            Player player = new Player(this,user);
             players.Add(player);
             for(int i = 0;i<NUMCARDS;i++)
             {

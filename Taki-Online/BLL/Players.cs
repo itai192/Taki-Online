@@ -11,7 +11,11 @@ namespace BLL
 {
     public class Player
     {
-        //private User user;
+        public User user
+        {
+            get;
+            private set;
+        }
         public int numberOfCards
         {
             get
@@ -103,10 +107,11 @@ namespace BLL
         }
         public SimplePlayer ToSimplePlayer()
         {
-            return new SimplePlayer(this);
+            return new SimplePlayer(this, user);
         }
-        internal Player(Game game)
+        internal Player(Game game, User user)
         {
+            this.user = user;
             this.game = game;
             broadcastsToDo = new Queue<Game.IPlayerBroadcast>();
             hand = new List<Card>();
@@ -125,12 +130,18 @@ namespace BLL
     public class SimplePlayer
     {
         private Player player;
+        public User user
+        {
+            get;
+            private set;
+        }
         public bool IsPlayer(Player player)
         {
             return this.player == player;
         }
-        public SimplePlayer(Player p)
+        public SimplePlayer(Player p, User user)
         {
+            this.user = user;
             player = p;
             NumberOfCards = p.numberOfCards;
         }
