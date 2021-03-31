@@ -35,7 +35,7 @@ namespace DAL
         }
         public static DataTable SearchGame(string searchTerm,int activity)
         {
-            return DalHelper.SelectTable($"SELECT * FROM {Constants.GAMESTBL} WHERE {GAMENAMEFLD} LIKE '%{searchTerm}%', AND {ACTIVITYFLD} = {activity} ORDER BY {TIMEPLAYED} DESC");
+            return DalHelper.SelectTable($"SELECT * FROM {Constants.GAMESTBL} WHERE {GAMENAMEFLD} LIKE '%{searchTerm}%' AND {ACTIVITYFLD} = {activity} ORDER BY {TIMEPLAYED} DESC");
         }
     }
 }

@@ -17,6 +17,13 @@ namespace BLL
         }
         public string _gameName;
         private GameStatus _status;
+        public List<string> users
+        {
+            get
+            {
+                return BLL_Helper.DataTableToList<string>(UsersInGamesDal.FindUsersInGame(GameID),"User");
+            }
+        }
         public GameStatus status
         {
             get { return _status; }
@@ -48,7 +55,9 @@ namespace BLL
         private Game game;
         public Player AddUserToGame(User user)//tofix
         {
+            UsersInGamesDal.AddUserToGame(user.username, this.GameID);
             return game.AddPlayer(user);
+
         }
         public void ValidateName(string name)
         {
@@ -80,10 +89,11 @@ namespace BLL
         }
         public GameRoom(DataRow dr)
         {
-            this.GameID = (int)dr[GameDal.GAMEIDFLD];
+            this.GameID = (int)dr["Game ID"];
             UpdateObject(dr);
-            if (status != GameStatus.Ended)
-                game = games[GameID];
+            //if (status != GameStatus.Ended)
+            //    game = games[GameID];
+            //to fix
         }
         public void UpdateRoom()
         {
@@ -92,7 +102,7 @@ namespace BLL
         }
         public void UpdateObject(DataRow dr)
         {
-            _gameName = dr[GameDal.GAMENAMEFLD].ToString();
+            _gameName = dr["Game Name"].ToString();
             status = (GameStatus)dr[GameDal.ACTIVITYFLD];
             _host = dr[GameDal.HOSTFLD].ToString();
         }

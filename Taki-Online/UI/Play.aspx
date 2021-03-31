@@ -6,19 +6,19 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Panel ID="SearchPanel" runat="server">
-        <asp:TextBox ID="GameText" runat="server"></asp:TextBox><asp:Button ID="SearchBtn" runat="server" Text="Search Game!" />
+        <asp:TextBox ID="SearchText" runat="server" ></asp:TextBox><asp:Button ID="SearchBtn" runat="server" Text="Search Game!" OnClick="SearchBtn_Click" />
     </asp:Panel>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" ItemType="BLL.GameRoom">
+    <asp:GridView ID="Games" runat="server" AutoGenerateColumns="False" ItemType="BLL.GameRoom" EmptyDataText="There does not apear to be games, try searching for another name or try creating one yourselves" AllowPaging="True" OnPageIndexChanging="Games_PageIndexChanging" PageSize="6" OnRowCommand="Games_RowCommand">
         <Columns>
             <asp:BoundField DataField="GameID" HeaderText="ID" />
             <asp:BoundField DataField="GameName" HeaderText="Game Name" />
-            <asp:BoundField />
+            <asp:BoundField DataField="users.Count" HeaderText="Players In Game" />
             <asp:TemplateField HeaderText="Host">
                 <ItemTemplate>
-                    <uc1:usercard runat="server" id="UserCard" user=<%#Item.host;%> /> />
+                    <uc1:usercard runat="server" id="UserCard" user='<%#Item.host%>' />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:ButtonField Text="Join Game" ButtonType="Button" />
+            <asp:ButtonField Text="Join Game" ButtonType="Button" CommandName="Join" />
         </Columns>
     </asp:GridView>
 </asp:Content>

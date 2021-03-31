@@ -50,5 +50,9 @@ namespace DAL
         {
             return DalHelper.SelectRow($"{STARTSELECT} WHERE {Constants.RANKINGHISTORYTBL}.[User] = '{username}' AND {Constants.RANKINGHISTORYTBL}.Season = {season}");
         }
+        public static DataTable FindUsersInGame(int gameID)
+        {
+            return DalHelper.SelectTable($"SELECT * FROM {Constants.USERSINGAMESTBL} WHERE {GAME} = {gameID}");
+        }
     }
 }

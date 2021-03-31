@@ -24,13 +24,13 @@ namespace UI
         protected global::System.Web.UI.WebControls.Panel SearchPanel;
 
         /// <summary>
-        /// GameText control.
+        /// SearchText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox GameText;
+        protected global::System.Web.UI.WebControls.TextBox SearchText;
 
         /// <summary>
         /// SearchBtn control.
@@ -42,12 +42,12 @@ namespace UI
         protected global::System.Web.UI.WebControls.Button SearchBtn;
 
         /// <summary>
-        /// GridView1 control.
+        /// Games control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView Games;
     }
 }

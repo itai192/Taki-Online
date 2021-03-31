@@ -18,7 +18,7 @@ namespace UI
             {
                 User u = (User)Session["User"];
                 up.Cells.Add(CreateLinkCell(@"..\Ladders.aspx", "Ladders"));
-                up.Cells.Add(CreateLinkCell(@"..\Game.aspx", "Play!"));
+                up.Cells.Add(CreateLinkCell(@"..\Play.aspx", "Play!"));
                 up.Cells.Add(CreateButtonCell(LogOut, "Log Out"));
                 if (u.type==UserType.Manager)
                 {
