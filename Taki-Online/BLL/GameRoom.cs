@@ -10,9 +10,22 @@ namespace BLL
     class GameRoom
     {
         private static Dictionary<int,Game> games = new Dictionary<int,Game>();
-        private string host;
+        private string _host;
+        public User host
+        {
+            get { return new User(_host); }
+        }
         public string _gameName;
-        private GameStatus status;
+        private GameStatus _status;
+        public GameStatus status
+        {
+            get { return _status; }
+            set
+            {
+                GameDal.ChangeGameActivity((int)value, GameID);
+                _status = value;
+            }
+        }
         public string gameName
         {
             get
@@ -26,7 +39,7 @@ namespace BLL
                 _gameName = value;
             }
         }
-
+        
         public int GameID
         {
             get;
@@ -51,24 +64,28 @@ namespace BLL
         public GameRoom(User host, string gameName)
         {
             ValidateName(gameName);
-            this.host = host.username;
+            this._host = host.username;
             this._gameName = gameName;
-            status = GameStatus.Starting;
-            GameID = GameDal.AddGame(gameName,this.host,(int)status);
+            _status = GameStatus.Starting;
+            GameID = GameDal.AddGame(gameName,this._host,(int)status);
             game = new Game();
             games.Add(GameID, game);
         }
         public GameRoom(int ID)
         {
             GameID = ID;
-            UpdateObject();
-            game = games[GameID];
+            UpdateRoom();
+            if(status!=GameStatus.Ended)
+                game = games[GameID];
         }
         public GameRoom(DataRow dr)
         {
-            //toimplement
+            this.GameID = (int)dr[GameDal.GAMEIDFLD];
+            UpdateObject(dr);
+            if (status != GameStatus.Ended)
+                game = games[GameID];
         }
-        public void UpdateObject()
+        public void UpdateRoom()
         {
             DataRow dr = GameDal.FindGameByID(GameID);
             UpdateObject(dr);
@@ -76,8 +93,8 @@ namespace BLL
         public void UpdateObject(DataRow dr)
         {
             _gameName = dr[GameDal.GAMENAMEFLD].ToString();
-            status = (GameStatus)dr[GameDal.ACTIVITFLD];
-            host = dr[GameDal.HOSTFLD].ToString();
+            status = (GameStatus)dr[GameDal.ACTIVITYFLD];
+            _host = dr[GameDal.HOSTFLD].ToString();
         }
     }
 }

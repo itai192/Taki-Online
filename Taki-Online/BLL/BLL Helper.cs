@@ -74,5 +74,18 @@ namespace BLL
         {
             return DAL.GameDal.IsGameExistWithNameAndActivity(name, (int)GameStatus.Starting);
         }
+        public static List<GameRoom> SearchStartingGameRoom(string searchTerm)
+        {
+            return GameRoomTableToGameRoomList(GameDal.SearchGame(searchTerm, GameStatus.Starting));
+        }
+        public static List<GameRoom> GameRoomTableToGameRoomList(DataTable dt)
+        {
+            List<GameRoom> ret = new List<GameRoom>();
+            foreach(DataRow dr in dt.Rows)
+            {
+                ret.Add(new GameRoom(dr));
+            }
+            return ret
+        }
     }
 }
