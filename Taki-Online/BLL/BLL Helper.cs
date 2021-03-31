@@ -76,7 +76,7 @@ namespace BLL
         }
         public static List<GameRoom> SearchStartingGameRoom(string searchTerm)
         {
-            return GameRoomTableToGameRoomList(GameDal.SearchGame(searchTerm, GameStatus.Starting));
+            return GameRoomTableToGameRoomList(GameDal.SearchGame(searchTerm, (int)GameStatus.Starting));
         }
         public static List<GameRoom> GameRoomTableToGameRoomList(DataTable dt)
         {
@@ -85,7 +85,7 @@ namespace BLL
             {
                 ret.Add(new GameRoom(dr));
             }
-            return ret
+            return ret;
         }
     }
 }

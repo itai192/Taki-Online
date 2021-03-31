@@ -7,7 +7,7 @@ using System.Data;
 using DAL;
 namespace BLL
 {
-    class GameRoom
+    public class GameRoom
     {
         private static Dictionary<int,Game> games = new Dictionary<int,Game>();
         private string _host;
