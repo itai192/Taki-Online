@@ -33,5 +33,9 @@ namespace DAL
         {
             return DalHelper.SelectRow($"SELECT * FROM {Constants.GAMESTBL} WHERE {GAMEIDFLD} = {ID}");
         }
+        public static DataTable SearchGame(string searchTerm)
+        {
+            return DalHelper.SelectTable($"SELECT * FROM {Constants.GAMESTBL} WHERE {GAMENAMEFLD} LIKE '%{searchTerm}%'");
+        }
     }
 }

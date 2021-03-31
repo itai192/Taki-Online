@@ -33,7 +33,7 @@ namespace BLL
             private set;
         }
         private Game game;
-        public Player AddUserToGame(User user)
+        public Player AddUserToGame(User user)//tofix
         {
             return game.AddPlayer(user);
         }
@@ -64,9 +64,17 @@ namespace BLL
             UpdateObject();
             game = games[GameID];
         }
+        public GameRoom(DataRow dr)
+        {
+            //toimplement
+        }
         public void UpdateObject()
         {
             DataRow dr = GameDal.FindGameByID(GameID);
+            UpdateObject(dr);
+        }
+        public void UpdateObject(DataRow dr)
+        {
             _gameName = dr[GameDal.GAMENAMEFLD].ToString();
             status = (GameStatus)dr[GameDal.ACTIVITFLD];
             host = dr[GameDal.HOSTFLD].ToString();
