@@ -10,6 +10,13 @@ namespace UI
     public partial class Play : System.Web.UI.Page
     {
         public string searchTerm;
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if(Session["User"]==null)
+            {
+                Response.Redirect("~/Home.aspx");
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)

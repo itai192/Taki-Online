@@ -53,7 +53,7 @@ namespace BLL
             private set;
         }
         private Game game;
-        public Player AddUserToGame(User user)//tofix
+        public Player AddUserToGame(User user)
         {
             UsersInGamesDal.AddUserToGame(user.username, this.GameID);
             return game.AddPlayer(user);
