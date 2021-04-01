@@ -4,12 +4,42 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using BLL;
 namespace UI
 {
     public partial class Room : System.Web.UI.Page
     {
+        public User user;
+        public GameRoom room;
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (Session["User"] == null)
+            {
+                Response.Redirect("~/Home.aspx");
+            }
+            user = (User)Session["User"];
+            try
+            {
+                room = new GameRoom(int.Parse(Request.QueryString["gameId"]));
+                if(room.status!=GameStatus.Starting)
+                {
+                    throw new Exception("Can't join this game");
+                }
+            }
+            catch(Exception ex)
+            {
+                Response.Redirect("~/ Home.aspx");//ask
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
+        {
+            if(!IsPostBack)
+            {
+                Session["Player"] = room.AddUserToGame(user);
+            }
+        }
+
+        protected void FriendsToInvite_ItemDataBound(object sender, DataListItemEventArgs e)
         {
 
         }

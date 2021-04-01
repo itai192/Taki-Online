@@ -2,6 +2,7 @@
 
 <%@ Register Src="~/Custom Controls/UserCard.ascx" TagPrefix="uc1" TagName="UserCard" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -15,7 +16,7 @@
             <asp:BoundField DataField="users.Count" HeaderText="Players In Game" />
             <asp:TemplateField HeaderText="Host">
                 <ItemTemplate>
-                    <uc1:usercard runat="server" id="UserCard" user='<%#Item.host%>' />
+                    <uc1:UserCard runat="server" ID="UserCard1" user='<%#Item.host%>'/>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:ButtonField Text="Join Game" ButtonType="Button" CommandName="Join" />

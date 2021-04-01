@@ -57,15 +57,14 @@ namespace BLL
         {
             UsersInGamesDal.AddUserToGame(user.username, this.GameID);
             return game.AddPlayer(user);
-
         }
         public void ValidateName(string name)
         {
-            if (BLL_Helper.IsGameWithNameStarting(gameName))
+            if (BLL_Helper.IsGameWithNameStarting(name))
             {
                 throw new Exception("A game with that name already exists");
             }
-            if (string.IsNullOrWhiteSpace(gameName))
+            if (string.IsNullOrWhiteSpace(name))
             {
                 throw new Exception("game needs to have a name");
             }
@@ -83,7 +82,14 @@ namespace BLL
         public GameRoom(int ID)
         {
             GameID = ID;
-            UpdateRoom();
+            try
+            {
+                UpdateRoom();
+            }
+            catch
+            {
+                throw new Exception("This game does not exist");
+            }
             if(status!=GameStatus.Ended)
                 game = games[GameID];
         }
