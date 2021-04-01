@@ -19,7 +19,12 @@
                     <uc1:UserCard runat="server" ID="UserCard1" user='<%#Item.host%>'/>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:ButtonField Text="Join Game" ButtonType="Button" CommandName="Join" />
+            
+            <asp:TemplateField ShowHeader="False">
+                <ItemTemplate>
+                    <asp:Button ID="JoinBtn" runat="server" CommandName="Join" Text="Join Game" CommandArgument=<%#Item.GameID%> />
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
 </asp:Content>

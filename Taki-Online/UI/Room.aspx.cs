@@ -33,10 +33,14 @@ namespace UI
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if(!IsPostBack && Session["Player"]==null)
             {
                 Session["Player"] = room.AddUserToGame(user);
             }
+            Players.DataSource = BLL_Helper.UserListFromUsernameList(room.users);
+            Players.DataBind();
+            FriendsToInvite.DataSource = BLL_Helper.UserListFromUsernameList(user.AcceptedFriends);
+            FriendsToInvite.DataBind();
         }
 
         protected void FriendsToInvite_ItemDataBound(object sender, DataListItemEventArgs e)

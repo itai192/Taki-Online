@@ -52,7 +52,29 @@ namespace BLL
             get;
             private set;
         }
-        private Game game;
+        private Game game
+        {
+            get
+            {
+                if(status==GameStatus.Ended)
+                {
+                    throw new Exception("this game has already ended");
+                }
+                try
+                {
+                    return games[GameID];
+                }
+                catch
+                {
+                    games.Add(GameID, new Game());
+                    return games[GameID];
+                }
+            }
+            set 
+            {
+                games.Add(GameID, value);
+            }
+        }
         public Player AddUserToGame(User user)
         {
             UsersInGamesDal.AddUserToGame(user.username, this.GameID);
@@ -77,7 +99,7 @@ namespace BLL
             _status = GameStatus.Starting;
             GameID = GameDal.AddGame(gameName,this._host,(int)status);
             game = new Game();
-            games.Add(GameID, game);
+            
         }
         public GameRoom(int ID)
         {
@@ -90,16 +112,11 @@ namespace BLL
             {
                 throw new Exception("This game does not exist");
             }
-            if(status!=GameStatus.Ended)
-                game = games[GameID];
         }
         public GameRoom(DataRow dr)
         {
             this.GameID = (int)dr["Game ID"];
             UpdateObject(dr);
-            //if (status != GameStatus.Ended)
-            //    game = games[GameID];
-            //to fix
         }
         public void UpdateRoom()
         {

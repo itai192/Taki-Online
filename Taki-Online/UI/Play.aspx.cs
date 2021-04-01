@@ -46,7 +46,8 @@ namespace UI
         {
             if(e.CommandName=="Join")
             {
-                GameRoom gr = (GameRoom)Games.Rows[(int)e.CommandArgument].DataItem;
+                GameRoom gr =new GameRoom(int.Parse(e.CommandArgument.ToString()));
+                Response.Redirect($"~/Room.aspx?gameId={gr.GameID}");
             }
         }
     }
