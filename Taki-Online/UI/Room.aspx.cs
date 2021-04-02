@@ -21,21 +21,33 @@ namespace UI
             try
             {
                 room = new GameRoom(int.Parse(Request.QueryString["gameId"]));
-                if(room.status!=GameStatus.Starting)
+                if(room.status!=GameStatus.Starting&& !IsPostBack)
                 {
                     throw new Exception("Can't join this game");
                 }
             }
             catch(Exception ex)
             {
-                Response.Redirect("~/ Home.aspx");//ask
+                Response.Redirect("~/Home.aspx");//ask
             }
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack && Session["Player"]==null)
+            if (!IsPostBack && Session["Player"] == null)
             {
                 Session["Player"] = room.AddUserToGame(user);
+            }
+        }
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
+            Update();
+        }
+        protected void Update()
+        {
+            room.UpdateRoom();
+            if(room.status==GameStatus.AlreadyStarted)
+            {
+                Response.Redirect("~/Game.aspx");
             }
             Players.DataSource = BLL_Helper.UserListFromUsernameList(room.users);
             Players.DataBind();
@@ -45,7 +57,17 @@ namespace UI
 
         protected void FriendsToInvite_ItemDataBound(object sender, DataListItemEventArgs e)
         {
+            User friend = (User)e.Item.DataItem;
+            if (room.users.Contains(friend.username))
+            {
+                Button invitebtn=(Button)e.Item.FindControl("InviteBtn");
+                invitebtn.Enabled = false;
+            }
+        }
 
+        protected void StartBtn_Click(object sender, EventArgs e)
+        {
+            room.status = GameStatus.AlreadyStarted;
         }
     }
 }

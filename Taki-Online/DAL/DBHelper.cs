@@ -60,46 +60,52 @@ namespace DAL
         public int WriteData(string sql)
         {
             int ret = WRITEDATA_ERROR;
-            if (!this.connOpen)
+            lock (conn)
             {
-                this.OpenConnection();
-            }
+                if (!this.connOpen)
+                {
+                    this.OpenConnection();
+                }
 
 
-            if (this.connOpen)
-            {
-                OleDbDataReader rd = null;
-                try
+                if (this.connOpen)
                 {
-                    OleDbCommand cmd = new OleDbCommand(sql, conn);
-                    rd = cmd.ExecuteReader();
-                    ret = rd.RecordsAffected;
+                    OleDbDataReader rd = null;
+                    try
+                    {
+                        OleDbCommand cmd = new OleDbCommand(sql, conn);
+                        rd = cmd.ExecuteReader();
+                        ret = rd.RecordsAffected;
+                    }
+                    catch
+                    {
+                        return WRITEDATA_ERROR;
+                    }
                 }
-                catch
-                {
-                    return WRITEDATA_ERROR;
-                }
+                return ret;
             }
-            return ret;
         }
         //Execute SELECT sql commands and return a reference to an OleDbDataReader         
         //if execution fails return null
         public OleDbDataReader ReadData(string sql)
         {
             OleDbDataReader rd = null;
-            if (!this.connOpen)
+            lock (conn)
             {
-                this.OpenConnection();
-            }
+                if (!this.connOpen)
+                {
+                    this.OpenConnection();
+                }
 
 
-            if (this.connOpen)
-            {
-                OleDbCommand cmd = new OleDbCommand(sql, conn);
-                rd = cmd.ExecuteReader();
-                
+                if (this.connOpen)
+                {
+                    OleDbCommand cmd = new OleDbCommand(sql, conn);
+                    rd = cmd.ExecuteReader();
+
+                }
+                return rd;
             }
-            return rd; 
         }
         //This function should be used for inserting a single record into a table in the database with an autonmuber key. the format of the sql must be          
         //INSERT INTO <TableName> (Fields...) VALUES (values...)         

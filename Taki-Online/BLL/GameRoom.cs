@@ -116,14 +116,14 @@ namespace BLL
         public GameRoom(DataRow dr)
         {
             this.GameID = (int)dr["Game ID"];
-            UpdateObject(dr);
+            UpdateRoom(dr);
         }
         public void UpdateRoom()
         {
             DataRow dr = GameDal.FindGameByID(GameID);
-            UpdateObject(dr);
+            UpdateRoom(dr);
         }
-        public void UpdateObject(DataRow dr)
+        public void UpdateRoom(DataRow dr)
         {
             _gameName = dr["Game Name"].ToString();
             status = (GameStatus)dr[GameDal.ACTIVITYFLD];
