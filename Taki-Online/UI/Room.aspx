@@ -23,14 +23,14 @@
                     <asp:Button ID="InviteBtn" runat="server" Text="Invite To Game" CommandName="Invite" CommandArgument='<%#Container.DataItem%>' />
                 </ItemTemplate>
             </asp:DataList>
-            <asp:Timer ID="timer" runat="server" OnTick="Page_Load" Interval="5000"></asp:Timer>
+            <asp:Timer ID="timer" runat="server" OnTick="Page_Load" Interval="10000"></asp:Timer>
         </ContentTemplate>
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="timer" EventName="Tick" />
         </Triggers>
     </asp:UpdatePanel>
     <asp:Panel ID="HostPanel" runat="server">
-        <asp:Button ID="StartBtn" runat="server" Text="Button" OnClick="StartBtn_Click" />
+        <asp:Button ID="StartBtn" runat="server" Text="Start Game!" OnClick="StartBtn_Click" />
     </asp:Panel>
 </asp:Content>
 

@@ -34,25 +34,31 @@ namespace DAL
         }
         public static int Insert(string sql) //works for all insert sql that also needs to create an int key and returns that key
         {
-            int id = h.InsertWithAutoNumKey(sql);
-            h.CloseConnection();
-            return id;
+            lock (h)
+            {
+                int id = h.InsertWithAutoNumKey(sql);
+                h.CloseConnection();
+                return id;
+            }
         }
         public static DataRow SelectRow(string sql)  //works for all select sql that selects a single row and returns that row
         {
-            try
+            lock (h)
             {
-                DataRow row = h.GetDataTable(sql).Rows[0];
-                h.CloseConnection();
-                return row;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                h.CloseConnection();
+                try
+                {
+                    DataRow row = h.GetDataTable(sql).Rows[0];
+                    h.CloseConnection();
+                    return row;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    h.CloseConnection();
+                }
             }
         }
         /// <summary>
@@ -138,37 +144,49 @@ namespace DAL
         /// <returns>returns how many columns have been updated</returns>
         public static int Update(string sql)//works for all update sql and checks if the db changed, if it did than the update worked and returns true, else false
         {
-            int num = h.WriteData(sql);
-            h.CloseConnection();
-            if(num ==DBHelper.WRITEDATA_ERROR)
+            lock (h)
             {
-                throw new Exception("Error Updating");
+                int num = h.WriteData(sql);
+                h.CloseConnection();
+                if (num == DBHelper.WRITEDATA_ERROR)
+                {
+                    throw new Exception("Error Updating");
+                }
+                return num;
             }
-            return num;
         }
         public static DataTable SelectTable(string sql)//works for all select sql that selects a table and returns that table
         {
-            DataTable Table = h.GetDataTable(sql);
-            h.CloseConnection();
-            return Table;
+            lock (h)
+            {
+                DataTable Table = h.GetDataTable(sql);
+                h.CloseConnection();
+                return Table;
+            }
         }
         public static bool insertWithoutCreatingID(string sql)//works for all insert sql that doesnt need to create an auto key.
         {
-            int num = h.WriteData(sql); 
-            h.CloseConnection();
-             if (num == -1)
-            { return false; }
-            return true;
+            lock (h)
+            {
+                int num = h.WriteData(sql);
+                h.CloseConnection();
+                if (num == -1)
+                { return false; }
+                return true;
+            }
         }
         public static bool IsExist(string sql)//gets a select sql for a row and checks if such row exists
-        { 
-            DataTable exist = h.GetDataTable(sql);
-            h.CloseConnection();
-            if(exist.Rows.Count==0)
+        {
+            lock (h)
+            {
+                DataTable exist = h.GetDataTable(sql);
+                h.CloseConnection();
+                if (exist.Rows.Count == 0)
                 {
                     return false;
                 }
                 return true;
+            }
         }
     }
 }

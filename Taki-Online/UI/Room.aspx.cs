@@ -37,6 +37,10 @@ namespace UI
             {
                 Session["Player"] = room.AddUserToGame(user);
             }
+            if(!user.Equals(room.host))
+            {
+                HostPanel.Visible = false;
+            }
         }
         protected void Page_LoadComplete(object sender, EventArgs e)
         {

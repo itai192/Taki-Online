@@ -50,6 +50,7 @@ namespace DAL
         //Open connection to the database.
         public void OpenConnection()
         {
+            if(connOpen==false)
             {
                 this.conn.Open();
                 connOpen = true;
@@ -60,52 +61,46 @@ namespace DAL
         public int WriteData(string sql)
         {
             int ret = WRITEDATA_ERROR;
-            lock (conn)
+            if (!this.connOpen)
             {
-                if (!this.connOpen)
-                {
-                    this.OpenConnection();
-                }
-
-
-                if (this.connOpen)
-                {
-                    OleDbDataReader rd = null;
-                    try
-                    {
-                        OleDbCommand cmd = new OleDbCommand(sql, conn);
-                        rd = cmd.ExecuteReader();
-                        ret = rd.RecordsAffected;
-                    }
-                    catch
-                    {
-                        return WRITEDATA_ERROR;
-                    }
-                }
-                return ret;
+                this.OpenConnection();
             }
+
+
+            if (this.connOpen)
+            {
+                OleDbDataReader rd = null;
+                try
+                {
+                    OleDbCommand cmd = new OleDbCommand(sql, conn);
+                    rd = cmd.ExecuteReader();
+                    ret = rd.RecordsAffected;
+                }
+                catch
+                {
+                    return WRITEDATA_ERROR;
+                }
+            }
+            return ret;
         }
         //Execute SELECT sql commands and return a reference to an OleDbDataReader         
         //if execution fails return null
         public OleDbDataReader ReadData(string sql)
         {
             OleDbDataReader rd = null;
-            lock (conn)
+            if (!this.connOpen)
             {
-                if (!this.connOpen)
-                {
-                    this.OpenConnection();
-                }
-
-
-                if (this.connOpen)
-                {
-                    OleDbCommand cmd = new OleDbCommand(sql, conn);
-                    rd = cmd.ExecuteReader();
-
-                }
-                return rd;
+                this.OpenConnection();
             }
+
+
+            if (this.connOpen)
+            {
+                OleDbCommand cmd = new OleDbCommand(sql, conn);
+                rd = cmd.ExecuteReader();
+
+            }
+            return rd;
         }
         //This function should be used for inserting a single record into a table in the database with an autonmuber key. the format of the sql must be          
         //INSERT INTO <TableName> (Fields...) VALUES (values...)         
