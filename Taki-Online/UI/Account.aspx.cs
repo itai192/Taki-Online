@@ -44,6 +44,8 @@ namespace UI
             FriendRequests.DataBind();
             Friends.DataSource = BLL_Helper.UserListFromUsernameList(user.AcceptedFriends);
             Friends.DataBind();
+            GameInvites.DataSource = user.activeGameInvites;
+            GameInvites.DataBind();
         }
 
         protected void FriendRequests_ItemCommand(object source, DataListCommandEventArgs e)
@@ -131,6 +133,14 @@ namespace UI
                 user.AddFriend(e.CommandArgument.ToString());
             UnopenedSentFriendRequests = user.UnopenedSentFriendRequests;
             UserSearchBind();
+        }
+
+        protected void GameInvites_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            if(e.CommandName=="Join")
+            {
+                Response.Redirect($"~/Room.aspx?gameId={e.CommandArgument}");
+            }
         }
     }
 }

@@ -73,5 +73,22 @@ namespace UI
         {
             room.status = GameStatus.AlreadyStarted;
         }
+
+        protected void FriendsToInvite_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            if (e.CommandName == "Invite")
+            {
+                User friend = (User)e.Item.DataItem;
+                try
+                {
+                    Player player = (Player)Session["Player"];
+                    player.invitePlayer(friend.username);
+                }
+                catch(Exception ex)
+                {
+                    errorLbl.Text = ex.Message;
+                }
+            }
+        }
     }
 }

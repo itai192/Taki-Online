@@ -129,7 +129,14 @@ namespace BLL
         }
         public void invitePlayer(string recipiant)
         {
-            GameInvitesDal.CreateGameInvite(user.username, recipiant, game.gameRoom.GameID);
+            try
+            {
+                GameInvitesDal.CreateGameInvite(user.username, recipiant, game.gameRoom.GameID);
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Couldn't invite this user", e);
+            }
         }
     }
     public class SimplePlayer

@@ -17,7 +17,7 @@
                     <uc1:UserCard ID="UserCard1" runat="server" user='<%#Container.DataItem%>' />
                 </ItemTemplate>
             </asp:DataList>
-            <asp:DataList ID="FriendsToInvite" runat="server" OnItemDataBound="FriendsToInvite_ItemDataBound">
+            <asp:DataList ID="FriendsToInvite" runat="server" OnItemDataBound="FriendsToInvite_ItemDataBound" OnItemCommand="FriendsToInvite_ItemCommand">
                 <ItemTemplate>
                     <uc1:UserCard ID="UserCard1" runat="server" user='<%#Container.DataItem%>' />
                     <asp:Button ID="InviteBtn" runat="server" Text="Invite To Game" CommandName="Invite" CommandArgument='<%#Container.DataItem%>' />
@@ -32,5 +32,6 @@
     <asp:Panel ID="HostPanel" runat="server">
         <asp:Button ID="StartBtn" runat="server" Text="Start Game!" OnClick="StartBtn_Click" />
     </asp:Panel>
+    <asp:Label ID="errorLbl" runat="server" EnableViewState="False"></asp:Label>
 </asp:Content>
 

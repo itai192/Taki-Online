@@ -98,7 +98,7 @@ namespace BLL
             this._gameName = gameName;
             _status = GameStatus.Starting;
             GameID = GameDal.AddGame(gameName,this._host,(int)status);
-            game = new Game();
+            game = new Game(this);
             
         }
         public GameRoom(int ID)

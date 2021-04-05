@@ -17,7 +17,6 @@ namespace UI
             Directory.SetCurrentDirectory(Server.MapPath("~"));
             string strong = Directory.GetCurrentDirectory();
             BLL.BLL_Helper.CreateDBHelperInDalHelper(ConfigurationManager.AppSettings["path"], ConfigurationManager.AppSettings["provider"]);
-            Application["Game"] = new BLL.Game();
         }
 
         protected void Session_Start(object sender, EventArgs e)

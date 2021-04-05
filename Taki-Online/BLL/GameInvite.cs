@@ -24,6 +24,13 @@ namespace BLL
             get;
             private set;
         }
+        public GameRoom gameRoom
+        {
+            get
+            {
+                return new GameRoom(gameID);
+            }
+        }
         public GameInvite(int gameID, string sender, string recipiant)
         {
             this.gameID = gameID;

@@ -105,6 +105,15 @@ namespace UI
         protected global::System.Web.UI.WebControls.Button ChngUsernameBtn;
 
         /// <summary>
+        /// NameValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator NameValidator;
+
+        /// <summary>
         /// UserExists control.
         /// </summary>
         /// <remarks>
@@ -112,15 +121,6 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator UserExists;
-
-        /// <summary>
-        /// RequiredUsername control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredUsername;
 
         /// <summary>
         /// Levellbl control.
@@ -184,6 +184,24 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredSearchString;
+
+        /// <summary>
+        /// friendUsernameValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator friendUsernameValidator;
+
+        /// <summary>
+        /// GameInvites control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList GameInvites;
 
         /// <summary>
         /// ChartsPanel control.
