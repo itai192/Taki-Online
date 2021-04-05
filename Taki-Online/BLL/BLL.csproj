@@ -49,6 +49,7 @@
     <Compile Include="Elo.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameInvite.cs" />
     <Compile Include="GameRoom.cs" />
     <Compile Include="Players.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,6 +61,9 @@
       <Project>{32a16f28-050c-4b15-a26c-bb75ca8c6296}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="classDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

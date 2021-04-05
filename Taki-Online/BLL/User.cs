@@ -88,7 +88,7 @@ namespace BLL
                 DAL.UserDal.UpdateUserPic(username, value);
                 _picture = value;
             }
-                }
+        }
         public List<string> AcceptedFriends
         {
             get
@@ -130,6 +130,19 @@ namespace BLL
         public List<string> UnopenedSentFriendRequests
         {
             get { return BLL_Helper.DataTableToList<string>(DAL.FriendsDal.FriendRequestsWithStatusSent(username, (int)FriendRequestStatus.Unopened), FriendsDal.RECIPIANTFLD); }
+        }
+        public List<GameInvite> activeGameInvites
+        {
+            get
+            {
+                List<GameInvite> invites = new List<GameInvite>();
+                DataTable dt = GameInvitesDal.FindInvitesToRecipiantWhereGameWithActivity(username, (int)GameStatus.Starting);
+                foreach(DataRow dr in dt.Rows)
+                {
+                    invites.Add(new GameInvite(dr));
+                }
+                return invites;
+            }
         }
         public User(string username) : this(UserDal.SelectUser(username))
         {
@@ -200,5 +213,6 @@ namespace BLL
         {
             return username;
         }
+        
     }
 }

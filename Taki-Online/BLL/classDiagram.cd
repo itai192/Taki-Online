@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BLL.Elo">
+    <Position X="18.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAgAIAAAAAAAAAAAAAAAAAAAAAAAIABAA=</HashCode>
+      <FileName>Elo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Game">
+    <Position X="25.25" Y="2" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Interface Name="BLL.Game.IPlayerBroadcast">
+        <TypeIdentifier>
+          <NewMemberFileName>Broadcast.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+      <Class Name="BLL.Game.ChangeTurnBroadcast">
+        <TypeIdentifier>
+          <NewMemberFileName>Broadcast.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+      <Class Name="BLL.Game.ChangeOrderBroadcast">
+        <TypeIdentifier>
+          <NewMemberFileName>Broadcast.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+      <Class Name="BLL.Game.ActionBroadcast">
+        <TypeIdentifier>
+          <NewMemberFileName>Broadcast.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAACAAEJACCAAAKCBAZAAICQAAAQBEAoqAggAAQAAAA=</HashCode>
+      <FileName>Broadcast.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.GameInvite">
+    <Position X="12.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAgAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameInvite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.GameRoom">
+    <Position X="20" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IFQAAQAAAAAAAAAAAAEAEAAAAAAAAiAIAAgABEAAAAA=</HashCode>
+      <FileName>GameRoom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Rank">
+    <Position X="14.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAgAAEAAAAAAAAAAAEAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Rank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.User">
+    <Position X="21.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAECIAAoAYAAAAAkgAAYAQUAAAGBBQAgAAIAoEAAGAA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Player">
+    <Position X="23.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQABAARAAAIghAAAACgDEAQAYAIIJAggAgAAAYA=</HashCode>
+      <FileName>Players.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.SimplePlayer">
+    <Position X="16.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAQAAAAAAAADAAAAAAAAAQA=</HashCode>
+      <FileName>Players.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Reverse">
+    <Position X="10.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Cards.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Stop">
+    <Position X="15.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Cards.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.NumberCard" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAEAAAQAAAAAAAEACAAAAgAAAAAAAA=</HashCode>
+      <FileName>Cards.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="1.3" />
+  </Class>
+  <Class Name="BLL.PlusTwo">
+    <Position X="4" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cards.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Taki">
+    <Position X="6.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cards.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.King">
+    <Position X="13" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cards.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.ColorChanger">
+    <Position X="8.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cards.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLL.Card">
+    <Position X="10.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAQAAAAAAAAAAAgAAAAAAAAAACBABgAAAAAAAA=</HashCode>
+      <FileName>Card.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="BLL.IGetCardText">
+    <Position X="18.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cards.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="BLL.ActionType">
+    <Position X="20" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BLL.UserType">
+    <Position X="21.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BLL.GameStatus">
+    <Position X="20" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAEgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BLL.FriendRequestStatus">
+    <Position X="20" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BLL.Color">
+    <Position X="21.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAAAAAAgA=</HashCode>
+      <FileName>Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -9,6 +9,11 @@ namespace BLL
 {
     public partial class Game
     {
+        public GameRoom gameRoom
+        {
+            get;
+            private set;
+        }
         const int NUMCARDS=8;
         private Stack<Card> deck;
         private Stack<Card> pile;
@@ -39,8 +44,9 @@ namespace BLL
         {
             return players[turn];
         }
-        public Game()
+        public Game(GameRoom gameRoom)
         {
+            this.gameRoom = gameRoom;
             order = true;
             this.players = new List<Player>();
             activeCard = null;

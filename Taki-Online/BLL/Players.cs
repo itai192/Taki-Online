@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
+using DAL;
 //[assembly: InternalsVisibleTo("Card.cs")]
 //[assembly: InternalsVisibleTo("Cards.cs")]
-[assembly: InternalsVisibleTo("Broadcasts.cs")]
+//[assembly: InternalsVisibleTo("Broadcasts.cs")]
 namespace BLL
 {
     public class Player
@@ -125,6 +126,10 @@ namespace BLL
         public void putCard(Card card)
         {
             game.TryDoAction(new Action(ActionType.putCard, card, this));
+        }
+        public void invitePlayer(string recipiant)
+        {
+            GameInvitesDal.CreateGameInvite(user.username, recipiant, game.gameRoom.GameID);
         }
     }
     public class SimplePlayer

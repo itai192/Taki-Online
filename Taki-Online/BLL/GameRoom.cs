@@ -66,7 +66,7 @@ namespace BLL
                 }
                 catch
                 {
-                    games.Add(GameID, new Game());
+                    games.Add(GameID, new Game(this));
                     return games[GameID];
                 }
             }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    class Elo
+    public static class Elo
     {
         /// <summary>
         /// score in this context means probability to win
