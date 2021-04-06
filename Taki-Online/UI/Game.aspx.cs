@@ -89,14 +89,17 @@ namespace UI
 
         protected void Users_ItemDataBound(object sender, DataListItemEventArgs e)
         {
-            SimplePlayer toBind = (SimplePlayer)e.Item.DataItem;
-            PlayerCard uc = (PlayerCard)e.Item.FindControl("PlayerCard");
-            uc.isSelected = false;
-            if (player.players[player.turn].user.Equals(toBind))
+            if (e.Item.ItemType == ListItemType.Item)
             {
-                uc.isSelected = true;
+                SimplePlayer toBind = (SimplePlayer)e.Item.DataItem;
+                PlayerCard uc = (PlayerCard)e.Item.FindControl("PlayerCard");
+                uc.isSelected = false;
+                if (player.players[player.turn].Equals(toBind))
+                {
+                    uc.isSelected = true;
+                }
+                uc.UpdateUser();
             }
-            uc.UpdateUser();
         }
     }
 }

@@ -31,7 +31,7 @@
                     <asp:Label ID="Label1" runat="server" Text="Players"></asp:Label>
                 </HeaderTemplate>
                 <ItemTemplate>
-                    <uc1:PlayerCard runat="server" ID="PlayerCard" player="<%#Container.DataItem%>" />
+                    <uc1:PlayerCard runat="server" player="<%#Container.DataItem%>" ID="PlayerCard" />
                 </ItemTemplate>
             </asp:DataList>
         </ContentTemplate>
