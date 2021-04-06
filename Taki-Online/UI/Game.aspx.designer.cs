@@ -42,6 +42,24 @@ namespace UI
         protected global::System.Web.UI.Timer Timer;
 
         /// <summary>
+        /// Pile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UI.Custom_Controls.Card Pile;
+
+        /// <summary>
+        /// Deck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UI.Custom_Controls.Card Deck;
+
+        /// <summary>
         /// Hand control.
         /// </summary>
         /// <remarks>

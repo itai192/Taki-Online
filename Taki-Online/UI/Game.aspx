@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master Page.Master" AutoEventWireup="true" CodeBehind="Game.aspx.cs" Inherits="UI.Game" %>
-<%@ Register Src="~/Custom Controls/Card.ascx" TagPrefix="uc1" TagName="Card" 
+<%@ Register Src="~/Custom Controls/Card.ascx" TagPrefix="uc1" TagName="Card" %>
 <%@ Register Src="~/Custom Controls/PlayerCard.ascx" TagPrefix="uc1" TagName="PlayerCard" %>
 
 
@@ -26,12 +26,12 @@
             </div>
             <asp:Label ID="Statuslbl" runat="server" Text=""  ></asp:Label>
             <script type="text/javascript" src="CardAnimations.js"></script>
-            <asp:DataList ID="Users" runat="server" RepeatDirection="Horizontal">
+            <asp:DataList ID="Users" runat="server" RepeatDirection="Horizontal" OnItemDataBound="Users_ItemDataBound">
                 <HeaderTemplate>
                     <asp:Label ID="Label1" runat="server" Text="Players"></asp:Label>
                 </HeaderTemplate>
                 <ItemTemplate>
-                    <uc1:PlayerCard runat="server" id="PlayerCard" />
+                    <uc1:PlayerCard runat="server" ID="PlayerCard" player="<%#Container.DataItem%>" />
                 </ItemTemplate>
             </asp:DataList>
         </ContentTemplate>

@@ -9,10 +9,10 @@ namespace UI.Custom_Controls
 {
     public partial class PlayerCard : System.Web.UI.UserControl
     {
-        private Player _player;
+        private SimplePlayer _player;
         public bool isSelected { get; set; } = false;
 
-        public Player player
+        public SimplePlayer player
         {
             get
             {
@@ -28,7 +28,7 @@ namespace UI.Custom_Controls
         {
             ProfilePicture.pictureName = _player.user.picture;
             UsernameLbl.Text = player.user.username;
-            CardsLbl.Text = player.numberOfCards.ToString();
+            CardsLbl.Text = player.NumberOfCards.ToString();
             if (isSelected)
             {
                 UserPanel.CssClass = "Selected";

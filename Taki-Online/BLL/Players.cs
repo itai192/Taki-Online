@@ -70,7 +70,7 @@ namespace BLL
         }
         internal void SubtractACardFromSimplePlayer(SimplePlayer player)
         {
-            FindSimplePlayer(player).NumberOfCards++;
+            FindSimplePlayer(player).NumberOfCards--;
         }
         internal void UpdatePlayerList(List<SimplePlayer> players)
         {

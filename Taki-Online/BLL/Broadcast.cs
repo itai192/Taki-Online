@@ -53,20 +53,14 @@ namespace BLL
             }
             public void DoBroadcast(Player player)
             {
-                if(!this.player.IsPlayer(player))
-                {
-                    if (action.type == ActionType.putCard)
-                    {
-                        player.SubtractACardFromSimplePlayer(this.player);
-                    }
-                    else if (action.type == ActionType.DrawCard)
-                    {
-                        player.AddACardToSimplePlayer(this.player);
-                    }
-                }
                 if(action.type==ActionType.putCard)
                 {
+                    player.SubtractACardFromSimplePlayer(this.player);
                     player.leadingCard = action.card;
+                }
+                if (action.type == ActionType.DrawCard)
+                {
+                    player.AddACardToSimplePlayer(this.player);
                 }
             }
         }

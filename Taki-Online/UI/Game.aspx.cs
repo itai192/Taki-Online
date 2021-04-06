@@ -87,16 +87,16 @@ namespace UI
             Users.DataBind();
         }
 
-        //protected void Users_ItemDataBound(object sender, RepeaterItemEventArgs e)
-        //{
-        //    User toBind = ((SimplePlayer)e.Item.DataItem).user;
-        //    UserCard uc = (UserCard)e.Item.FindControl("UserCard");
-        //    uc.isSelected = false;
-        //    if (player.players[player.turn].user.Equals(toBind))
-        //    {
-        //        uc.isSelected = true;
-        //    }
-        //    uc.UpdateUser();
-        //}
+        protected void Users_ItemDataBound(object sender, DataListItemEventArgs e)
+        {
+            SimplePlayer toBind = (SimplePlayer)e.Item.DataItem;
+            PlayerCard uc = (PlayerCard)e.Item.FindControl("PlayerCard");
+            uc.isSelected = false;
+            if (player.players[player.turn].user.Equals(toBind))
+            {
+                uc.isSelected = true;
+            }
+            uc.UpdateUser();
+        }
     }
 }
