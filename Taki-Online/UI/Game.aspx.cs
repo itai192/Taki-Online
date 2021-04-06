@@ -82,5 +82,10 @@ namespace UI
             Pile.card = player.leadingCard;
             Pile.LoadCard();
         }
+
+        protected System.Void Repeater1_ItemCommand()
+        {
+
+        }
     }
 }

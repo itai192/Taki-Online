@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master Page.Master" AutoEventWireup="true" CodeBehind="Game.aspx.cs" Inherits="UI.Game" %>
 
 <%@ Register Src="~/Custom Controls/Card.ascx" TagPrefix="uc1" TagName="Card" %>
+<%@ Register Src="~/Custom Controls/UserCard.ascx" TagPrefix="uc1" TagName="UserCard" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -26,4 +28,9 @@
             <script type="text/javascript" src="CardAnimations.js"></script>
         </ContentTemplate>
     </asp:UpdatePanel>
+    <asp:Repeater ID="Repeater1" runat="server" ItemType="User" OnItemCommand="Repeater1_ItemCommand">
+        <ItemTemplate>
+            <uc1:UserCard runat="server" id="UserCard"/> 
+        </ItemTemplate>
+    </asp:Repeater>
 </asp:Content>
