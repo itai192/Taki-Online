@@ -7,65 +7,56 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UI
+namespace UI.Custom_Controls
 {
 
 
-    public partial class Game
+    public partial class PlayerCard
     {
 
         /// <summary>
-        /// ScriptManager1 control.
+        /// UserPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.Panel UserPanel;
 
         /// <summary>
-        /// UpdatePanel1 control.
+        /// ProfilePicture control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::UI.Custom_Controls.WebUserControl1 ProfilePicture;
 
         /// <summary>
-        /// Timer control.
+        /// Details control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.Timer Timer;
+        protected global::System.Web.UI.WebControls.Table Details;
 
         /// <summary>
-        /// Hand control.
+        /// UsernameLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Hand;
+        protected global::System.Web.UI.WebControls.Label UsernameLbl;
 
         /// <summary>
-        /// Statuslbl control.
+        /// CardsLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Statuslbl;
-
-        /// <summary>
-        /// Users control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList Users;
+        protected global::System.Web.UI.WebControls.Label CardsLbl;
     }
 }

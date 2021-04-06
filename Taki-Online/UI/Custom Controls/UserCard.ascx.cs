@@ -10,6 +10,7 @@ namespace UI.Custom_Controls
     public partial class UserCard : System.Web.UI.UserControl
     {
         private User _user;
+        public bool isSelected { get; set; } = false;
 
         public User user
         {
@@ -29,6 +30,14 @@ namespace UI.Custom_Controls
             UsernameLbl.Text = user.username;
             LevelLbl.Text = user.level.ToString();
             RankLbl.Text = user.rank.name;
+            if (isSelected)
+            {
+                UserPanel.CssClass = "Selected";
+            }
+            else
+            {
+                UserPanel.CssClass = null;
+            }
         }
     }
 }

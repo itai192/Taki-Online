@@ -101,6 +101,7 @@
     <Content Include="Custom Controls\Loading Bar.ascx" />
     <Content Include="Custom Controls\ProfilePicture.ascx" />
     <Content Include="Custom Controls\ProfilePictureUpload.ascx" />
+    <Content Include="Custom Controls\PlayerCard.ascx" />
     <Content Include="Custom Controls\UserCard.ascx" />
     <Content Include="Game.aspx" />
     <Content Include="Global.asax" />
@@ -163,6 +164,13 @@
     </Compile>
     <Compile Include="Custom Controls\ProfilePictureUpload.ascx.designer.cs">
       <DependentUpon>ProfilePictureUpload.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Custom Controls\PlayerCard.ascx.cs">
+      <DependentUpon>PlayerCard.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Custom Controls\PlayerCard.ascx.designer.cs">
+      <DependentUpon>PlayerCard.ascx</DependentUpon>
     </Compile>
     <Compile Include="Custom Controls\UserCard.ascx.cs">
       <DependentUpon>UserCard.ascx</DependentUpon>
@@ -259,6 +267,14 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="UserPhotos\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Custom Controls\PlayerCard.ascx.resx">
+      <DependentUpon>PlayerCard.ascx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Custom Controls\UserCard.ascx.resx">
+      <DependentUpon>UserCard.ascx.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

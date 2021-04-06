@@ -12,6 +12,7 @@ namespace BLL
 {
     public class Player
     {
+        
         public User user
         {
             get;
@@ -40,7 +41,14 @@ namespace BLL
             get;
             internal set;
         }
-        private List<SimplePlayer> players;
+        private List<SimplePlayer> _players;
+        public List<SimplePlayer> players
+        {
+            get
+            {
+                return _players;
+            }
+        }
         private Queue<Game.IPlayerBroadcast> broadcastsToDo;
         private Game game;
         private SimplePlayer FindSimplePlayer(SimplePlayer player)
@@ -66,7 +74,7 @@ namespace BLL
         }
         internal void UpdatePlayerList(List<SimplePlayer> players)
         {
-            this.players = players;
+            this._players = players;
         }
         public bool HasCard(Card card)
         {

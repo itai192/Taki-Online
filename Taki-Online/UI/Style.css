@@ -39,7 +39,9 @@
 {
     position:relative;
     width:2000px;
-    height:800px;
+    height:505px;
+    top: 0px;
+    left: 0px;
 }
 #Deck {
     position: absolute;
@@ -63,7 +65,15 @@
     transition-timing-function: linear;
     transition-duration: 250ms;
 }
-
+.Selected
+{
+    border:solid;
+    border-color:orangered;
+}
+.FloatLeft
+{
+    float:left;
+}
 
 .Red {
     color: #E54520

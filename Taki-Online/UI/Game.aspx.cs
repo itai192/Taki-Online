@@ -33,6 +33,8 @@ namespace UI
             Deck.Click += TryDraw;
             Hand.DataSource = player.GetHand();
             Hand.DataBind();
+            Users.DataSource = player.players;
+            Users.DataBind();
         }
         
         protected void TryDraw(object sender, CardEventArgs e)
@@ -81,11 +83,20 @@ namespace UI
             }
             Pile.card = player.leadingCard;
             Pile.LoadCard();
+            Users.DataSource = player.players;
+            Users.DataBind();
         }
 
-        protected System.Void Repeater1_ItemCommand()
-        {
-
-        }
+        //protected void Users_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        //{
+        //    User toBind = ((SimplePlayer)e.Item.DataItem).user;
+        //    UserCard uc = (UserCard)e.Item.FindControl("UserCard");
+        //    uc.isSelected = false;
+        //    if (player.players[player.turn].user.Equals(toBind))
+        //    {
+        //        uc.isSelected = true;
+        //    }
+        //    uc.UpdateUser();
+        //}
     }
 }
