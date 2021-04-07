@@ -15,7 +15,7 @@ namespace DAL
         public static string RANKSELECT = $"SELECT SUM({Constants.USERSINGAMESTBL}.{ELO})+{Constants.RANKINGHISTORYTBL}.[Season Start Elo] AS ELO, {Constants.RANKINGHISTORYTBL}.Season, {Constants.RANKINGHISTORYTBL}.[User]";
         public static string RANKFROM = $"FROM (Seasons INNER JOIN {Constants.RANKINGHISTORYTBL} ON {Constants.SEASONSTBL}.[Season ID] = {Constants.RANKINGHISTORYTBL}.Season) INNER JOIN ({Constants.GAMESTBL} INNER JOIN {Constants.USERSINGAMESTBL} ON {Constants.GAMESTBL}.[Game ID] = {Constants.USERSINGAMESTBL}.{GAME}) ON ({Constants.RANKINGHISTORYTBL}.User = {Constants.USERSINGAMESTBL}.{USERNAME}) AND ({Constants.GAMESTBL}.[Time Played] BETWEEN  {Constants.SEASONSTBL}.[End Date] AND {Constants.SEASONSTBL}.[Start Date]  )";
         public static string RANKGROUPBY = $"GROUP BY {Constants.RANKINGHISTORYTBL}.Season, {Constants.RANKINGHISTORYTBL}.[User], {Constants.RANKINGHISTORYTBL}.[Season Start Elo]";
-        public const string USERNAME = "[User]", GAME = "Game", FINALSCORE = "[Final Score]", XP = "[XP Added]", ELO = "[Elo Added]";
+        public const string USERNAME = "[User]", GAME = "Game", FINALSCORE = "[Final Score]", XP = "[XP Added]", ELO = "[Elo Added]",HASWON = "[Has Won]";
         public static void AddUserToGame(string username, int GameID)
         {
             try
@@ -27,11 +27,11 @@ namespace DAL
                 throw new Exception("Couldn't add user To Game",e);
             }
         }
-        public static void UpdateUserInGame(string username, int GameID, int xpAdded,int eloAdded, int score  )
+        public static void UpdateUserInGame(string username, int GameID, int xpAdded,int eloAdded,  bool HasWon)
         {
             try
             {
-                DalHelper.Update(DalHelper.SimpleUpdateQuery(Constants.USERSINGAMESTBL,new string[] {XP,ELO,FINALSCORE}, new string[] { xpAdded.ToString(),eloAdded.ToString(),score.ToString()},$"{USERNAME} = '{username}' AND {GAME} = {GameID}"));
+                DalHelper.Update(DalHelper.SimpleUpdateQuery(Constants.USERSINGAMESTBL, new string[] { XP, ELO, HASWON }, new string[] { xpAdded.ToString(), eloAdded.ToString(), HasWon.ToString() }, $"{USERNAME} = '{username}' AND {GAME} = {GameID}"));
             }
             catch(Exception e)
             {

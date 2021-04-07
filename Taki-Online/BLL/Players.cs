@@ -12,7 +12,11 @@ namespace BLL
 {
     public class Player
     {
-        
+        public bool GameEnded
+        {
+            get;
+            internal set;
+        }
         public User user
         {
             get;

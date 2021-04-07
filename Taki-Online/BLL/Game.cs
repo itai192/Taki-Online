@@ -9,6 +9,11 @@ namespace BLL
 {
     public partial class Game
     {
+        public bool GameEnded
+        {
+            get;
+            private set;
+        }
         public GameRoom gameRoom
         {
             get;
@@ -39,6 +44,60 @@ namespace BLL
         internal void ClearActiveCard()
         {
             activeCard = null;
+            if(IsEnded())
+            {
+                EndProgression();
+            }
+        }
+        private bool IsEnded()
+        {
+            foreach(Player p in players)
+            {
+                if(p.numberOfCards==0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        private void EndProgression()
+        {
+            //change room status
+            gameRoom.status = GameStatus.Ended;
+            //change elo
+            List<Player> sortedPlayers = SortedPlayerList();
+            List<int> eloChanges = new List<int>();
+            for(int i =0;i<sortedPlayers.Count;i++)
+            {
+                eloChanges[i] = 0;
+            }
+            for(int i =0;i<sortedPlayers.Count-1;i++)
+            {
+                //winner part
+                if(sortedPlayers[sortedPlayers.Count - 1 - i].numberOfCards != sortedPlayers[sortedPlayers.Count - 2 - i].numberOfCards)
+                    eloChanges[sortedPlayers.Count - 1 - i] += Elo.ChangeInRating(sortedPlayers[sortedPlayers.Count - 1 - i].user.elo, sortedPlayers[sortedPlayers.Count - 2 - i].user.elo, 1);
+                else//if draw
+                {
+                    eloChanges[sortedPlayers.Count - 1 - i] += Elo.ChangeInRating(sortedPlayers[sortedPlayers.Count - 1 - i].user.elo, sortedPlayers[sortedPlayers.Count - 2 - i].user.elo, 0.5);
+                }
+                //loser part
+                if (sortedPlayers[i].numberOfCards != sortedPlayers[i+1].numberOfCards)
+                    eloChanges[i] += Elo.ChangeInRating(sortedPlayers[i].user.elo, sortedPlayers[i + 1].user.elo, 0);
+                else
+                {
+                    eloChanges[i] += Elo.ChangeInRating(sortedPlayers[i].user.elo, sortedPlayers[i + 1].user.elo, 0.5);
+                }
+            }
+        }
+        private List<Player> SortedPlayerList()
+        {
+            List<Player> ret = new List<Player>(players);
+            ret.Sort(ComparePlayerCards);
+            return ret;
+        }
+        private int ComparePlayerCards(Player x, Player y)
+        {
+            return x.numberOfCards - y.numberOfCards;
         }
         internal Player GetPlayerTurn()
         {
