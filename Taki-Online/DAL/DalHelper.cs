@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 namespace DAL
 {
-  public class DalHelper
+  public static class DalHelper
     {
         //note: you dont really need to read the following comment its mostly a joke(still true though)
         //Have you ever been exhausted by those annoying sql senteses? and when you are done with them
@@ -16,23 +16,30 @@ namespace DAL
         // from now on and it is all because DALHelper is just Sooooooooo amazing 
         // NO MORE Closeconnectiosn! the dal helper does it for you! 
         //~Alon Metuky's speech.
-        public static string table;
-        public static string provider;
-        public static string source;
-        static DBHelper h; //only the dal helper is using the dbhelper
+
+        //a string of the provider of the dal helper
+        private static string provider;
+        //a string of the source of the dal helper
+        private static string source;
+        //only the dal helper is using the dbhelper
+        private static DBHelper h; 
+        //sets the provider of the DBHelper
         public static void SetSource(string path)
         {
             source = path;
         }
+        //sets the provider of the DBHelper
         public static void SetProvider(string prov)
         {
             provider = prov;
         }
+        //creates an instance of the DBHelper
         public static void CreateDBHelper()
         {
             h = new DBHelper(provider, source);
         }
-        public static int Insert(string sql) //works for all insert sql that also needs to create an int key and returns that key
+        //works for all insert sql that also needs to create an int key and returns that key
+        public static int Insert(string sql) 
         {
             lock (h)
             {

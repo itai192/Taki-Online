@@ -157,6 +157,15 @@ namespace BLL
                 throw new Exception("Couldn't invite this user", e);
             }
         }
+        public override bool Equals(object obj)
+        {
+            if(obj is Player)
+            {
+                Player other = (Player)obj;
+                return other.user.Equals(this.user);
+            }
+            return false;
+        }
     }
     public class SimplePlayer
     {
@@ -181,7 +190,7 @@ namespace BLL
             if (obj is SimplePlayer)
             {
                 SimplePlayer other = (SimplePlayer)obj;
-                return other.player == this.player;
+                return other.player.Equals(this.player);
             }
             return false;
         }

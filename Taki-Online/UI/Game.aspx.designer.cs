@@ -69,15 +69,6 @@ namespace UI
         protected global::System.Web.UI.WebControls.Repeater Hand;
 
         /// <summary>
-        /// Statuslbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Statuslbl;
-
-        /// <summary>
         /// Users control.
         /// </summary>
         /// <remarks>
@@ -85,5 +76,14 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataList Users;
+
+        /// <summary>
+        /// Statuslbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Statuslbl;
     }
 }

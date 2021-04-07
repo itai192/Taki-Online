@@ -37,9 +37,13 @@ namespace UI
             {
                 Session["Player"] = room.AddUserToGame(user);
             }
-            if(!user.Equals(room.host))
+            if(!user.Equals(room.host)||room.users.Count<2)
             {
                 HostPanel.Visible = false;
+            }
+            else
+            {
+                HostPanel.Visible = true;
             }
         }
         protected void Page_LoadComplete(object sender, EventArgs e)
@@ -78,11 +82,11 @@ namespace UI
         {
             if (e.CommandName == "Invite")
             {
-                User friend = (User)e.Item.DataItem;
+                string friend = e.CommandArgument.ToString();
                 try
                 {
                     Player player = (Player)Session["Player"];
-                    player.invitePlayer(friend.username);
+                    player.invitePlayer(friend);
                 }
                 catch(Exception ex)
                 {

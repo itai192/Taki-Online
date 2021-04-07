@@ -70,7 +70,7 @@ namespace BLL
             List<int> eloChanges = new List<int>();
             for(int i =0;i<sortedPlayers.Count;i++)
             {
-                eloChanges[i] = 0;
+                eloChanges.Add(0);
             }
             for(int i =0;i<sortedPlayers.Count-1;i++)
             {
@@ -93,13 +93,13 @@ namespace BLL
             List<int> xpChanges = new List<int>();
             for(int i =0;i<sortedPlayers.Count;i++)
             {
-                xpChanges[i] = 50 / (sortedPlayers[i].numberOfCards + 1);
+                xpChanges.Add(50 / (sortedPlayers[i].numberOfCards + 1));
             }
             //updateAll
             for(int i =0;i<sortedPlayers.Count;i++)
             {
                 Player p = sortedPlayers[i];
-                UsersInGamesDal.UpdateUserInGame(p.user.username, gameRoom.GameID, xpChanges[i], eloChanges[i], i == 0);
+                UsersInGamesDal.UpdateUserInGame(p.user.username, gameRoom.GameID, xpChanges[i], eloChanges[i], i == 0,p.numberOfCards);
                 p.user.xp += xpChanges[i];
             }
             //End Game For All
@@ -318,7 +318,13 @@ namespace BLL
         {
             if(IsUserInGame(user))
             {
-                throw new Exception("This user is already in the game");
+                foreach(Player p in players)
+                {
+                    if(p.user.Equals(p))
+                    {
+                        return p;
+                    }
+                }
             }
             Player player = new Player(this,user);
             players.Add(player);
@@ -351,10 +357,9 @@ namespace BLL
         }
         public void UpdatePlayerListsInAllPlayers()
         {
-            List<SimplePlayer> list = GetSimplePlayerList();
             foreach(Player p in players)
             {
-                p.UpdatePlayerList(list);
+                p.UpdatePlayerList(GetSimplePlayerList());
             }
         }
         

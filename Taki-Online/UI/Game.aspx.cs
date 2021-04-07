@@ -10,23 +10,25 @@ namespace UI
 {
     public partial class Game : System.Web.UI.Page
     {
+        public bool gameEnded;
         public BLL.Game game;
         public BLL.Player player;
         public User user;
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if(Session["User"]==null)
             {
                 Response.Redirect("~/Home.aspx");
             }
             user = (User)Session["User"];
             game = (BLL.Game)Application["Game"];
-            if(Session["Player"]==null)
-            {
-                Session["Player"] = game.AddPlayer(user);
-                Response.Redirect("Game.aspx");
-            }
             player = (BLL.Player)Session["Player"];
+            if (player.GameEnded)
+            {
+                Session["Player"] = null;
+                Response.Redirect($"~/Summery.aspx?gameId={player.GameID}");
+            }
             Pile.card = player.leadingCard;
             Deck.card =null;
             Deck.IsButton = true;
@@ -76,10 +78,15 @@ namespace UI
         }
         public void DoUpdate()
         {
+            gameEnded = false;
             if (player.HasUndoneBroadcasts())
             {
                 BLL.Game.IPlayerBroadcast broadcast = player.NextBroadcast();
                 player.DoBroadcast();
+            }
+            if(player.GameEnded)
+            {
+                gameEnded = true;
             }
             Pile.card = player.leadingCard;
             Pile.LoadCard();
@@ -89,7 +96,7 @@ namespace UI
 
         protected void Users_ItemDataBound(object sender, DataListItemEventArgs e)
         {
-            if (e.Item.ItemType == ListItemType.Item)
+            if (e.Item.ItemType == ListItemType.Item|| e.Item.ItemType ==ListItemType.AlternatingItem)
             {
                 SimplePlayer toBind = (SimplePlayer)e.Item.DataItem;
                 PlayerCard uc = (PlayerCard)e.Item.FindControl("PlayerCard");
