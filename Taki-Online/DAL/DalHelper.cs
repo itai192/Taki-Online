@@ -21,7 +21,7 @@ namespace DAL
         private static string provider;
         //a string of the source of the dal helper
         private static string source;
-        //only the dal helper is using the dbhelper
+        //the object of DBhelper dal helper is using
         private static DBHelper h; 
         //sets the provider of the DBHelper
         public static void SetSource(string path)
