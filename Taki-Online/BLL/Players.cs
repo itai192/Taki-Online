@@ -12,6 +12,10 @@ namespace BLL
 {
     public class Player
     {
+        public int GameID
+        {
+
+        }
         public bool GameEnded
         {
             get;

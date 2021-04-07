@@ -109,9 +109,7 @@ namespace BLL
         }
         public int XPUntilNextLevel()
         {
-            if (level == 1)
-                return InitailXpNeeded;
-            return (int)(InitailXpNeeded * Math.Pow(2,level-2));
+            return (int)(InitailXpNeeded * Math.Pow(2,level-1));
         }
         /// <summary>
         /// users that this user has declined friend requests from

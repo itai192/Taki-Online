@@ -64,5 +64,16 @@ namespace BLL
                 }
             }
         }
+        public class EndGameBroadcast:IPlayerBroadcast
+        {
+            public EndGameBroadcast()
+            {
+
+            }
+            public void DoBroadcast(Player player)
+            {
+                player.GameEnded = true;
+            }
+        }
     }
 }

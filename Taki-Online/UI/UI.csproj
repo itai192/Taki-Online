@@ -113,6 +113,7 @@
     <Content Include="Sign in.aspx" />
     <Content Include="Sign up.aspx" />
     <Content Include="Style.css" />
+    <Content Include="Summery.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -245,6 +246,13 @@
     </Compile>
     <Compile Include="Sign up.aspx.designer.cs">
       <DependentUpon>Sign up.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Summery.aspx.cs">
+      <DependentUpon>Summery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Summery.aspx.designer.cs">
+      <DependentUpon>Summery.aspx</DependentUpon>
     </Compile>
     <Compile Include="UIHelper.cs" />
   </ItemGroup>

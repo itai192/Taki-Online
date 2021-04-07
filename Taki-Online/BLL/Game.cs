@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using DAL;
 [assembly: InternalsVisibleTo("Card.cs")]
 [assembly: InternalsVisibleTo("Cards.cs")]
 namespace BLL
@@ -74,20 +75,35 @@ namespace BLL
             for(int i =0;i<sortedPlayers.Count-1;i++)
             {
                 //winner part
-                if(sortedPlayers[sortedPlayers.Count - 1 - i].numberOfCards != sortedPlayers[sortedPlayers.Count - 2 - i].numberOfCards)
-                    eloChanges[sortedPlayers.Count - 1 - i] += Elo.ChangeInRating(sortedPlayers[sortedPlayers.Count - 1 - i].user.elo, sortedPlayers[sortedPlayers.Count - 2 - i].user.elo, 1);
+                if (sortedPlayers[i].numberOfCards != sortedPlayers[i + 1].numberOfCards)
+                    eloChanges[i] += Elo.ChangeInRating(sortedPlayers[i].user.elo, sortedPlayers[i + 1].user.elo, 1);
+                else//if draw
+                {
+                    eloChanges[i] += Elo.ChangeInRating(sortedPlayers[i].user.elo, sortedPlayers[i + 1].user.elo, 0.5);
+                }
+                //loser part
+                if (sortedPlayers[sortedPlayers.Count - 1 - i].numberOfCards != sortedPlayers[sortedPlayers.Count - 2 - i].numberOfCards)
+                    eloChanges[sortedPlayers.Count - 1 - i] += Elo.ChangeInRating(sortedPlayers[sortedPlayers.Count - 1 - i].user.elo, sortedPlayers[sortedPlayers.Count - 2 - i].user.elo, 0);
                 else//if draw
                 {
                     eloChanges[sortedPlayers.Count - 1 - i] += Elo.ChangeInRating(sortedPlayers[sortedPlayers.Count - 1 - i].user.elo, sortedPlayers[sortedPlayers.Count - 2 - i].user.elo, 0.5);
                 }
-                //loser part
-                if (sortedPlayers[i].numberOfCards != sortedPlayers[i+1].numberOfCards)
-                    eloChanges[i] += Elo.ChangeInRating(sortedPlayers[i].user.elo, sortedPlayers[i + 1].user.elo, 0);
-                else
-                {
-                    eloChanges[i] += Elo.ChangeInRating(sortedPlayers[i].user.elo, sortedPlayers[i + 1].user.elo, 0.5);
-                }
             }
+            //changeXp
+            List<int> xpChanges = new List<int>();
+            for(int i =0;i<sortedPlayers.Count;i++)
+            {
+                xpChanges[i] = 50 / (sortedPlayers[i].numberOfCards + 1);
+            }
+            //updateAll
+            for(int i =0;i<sortedPlayers.Count;i++)
+            {
+                Player p = sortedPlayers[i];
+                UsersInGamesDal.UpdateUserInGame(p.user.username, gameRoom.GameID, xpChanges[i], eloChanges[i], i == 0);
+                p.user.xp += xpChanges[i];
+            }
+            //End Game For All
+            Broadcast(new EndGameBroadcast());
         }
         private List<Player> SortedPlayerList()
         {
