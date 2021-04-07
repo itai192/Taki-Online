@@ -14,7 +14,10 @@ namespace BLL
     {
         public int GameID
         {
-
+            get
+            {
+                return game.gameRoom.GameID;
+            }
         }
         public bool GameEnded
         {

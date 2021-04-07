@@ -30,6 +30,8 @@ namespace BLL
             set
             {
                 GameDal.ChangeGameActivity((int)value, GameID);
+                if (value == GameStatus.Ended)
+                    games.Remove(GameID);
                 _status = value;
             }
         }
