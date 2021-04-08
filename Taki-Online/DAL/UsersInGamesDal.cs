@@ -38,7 +38,7 @@ namespace DAL
         {
             try
             {
-                DalHelper.Update(DalHelper.SimpleUpdateQuery(Constants.USERSINGAMESTBL, new string[] { XP, ELO, HASWON,CARDSINHAND }, new string[] { xpAdded.ToString(), eloAdded.ToString(), HasWon.ToString() }, $"{USERNAME} = '{username}' AND {GAME} = {GameID}"));
+                DalHelper.Update(DalHelper.SimpleUpdateQuery(Constants.USERSINGAMESTBL, new string[] { XP, ELO, HASWON,CARDSINHAND }, new string[] { xpAdded.ToString(), eloAdded.ToString(), HasWon.ToString(),CardsInHand.ToString() }, $"{USERNAME} = '{username}' AND {GAME} = {GameID}"));
             }
             catch(Exception e)
             {

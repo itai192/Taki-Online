@@ -35,6 +35,9 @@
 .Put {
     position: absolute;
 }
+.Draw {
+    position: absolute;
+}
 .Panel
 {
     position:relative;
@@ -57,6 +60,9 @@
     transition-property: left,top;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
+}
+.Draw .AnimatableCard {
+    transition-duration: 0.75s;
 }
 .DissapearingCard
 {

@@ -8,6 +8,7 @@ namespace BLL
 {
     public partial class Game
     {
+
         public interface IPlayerBroadcast
         {
             void DoBroadcast(Player player);

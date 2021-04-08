@@ -8,7 +8,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="BLL.Game">
-    <Position X="25.25" Y="2" Width="1.5" />
+    <Position X="26.5" Y="2" Width="1.5" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
@@ -36,16 +36,22 @@
         </TypeIdentifier>
         <Lollipop Position="0.2" />
       </Class>
+      <Class Name="BLL.Game.EndGameBroadcast">
+        <TypeIdentifier>
+          <NewMemberFileName>Broadcast.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAACAAEJACCAAAKCBAZAAICQAAAQBEAoqAggAAQAAAA=</HashCode>
+      <HashCode>AAACAAEJACCAAAKCBAZAAICQAAARBEAqrAggAAQCAAA=</HashCode>
       <FileName>Broadcast.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BLL.GameInvite">
     <Position X="12.75" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAAAAAAAAgAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAgCAAAAAAAAAAAAAAgAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameInvite.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -71,9 +77,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="BLL.Player">
-    <Position X="23.5" Y="2" Width="1.5" />
+    <Position X="23.5" Y="2" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQABAARAAAIghAAAACgDEAQAYAIIJAggAgAAAYA=</HashCode>
+      <HashCode>AAAAAQABAARAAAIghAEAACgDEBQAYAIIJAggAgACAYA=</HashCode>
       <FileName>Players.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -156,7 +162,7 @@
     </TypeIdentifier>
   </Enum>
   <Enum Name="BLL.UserType">
-    <Position X="21.75" Y="8" Width="1.5" />
+    <Position X="21.75" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
       <FileName>Enums.cs</FileName>
@@ -177,7 +183,7 @@
     </TypeIdentifier>
   </Enum>
   <Enum Name="BLL.Color">
-    <Position X="21.75" Y="6.25" Width="1.5" />
+    <Position X="18.25" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EQAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAAAAAAgA=</HashCode>
       <FileName>Enums.cs</FileName>

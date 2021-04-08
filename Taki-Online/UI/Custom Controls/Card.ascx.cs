@@ -66,6 +66,11 @@ namespace UI.Custom_Controls
             LoadCard();
             control.CssClass += " Put";
         }
+        public void DrawCard()
+        {
+            LoadCard();
+            control.CssClass += " Draw";
+        }
         public void LoadCard()
         {
             if (card is IGetCardText || card == null)

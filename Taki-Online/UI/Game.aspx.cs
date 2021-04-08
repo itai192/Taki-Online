@@ -14,16 +14,17 @@ namespace UI
         public BLL.Game game;
         public BLL.Player player;
         public User user;
+        public int IndexToDrawFrom;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            if(Session["User"]==null)
+            if (Session["User"]==null)
             {
                 Response.Redirect("~/Home.aspx");
             }
             user = (User)Session["User"];
             game = (BLL.Game)Application["Game"];
             player = (BLL.Player)Session["Player"];
+            IndexToDrawFrom = player.numberOfCards;
             if (player.GameEnded)
             {
                 Session["Player"] = null;
@@ -45,6 +46,8 @@ namespace UI
             {
                 player.DrawCards();
                 DoUpdate();
+                Hand.DataSource = player.GetHand();
+                Hand.DataBind();
             }
             catch(Exception ex)
             {
@@ -70,6 +73,12 @@ namespace UI
             UI.Custom_Controls.Card card = (UI.Custom_Controls.Card) e.Item.FindControl("Card");
             card.Click += TryUse;
             card.card = (BLL.Card)e.Item.DataItem;
+            card.LoadCard();
+            if (e.Item.ItemIndex>=IndexToDrawFrom)
+            {
+                card.DrawCard();
+            }
+            
         }
 
         protected void Timer_Tick(object sender, EventArgs e)
