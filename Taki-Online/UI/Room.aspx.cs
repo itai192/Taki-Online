@@ -26,9 +26,9 @@ namespace UI
                     throw new Exception("Can't join this game");
                 }
             }
-            catch(Exception ex)
+            catch
             {
-                Response.Redirect("~/Home.aspx");//ask
+                Response.Redirect("~/Home.aspx");
             }
         }
         protected void Page_Load(object sender, EventArgs e)

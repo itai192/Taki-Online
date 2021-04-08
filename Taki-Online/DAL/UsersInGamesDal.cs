@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Data;
 namespace DAL
 {
-    public class UsersInGamesDal
+    public static class UsersInGamesDal
     {
         //a query that selects every player in each season and it's elo score, and rank,
         public static string FULLSELECT = "SELECT R2.[Rank ID], R2.[Rank Name], T2.Lowest, T2.[User], T2.Season, T2.ELO FROM Ranking AS R2 INNER JOIN(SELECT T.ELO, T.Season, T.[User], Max(R1.[Lowest Elo]) AS Lowest FROM Ranking AS R1 INNER JOIN (SELECT ((IIF(ISNULL(Sum([Users in Games].[elo Added])),0, Sum([Users in Games].[elo Added])))+[Ranking History].[Season Start Elo]) AS ELO, [Ranking History].Season, [Ranking History].User FROM (Seasons INNER JOIN [Ranking History] ON Seasons.[Season ID] = [Ranking History].Season) LEFT JOIN (Games RIGHT JOIN [Users in Games] ON Games.[Game ID] = [Users in Games].Game) ON [Ranking History].User = [Users in Games].User GROUP BY [Ranking History].Season, [Ranking History].User, [Ranking History].[Season Start Elo]) AS T ON R1.[Lowest Elo]< T.ELO GROUP BY T.ELO, T.Season, T.[User]) AS T2 ON T2.Lowest = R2.[Lowest Elo]";
@@ -16,7 +16,7 @@ namespace DAL
         //a query that selects the rank and elo from season start
         public static string STARTSELECT = "SELECT R2.[Rank ID], R2.[Rank Name], T2.Lowest, T2.[User], T2.Season, T2.ELO FROM Ranking AS R2 INNER JOIN (SELECT T.ELO, T.Season, T.[User], Max(R1.[Lowest Elo]) AS Lowest FROM Ranking AS R1 INNER JOIN (SELECT[Ranking History].[Season Start Elo] AS ELO, [Ranking History].Season, [Ranking History].[User] FROM[Ranking History]) AS T ON R1.[Lowest Elo] < T.ELO GROUP BY T.ELO, T.Season, T.[User]) AS T2 ON T2.Lowest = R2.[Lowest Elo]";
         //names of fields as constants so it would be easier to make queries
-        public const string USERNAME = "[User]", GAME = "Game", FINALSCORE = "[Final Score]", XP = "[XP Added]", ELO = "[Elo Added]",HASWON = "[Has Won]",CARDSINHAND = "[Cards In Hand]";
+        public const string USERNAME = "[User]", GAME = "Game", XP = "[XP Added]", ELO = "[Elo Added]",HASWON = "[Has Won]",CARDSINHAND = "[Cards In Hand]";
         /// <summary>
         /// adds a user to users in games table
         /// </summary>
@@ -67,11 +67,25 @@ namespace DAL
             return DalHelper.SelectRow($"{STARTSELECT} WHERE {Constants.RANKINGHISTORYTBL}.[User] = '{username}' AND {Constants.RANKINGHISTORYTBL}.Season = {season}");
         }
         /// <summary>
-        /// finds the records of users in a specific game
+        /// finds the records of users in a specific game in order of winners.
         /// </summary>
         public static DataTable FindUsersInGame(int gameID)
         {
-            return DalHelper.SelectTable($"SELECT * FROM {Constants.USERSINGAMESTBL} WHERE {GAME} = {gameID}");
+            return DalHelper.SelectTable($"SELECT * FROM {Constants.USERSINGAMESTBL} WHERE {GAME} = {gameID} ORDER BY {CARDSINHAND} ASC");
+        }
+        /// <summary>
+        /// returns whether a user is (or was) in a game
+        /// </summary>
+        public static bool IsUserInGame(string user, int gameID)
+        {
+            return DalHelper.IsExist($"SELECT * FROM {Constants.USERSINGAMESTBL} WHERE {USERNAME} = '{user}' AND {GAME} = {gameID}");
+        }
+        /// <summary>
+        /// a user in game record of user in game
+        /// </summary>
+        public static DataRow FindUserInGame(string user, int gameID)
+        {
+            return DalHelper.SelectRow($"SELECT * FROM {Constants.USERSINGAMESTBL} WHERE {USERNAME} = '{user}' AND {GAME} = {gameID}");
         }
     }
 }

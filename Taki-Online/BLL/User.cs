@@ -71,7 +71,7 @@ namespace BLL
             }
             set
             {
-                _xp = xp;
+                _xp = value;
                 LevelUpIfCan();
                 DAL.UserDal.UpdateUserXP(_xp,username);
             }
@@ -150,6 +150,10 @@ namespace BLL
         {
 
         }
+        public bool IsUserInGame(int gameID)
+        {
+            return DAL.UsersInGamesDal.IsUserInGame(username, gameID);
+        }
         public string AddFriend(string username)
         {
             if (DeclinedFriends.Contains(username))
@@ -202,6 +206,10 @@ namespace BLL
             fName = dr["First Name"].ToString();
             lName = dr["Last Name"].ToString();
             _picture = dr[UserDal.PICTUREFLD].ToString();
+        }
+        public UserStatsInGame statsInGame(int gameID)
+        {
+            return new UserStatsInGame(username, gameID);
         }
         public override bool Equals(object obj)
         {

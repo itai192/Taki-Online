@@ -7,7 +7,7 @@ using System.Data;
 using DAL;
 namespace BLL
 {
-    public class BLL_Helper
+    public static class BLL_Helper
     {
         public static DataTable GetAllPlayersInRankThisSeason(int rankID)
         {
@@ -84,6 +84,16 @@ namespace BLL
             foreach(DataRow dr in dt.Rows)
             {
                 ret.Add(new GameRoom(dr));
+            }
+            return ret;
+        }
+        public static List<UserStatsInGame> FindUserStatsInGame(int gameID)
+        {
+            DataTable dt = UsersInGamesDal.FindUsersInGame(gameID);
+            List<UserStatsInGame> ret = new List<UserStatsInGame>();
+            foreach(DataRow dr in dt.Rows)
+            {
+                ret.Add(new UserStatsInGame(dr));
             }
             return ret;
         }
