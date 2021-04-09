@@ -35,6 +35,8 @@ namespace UI
             XpBar.outOf = user.XPUntilNextLevel();
             XpBar.progress = user.xp;
             EloLbl.Text = user.elo.ToString();
+            Games.Series[0].Points[0].SetValueY(user.HowManyGamesWon());
+            Games.Series[0].Points[1].SetValueY(user.HowManyGamesLost());
         }
         protected void Page_LoadComplete(object sender, EventArgs e)
         {

@@ -92,14 +92,25 @@
     </asp:DataList>
     <asp:Panel ID="ChartsPanel" runat="server">
         
-    <%--<asp:Chart runat="server" ID="ctl00">
+    <asp:Chart ID="Games" runat="server" Palette="Berry">
         <Series>
-            <asp:Series Name="Series1" ChartType="Line"></asp:Series>
+            <asp:Series Name="Games" ChartType="Pie" YValuesPerPoint="4" Legend="Legend1" IsValueShownAsLabel="True" Label="#PERCENT\n#VALY">
+                <Points>
+                    <asp:DataPoint LegendText="Games Won" />
+                    <asp:DataPoint LegendText="Games Lost" />
+                </Points>
+            </asp:Series>
         </Series>
         <ChartAreas>
-            <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
+            <asp:ChartArea Name="Games" Area3DStyle-Enable3D="True" Area3DStyle-LightStyle="Simplistic" AlignmentOrientation="Vertical">
+<Area3DStyle Enable3D="True"></Area3DStyle>
+            </asp:ChartArea>
         </ChartAreas>
-    </asp:Chart>--%>
+        <Legends>
+            <asp:Legend Name="Legend1">
+            </asp:Legend>
+        </Legends>
+    </asp:Chart>
 
     </asp:Panel>
     

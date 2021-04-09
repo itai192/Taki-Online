@@ -219,6 +219,13 @@ namespace BLL
         {
             return username;
         }
-        
+        public int HowManyGamesWon()
+        {
+            return UsersInGamesDal.HowManyGamesUserWonOrLost(username,true);
+        }
+        public int HowManyGamesLost()
+        {
+            return UsersInGamesDal.HowManyGamesUserWonOrLost(username, false);
+        }
     }
 }

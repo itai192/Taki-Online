@@ -87,5 +87,14 @@ namespace DAL
         {
             return DalHelper.SelectRow($"SELECT * FROM {Constants.USERSINGAMESTBL} WHERE {USERNAME} = '{user}' AND {GAME} = {gameID}");
         }
+        public static int HowManyGamesUserWonOrLost(string username, bool won)
+        {
+            string sql = $"SELECT COUNT({GAME}) AS amount, {USERNAME}, {HASWON} FROM {Constants.USERSINGAMESTBL} Where  {HASWON} = {won} AND {USERNAME} = '{username}' GROUP BY {USERNAME}, {HASWON}";
+            if(DalHelper.IsExist(sql))
+            {
+                return (int)DalHelper.SelectRow(sql)["amount"];
+            }
+            return 0;
+        }
     }
 }
