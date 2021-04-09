@@ -47,7 +47,6 @@ namespace BLL
                     int elo = (int)UsersInGamesDal.FindPlayerStartRankInSeason(DAL.SesonsDal.GetCurrentSeason(), username)["ELO"];
                     return elo;
                 }
-                
             }
         }
         public UserType type { get; }
@@ -168,7 +167,6 @@ namespace BLL
                 return "Your friend request has been sent successfuly to "+username;
             }
             return "there already exists a friend request between you and" + username;
-            
         }
         public void AcceptFriendRequestFrom(string username)
         {

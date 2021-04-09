@@ -25,7 +25,8 @@ namespace BLL
         }
         public static DataTable GetAllPlayersInRankThisSeason(int rankID)
         {
-            return DAL.UsersInGamesDal.FindAllPlayersInRankInSeason(rankID, DAL.SesonsDal.GetCurrentSeason());
+            UsersInGamesDal.FindAllPlayersInRankInSeason(rankID, DAL.SesonsDal.GetCurrentSeason();
+
         }
         public static List<Rank> GetAllRanks()
         {
@@ -110,6 +111,16 @@ namespace BLL
                 ret.Add(new UserStatsInGame(dr));
             }
             return ret;
+        }
+        public static List<User> GetAllUsersInRankThisSeason(int rankID)
+        {
+            List<string> usernames = DataTableToList<string>(GetAllPlayersInRankThisSeason(rankID),"User");
+            List<User> users = new List<User>();
+            foreach(string username in usernames)
+            {
+                users.Add(new User(username));
+            }
+            return users;
         }
     }
 }
