@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System;
 namespace DAL
 {
     public class GameDal
@@ -53,6 +54,14 @@ namespace DAL
         public static DataTable SearchGame(string searchTerm,int activity)
         {
             return DalHelper.SelectTable($"SELECT * FROM {Constants.GAMESTBL} WHERE {GAMENAMEFLD} LIKE '%{searchTerm}%' AND {ACTIVITYFLD} = {activity}");
+        }
+        /// <summary>
+        /// returns how many games were played in a certin date range
+        /// </summary>
+        public static int GamesPlayedBetweenDates(DateTime start, DateTime end)
+        {
+            string sql = $"SELECT Count({GAMEIDFLD}) as amount FROM {Constants.GAMESTBL} as games WHERE {TIMEPLAYED} BETWEEN {start.ToOADate()} AND {end.ToOADate()}";
+            return (int)DalHelper.SelectRow(sql)["amount"];
         }
     }
 }

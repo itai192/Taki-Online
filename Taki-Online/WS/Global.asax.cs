@@ -4,19 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
-using BLL;
 using System.Configuration;
 using System.IO;
-using System.Timers;
-namespace UI
+namespace WS
 {
     public class Global : System.Web.HttpApplication
     {
-        
+
         protected void Application_Start(object sender, EventArgs e)
-        { 
-            Application["Users Online"] = 0;
-            Application["Visitors Today"] = 0;
+        {
             Directory.SetCurrentDirectory(Server.MapPath("~"));
             string strong = Directory.GetCurrentDirectory();
             BLL.BLL_Helper.CreateDBHelperInDalHelper(ConfigurationManager.AppSettings["path"], ConfigurationManager.AppSettings["provider"]);
@@ -24,12 +20,8 @@ namespace UI
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            Application.Lock();
-            Application["Users Online"] =(int)Application["Users Online"] + 1;
-            Application["Visitors Today"] = (int)Application["Visitors Today"] + 1;
-            Application.UnLock();
-        }
 
+        }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
@@ -48,9 +40,7 @@ namespace UI
 
         protected void Session_End(object sender, EventArgs e)
         {
-            Application.Lock();
-            Application["Users Online"] = (int)Application["Users Online"] - 1;
-            Application.UnLock();
+
         }
 
         protected void Application_End(object sender, EventArgs e)

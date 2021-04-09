@@ -55,7 +55,8 @@ namespace BLL
         public DateTime BirthDate { get; }
         private int _level;
         private string _picture;
-        public int level { get { return _level; } 
+        public int level {
+            get { return _level; } 
             set 
             {
                 _level = value;
@@ -185,7 +186,7 @@ namespace BLL
         }
         public User(string username, UserType type, string email, DateTime BirthDate, string fName, string lName,string password)
         {
-            level = 1;
+            _level = 1;
             _xp = 0;
             this.BirthDate = BirthDate;
             this.fName = fName;

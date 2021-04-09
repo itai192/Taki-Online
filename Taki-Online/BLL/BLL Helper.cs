@@ -9,6 +9,20 @@ namespace BLL
 {
     public static class BLL_Helper
     {
+        /// <summary>
+        /// returns a list of how many days were played in the last 30 days, where index 0 is today and 29 is 29 days ago
+        /// </summary>
+        public static List<int> GamesPlayedInMonth()
+        {
+            List<int> Games = new List<int>();
+            for (int i = 0; i < 30; i++)
+            {
+                DateTime today = DateTime.Today.Subtract(TimeSpan.FromDays(i));
+                DateTime tommorow = today.AddDays(1);
+                Games.Add(GameDal.GamesPlayedBetweenDates(today,tommorow));
+            }
+            return Games;
+        }
         public static DataTable GetAllPlayersInRankThisSeason(int rankID)
         {
             return DAL.UsersInGamesDal.FindAllPlayersInRankInSeason(rankID, DAL.SesonsDal.GetCurrentSeason());

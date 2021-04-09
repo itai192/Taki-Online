@@ -23,7 +23,7 @@ namespace UI
         }
        public void CalanderValidation(object source, ServerValidateEventArgs args)
         {
-            if (Calendar.SelectedDate == null|| Calendar.SelectedDate == new DateTime(0001, 1, 1, 0, 0, 0)|| DateTime.Today - Calendar.SelectedDate.AddYears(4)<=TimeSpan.Zero)
+            if (Calendar.SelectedDate == null|| Calendar.SelectedDate == new DateTime(0001, 1, 1, 0, 0, 0)|| DateTime.Today - Calendar.SelectedDate.AddYears(10)<=TimeSpan.Zero)
                 args.IsValid = false;
             else
             {
@@ -59,7 +59,6 @@ namespace UI
         protected void YearSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
             Calendar.VisibleDate = new DateTime(int.Parse(YearSelect.SelectedValue), Calendar.SelectedDate.Month, 1);
-            
         }
 
         protected void DateSelectionChanged(object sender, EventArgs e)
