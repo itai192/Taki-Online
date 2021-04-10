@@ -95,7 +95,7 @@ namespace WS
         {
             return UserListToWSUserList(BLL_Helper.GetAllUsersInRankThisSeason(rank.ID)); ; 
         }
-        [WebMethod]
+        [WebMethod(enableSession:true)]
         public bool IsSessionConnected()
         {
             return Session["User"] != null;

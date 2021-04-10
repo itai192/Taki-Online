@@ -19,7 +19,7 @@ namespace Taki_AssosiationUI
         {
             if(proxy.SignIn(username.Text,password.Text))
             {
-                Response.Redirect("~/Home.aspx");
+                Response.Redirect("~/Account.aspx");
             }
             else
             {

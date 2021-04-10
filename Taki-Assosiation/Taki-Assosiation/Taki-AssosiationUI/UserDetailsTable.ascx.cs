@@ -39,12 +39,13 @@ namespace Taki_AssosiationUI
                 //if date
                 if(prop.PropertyType.IsEquivalentTo(typeof(DateTime)))
                 {
-                    DateTime date = (DateTime)prop.GetValue(user);
+                    DateTime date = (DateTime)prop.GetValue(_user);
                     row.Cells.Add(UIHelper.LableTableCell(date.ToShortDateString()));
                 }
                 else
                 {
-                    row.Cells.Add(UIHelper.LableTableCell(prop.GetValue(user).ToString()));
+                    string strong = prop.GetValue(_user).ToString();
+                    row.Cells.Add(UIHelper.LableTableCell(prop.GetValue(_user).ToString()));
                 }
                 tbl.Rows.Add(row);
             }
