@@ -32,7 +32,7 @@
                     <asp:Label ID="PasswordLbl" runat="server" Text="Password:" AssociatedControlID="Password"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell runat="server">
-                    <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox ID="Password" runat="server" TextMode="Password" ViewStateMode="Enabled"></asp:TextBox>
                     <asp:RegularExpressionValidator ID="PasswordValidator" ValidationGroup="signup" runat="server" ErrorMessage="Your passowrd is too short please enter at least 5 charecters" ValidationExpression="[\S]{5,}" ControlToValidate="Password" Display="Dynamic"></asp:RegularExpressionValidator><asp:RequiredFieldValidator ValidationGroup="signup" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please insert your password " ControlToValidate="Password" Display="Dynamic"></asp:RequiredFieldValidator>
                 </asp:TableCell>
             </asp:TableRow>
@@ -41,7 +41,7 @@
                     <asp:Label ID="Label6" runat="server" Text="Confirm Password:" AssociatedControlID="CPassword"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell runat="server">
-                    <asp:TextBox ID="CPassword" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox ID="CPassword" runat="server" TextMode="Password" ViewStateMode="Enabled"></asp:TextBox>
                     <asp:CompareValidator runat="server" ValidationGroup="signup" ErrorMessage="Your passwords don't match" ControlToCompare="Password" ControlToValidate="CPassword" Display="Dynamic" ID="ComparePasswords"></asp:CompareValidator>
                     <asp:RequiredFieldValidator ValidationGroup="signup" ID="RequiredPasswordAgain" runat="server" ErrorMessage="Please insert your password  again" ControlToValidate="CPassword" Display="Dynamic"></asp:RequiredFieldValidator>
                 </asp:TableCell>

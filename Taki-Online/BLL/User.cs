@@ -74,7 +74,7 @@ namespace BLL
             {
                 _xp = value;
                 LevelUpIfCan();
-                DAL.UserDal.UpdateUserXP(_xp,username);
+                UserDal.UpdateUserXP(_xp,username);
             }
         }
         public string fName { get; }
@@ -201,7 +201,7 @@ namespace BLL
             type = (UserType)dr[UserDal.TYPEFLD];
             email = dr[UserDal.EMAILFLD].ToString();
             BirthDate = (DateTime)dr["Date Of Birth"];
-            _level = (int)dr[UserDal.LEVELFLD];
+            _level = (int)dr["Level"];
             _xp = (int)dr[UserDal.XPFLD];
             fName = dr["First Name"].ToString();
             lName = dr["Last Name"].ToString();

@@ -16,6 +16,11 @@ namespace UI
             {
                 BuildYearSelect();
             }
+            else
+            {
+                Password.Attributes["value"] = Password.Text;
+                CPassword.Attributes["value"] = CPassword.Text;
+            }
         }
         protected void Page_LoadComplete(object sender, EventArgs e)
         {

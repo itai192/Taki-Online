@@ -5,7 +5,7 @@ namespace DAL
     public class UserDal
     {
         //field names so it is easier to make queries
-        public const string XPFLD = "XP", LEVELFLD = "Level", FIRSTNAMEFLD = "[First Name]", LASTNAMEFLD = "[Last Name]", BIRTHDATEFLD = "[Date Of Birth]", USERNAMEFLD = "Username", EMAILFLD = "Email", PASSWORDFLD = "[Password]", TYPEFLD = "Type", PICTUREFLD = "Picture";
+        public const string XPFLD = "XP", LEVELFLD = "[Level]", FIRSTNAMEFLD = "[First Name]", LASTNAMEFLD = "[Last Name]", BIRTHDATEFLD = "[Date Of Birth]", USERNAMEFLD = "Username", EMAILFLD = "Email", PASSWORDFLD = "[Password]", TYPEFLD = "Type", PICTUREFLD = "Picture";
         /// <summary>
         /// adds a user
         /// </summary>

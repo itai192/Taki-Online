@@ -17,6 +17,7 @@
                     <uc1:UserCard ID="UserCard1" runat="server" user='<%#Container.DataItem%>' />
                 </ItemTemplate>
             </asp:DataList>
+            Friends To Invite:
             <asp:DataList ID="FriendsToInvite" runat="server" OnItemDataBound="FriendsToInvite_ItemDataBound" OnItemCommand="FriendsToInvite_ItemCommand">
                 <ItemTemplate>
                     <uc1:UserCard ID="UserCard1" runat="server" user='<%# Container.DataItem %>' />
@@ -26,7 +27,7 @@
             <asp:Panel ID="HostPanel" runat="server">
                 <asp:Button ID="StartBtn" runat="server" Text="Start Game!" OnClick="StartBtn_Click" />
             </asp:Panel>
-            <asp:Timer ID="timer" runat="server" OnTick="Page_Load" Interval="10000"></asp:Timer>
+            <asp:Timer ID="timer" runat="server" OnTick="Page_Load" Interval="3000"></asp:Timer>
         </ContentTemplate>
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="timer" EventName="Tick" />

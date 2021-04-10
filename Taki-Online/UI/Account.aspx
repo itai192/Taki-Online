@@ -41,7 +41,7 @@
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server">Change Username:</asp:TableCell>
                 <asp:TableCell runat="server">
-                    <asp:TextBox ID="ChngUsernameTxt" runat="server" ></asp:TextBox><asp:Button ID="ChngUsernameBtn" runat="server" Text="Change!" ValidationGroup="ChangeUserName" OnClick="ChngUsername_Click"/><asp:RegularExpressionValidator ID="NameValidator" runat="server" Display="Dynamic" ValidationGroup="ChangeUserName" ValidationExpression="\w" ErrorMessage="Username must be a word (english alphabet and numbers)" ControlToValidate="ChngUsernameTxt"></asp:RegularExpressionValidator><asp:CustomValidator OnServerValidate="UsernameValidator_ServerValidate" ID="UserExists" runat="server" ErrorMessage="A user With that name already exists" ControlToValidate="ChngUsernameTxt" ValidationGroup="ChangeUserName" Display="Dynamic"></asp:CustomValidator></asp:TableCell>
+                    <asp:TextBox ID="ChngUsernameTxt" runat="server" ></asp:TextBox><asp:Button ID="ChngUsernameBtn" runat="server" Text="Change!" ValidationGroup="ChangeUserName" OnClick="ChngUsername_Click"/><asp:RegularExpressionValidator ID="NameValidator" runat="server" Display="Dynamic" ValidationGroup="ChangeUserName" ValidationExpression="\w+" ErrorMessage="Username must be a word (english alphabet and numbers)" ControlToValidate="ChngUsernameTxt"></asp:RegularExpressionValidator><asp:CustomValidator OnServerValidate="UsernameValidator_ServerValidate" ID="UserExists" runat="server" ErrorMessage="A user With that name already exists" ControlToValidate="ChngUsernameTxt" ValidationGroup="ChangeUserName" Display="Dynamic"></asp:CustomValidator></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server">Level:</asp:TableCell>
@@ -77,7 +77,7 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
-    <asp:RequiredFieldValidator ID="RequiredSearchString" runat="server" ErrorMessage="You can't search for nothing" ValidationGroup="SearchUsers" ControlToValidate="FindFriendTxtBox" Display="Dynamic"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="friendUsernameValidator" runat="server" Display="Dynamic" ValidationGroup="ChangeUserName" ValidationExpression="\w" ErrorMessage="Friend sername must be a word (english alphabet and numbers)" ControlToValidate="FindFriendTxtBox"></asp:RegularExpressionValidator>
+    <asp:RequiredFieldValidator ID="RequiredSearchString" runat="server" ErrorMessage="You can't search for nothing" ValidationGroup="SearchUsers" ControlToValidate="FindFriendTxtBox" Display="Dynamic"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="friendUsernameValidator" runat="server" Display="Dynamic" ValidationGroup="ChangeUserName" ValidationExpression="\w+" ErrorMessage="Friend sername must be a word (english alphabet and numbers)" ControlToValidate="FindFriendTxtBox"></asp:RegularExpressionValidator>
     <asp:DataList ID="GameInvites" runat="server" OnItemCommand="GameInvites_ItemCommand">
         <HeaderTemplate>
             <asp:Label ID="Label1" runat="server" Text="Invites to games"></asp:Label>

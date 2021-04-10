@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserCard.ascx.cs" Inherits="UI.Custom_Controls.UserCard" %>
 <%@ Register src="ProfilePicture.ascx" tagname="ProfilePicture" tagprefix="uc1" %>
-<asp:Panel ID="UserPanel" runat="server" Width="200px" Direction="LeftToRight">
+<asp:Panel ID="UserPanel" runat="server"  Direction="LeftToRight">
     <uc1:ProfilePicture ID="ProfilePicture" runat="server" height="3em" pictureName="3lh" width="3em" ViewStateMode="Enabled" CssClass="FloatLeft"/>
     <asp:Table ID="Details" runat="server">
         

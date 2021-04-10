@@ -24,6 +24,7 @@
                     </ItemTemplate>
                 </asp:Repeater>
             </div>
+            <div>
             <asp:DataList ID="Users" runat="server" RepeatDirection="Vertical" OnItemDataBound="Users_ItemDataBound">
                     <HeaderTemplate>
                         <asp:Label ID="Label1" runat="server" Text="Players"></asp:Label>
@@ -34,7 +35,7 @@
                 </asp:DataList>
             <asp:Label ID="Statuslbl" runat="server" Text=""  ></asp:Label>
             <script type="text/javascript" src="CardAnimations.js"></script>
-            
+                </div>
         </ContentTemplate>
     </asp:UpdatePanel>
     
