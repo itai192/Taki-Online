@@ -1,8 +1,8 @@
 ﻿using System;
-
+using System.Data;
 namespace DAL
 {
-    public class SesonsDal
+    public class SeasonsDal
     {
         //field names so it is easier to make queries
         public const string SEASONID = "[Season ID]", STARTDATE = "[Start Date]", ENDDATE = "[End Date]";
@@ -20,5 +20,13 @@ namespace DAL
         {
             return (int)DalHelper.SelectRow($"SELECT * FROM {Constants.SEASONSTBL} WHERE {DateTime.Now.ToOADate().ToString()} BETWEEN {STARTDATE} AND {ENDDATE}")["Season ID"];
         }
+        /// <summary>
+        /// gets a season by it's ID
+        /// </summary>
+        public static DataRow GetSeason(int seasonID)
+        {
+            return DalHelper.SelectRow($"SELECT * FROM {Constants.SEASONSTBL} WHERE {SEASONID} = {seasonID}");
+        }
+
     }
 }

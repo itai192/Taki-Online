@@ -37,6 +37,16 @@ namespace Taki_AssosiationUI.WebService {
         
         private System.Threading.SendOrPostCallback GetUserDetailsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetFriendsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAllRanksOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAllUsersInRankOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback IsSessionConnectedOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetConnectedUserOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -86,6 +96,21 @@ namespace Taki_AssosiationUI.WebService {
         
         /// <remarks/>
         public event GetUserDetailsCompletedEventHandler GetUserDetailsCompleted;
+        
+        /// <remarks/>
+        public event GetFriendsCompletedEventHandler GetFriendsCompleted;
+        
+        /// <remarks/>
+        public event GetAllRanksCompletedEventHandler GetAllRanksCompleted;
+        
+        /// <remarks/>
+        public event GetAllUsersInRankCompletedEventHandler GetAllUsersInRankCompleted;
+        
+        /// <remarks/>
+        public event IsSessionConnectedCompletedEventHandler IsSessionConnectedCompleted;
+        
+        /// <remarks/>
+        public event GetConnectedUserCompletedEventHandler GetConnectedUserCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SignIn", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -210,6 +235,143 @@ namespace Taki_AssosiationUI.WebService {
             if ((this.GetUserDetailsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetUserDetailsCompleted(this, new GetUserDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetFriends", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public WSUser[] GetFriends() {
+            object[] results = this.Invoke("GetFriends", new object[0]);
+            return ((WSUser[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetFriendsAsync() {
+            this.GetFriendsAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetFriendsAsync(object userState) {
+            if ((this.GetFriendsOperationCompleted == null)) {
+                this.GetFriendsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetFriendsOperationCompleted);
+            }
+            this.InvokeAsync("GetFriends", new object[0], this.GetFriendsOperationCompleted, userState);
+        }
+        
+        private void OnGetFriendsOperationCompleted(object arg) {
+            if ((this.GetFriendsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetFriendsCompleted(this, new GetFriendsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllRanks", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public WSRank[] GetAllRanks() {
+            object[] results = this.Invoke("GetAllRanks", new object[0]);
+            return ((WSRank[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllRanksAsync() {
+            this.GetAllRanksAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetAllRanksAsync(object userState) {
+            if ((this.GetAllRanksOperationCompleted == null)) {
+                this.GetAllRanksOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllRanksOperationCompleted);
+            }
+            this.InvokeAsync("GetAllRanks", new object[0], this.GetAllRanksOperationCompleted, userState);
+        }
+        
+        private void OnGetAllRanksOperationCompleted(object arg) {
+            if ((this.GetAllRanksCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllRanksCompleted(this, new GetAllRanksCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllUsersInRank", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public WSUser[] GetAllUsersInRank(WSRank rank) {
+            object[] results = this.Invoke("GetAllUsersInRank", new object[] {
+                        rank});
+            return ((WSUser[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllUsersInRankAsync(WSRank rank) {
+            this.GetAllUsersInRankAsync(rank, null);
+        }
+        
+        /// <remarks/>
+        public void GetAllUsersInRankAsync(WSRank rank, object userState) {
+            if ((this.GetAllUsersInRankOperationCompleted == null)) {
+                this.GetAllUsersInRankOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllUsersInRankOperationCompleted);
+            }
+            this.InvokeAsync("GetAllUsersInRank", new object[] {
+                        rank}, this.GetAllUsersInRankOperationCompleted, userState);
+        }
+        
+        private void OnGetAllUsersInRankOperationCompleted(object arg) {
+            if ((this.GetAllUsersInRankCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllUsersInRankCompleted(this, new GetAllUsersInRankCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IsSessionConnected", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool IsSessionConnected() {
+            object[] results = this.Invoke("IsSessionConnected", new object[0]);
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void IsSessionConnectedAsync() {
+            this.IsSessionConnectedAsync(null);
+        }
+        
+        /// <remarks/>
+        public void IsSessionConnectedAsync(object userState) {
+            if ((this.IsSessionConnectedOperationCompleted == null)) {
+                this.IsSessionConnectedOperationCompleted = new System.Threading.SendOrPostCallback(this.OnIsSessionConnectedOperationCompleted);
+            }
+            this.InvokeAsync("IsSessionConnected", new object[0], this.IsSessionConnectedOperationCompleted, userState);
+        }
+        
+        private void OnIsSessionConnectedOperationCompleted(object arg) {
+            if ((this.IsSessionConnectedCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.IsSessionConnectedCompleted(this, new IsSessionConnectedCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetConnectedUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public WSUser GetConnectedUser() {
+            object[] results = this.Invoke("GetConnectedUser", new object[0]);
+            return ((WSUser)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetConnectedUserAsync() {
+            this.GetConnectedUserAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetConnectedUserAsync(object userState) {
+            if ((this.GetConnectedUserOperationCompleted == null)) {
+                this.GetConnectedUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetConnectedUserOperationCompleted);
+            }
+            this.InvokeAsync("GetConnectedUser", new object[0], this.GetConnectedUserOperationCompleted, userState);
+        }
+        
+        private void OnGetConnectedUserOperationCompleted(object arg) {
+            if ((this.GetConnectedUserCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetConnectedUserCompleted(this, new GetConnectedUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -350,6 +512,63 @@ namespace Taki_AssosiationUI.WebService {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class WSRank {
+        
+        private int idField;
+        
+        private string nameField;
+        
+        private int lowestEloField;
+        
+        private string rangeField;
+        
+        /// <remarks/>
+        public int ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int lowestElo {
+            get {
+                return this.lowestEloField;
+            }
+            set {
+                this.lowestEloField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string range {
+            get {
+                return this.rangeField;
+            }
+            set {
+                this.rangeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void SignInCompletedEventHandler(object sender, SignInCompletedEventArgs e);
     
@@ -440,6 +659,136 @@ namespace Taki_AssosiationUI.WebService {
         private object[] results;
         
         internal GetUserDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public WSUser Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((WSUser)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void GetFriendsCompletedEventHandler(object sender, GetFriendsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetFriendsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetFriendsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public WSUser[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((WSUser[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void GetAllRanksCompletedEventHandler(object sender, GetAllRanksCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllRanksCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllRanksCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public WSRank[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((WSRank[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void GetAllUsersInRankCompletedEventHandler(object sender, GetAllUsersInRankCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllUsersInRankCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllUsersInRankCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public WSUser[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((WSUser[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void IsSessionConnectedCompletedEventHandler(object sender, IsSessionConnectedCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class IsSessionConnectedCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal IsSessionConnectedCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void GetConnectedUserCompletedEventHandler(object sender, GetConnectedUserCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetConnectedUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetConnectedUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

@@ -9,6 +9,7 @@ namespace BLL
     public class User
     {
         const int InitailXpNeeded=50;
+        const int InitailElo = 200;
         private string _username;
         public string username { 
             get
@@ -27,11 +28,11 @@ namespace BLL
             {
                 try
                 {
-                    return new Rank((int)DAL.UsersInGamesDal.FindPlayerRankInSeason(DAL.SesonsDal.GetCurrentSeason(), username)["Rank ID"]);
+                    return new Rank((int)DAL.UsersInGamesDal.FindPlayerRankInSeason(DAL.SeasonsDal.GetCurrentSeason(), username)["Rank ID"]);
                 }
                 catch
                 {
-                    return new Rank((int)DAL.UsersInGamesDal.FindPlayerStartRankInSeason(DAL.SesonsDal.GetCurrentSeason(), username)["Rank ID"]);
+                    return new Rank((int)DAL.UsersInGamesDal.FindPlayerStartRankInSeason(DAL.SeasonsDal.GetCurrentSeason(), username)["Rank ID"]);
                 }
             }
         }
@@ -39,12 +40,12 @@ namespace BLL
             {
                 try
                 {
-                    int elo = (int)(double)UsersInGamesDal.FindPlayerRankInSeason(DAL.SesonsDal.GetCurrentSeason(), username)["ELO"];
+                    int elo = (int)(double)UsersInGamesDal.FindPlayerRankInSeason(DAL.SeasonsDal.GetCurrentSeason(), username)["ELO"];
                     return elo;
                 }
                 catch
                 {
-                    int elo = (int)UsersInGamesDal.FindPlayerStartRankInSeason(DAL.SesonsDal.GetCurrentSeason(), username)["ELO"];
+                    int elo = (int)UsersInGamesDal.FindPlayerStartRankInSeason(DAL.SeasonsDal.GetCurrentSeason(), username)["ELO"];
                     return elo;
                 }
             }
@@ -192,8 +193,8 @@ namespace BLL
             this.type = type;
             this.username = username;
             DAL.UserDal.AddUser(email, password, (int)type, fName, lName, BirthDate,username);
+            RankingHistoryDal.InsertRankHistory(username, BLL_Helper.GetCurrentSeason().SeasonID,InitailElo);
         }
-        
         public User(DataRow dr)
         {
             _username = dr[UserDal.USERNAMEFLD].ToString();

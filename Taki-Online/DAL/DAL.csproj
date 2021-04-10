@@ -43,9 +43,10 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="DalHelper.cs" />
+    <Compile Include="RankingHistoryDal.cs" />
     <Compile Include="GameInvitesDal.cs" />
     <Compile Include="RankDal.cs" />
-    <Compile Include="SesonsDal.cs" />
+    <Compile Include="SeasonsDal.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="FriendsDal.cs" />
     <Compile Include="GameDal.cs" />

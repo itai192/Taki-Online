@@ -78,6 +78,78 @@
           <s:element minOccurs="1" maxOccurs="1" name="birthDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetFriends">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetFriendsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFriendsResult" type="tns:ArrayOfWSUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWSUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WSUser" nillable="true" type="tns:WSUser" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllRanks">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllRanksResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllRanksResult" type="tns:ArrayOfWSRank" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWSRank">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WSRank" nillable="true" type="tns:WSRank" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WSRank">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="lowestElo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="range" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllUsersInRank">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rank" type="tns:WSRank" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllUsersInRankResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllUsersInRankResult" type="tns:ArrayOfWSUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsSessionConnected">
+        <s:complexType />
+      </s:element>
+      <s:element name="IsSessionConnectedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsSessionConnectedResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConnectedUser">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetConnectedUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetConnectedUserResult" type="tns:WSUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="SignInSoapIn">
@@ -104,6 +176,36 @@
   <wsdl:message name="GetUserDetailsSoapOut">
     <wsdl:part name="parameters" element="tns:GetUserDetailsResponse" />
   </wsdl:message>
+  <wsdl:message name="GetFriendsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFriends" />
+  </wsdl:message>
+  <wsdl:message name="GetFriendsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFriendsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllRanksSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllRanks" />
+  </wsdl:message>
+  <wsdl:message name="GetAllRanksSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllRanksResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUsersInRankSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllUsersInRank" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUsersInRankSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllUsersInRankResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsSessionConnectedSoapIn">
+    <wsdl:part name="parameters" element="tns:IsSessionConnected" />
+  </wsdl:message>
+  <wsdl:message name="IsSessionConnectedSoapOut">
+    <wsdl:part name="parameters" element="tns:IsSessionConnectedResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetConnectedUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetConnectedUser" />
+  </wsdl:message>
+  <wsdl:message name="GetConnectedUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetConnectedUserResponse" />
+  </wsdl:message>
   <wsdl:portType name="TakiWebServiceSoap">
     <wsdl:operation name="SignIn">
       <wsdl:input message="tns:SignInSoapIn" />
@@ -120,6 +222,26 @@
     <wsdl:operation name="GetUserDetails">
       <wsdl:input message="tns:GetUserDetailsSoapIn" />
       <wsdl:output message="tns:GetUserDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFriends">
+      <wsdl:input message="tns:GetFriendsSoapIn" />
+      <wsdl:output message="tns:GetFriendsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRanks">
+      <wsdl:input message="tns:GetAllRanksSoapIn" />
+      <wsdl:output message="tns:GetAllRanksSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsersInRank">
+      <wsdl:input message="tns:GetAllUsersInRankSoapIn" />
+      <wsdl:output message="tns:GetAllUsersInRankSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsSessionConnected">
+      <wsdl:input message="tns:IsSessionConnectedSoapIn" />
+      <wsdl:output message="tns:IsSessionConnectedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConnectedUser">
+      <wsdl:input message="tns:GetConnectedUserSoapIn" />
+      <wsdl:output message="tns:GetConnectedUserSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="TakiWebServiceSoap" type="tns:TakiWebServiceSoap">
@@ -160,6 +282,51 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetFriends">
+      <soap:operation soapAction="http://tempuri.org/GetFriends" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRanks">
+      <soap:operation soapAction="http://tempuri.org/GetAllRanks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsersInRank">
+      <soap:operation soapAction="http://tempuri.org/GetAllUsersInRank" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsSessionConnected">
+      <soap:operation soapAction="http://tempuri.org/IsSessionConnected" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConnectedUser">
+      <soap:operation soapAction="http://tempuri.org/GetConnectedUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="TakiWebServiceSoap12" type="tns:TakiWebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -192,6 +359,51 @@
     </wsdl:operation>
     <wsdl:operation name="GetUserDetails">
       <soap12:operation soapAction="http://tempuri.org/GetUserDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFriends">
+      <soap12:operation soapAction="http://tempuri.org/GetFriends" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRanks">
+      <soap12:operation soapAction="http://tempuri.org/GetAllRanks" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsersInRank">
+      <soap12:operation soapAction="http://tempuri.org/GetAllUsersInRank" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsSessionConnected">
+      <soap12:operation soapAction="http://tempuri.org/IsSessionConnected" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConnectedUser">
+      <soap12:operation soapAction="http://tempuri.org/GetConnectedUser" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

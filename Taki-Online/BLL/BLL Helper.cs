@@ -23,10 +23,13 @@ namespace BLL
             }
             return Games;
         }
+        public static Season GetCurrentSeason()
+        {
+            return new Season(SeasonsDal.GetCurrentSeason());
+        }
         public static DataTable GetAllPlayersInRankThisSeason(int rankID)
         {
-            UsersInGamesDal.FindAllPlayersInRankInSeason(rankID, DAL.SesonsDal.GetCurrentSeason();
-
+            return UsersInGamesDal.FindAllPlayersInRankInSeason(rankID, DAL.SeasonsDal.GetCurrentSeason());
         }
         public static List<Rank> GetAllRanks()
         {

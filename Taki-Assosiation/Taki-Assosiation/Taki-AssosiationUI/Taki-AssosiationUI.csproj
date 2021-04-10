@@ -69,15 +69,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Account.aspx" />
+    <Content Include="Home.aspx" />
     <Content Include="Sign In.aspx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="Web References\WebService\Reference.map">
+    <Content Include="UserDetailsTable.ascx" />
+    <None Include="Web References\WebService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <None Include="Web References\WebService\TakiWebService.disco" />
     <Content Include="Web.config" />
     <None Include="Web References\WebService\TakiWebService.wsdl" />
@@ -86,6 +89,20 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.aspx.cs">
+      <DependentUpon>Account.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account.aspx.designer.cs">
+      <DependentUpon>Account.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -106,6 +123,14 @@
     <Compile Include="Sign In.aspx.designer.cs">
       <DependentUpon>Sign In.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UIHelper.cs" />
+    <Compile Include="UserDetailsTable.ascx.cs">
+      <DependentUpon>UserDetailsTable.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserDetailsTable.ascx.designer.cs">
+      <DependentUpon>UserDetailsTable.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Web References\WebService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -115,6 +140,9 @@
   <ItemGroup>
     <Content Include="Master.Master" />
     <None Include="packages.config" />
+    <Content Include="Web References\WebService\WSRank.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

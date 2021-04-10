@@ -69,29 +69,15 @@ namespace WS
                 return null;
             }
         }
-        [WebMethod(enableSession:true)]
-        public string AddFriend(WSUser user)
-        {
-            if (Session["User"] == null)
-                return "You are not connected";
-            User ThisUser = (User)Session["User"];
-            return ThisUser.AddFriend(user.username);
-        }
         [WebMethod(enableSession: true)]
-        public bool AcceptFriend(WSUser user)
+        public List<WSUser> GetFriends()
         {
-            if (Session["User"] == null)
-                return false;
-            try
+            if(Session["User"]==null)
             {
-                User ThisUser = (User)Session["User"];
-                ThisUser.AcceptFriendRequestFrom(user.username);
-                return true;
+                return null;
             }
-            catch
-            {
-                return false;
-            }
+            User user = (User)Session["User"];
+            return UserListToWSUserList(BLL_Helper.UserListFromUsernameList(user.AcceptedFriends));
         }
         [WebMethod]
         public List<WSRank> GetAllRanks()
@@ -102,18 +88,45 @@ namespace WS
             {
                 ret.Add(new WSRank(rank));
             }
-            return ret;
+            return RankListToWSRankList(BLL_Helper.GetAllRanks());
         }
         [WebMethod]
         public List<WSUser> GetAllUsersInRank(WSRank rank)
         {
-            List<User> users = BLL_Helper.GetAllUsersInRankThisSeason(rank.ID);
-            List<WSUser> wsUsers = new List<WSUser>();
+            return UserListToWSUserList(BLL_Helper.GetAllUsersInRankThisSeason(rank.ID)); ; 
+        }
+        [WebMethod]
+        public bool IsSessionConnected()
+        {
+            return Session["User"] != null;
+        }
+        [WebMethod(enableSession:true)]
+        public WSUser GetConnectedUser()
+        {
+            if(Session["User"]==null)
+            {
+                return null;
+            }
+            return new WSUser((User)Session["User"]);
+        }
+        private static List<WSUser> UserListToWSUserList(List<User> users)
+        {
+            List<WSUser> ret = new List<WSUser>();
             foreach(User user in users)
             {
-                wsUsers.Add(new WSUser(user));
+                ret.Add(new WSUser(user));
             }
-            return wsUsers; 
+            return ret;
         }
+        private static List<WSRank> RankListToWSRankList(List<Rank> ranks)
+        {
+            List<WSRank> ret = new List<WSRank>();
+            foreach (Rank rank in ranks)
+            {
+                ret.Add(new WSRank(rank));
+            }
+            return ret;
+        }
+        
     }
 }
