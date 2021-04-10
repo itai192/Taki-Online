@@ -1,18 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Account.aspx.cs" Inherits="Taki_AssosiationUI.Account" %>
-
-<%@ Register Src="~/UserDetailsTable.ascx" TagPrefix="uc1" TagName="UserDetailsTable" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Leaderboard.aspx.cs" Inherits="Taki_AssosiationUI.Leaderboard" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <table>
-        <tr>
-            <td><uc1:UserDetailsTable runat="server" ID="UserDetailsTable" /></td>
-            <td>
-                <h3>Friends:</h3>
-                <asp:GridView ID="Friends" runat="server" AutoGenerateColumns="False" OnRowCommand="Friends_RowCommand">
+    <asp:DropDownList ID="RankDropDown" runat="server" ItemType="Taki_AssosiationUI.WebService.WSRank" AutoPostBack="True" DataTextField="name" DataValueField="ID" OnSelectedIndexChanged="RankDropDown_SelectedIndexChanged"></asp:DropDownList>
+    <asp:GridView ID="LeaderboardGrid" runat="server" AutoGenerateColumns="False" OnRowCommand="Leaderboard_RowCommand">
                     <Columns>
                         <asp:BoundField DataField="username" HeaderText="Username" />
+                        
+                        <asp:BoundField DataField="elo" HeaderText="Elo Rank" />
                         
                         <asp:TemplateField>
                             <ItemTemplate>
@@ -25,10 +20,4 @@
                         you have no friends ):<br />
                     </EmptyDataTemplate>
                 </asp:GridView>
-            </td>
-        </tr>
-    </table>
-
-        <asp:Label ID="ErrorLbl" runat="server"></asp:Label>
-   
 </asp:Content>

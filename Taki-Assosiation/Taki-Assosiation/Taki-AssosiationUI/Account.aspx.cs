@@ -13,12 +13,27 @@ namespace Taki_AssosiationUI
         protected void Page_Load(object sender, EventArgs e)
         {
             proxy = (TakiWebService)Session["Proxy"];
-            if(!proxy.IsSessionConnected())
+            if (!proxy.IsSessionConnected())
             {
                 Response.Redirect("~/Home.aspx");
             }
             UserDetailsTable.user = proxy.GetConnectedUser();
         }
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
+            Friends.DataSource = proxy.GetFriends();
+            Friends.DataBind();
+        }
 
+
+
+
+        protected void Friends_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if(e.CommandName=="Details")
+            {
+                Response.Redirect($"~/UserDetails.aspx?username={e.CommandArgument}");
+            }
+        }
     }
 }

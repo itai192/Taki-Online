@@ -10,8 +10,6 @@ namespace WS
 {
     public class WSUser
     {
-        
-        [System.Xml.Serialization.SoapElement("FirstName")]
         [DisplayName("First Name")]
         public string firstName{get; set;}
         [DisplayName("Last Name")]

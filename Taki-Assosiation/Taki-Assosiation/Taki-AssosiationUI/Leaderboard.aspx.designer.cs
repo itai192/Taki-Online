@@ -11,34 +11,25 @@ namespace Taki_AssosiationUI
 {
 
 
-    public partial class Account
+    public partial class Leaderboard
     {
 
         /// <summary>
-        /// UserDetailsTable control.
+        /// RankDropDown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Taki_AssosiationUI.UserDetailsTable UserDetailsTable;
+        protected global::System.Web.UI.WebControls.DropDownList RankDropDown;
 
         /// <summary>
-        /// Friends control.
+        /// LeaderboardGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView Friends;
-
-        /// <summary>
-        /// ErrorLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ErrorLbl;
+        protected global::System.Web.UI.WebControls.GridView LeaderboardGrid;
     }
 }

@@ -25,17 +25,18 @@ namespace Taki_AssosiationUI
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            LoadUser();
         }
         public void LoadUser()
         {
+            Controls.Clear();
             Table tbl = new Table();
             Type user = _user.GetType();
             PropertyInfo[] properties = user.GetProperties();
             foreach(PropertyInfo prop in properties)
             {
                 TableRow row = new TableRow();
-                row.Cells.Add(UIHelper.LableTableCell(prop.Name));
+                row.Cells.Add(UIHelper.LableTableCell(prop.Name+":"));
                 //if date
                 if(prop.PropertyType.IsEquivalentTo(typeof(DateTime)))
                 {

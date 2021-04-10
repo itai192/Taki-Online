@@ -50,12 +50,12 @@ namespace WS
             }
         }
         [WebMethod(enableSession: true)]
-        public List<string> GetFriendNames()
+        public List<WSUser> GetFriends()
         {
             if (Session["User"] == null)
                 return null;
             User user = (User)Session["User"];
-            return user.AcceptedFriends;
+            return UserListToWSUserList(BLL_Helper.UserListFromUsernameList(user.AcceptedFriends));
         }
         [WebMethod]
         public WSUser GetUserDetails(string username)
@@ -68,16 +68,6 @@ namespace WS
             {
                 return null;
             }
-        }
-        [WebMethod(enableSession: true)]
-        public List<WSUser> GetFriends()
-        {
-            if(Session["User"]==null)
-            {
-                return null;
-            }
-            User user = (User)Session["User"];
-            return UserListToWSUserList(BLL_Helper.UserListFromUsernameList(user.AcceptedFriends));
         }
         [WebMethod]
         public List<WSRank> GetAllRanks()

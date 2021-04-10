@@ -125,5 +125,9 @@ namespace BLL
             }
             return users;
         }
+        public static int GetAvarageAge()
+        {
+            return (int)(DateTime.Today - UserDal.AvarageBirthDate()).TotalDays / 365;
+        }
     }
 }

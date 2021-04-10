@@ -135,7 +135,11 @@ namespace BLL
                 {
                     for(int i = 1;i<=9;i++)
                     {
-                        deck.Push(new NumberCard(c, i));
+                        if (i != 2)
+                        {
+                            deck.Push(new NumberCard(c, i));
+                            deck.Push(new NumberCard(c, i));
+                        }
                     }
                 }
             }

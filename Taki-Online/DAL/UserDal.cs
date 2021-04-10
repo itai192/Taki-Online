@@ -71,5 +71,13 @@ namespace DAL
         {
             return DalHelper.SelectTable($"SELECT * FROM {Constants.USERSTBL} WHERE {USERNAMEFLD} LIKE '%{searchTerm}%'");
         }
+        /// <summary>
+        /// a method that finds and returns the avarage date of birth among users
+        /// </summary>
+        public static DateTime AvarageBirthDate()
+        {
+            string sql = $"SELECT CDate(Avg({BIRTHDATEFLD})) as avgbirth FROM {Constants.USERSTBL}";
+            return (DateTime)DalHelper.SelectRow(sql)["avgbirth"];
+        }
     }
 }
