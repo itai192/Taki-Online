@@ -7,7 +7,7 @@
                     <Columns>
                         <asp:BoundField DataField="username" HeaderText="Username" />
                         
-                        <asp:BoundField DataField="elo" HeaderText="Elo Rank" />
+                        <asp:BoundField DataField="elo" HeaderText="Elo Raiting" />
                         
                         <asp:TemplateField>
                             <ItemTemplate>
@@ -17,7 +17,7 @@
                         
                     </Columns>
                     <EmptyDataTemplate>
-                        you have no friends ):<br />
+                        there are no users at that rank<br />
                     </EmptyDataTemplate>
                 </asp:GridView>
 </asp:Content>

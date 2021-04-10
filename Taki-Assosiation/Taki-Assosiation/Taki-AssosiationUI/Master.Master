@@ -11,8 +11,17 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+            <h1>Taki Assosiation</h1>
+            <asp:Table ID="Table1" runat="server" Width="100%" GridLines="Both">
+                <asp:TableRow runat="server">
+                    <asp:TableCell runat="server">
+                        <asp:Button ID="Home" runat="server" PostBackUrl="~/Home.aspx" Text="Home"/>
+                    </asp:TableCell>
+                </asp:TableRow>
+            </asp:Table>
+            <div>  
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+            </div>
         </div>
     </form>
 </body>

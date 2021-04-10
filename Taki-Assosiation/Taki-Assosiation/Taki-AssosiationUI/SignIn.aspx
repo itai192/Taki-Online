@@ -17,6 +17,6 @@
         <hr />
         <asp:Label ID="newuserlbl" runat="server" Text="Label" AssociatedControlID="signUp">new user?</asp:Label>
         <br/>
-        <asp:Button ID="signUp" runat="server" Text="SIGN UP" PostBackUrl="~/Sign up.aspx" />
+        <asp:Button ID="signUp" runat="server" Text="SIGN UP" PostBackUrl="~/SignUp.aspx" />
     </asp:Panel>
 </asp:Content>
