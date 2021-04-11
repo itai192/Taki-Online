@@ -10,11 +10,19 @@ namespace DAL
     public static class UsersInGamesDal
     {
         //a query that selects every player in each season and it's elo score, and rank,
-        public static string FULLSELECT = "SELECT R2.[Rank ID], R2.[Rank Name], T2.Lowest, T2.[User], T2.Season, T2.ELO FROM Ranking AS R2 INNER JOIN(SELECT T.ELO, T.Season, T.[User], Max(R1.[Lowest Elo]) AS Lowest FROM Ranking AS R1 INNER JOIN (SELECT ((IIF(ISNULL(Sum([Users in Games].[elo Added])),0, Sum([Users in Games].[elo Added])))+[Ranking History].[Season Start Elo]) AS ELO, [Ranking History].Season, [Ranking History].User FROM (Seasons INNER JOIN [Ranking History] ON Seasons.[Season ID] = [Ranking History].Season) LEFT JOIN (Games RIGHT JOIN [Users in Games] ON Games.[Game ID] = [Users in Games].Game) ON [Ranking History].User = [Users in Games].User GROUP BY [Ranking History].Season, [Ranking History].User, [Ranking History].[Season Start Elo]) AS T ON R1.[Lowest Elo]< T.ELO GROUP BY T.ELO, T.Season, T.[User]) AS T2 ON T2.Lowest = R2.[Lowest Elo]";
+        public static string FULLSELECT = "SELECT R2.[Rank ID], R2.[Rank Name], T2.Lowest, T2.[User], T2.Season, T2.ELO FROM Ranking AS R2 INNER JOIN"
+            +"(SELECT T.ELO, T.Season, T.[User], Max(R1.[Lowest Elo]) AS Lowest FROM Ranking AS R1 INNER JOIN (SELECT ((IIF(ISNULL(Sum([Users in Games].[elo Added])),0,"
+            +" Sum([Users in Games].[elo Added])))+[Ranking History].[Season Start Elo]) AS ELO, [Ranking History].Season, [Ranking History].User FROM (Seasons INNER JOIN"+
+            " [Ranking History] ON Seasons.[Season ID] = [Ranking History].Season) LEFT JOIN (Games RIGHT JOIN [Users in Games] ON Games.[Game ID] = [Users in Games].Game) ON "+
+            "[Ranking History].User = [Users in Games].User GROUP BY [Ranking History].Season, [Ranking History].User, [Ranking History].[Season Start Elo]) AS T ON"+
+            " R1.[Lowest Elo]< T.ELO GROUP BY T.ELO, T.Season, T.[User]) AS T2 ON T2.Lowest = R2.[Lowest Elo]";
         //part of the query that orders it by elo score
         public static string FULLORDER = "ORDER BY T2.ELO DESC";
         //a query that selects the rank and elo from season start
-        public static string STARTSELECT = "SELECT R2.[Rank ID], R2.[Rank Name], T2.Lowest, T2.[User], T2.Season, T2.ELO FROM Ranking AS R2 INNER JOIN (SELECT T.ELO, T.Season, T.[User], Max(R1.[Lowest Elo]) AS Lowest FROM Ranking AS R1 INNER JOIN (SELECT[Ranking History].[Season Start Elo] AS ELO, [Ranking History].Season, [Ranking History].[User] FROM[Ranking History]) AS T ON R1.[Lowest Elo] < T.ELO GROUP BY T.ELO, T.Season, T.[User]) AS T2 ON T2.Lowest = R2.[Lowest Elo]";
+        public static string STARTSELECT = "SELECT R2.[Rank ID], R2.[Rank Name], T2.Lowest, T2.[User], T2.Season, T2.ELO FROM Ranking AS R2 "+
+            "INNER JOIN (SELECT T.ELO, T.Season, T.[User], Max(R1.[Lowest Elo]) AS Lowest FROM Ranking AS R1 INNER JOIN "+
+            "(SELECT[Ranking History].[Season Start Elo] AS ELO, [Ranking History].Season, [Ranking History].[User] FROM[Ranking History]) AS "+
+            "T ON R1.[Lowest Elo] < T.ELO GROUP BY T.ELO, T.Season, T.[User]) AS T2 ON T2.Lowest = R2.[Lowest Elo]";
         //names of fields as constants so it would be easier to make queries
         public const string USERNAME = "[User]", GAME = "Game", XP = "[XP Added]", ELO = "[Elo Added]",HASWON = "[Has Won]",CARDSINHAND = "[Cards In Hand]";
         /// <summary>

@@ -150,6 +150,15 @@ namespace UI
         protected global::System.Web.UI.WebControls.Label EloLbl;
 
         /// <summary>
+        /// Ranklbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Ranklbl;
+
+        /// <summary>
         /// FindFriendTxtBox control.
         /// </summary>
         /// <remarks>

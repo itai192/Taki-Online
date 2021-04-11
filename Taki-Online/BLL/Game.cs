@@ -10,30 +10,45 @@ namespace BLL
 {
     public partial class Game
     {
+        //a boolean describing whether this game has ended
         public bool GameEnded
         {
             get;
             private set;
         }
+        //the game room object containg this game
         public GameRoom gameRoom
         {
             get;
             private set;
         }
+        //number of cards in hand
         const int NUMCARDS=8;
+        //a stack of cards describing the deck
         private Stack<Card> deck;
+        //a stack of cards describing the pile
         private Stack<Card> pile;
+        //the list of players in order of turns when order is true
         private List<Player> players;
+        //the current turn of the game
         public int turn { get; private set; }
+        //the active card, can be null, if not null, processes player's actions
         private Card activeCard;
+        //a boolean which describes whether the last player has put a card yet
         public bool hasLastPlayerPutCard
         { get; internal set;}
+        //the game's leading card, top of the pile
         public Card leadingCard
         {
-            get { return pile.Peek(); }//temporery
+            get { return pile.Peek(); }
         }
-        public bool order {get; internal set; }//positive or negative relative to the order
-        public int penelty {get; internal set;}//extra cards when you draw
+        //the order of game, true means the next player is the next in the list and false, previous
+        public bool order {get; internal set; }
+        //extra cards when you draw
+        public int penelty {get; internal set;}
+        /// <summary>
+        /// changes the active card of the game to the leading card and trigger's it's start ability
+        /// </summary>
         internal void ChangeActiveCard()
         {
             activeCard = leadingCard;
@@ -42,6 +57,9 @@ namespace BLL
                 activeCard.StartAbility(this);
             }
         }
+        /// <summary>
+        /// clears the active card, and if game has ended, does the end progression
+        /// </summary>
         internal void ClearActiveCard()
         {
             activeCard = null;
@@ -50,6 +68,9 @@ namespace BLL
                 EndProgression();
             }
         }
+        /// <summary>
+        /// returns whether there is a winner to this game
+        /// </summary>
         private bool IsEnded()
         {
             foreach(Player p in players)
@@ -61,6 +82,9 @@ namespace BLL
             }
             return false;
         }
+        /// <summary>
+        /// a method which ends the game
+        /// </summary>
         private void EndProgression()
         {
             //change room status
@@ -72,6 +96,7 @@ namespace BLL
             {
                 eloChanges.Add(0);
             }
+            //SME algorithm
             for(int i =0;i<sortedPlayers.Count-1;i++)
             {
                 //winner part
@@ -105,20 +130,32 @@ namespace BLL
             //End Game For All
             Broadcast(new EndGameBroadcast());
         }
+        /// <summary>
+        /// returns the player list sorted by card amount
+        /// </summary>
         private List<Player> SortedPlayerList()
         {
             List<Player> ret = new List<Player>(players);
             ret.Sort(ComparePlayerCards);
             return ret;
         }
+        /// <summary>
+        /// compares two player's card amount, used for sorting
+        /// </summary>
         private int ComparePlayerCards(Player x, Player y)
         {
             return x.numberOfCards - y.numberOfCards;
         }
+        /// <summary>
+        /// returns the player whose it is it's turn now
+        /// </summary>
         internal Player GetPlayerTurn()
         {
             return players[turn];
         }
+        /// <summary>
+        /// a game constructor, gets the game room which contains it
+        /// </summary>
         public Game(GameRoom gameRoom)
         {
             this.gameRoom = gameRoom;
@@ -129,6 +166,7 @@ namespace BLL
             pile = new Stack<Card>();
             deck = new Stack<Card>();
             hasLastPlayerPutCard = false;
+            //set up deck
             foreach(Color c in Enum.GetValues(typeof(Color)))
             {
                 if(c!=Color.none)
@@ -143,36 +181,48 @@ namespace BLL
                     }
                 }
             }
+            //shuffle deck
             this.ShuffleDeck();
+            //put first card on pile
             pile.Push(deck.Pop());
         }
+        //takes cards from deck to player 
         internal void TakeCardsFromDeck(Player p)
         {
+            //for each penelty point
             for(int i = 0; i<=penelty;i++)
             {
+                //if deck is over
                 if(deck.Count==0)
                 {
                     Reshuffle();
                 }
                 if (deck.Count > 0)
                 {
+                    //take a card
                     Card c = deck.Pop();
                     p.AddCardToHand(c);
                     BroadcastAction(new Action(ActionType.DrawCard, c, p));
                 }
                 else
                 {
+                    //very rare if not enough cards in deck
                     throw new Exception("not enough cards in deck");
                 }
             }
+            //resets the penelty and goes to next turn
             penelty = 0;
             NextTurn();
         }
+        /// <summary>
+        /// tries to use end ability using player
+        /// </summary>
         public void UseEndAbility(Player player)
         {
+            //if the turn of player
             if(GetPlayerTurn().Equals(player))
             {
-                if (activeCard != null)
+                if (activeCard != null)//if exists active card
                 {
                     activeCard.EndAbility(this);
                 }
@@ -186,12 +236,20 @@ namespace BLL
                 throw new Exception("You can't end an ability not in your turn");
             }
         }
+        /// <summary>
+        /// goes to next turn according to game order
+        /// </summary>
         internal void NextTurn()
         {
+            //turn cycles, if order true, to next player in list, else to previous
             turn = (order ? (turn + 1) : (turn - 1 + players.Count)) % players.Count;
             hasLastPlayerPutCard = false;
+            //broadcasts the change in turn
             Broadcast(new ChangeTurnBroadcast(turn));
         }
+        /// <summary>
+        /// a method that broadcasts broadcasts to all players in game
+        /// </summary>
         private void Broadcast(IPlayerBroadcast broadcast)
         {
             foreach(Player p in players)
@@ -199,6 +257,9 @@ namespace BLL
                 p.AddBroadcast(broadcast);
             }
         }
+        /// <summary>
+         /// a method that broadcasts action broadcasts to all players in game
+         /// </summary>
         private void BroadcastAction(Action action)
         {
             ActionBroadcast broadcast = new ActionBroadcast(action);
@@ -217,10 +278,14 @@ namespace BLL
                 }
             }
         }
+        /// <summary>
+        /// method that does action if leagal
+        /// </summary>
         public void TryDoAction(Action action)
         {
             if(action.player==GetPlayerTurn())
             {
+                //if exists active card to process actions
                 if (activeCard != null)
                 {
                     activeCard.ProcessPlayerAction(this, action);
@@ -232,28 +297,34 @@ namespace BLL
                 }
                 else 
                 {
+                    //if action is to draw
                     if (action.type == ActionType.DrawCard)
                     {
                         TakeCardsFromDeck(action.player);
                     }
-                    if(action.type==ActionType.putCard)
+                    //if action is to put
+                    if (action.type==ActionType.putCard)
                     {
                         if(action.card.CanBePutOn(leadingCard))
                         {
                             PutCard(action);
                         }
-                        else
+                        else//if its ilegal to put card
                         {
                             throw action.card.WhereCanPutCard();
                         }
                     }
                 }
             }
+            //if not player's turn
             else
             {
                 throw new Exception("You can't play in another player's turn");
             }
         }
+        /// <summary>
+        /// puts a card using action
+        /// </summary>
         private void PutCard(Action action)
         {
             if (action.type == ActionType.putCard)
@@ -275,6 +346,7 @@ namespace BLL
                 throw new Exception("Action is not put card");
 
         }
+        //reshuffles deck using cards in pile
         private void Reshuffle()
         {
             Card top = pile.Pop();
@@ -292,6 +364,9 @@ namespace BLL
             ShuffleDeck();
             pile.Push(top);
         }
+        /// <summary>
+        /// shuffles deck
+        /// </summary>
         private void ShuffleDeck()
         {
             List<Card> l = new List<Card>();
@@ -307,6 +382,9 @@ namespace BLL
                 l.RemoveAt(num);
             }
         }
+        /// <summary>
+        /// returns whether a user is in game
+        /// </summary>
         private bool IsUserInGame(User user)
         {
             foreach(Player p in players)
@@ -318,8 +396,12 @@ namespace BLL
             }
             return false;
         }
+        /// <summary>
+        /// adds player to game, and returns it
+        /// </summary>
         public Player AddPlayer(User user)
         {
+            //returns already existing player
             if(IsUserInGame(user))
             {
                 foreach(Player p in players)
@@ -332,6 +414,7 @@ namespace BLL
             }
             Player player = new Player(this,user);
             players.Add(player);
+            //adds cards to player hand
             for(int i = 0;i<NUMCARDS;i++)
             {
                 if (deck.Count > 0)
@@ -347,9 +430,13 @@ namespace BLL
                     }
                 }
             }
+            // updates player lists in players
             UpdatePlayerListsInAllPlayers();
             return player;
         }
+        /// <summary>
+        /// returns player list as simple player list
+        /// </summary>
         public List<SimplePlayer> GetSimplePlayerList()
         {
             List<SimplePlayer> list = new List<SimplePlayer>();
@@ -359,6 +446,9 @@ namespace BLL
             }
             return list;
         }
+        /// <summary>
+        /// updates userlists in all players
+        /// </summary>
         public void UpdatePlayerListsInAllPlayers()
         {
             foreach(Player p in players)

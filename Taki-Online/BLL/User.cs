@@ -6,11 +6,18 @@ using System.Data;
 using System.IO;
 namespace BLL
 {
+    /// <summary>
+    /// a class describing a user
+    /// </summary>
     public class User
     {
+        //xp needed to pass level
         const int InitailXpNeeded=50;
+        //initial elo of a user
         const int InitailElo = 200;
+        //username
         private string _username;
+        //username property
         public string username { 
             get
             {
@@ -22,6 +29,7 @@ namespace BLL
                 _username = value;
             }
         }
+        //User's rank this season
         public Rank rank
         {
             get
@@ -36,6 +44,7 @@ namespace BLL
                 }
             }
         }
+        //User's elo this season
         public int elo { get
             {
                 try
@@ -50,11 +59,17 @@ namespace BLL
                 }
             }
         }
+        //the user's type
         public UserType type { get; }
+        //user's email
         public string email { get; }
+        //user's birthdate
         public DateTime BirthDate { get; }
+        //user's level
         private int _level;
+        //user's picture
         private string _picture;
+        //user's level
         public int level {
             get { return _level; } 
             set 
@@ -63,7 +78,9 @@ namespace BLL
                 DAL.UserDal.UpdateUserLevel(_level, username);
             } 
         }
+        //user's expiriance level
         private int _xp;
+        //user's expiriance level
         public int xp 
         {
             get
@@ -77,8 +94,11 @@ namespace BLL
                 UserDal.UpdateUserXP(_xp,username);
             }
         }
+        //user's first name
         public string fName { get; }
+        //user's last name
         public string lName {get;}
+        //user's picture profile path
         public string picture {
             get
             {
@@ -90,6 +110,7 @@ namespace BLL
                 _picture = value;
             }
         }
+        //user's accepted friends list
         public List<string> AcceptedFriends
         {
             get
@@ -99,6 +120,9 @@ namespace BLL
                 return BLL_Helper.UniteLists(l1, l2);
             }
         }
+        /// <summary>
+        /// levels user up if he can level up
+        /// </summary>
         public void LevelUpIfCan()
         {
             int xpuntill = XPUntilNextLevel();
@@ -108,13 +132,14 @@ namespace BLL
                 _xp-=xpuntill;
             }
         }
+        /// <summary>
+        /// xp needed to reach next level, doubles every level
+        /// </summary>
         public int XPUntilNextLevel()
         {
             return (int)(InitailXpNeeded * Math.Pow(2,level-1));
         }
-        /// <summary>
-        /// users that this user has declined friend requests from
-        /// </summary>
+        // users that this user has declined friend requests from
         public List<string> DeclinedFriends
         {
             get
@@ -122,14 +147,17 @@ namespace BLL
                 return BLL_Helper.DataTableToList<string>(DAL.FriendsDal.FriendRequestsWithStatusRecieved(username, (int)FriendRequestStatus.Declined),FriendsDal.SENDERFLD);
             }
         }
+        //names of users which have requested to be friends and not answered yet
         public List<string> UnopenedFriendRequests
         {
             get { return BLL_Helper.DataTableToList<string>(DAL.FriendsDal.FriendRequestsWithStatusRecieved(username, (int)FriendRequestStatus.Unopened), FriendsDal.SENDERFLD); }
         }
+        //names of users which ypu have requested to be friends with and not answered yet
         public List<string> UnopenedSentFriendRequests
         {
             get { return BLL_Helper.DataTableToList<string>(DAL.FriendsDal.FriendRequestsWithStatusSent(username, (int)FriendRequestStatus.Unopened), FriendsDal.RECIPIANTFLD); }
         }
+        //a list of game invites
         public List<GameInvite> activeGameInvites
         {
             get
@@ -143,18 +171,31 @@ namespace BLL
                 return invites;
             }
         }
+        /// <summary>
+        /// user constructor, using a user's username
+        /// </summary>
         public User(string username) : this(UserDal.SelectUser(username))
         {
 
         }
+
+        /// <summary>
+        /// user constructor, using a user's username and password
+        /// </summary>
         public User(string username, string password) : this(UserDal.SelectUsernameWithPassword(username, password))
         {
 
         }
+        /// <summary>
+        /// returns whether a user is or was in a game with game id
+        /// </summary>
         public bool IsUserInGame(int gameID)
         {
             return DAL.UsersInGamesDal.IsUserInGame(username, gameID);
         }
+        /// <summary>
+        /// tries to send a friend request and returns a textual response
+        /// </summary>
         public string AddFriend(string username)
         {
             if (DeclinedFriends.Contains(username))
@@ -169,6 +210,9 @@ namespace BLL
             }
             return "there already exists a friend request between you and" + username;
         }
+        /// <summary>
+        /// tries to accept a friend request from user with username
+        /// </summary>
         public void AcceptFriendRequestFrom(string username)
         {
             if (UnopenedFriendRequests.Contains(username))
@@ -176,6 +220,9 @@ namespace BLL
             else
                 throw new Exception("You Have No Friend Invitation From This Friend");
         }
+        /// <summary>
+        /// tries to decline a friend request from user with username
+        /// </summary>
         public void DeclineFriendRequestFrom(string username)
         {
             if (UnopenedFriendRequests.Contains(username))
@@ -183,6 +230,9 @@ namespace BLL
             else
                 throw new Exception("You Have No Friend Invitation From This Friend");
         }
+        /// <summary>
+        /// user constructor which inserts a new user into user table using details
+        /// </summary>
         public User(string username, UserType type, string email, DateTime BirthDate, string fName, string lName,string password)
         {
             _level = 1;
@@ -195,6 +245,9 @@ namespace BLL
             DAL.UserDal.AddUser(email, password, (int)type, fName, lName, BirthDate,username);
             RankingHistoryDal.InsertRankHistory(username, BLL_Helper.GetCurrentSeason().SeasonID,InitailElo);
         }
+        /// <summary>
+        /// user constructor that uses data row as data source
+        /// </summary>
         public User(DataRow dr)
         {
             _username = dr[UserDal.USERNAMEFLD].ToString();
@@ -207,22 +260,37 @@ namespace BLL
             lName = dr["Last Name"].ToString();
             _picture = dr[UserDal.PICTUREFLD].ToString();
         }
+        /// <summary>
+        /// statistics of user in game
+        /// </summary>
         public UserStatsInGame statsInGame(int gameID)
         {
             return new UserStatsInGame(username, gameID);
         }
+        /// <summary>
+        /// returns whether user equals to other user, using users' usernames
+        /// </summary>
         public override bool Equals(object obj)
         {
             return obj is User && ((User)obj).username==this.username;
         }
+        /// <summary>
+        /// to string method, returns username
+        /// </summary>
         public override string ToString()
         {
             return username;
         }
+        /// <summary>
+        /// returns how many games this user has won
+        /// </summary>
         public int HowManyGamesWon()
         {
             return UsersInGamesDal.HowManyGamesUserWonOrLost(username,true);
         }
+        /// <summary>
+        /// returns how many games this user has lost
+        /// </summary>
         public int HowManyGamesLost()
         {
             return UsersInGamesDal.HowManyGamesUserWonOrLost(username, false);

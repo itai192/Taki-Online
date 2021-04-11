@@ -10,27 +10,33 @@ namespace WS
 {
     public class WSUser
     {
-        [DisplayName("First Name")]
+        //first name of user
         public string firstName{get; set;}
-        [DisplayName("Last Name")]
+        //last name of user
         public string lastName{get; set;}
-        [DisplayName("Username")]
+        //username of user
         public string username { get; set; }
-        [DisplayName("Email")]
+        //email of user
         public string email { get; set; }
-        [DisplayName("Rank")]
+        //rank name of user
         public string rank{get; set;}
+        //level of user
         public int level{get; set;}
-        [DisplayName("Level")]
+        //xp of user
         public int xp{get; set;}
-        [DisplayName("Elo")]
-        public int elo{get; set;}
-        [DisplayName("Birth Date")]
+        //elo of user
+        public int elo { get; set; }
+        //birth date of users
         public DateTime birthDate{get; set;}
+        /// <summary>
+        /// empty constructor
+        /// </summary>
         public WSUser()
         { 
         }
-
+        /// <summary>
+        /// constructor using user
+        /// </summary>
         public WSUser(User user)
         {
             firstName = user.fName;
@@ -43,6 +49,9 @@ namespace WS
             elo = user.elo;
             birthDate = user.BirthDate;
         }
+        /// <summary>
+        /// constructor using username
+        /// </summary>
         public WSUser(string username) : this(new User(username))
         { }
     }

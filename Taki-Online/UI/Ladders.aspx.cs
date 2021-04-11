@@ -16,7 +16,7 @@ namespace UI
                 RanksDropDown.DataSource = BLL_Helper.GetAllRanks();
                 RanksDropDown.DataBind();
             }
-            Leaderboard.DataSource = BLL_Helper.GetAllPlayersInRankThisSeason(int.Parse(RanksDropDown.SelectedValue));
+            Leaderboard.DataSource = BLL_Helper.GetAllPlayersInRankThisSeasonDataTable(int.Parse(RanksDropDown.SelectedValue));
             Leaderboard.DataBind();
         }
     }

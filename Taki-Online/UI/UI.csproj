@@ -114,6 +114,7 @@
     <Content Include="Sign up.aspx" />
     <Content Include="Style.css" />
     <Content Include="Summery.aspx" />
+    <Content Include="TAKI OnlineLogo.svg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

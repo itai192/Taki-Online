@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DAL.Constants">
+    <Position X="10.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AggIAAAAEAAAABQAAAAAAAAAAAAAAACACAAAAAAQAAA=</HashCode>
+      <FileName>Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.DalHelper">
+    <Position X="2" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIQEQAAEAAAAIAAAAADAAAAAAAQIAAQAAAAgAABCI=</HashCode>
+      <FileName>DalHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.DBHelper">
+    <Position X="9" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAQAAAAFAAIABAAAABAAARRwAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DBHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.FriendsDal">
+    <Position X="9" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABEAAAAAgAAAASAAAAQgAAAAAAQQAAAEACAAQAIAAIA=</HashCode>
+      <FileName>FriendsDal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.GameDal">
+    <Position X="5.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IABAAAAAAAAQAAEACAAAAAAAQASQAAAAQAQAAkAAAAA=</HashCode>
+      <FileName>GameDal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.GameInvitesDal">
+    <Position X="7.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAACCAAEAAAIA=</HashCode>
+      <FileName>GameInvitesDal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.RankDal">
+    <Position X="3.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAQAAAgAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>RankDal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.RankingHistoryDal">
+    <Position X="5.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQEAAAAAAAAQAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>RankingHistoryDal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.SeasonsDal">
+    <Position X="3.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAIAAAAAAAAAAAAAAAAAAQAAAAIAABIAAAAAAAAAA=</HashCode>
+      <FileName>SeasonsDal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.UserDal">
+    <Position X="7.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAEAABACASkEEQAAAAgAAAQkggAAAAEAEAA=</HashCode>
+      <FileName>UserDal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.UsersInGamesDal">
+    <Position X="10.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAACCCABCAEwAAAAAEIAAAABgQAAAAQAAAAAAKAI=</HashCode>
+      <FileName>UsersInGamesDal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

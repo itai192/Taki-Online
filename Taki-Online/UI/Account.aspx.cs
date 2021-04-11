@@ -34,6 +34,7 @@ namespace UI
             Levellbl.Text = user.level.ToString();
             XpBar.outOf = user.XPUntilNextLevel();
             XpBar.progress = user.xp;
+            Ranklbl.Text = user.rank.name;
             EloLbl.Text = user.elo.ToString();
             Games.Series[0].Points[0].SetValueY(user.HowManyGamesWon());
             Games.Series[0].Points[1].SetValueY(user.HowManyGamesLost());

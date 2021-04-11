@@ -6,16 +6,11 @@ using System.Threading.Tasks;
 using System.Data;
 namespace DAL
 {
+    /// <summary>
+    /// Uses DBHelper and makes it easier to execute queries
+    /// </summary>
   public static class DalHelper
     {
-        //note: you dont really need to read the following comment its mostly a joke(still true though)
-        //Have you ever been exhausted by those annoying sql senteses? and when you are done with them
-        //you would usually need to go to that depressing DBHelper in order to connect the two,
-        // WELL NO MORE - Dal Helper is here to make your life better, easier and filled with joy
-        // just provide us with the right sql and return! Yes exactly! DAL commands will only take 2 rows
-        // from now on and it is all because DALHelper is just Sooooooooo amazing 
-        // NO MORE Closeconnectiosn! the dal helper does it for you! 
-        //~Alon Metuky's speech.
 
         //a string of the provider of the dal helper
         private static string provider;

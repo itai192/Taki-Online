@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class Constants
+    public static class Constants
     {
         public const string USERSTBL = "Users";
         public const string ARTICLESTBL = "Articles";

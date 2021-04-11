@@ -11,7 +11,6 @@ namespace DAL
     {
         //Constants 
         public const int WRITEDATA_ERROR = -1;
-
         //class member variables 
         private OleDbConnection conn;
         private string provider;

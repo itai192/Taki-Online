@@ -15,6 +15,9 @@ namespace WS
     // [System.Web.Script.Services.ScriptService]
     public class TakiWebService : System.Web.Services.WebService
     {
+        /// <summary>
+        /// a method that signs a user in
+        /// </summary>
         [WebMethod(enableSession:true)]
         public bool SignIn(string username, string password)
         {
@@ -29,6 +32,9 @@ namespace WS
                 return false;
             }
         }
+        /// <summary>
+        /// a method that signs up a user
+        /// </summary>
         [WebMethod]
         public bool SignUp(string username, string password, string email, DateTime birthDate, string fName, string lName)
         {
@@ -49,6 +55,9 @@ namespace WS
                 return false;
             }
         }
+        /// <summary>
+        /// a method that returns a list of a connected user's friends
+        /// </summary>
         [WebMethod(enableSession: true)]
         public List<WSUser> GetFriends()
         {
@@ -57,6 +66,9 @@ namespace WS
             User user = (User)Session["User"];
             return UserListToWSUserList(BLL_Helper.UserListFromUsernameList(user.AcceptedFriends));
         }
+        /// <summary>
+        /// a method that gets user data using a user's name
+        /// </summary>
         [WebMethod]
         public WSUser GetUserDetails(string username)
         {
@@ -69,6 +81,9 @@ namespace WS
                 return null;
             }
         }
+        /// <summary>
+        /// a method which returns all ranks
+        /// </summary>
         [WebMethod]
         public List<WSRank> GetAllRanks()
         {
@@ -80,16 +95,25 @@ namespace WS
             }
             return RankListToWSRankList(BLL_Helper.GetAllRanks());
         }
+        /// <summary>
+        /// a method which returns a list of all users in a rank
+        /// </summary>
         [WebMethod]
         public List<WSUser> GetAllUsersInRank(WSRank rank)
         {
             return UserListToWSUserList(BLL_Helper.GetAllUsersInRankThisSeason(rank.ID)); ; 
         }
+        /// <summary>
+        /// a method which returns whether the session is signed in
+        /// </summary>
         [WebMethod(enableSession:true)]
         public bool IsSessionConnected()
         {
             return Session["User"] != null;
         }
+        /// <summary>
+        /// a method that returns the signed in user
+        /// </summary>
         [WebMethod(enableSession:true)]
         public WSUser GetConnectedUser()
         {
@@ -99,6 +123,9 @@ namespace WS
             }
             return new WSUser((User)Session["User"]);
         }
+        /// <summary>
+        /// a private static method to turn lists of users to WSUsers
+        /// </summary>
         private static List<WSUser> UserListToWSUserList(List<User> users)
         {
             List<WSUser> ret = new List<WSUser>();
@@ -108,6 +135,9 @@ namespace WS
             }
             return ret;
         }
+        /// <summary>
+        /// a private static method to turn lists of Ranks to WSRanks
+        /// </summary>
         private static List<WSRank> RankListToWSRankList(List<Rank> ranks)
         {
             List<WSRank> ret = new List<WSRank>();
@@ -117,6 +147,5 @@ namespace WS
             }
             return ret;
         }
-        
     }
 }

@@ -55,6 +55,10 @@
                 <asp:TableCell runat="server">ELO this season:</asp:TableCell>
                 <asp:TableCell runat="server"><asp:Label ID="EloLbl" runat="server"></asp:Label></asp:TableCell>
             </asp:TableRow>
+            <asp:TableRow runat="server">
+                <asp:TableCell runat="server">Rank:</asp:TableCell>
+                <asp:TableCell runat="server"><asp:Label ID="Ranklbl" runat="server"></asp:Label></asp:TableCell>
+            </asp:TableRow>
             
         </asp:Table>
     
