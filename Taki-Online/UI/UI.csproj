@@ -114,6 +114,7 @@
     <Content Include="Sign up.aspx" />
     <Content Include="Style.css" />
     <Content Include="Summery.aspx" />
+    <Content Include="TAKI OnlineLogo.png" />
     <Content Include="TAKI OnlineLogo.svg" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -141,7 +142,6 @@
     </Compile>
     <Compile Include="Custom Controls\Card.ascx.cs">
       <DependentUpon>Card.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Custom Controls\Card.ascx.designer.cs">
       <DependentUpon>Card.ascx</DependentUpon>
