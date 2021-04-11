@@ -53,6 +53,7 @@ namespace UI
         protected void Update()
         {
             room.UpdateRoom();
+            GameNameLbl.Text = room.gameName;
             if(room.status==GameStatus.AlreadyStarted)
             {
                 Response.Redirect("~/Game.aspx");
