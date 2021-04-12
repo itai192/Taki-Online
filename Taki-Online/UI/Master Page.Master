@@ -12,7 +12,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <img src="TAKI%20OnlineLogo.svg" style="width: 15em"/>
+            <img src="TAKI%20OnlineLogo.png" style="width: 375px" />
             <asp:Table ID="Table1" runat="server" Width="100%" GridLines="Both">
                 <asp:TableRow runat="server">
                     <asp:TableCell runat="server">
