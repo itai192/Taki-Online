@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="Panel1" runat="server" DefaultButton="SignUp">
+    <asp:Panel ID="Panel1" runat="server" DefaultButton="SignUpBtn">
         <asp:Table ID="Table2" runat="server">
 
             <asp:TableRow runat="server">
@@ -51,7 +51,7 @@
                     <asp:Label ID="CalanderLbl" runat="server" Text="Birth Date:" AssociatedControlID="Calendar"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell runat="server">
-                    <asp:Calendar ID="Calendar" runat="server" SelectionMode="Day" OnSelectionChanged="DateSelectionChanged"></asp:Calendar>
+                    <asp:Calendar ID="Calendar" runat="server" SelectionMode="Day" ></asp:Calendar>
                     <br />
                     <asp:Label ID="YearLbl" runat="server" Text="Select Year:" AssociatedControlID="YearLbl"></asp:Label><asp:DropDownList ID="YearSelect" runat="server" AutoPostBack="True" CausesValidation="True" OnSelectedIndexChanged="YearSelect_SelectedIndexChanged"></asp:DropDownList>
                 </asp:TableCell>

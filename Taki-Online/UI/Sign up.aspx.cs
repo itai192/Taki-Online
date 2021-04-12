@@ -65,10 +65,5 @@ namespace UI
         {
             Calendar.VisibleDate = new DateTime(int.Parse(YearSelect.SelectedValue), Calendar.SelectedDate.Month, 1);
         }
-
-        protected void DateSelectionChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

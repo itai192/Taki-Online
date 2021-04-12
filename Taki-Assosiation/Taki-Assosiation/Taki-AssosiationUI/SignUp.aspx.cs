@@ -13,6 +13,10 @@ namespace Taki_AssosiationUI
         protected void Page_Load(object sender, EventArgs e)
         {
             proxy = (TakiWebService)Session["Proxy"];
+            if (!IsPostBack)
+            {
+                BuildYearSelect();
+            }
         }
 
         protected void signup(object sender, EventArgs e)
@@ -26,6 +30,19 @@ namespace Taki_AssosiationUI
                 proxy.SignIn(Username.Text, Password.Text);
                 Response.Redirect("~/Account.aspx");
             }
+        }
+        protected void BuildYearSelect()
+        {
+            int year = DateTime.Now.Year;
+            for (int i = year; i > year - 150; i--)
+            {
+                YearSelect.Items.Add(new ListItem(i.ToString()));
+            }
+            YearSelect.Items.FindByText(year.ToString()).Selected = true;
+        }
+        protected void YearSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Calendar.VisibleDate = new DateTime(int.Parse(YearSelect.SelectedValue), Calendar.SelectedDate.Month, 1);
         }
     }
 }
