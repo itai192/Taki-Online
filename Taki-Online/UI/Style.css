@@ -7,7 +7,11 @@
         width: 0%;
     }
 }
-.Card {
+body
+{
+    background-color:lightyellow;
+}
+.Card.Card {
     width: 100px;
     height: 200px;
     padding: 45px;
@@ -20,21 +24,51 @@
     text-shadow: 4px 8px 0 black, 4px 6px 0 black, 4px 4px 0 black, 4px 2px 0 black,-4px -2px 0 black, -4px 1px 0 black, -4px 1px 0 black, 4px 1px 0 black;
     -webkit-text-stroke-width: 4px;
     -webkit-text-stroke-color: black;
-    display:flex;
-    justify-content:center;
+    display: flex;
+    justify-content: center;
     box-sizing: content-box;
     border: none;
     float: left;
     left: 300px;
     top: 500px;
     position: relative;
-    align-items:center;
-    text-align:center;
-    
+    align-items: center;
+    text-align: center;
+   
 }
-.UserPanel
-{
-    min-width:200px;
+.Card.Card:hover {
+    transform: scale(1.2);
+    z-index:1;
+    background-color:ivory;
+}
+
+.navbar {
+    width: 100vw;
+    table-layout:fixed
+}
+table.navbar input {
+    width: 100%;
+    height:2em;
+    font-size:20px;
+}
+input[type=button], input[type=submit], input[type=reset] {
+    border:3px thick black;
+    border-radius:3px;
+    background-color: limegreen;
+    transition-duration: 0.2s;
+    transition-property: background-color;
+}
+input[type=text], input[type=password] {
+    width: 15em;
+    height: 1.25em;
+    font-size: 20px;
+    background-color:lightcyan;
+}
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+    background-color: lightgreen;
+}
+.UserPanel {
+    min-width: 200px;
 }
 
 .Put {
