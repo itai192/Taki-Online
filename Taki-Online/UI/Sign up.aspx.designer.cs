@@ -222,6 +222,24 @@ namespace UI
         protected global::System.Web.UI.WebControls.RequiredFieldValidator LastNameValidator;
 
         /// <summary>
+        /// PhotoLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label PhotoLbl;
+
+        /// <summary>
+        /// ProfilePictureUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UI.Custom_Controls.ProfilePictureUpload ProfilePictureUpload;
+
+        /// <summary>
         /// CalanderLbl control.
         /// </summary>
         /// <remarks>
@@ -265,24 +283,6 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList YearSelect;
-
-        /// <summary>
-        /// PhotoLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PhotoLbl;
-
-        /// <summary>
-        /// ProfilePictureUpload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UI.Custom_Controls.ProfilePictureUpload ProfilePictureUpload;
 
         /// <summary>
         /// SignUp control.

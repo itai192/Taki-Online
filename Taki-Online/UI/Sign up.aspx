@@ -63,6 +63,14 @@
             </asp:TableRow>
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server">
+                    <asp:Label ID="PhotoLbl" runat="server" Text="Profile picture:" AssociatedControlID="ProfilePictureUpload"></asp:Label>
+                </asp:TableCell>
+                <asp:TableCell runat="server">
+                    <uc1:ProfilePictureUpload runat="server" ID="ProfilePictureUpload" />
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow runat="server">
+                <asp:TableCell runat="server">
                     <asp:Label ID="CalanderLbl" runat="server" Text="Birth Date:" AssociatedControlID="Calendar"></asp:Label>
                 </asp:TableCell>
                 <asp:TableCell runat="server">
@@ -72,16 +80,9 @@
                     <asp:Label ID="YearLbl" runat="server" Text="Select Year:" AssociatedControlID="YearLbl"></asp:Label><asp:DropDownList ID="YearSelect" runat="server" AutoPostBack="True" CausesValidation="True" OnSelectedIndexChanged="YearSelect_SelectedIndexChanged"></asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
-            <asp:TableRow runat="server">
-                <asp:TableCell runat="server">
-                    <asp:Label ID="PhotoLbl" runat="server" Text="Profile picture:" AssociatedControlID="ProfilePictureUpload"></asp:Label>
-                </asp:TableCell>
-                <asp:TableCell runat="server">
-                    <uc1:ProfilePictureUpload runat="server" ID="ProfilePictureUpload" />
-                </asp:TableCell>
-            </asp:TableRow>
+            
         </asp:Table>
-        <asp:Button ID="SignUp" runat="server" Text="SIGN UP" OnClick="signup" ValidationGroup="signup" /><asp:Label ID="error" runat="server" Text=""></asp:Label>
+        <asp:Button ID="SignUp" runat="server" Text="SIGN UP" OnClick="signup" ValidationGroup="signup" CssClass="CenterBtn" /><asp:Label ID="error" runat="server" Text=""></asp:Label>
     </asp:Panel>
     
 </asp:Content>
