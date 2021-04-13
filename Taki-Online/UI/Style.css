@@ -135,3 +135,14 @@ input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
 .Default {
     color: #C4C4C4;
 }
+.CenterBox{
+    margin:auto;
+    border-radius:10%;
+    padding:5%;
+    background-color:aliceblue;
+    max-width:40%;
+    margin-top:5em;
+}
+td {
+    vertical-align:top;
+}
