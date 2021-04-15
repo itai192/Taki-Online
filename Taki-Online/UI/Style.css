@@ -34,7 +34,6 @@ body
     position: relative;
     align-items: center;
     text-align: center;
-   
 }
 .Card.Card:hover {
     transform: scale(1.2);
@@ -64,17 +63,18 @@ input[type=text], input[type=password] {
     font-size: 20px;
     background-color:lightcyan;
 }
-input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover 
+{
     background-color: lightgreen;
 }
 .UserPanel {
     min-width: 200px;
 }
 
-.Put {
+.Put.Put {
     position: absolute;
 }
-.Draw {
+.Draw.Draw {
     position: absolute;
 }
 .Panel
@@ -143,7 +143,8 @@ input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
     max-width:40%;
     margin-top:5em;
 }
-.CenterBtn{
+.CenterBtn
+{
     margin:auto;
 }
 td {

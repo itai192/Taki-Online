@@ -406,7 +406,7 @@ namespace BLL
             {
                 foreach(Player p in players)
                 {
-                    if(p.user.Equals(p))
+                    if(p.user.Equals(user))
                     {
                         return p;
                     }

@@ -13,7 +13,7 @@ namespace UI
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["User"] == null)
-                Response.Redirect("~/ Home.aspx");
+                Response.Redirect("~/Home.aspx");
             User user = (User)Session["User"];
             try
             {
