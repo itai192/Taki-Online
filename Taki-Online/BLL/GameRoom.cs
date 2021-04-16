@@ -160,5 +160,9 @@ namespace BLL
             status = (GameStatus)dr[GameDal.ACTIVITYFLD];
             _host = dr[GameDal.HOSTFLD].ToString();
         }
+        public bool IsUserInGame(User user)
+        {
+            return game.IsUserInGame(user);
+        }
     }
 }

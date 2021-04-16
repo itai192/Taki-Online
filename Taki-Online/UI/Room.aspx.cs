@@ -33,7 +33,8 @@ namespace UI
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack && Session["Player"] == null)
+
+            if (!room.IsUserInGame(user))
             {
                 Session["Player"] = room.AddUserToGame(user);
             }

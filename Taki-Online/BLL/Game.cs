@@ -385,7 +385,7 @@ namespace BLL
         /// <summary>
         /// returns whether a user is in game
         /// </summary>
-        private bool IsUserInGame(User user)
+        public bool IsUserInGame(User user)
         {
             foreach(Player p in players)
             {
