@@ -117,6 +117,7 @@
     <Content Include="TAKI OnlineLogo.png" />
     <Content Include="TAKI OnlineLogo.svg" />
     <Content Include="Web.config" />
+    <Content Include="Wood.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.aspx.cs">
