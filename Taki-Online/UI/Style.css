@@ -1,5 +1,4 @@
-﻿body {
-}
+﻿
 
 
 @keyframes fill {
@@ -7,9 +6,41 @@
         width: 0%;
     }
 }
+.Content {
+    display:flex;
+    flex-direction:column;
+    align-items: stretch;
+    flex:1 1 auto;
+}
+.Home {
+    width: 100vw;
+    height: 100%;
+    display: inline-block;
+    align-items: stretch;
+    flex-direction: column;
+    filter: saturate(75%) blur(3px);
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+    transition-property:filter;
+    background: linear-gradient(to bottom right, rgb(255 69 0 / 0.50),rgb(0 188 242 / 0.50)),url('taki.jpg') center center/cover;
+}
+.Line{
+    z-index:-1;
+    top:2.5%;
+    width:100%;
+    height:1px;
+    position:absolute;
+
+}
+.Home:hover {
+    filter: saturate(100%) blur(0px);
+}
 body {
-    background-image: url('Wood.png');
-    
+/*    background-image: url('Wood.png');*/
+    margin:0;
+    background-color:lightyellow;
+    font-family:Arial;
+    height:100vh;
 }
 .Card.Card {
     width: 100px;

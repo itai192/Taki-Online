@@ -116,6 +116,7 @@
     <Content Include="Summery.aspx" />
     <Content Include="TAKI OnlineLogo.png" />
     <Content Include="TAKI OnlineLogo.svg" />
+    <Content Include="taki.jpg" />
     <Content Include="Web.config" />
     <Content Include="Wood.png" />
   </ItemGroup>
