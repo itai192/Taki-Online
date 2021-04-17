@@ -10,9 +10,9 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server" style="height:100%">
-        <div style="display:flex;flex-direction:column;height:100%">
-            <div style="display:flex;flex-direction:column;flex:0 1 auto">
+    <form id="form1" runat="server" style="height:100%;width:100vw">
+        <div style="display:flex;flex-direction:column;height:100%;width:100vw;">
+            <div style="display:flex;flex-direction:column;flex:0 1 auto;width:100vw;position:sticky;">
             <img src="TAKI%20OnlineLogo.png" style="width: 375px" />
             <asp:Table ID="Table1" runat="server" Width="100%" GridLines="Both" CssClass="navbar">
                 <asp:TableRow runat="server">

@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="Panel1" runat="server" DefaultButton="Login">
+    <asp:Panel ID="Panel1" CssClass="CenterBox" runat="server" DefaultButton="Login">
         <asp:Table ID="Table1" runat="server">
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server"><asp:Label ID="Label1" runat="server" Text="Label" AssociatedControlID="username">Username:</asp:Label></asp:TableCell>
@@ -14,9 +14,10 @@
             </asp:TableRow>
         </asp:Table>
         <asp:Button ID="Login" runat="server" Text="SIGN IN" ValidationGroup="signin" OnClick="SignIn" /><asp:Label ID="Error" runat="server" ></asp:Label>
-        <hr />
+        <br />
+        <br />
         <asp:Label ID="Label3" runat="server" Text="Label" AssociatedControlID="signUp">new user?</asp:Label>
-        <br/>
+        <br />
         <asp:Button ID="signUp" runat="server" Text="SIGN UP" PostBackUrl="~/Sign up.aspx" />
     </asp:Panel>
 </asp:Content>
