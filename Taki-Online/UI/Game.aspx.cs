@@ -23,6 +23,10 @@ namespace UI
             user = (User)Session["User"];
             game = (BLL.Game)Application["Game"];
             player = (BLL.Player)Session["Player"];
+            if(player==null)
+            {
+                Response.Redirect("~/Home.aspx");
+            }
             if (player.GameEnded)
             {
                 Session["Player"] = null;

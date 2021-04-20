@@ -5,7 +5,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:GridView ID="SummeryTbl" runat="server" AutoGenerateColumns="False" ItemType="BLL.UserStatsInGame" OnRowDataBound="SummeryTbl_RowDataBound">
+    <div class="CenterBox">
+    <asp:GridView ID="SummeryTbl" runat="server" AutoGenerateColumns="False" ItemType="BLL.UserStatsInGame" OnRowDataBound="SummeryTbl_RowDataBound" CssClass="Grid">
         <Columns>
             <asp:TemplateField HeaderText="Place">
                 <ItemTemplate>
@@ -23,4 +24,5 @@
     </asp:GridView>
     Elo Change:<asp:Label ID="EloChangeLbl" runat="server"></asp:Label><br/>
     XP Change:<asp:Label ID="XpChangeLbl" runat="server" Text="Label"></asp:Label>
+        </div>
 </asp:Content>

@@ -193,4 +193,16 @@ input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover
 td {
     vertical-align:top;
 }
+table.Grid{
+    margin:auto;
+    font-size:x-large;
+}
+table.Grid th
+{
+    background-color:red;
 
+}
+table.Grid td
+{
+    background-color:white;
+}

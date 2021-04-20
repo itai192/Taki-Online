@@ -14,11 +14,22 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <h1><asp:Label ID="GameNameLbl" runat="server"></asp:Label></h1>
+            <table>
+                <tr>
+                    <td>
             <asp:DataList ID="Players" runat="server">
+                <HeaderTemplate>
+                    Players In Game:
+                </HeaderTemplate>
                 <ItemTemplate>
                     <uc1:UserCard ID="UserCard1" runat="server" user='<%#Container.DataItem%>' />
                 </ItemTemplate>
             </asp:DataList>
+            <asp:Panel ID="HostPanel" runat="server">
+                <asp:Button ID="StartBtn" runat="server" Height="26px" OnClick="StartBtn_Click" Text="Start Game!" Width="106px" />
+            </asp:Panel>
+            </td>
+            <td>
             Friends To Invite:
             <asp:DataList ID="FriendsToInvite" runat="server" OnItemDataBound="FriendsToInvite_ItemDataBound" OnItemCommand="FriendsToInvite_ItemCommand">
                 <ItemTemplate>
@@ -26,9 +37,8 @@
                     <asp:Button ID="InviteBtn" runat="server" Text="Invite To Game" CommandName="Invite" CommandArgument='<%# ((BLL.User)Container.DataItem).username %>' />
                 </ItemTemplate>
             </asp:DataList>
-            <asp:Panel ID="HostPanel" runat="server">
-                <asp:Button ID="StartBtn" runat="server" Text="Start Game!" OnClick="StartBtn_Click" />
-            </asp:Panel>
+                    </td>
+            </tr>
             <asp:Timer ID="timer" runat="server" OnTick="Page_Load" Interval="3000"></asp:Timer>
         </ContentTemplate>
         <Triggers>

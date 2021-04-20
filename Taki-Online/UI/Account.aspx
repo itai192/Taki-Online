@@ -11,75 +11,78 @@
     <table style="width: 105%">
         <tr>
             <td>
-                <uc1:ProfilePicture runat="server" ID="ProfilePicture" height="15 em" width="15 em" />
-                <br />
-                <uc1:ProfilePictureUpload runat="server" ID="ProfilePictureUpload" ViewStateMode="Disabled" />
+                <div class="Box">
+                    <h1>Profile</h1>
+                    <uc1:ProfilePicture runat="server" ID="ProfilePicture" height="15 em" width="15 em" />
+                    <br />
+                    <uc1:ProfilePictureUpload runat="server" ID="ProfilePictureUpload" ViewStateMode="Disabled" />
 
-                <asp:Button ID="UploadPhotoBtn" runat="server" Text="Upload Photo" OnClick="UploadPicBtn_Click" />
-                <asp:Table ID="Details" runat="server">
-                    <asp:TableRow runat="server">
-                        <asp:TableCell runat="server">Username:</asp:TableCell>
-                        <asp:TableCell runat="server">
-                            <asp:Label ID="UsernameLbl" runat="server" Text=""></asp:Label>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow runat="server">
-                        <asp:TableCell runat="server">Change Username:</asp:TableCell>
-                        <asp:TableCell runat="server">
-                            <asp:TextBox ID="ChngUsernameTxt" runat="server"></asp:TextBox><asp:Button ID="ChngUsernameBtn" runat="server" Text="Change!" ValidationGroup="ChangeUserName" OnClick="ChngUsername_Click" /><asp:RegularExpressionValidator ID="NameValidator" runat="server" Display="Dynamic" ValidationGroup="ChangeUserName" ValidationExpression="\w+" ErrorMessage="Username must be a word (english alphabet and numbers)" ControlToValidate="ChngUsernameTxt"></asp:RegularExpressionValidator><asp:CustomValidator OnServerValidate="UsernameValidator_ServerValidate" ID="UserExists" runat="server" ErrorMessage="A user With that name already exists" ControlToValidate="ChngUsernameTxt" ValidationGroup="ChangeUserName" Display="Dynamic"></asp:CustomValidator>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow runat="server">
-                        <asp:TableCell runat="server">Level:</asp:TableCell>
-                        <asp:TableCell runat="server">
-                            <asp:Label ID="Levellbl" runat="server" Text=""></asp:Label>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow runat="server">
-                        <asp:TableCell runat="server">XP:</asp:TableCell>
-                        <asp:TableCell runat="server">
-                            <uc1:LoadingBar runat="server" ID="XpBar" inColor="Aqua" outColor="Red" />
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow runat="server">
-                        <asp:TableCell runat="server">ELO this season:</asp:TableCell>
-                        <asp:TableCell runat="server">
-                            <asp:Label ID="EloLbl" runat="server"></asp:Label>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow runat="server">
-                        <asp:TableCell runat="server">Rank:</asp:TableCell>
-                        <asp:TableCell runat="server">
-                            <asp:Label ID="Ranklbl" runat="server"></asp:Label>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                </asp:Table>
-                <asp:Panel ID="ChartsPanel" runat="server">
+                    <asp:Button ID="UploadPhotoBtn" runat="server" Text="Upload Photo" OnClick="UploadPicBtn_Click" />
+                    <asp:Table ID="Details" runat="server">
+                        <asp:TableRow runat="server">
+                            <asp:TableCell runat="server">Username:</asp:TableCell>
+                            <asp:TableCell runat="server">
+                                <asp:Label ID="UsernameLbl" runat="server" Text=""></asp:Label>
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow runat="server">
+                            <asp:TableCell runat="server">Change Username:</asp:TableCell>
+                            <asp:TableCell runat="server">
+                                <asp:TextBox ID="ChngUsernameTxt" runat="server"></asp:TextBox><asp:Button ID="ChngUsernameBtn" runat="server" Text="Change!" ValidationGroup="ChangeUserName" OnClick="ChngUsername_Click" /><asp:RegularExpressionValidator ID="NameValidator" runat="server" Display="Dynamic" ValidationGroup="ChangeUserName" ValidationExpression="\w+" ErrorMessage="Username must be a word (english alphabet and numbers)" ControlToValidate="ChngUsernameTxt"></asp:RegularExpressionValidator><asp:CustomValidator OnServerValidate="UsernameValidator_ServerValidate" ID="UserExists" runat="server" ErrorMessage="A user With that name already exists" ControlToValidate="ChngUsernameTxt" ValidationGroup="ChangeUserName" Display="Dynamic"></asp:CustomValidator>
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow runat="server">
+                            <asp:TableCell runat="server">Level:</asp:TableCell>
+                            <asp:TableCell runat="server">
+                                <asp:Label ID="Levellbl" runat="server" Text=""></asp:Label>
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow runat="server">
+                            <asp:TableCell runat="server">XP:</asp:TableCell>
+                            <asp:TableCell runat="server">
+                                <uc1:LoadingBar runat="server" ID="XpBar" inColor="Aqua" outColor="Red" />
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow runat="server">
+                            <asp:TableCell runat="server">ELO this season:</asp:TableCell>
+                            <asp:TableCell runat="server">
+                                <asp:Label ID="EloLbl" runat="server"></asp:Label>
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow runat="server">
+                            <asp:TableCell runat="server">Rank:</asp:TableCell>
+                            <asp:TableCell runat="server">
+                                <asp:Label ID="Ranklbl" runat="server"></asp:Label>
+                            </asp:TableCell>
+                        </asp:TableRow>
+                    </asp:Table>
+                    <asp:Panel ID="ChartsPanel" runat="server">
 
-                    <asp:Chart ID="Games" runat="server" Palette="Berry" BackColor="LightYellow" BackImageTransparentColor="Transparent">
-                        <Series>
-                            <asp:Series Name="Games" ChartType="Pie" YValuesPerPoint="4" Legend="Legend1" IsValueShownAsLabel="True" Label="#PERCENT\n#VALY">
-                                <Points>
-                                    <asp:DataPoint LegendText="Games Won" YValues="0,0,0,0" />
-                                    <asp:DataPoint LegendText="Games Lost" YValues="0,0,0,0" />
-                                </Points>
-                            </asp:Series>
-                        </Series>
-                        <ChartAreas>
-                            <asp:ChartArea Name="Games" Area3DStyle-Enable3D="True" Area3DStyle-LightStyle="Simplistic" AlignmentOrientation="Vertical">
-                                <Area3DStyle Enable3D="True"></Area3DStyle>
-                            </asp:ChartArea>
-                        </ChartAreas>
-                        <Legends>
-                            <asp:Legend Name="Legend1">
-                            </asp:Legend>
-                        </Legends>
-                    </asp:Chart>
-                </asp:Panel>
+                        <asp:Chart ID="Games" runat="server" Palette="Berry" BackImageTransparentColor="Transparent">
+                            <Series>
+                                <asp:Series Name="Games" ChartType="Pie" YValuesPerPoint="4" Legend="Legend1" IsValueShownAsLabel="True" Label="#PERCENT\n#VALY">
+                                    <Points>
+                                        <asp:DataPoint LegendText="Games Won" YValues="0,0,0,0" />
+                                        <asp:DataPoint LegendText="Games Lost" YValues="0,0,0,0" />
+                                    </Points>
+                                </asp:Series>
+                            </Series>
+                            <ChartAreas>
+                                <asp:ChartArea Name="Games" Area3DStyle-Enable3D="True" Area3DStyle-LightStyle="Simplistic" AlignmentOrientation="Vertical">
+                                    <Area3DStyle Enable3D="True"></Area3DStyle>
+                                </asp:ChartArea>
+                            </ChartAreas>
+                            <Legends>
+                                <asp:Legend Name="Legend1">
+                                </asp:Legend>
+                            </Legends>
+                        </asp:Chart>
+                    </asp:Panel>
+                </div>
             </td>
             <td>
                 <div class="Box">
-                    <h1>friends</h1>
+                    <h1>Friends</h1>
                     <table>
                         <tr>
                             <td>
@@ -131,18 +134,21 @@
                     </table>
                 </div>
                 <td>
-                    <asp:DataList ID="GameInvites" runat="server" OnItemCommand="GameInvites_ItemCommand">
-                        <HeaderTemplate>
-                            <asp:Label ID="Label1" runat="server" Text="Invites to games"></asp:Label>
-                        </HeaderTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="PlayerIntro" runat="server" Text="The Player"></asp:Label>
-                            <asp:Label ID="Playerlbl" runat="server" Text="<%# ((BLL.GameInvite)Container.DataItem).sender %>"></asp:Label>
-                            <asp:Label ID="Invitelbl" runat="server" Text="invites you to join the game"></asp:Label>
-                            <asp:Label ID="GameNameLbl" runat="server" Text="<%# ((BLL.GameInvite)Container.DataItem).gameRoom.gameName %>"></asp:Label>
-                            <asp:Button ID="JoinBtn" runat="server" Text="Join Game" CommandName="Join" CommandArgument="<%# ((BLL.GameInvite)Container.DataItem).gameID %>" />
-                        </ItemTemplate>
-                    </asp:DataList>
+                    <div class="Box">
+                        <h1>Game Invites</h1>
+                        <asp:DataList ID="GameInvites" runat="server" OnItemCommand="GameInvites_ItemCommand">
+                            <HeaderTemplate>
+                                <asp:Label ID="Label1" runat="server" Text="Invites to games"></asp:Label>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="PlayerIntro" runat="server" Text="The Player"></asp:Label>
+                                <asp:Label ID="Playerlbl" runat="server" Text="<%# ((BLL.GameInvite)Container.DataItem).sender %>"></asp:Label>
+                                <asp:Label ID="Invitelbl" runat="server" Text="invites you to join the game"></asp:Label>
+                                <asp:Label ID="GameNameLbl" runat="server" Text="<%# ((BLL.GameInvite)Container.DataItem).gameRoom.gameName %>"></asp:Label>
+                                <asp:Button ID="JoinBtn" runat="server" Text="Join Game" CommandName="Join" CommandArgument="<%# ((BLL.GameInvite)Container.DataItem).gameID %>" />
+                            </ItemTemplate>
+                        </asp:DataList>
+                    </div>
                 </td>
         </tr>
     </table>

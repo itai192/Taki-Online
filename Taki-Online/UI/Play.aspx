@@ -6,10 +6,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="CenterBox">
     <asp:Panel ID="SearchPanel" runat="server">
         <asp:TextBox ID="SearchText" runat="server" ></asp:TextBox><asp:Button ID="SearchBtn" runat="server" Text="Search Game!" OnClick="SearchBtn_Click" /><asp:Button ID="CreateGameBtn" runat="server" Text="Create Game" PostBackUrl="~/CreateGame.aspx" />
     </asp:Panel>
-    <asp:GridView ID="Games" runat="server" AutoGenerateColumns="False" ItemType="BLL.GameRoom" EmptyDataText="There does not apear to be games, try searching for another name or try creating one yourselves" AllowPaging="True" OnPageIndexChanging="Games_PageIndexChanging" PageSize="6" OnRowCommand="Games_RowCommand">
+    <asp:GridView ID="Games" CssClass="Grid" runat="server" AutoGenerateColumns="False" ItemType="BLL.GameRoom" EmptyDataText="There does not apear to be games, try searching for another name or try creating one yourselves" AllowPaging="True" OnPageIndexChanging="Games_PageIndexChanging" PageSize="6" OnRowCommand="Games_RowCommand">
         <Columns>
             <asp:BoundField DataField="GameID" HeaderText="ID" />
             <asp:BoundField DataField="GameName" HeaderText="Game Name" />
@@ -27,4 +28,5 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
+        </div>
 </asp:Content>

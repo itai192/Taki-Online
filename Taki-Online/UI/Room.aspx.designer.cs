@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UI {
-    
-    
-    public partial class Room {
-        
+namespace UI
+{
+
+
+    public partial class Room
+    {
+
         /// <summary>
         /// ScriptManager1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptManager1;
-        
+
         /// <summary>
         /// UpdatePanel1 control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
+
         /// <summary>
         /// GameNameLbl control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label GameNameLbl;
-        
+
         /// <summary>
         /// Players control.
         /// </summary>
@@ -47,16 +49,7 @@ namespace UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataList Players;
-        
-        /// <summary>
-        /// FriendsToInvite control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList FriendsToInvite;
-        
+
         /// <summary>
         /// HostPanel control.
         /// </summary>
@@ -65,7 +58,7 @@ namespace UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel HostPanel;
-        
+
         /// <summary>
         /// StartBtn control.
         /// </summary>
@@ -74,7 +67,16 @@ namespace UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button StartBtn;
-        
+
+        /// <summary>
+        /// FriendsToInvite control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList FriendsToInvite;
+
         /// <summary>
         /// timer control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.Timer timer;
-        
+
         /// <summary>
         /// errorLbl control.
         /// </summary>
