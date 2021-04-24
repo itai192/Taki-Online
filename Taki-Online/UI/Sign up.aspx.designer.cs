@@ -96,6 +96,15 @@ namespace UI
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredUsername;
 
         /// <summary>
+        /// UsernameValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator UsernameValidator;
+
+        /// <summary>
         /// PasswordLbl control.
         /// </summary>
         /// <remarks>
@@ -195,6 +204,15 @@ namespace UI
         protected global::System.Web.UI.WebControls.RequiredFieldValidator FirstNameValidator;
 
         /// <summary>
+        /// FirstNameWordValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator FirstNameWordValidator;
+
+        /// <summary>
         /// LastNameLbl control.
         /// </summary>
         /// <remarks>
@@ -220,6 +238,15 @@ namespace UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator LastNameValidator;
+
+        /// <summary>
+        /// LastNameWordValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator LastNameWordValidator;
 
         /// <summary>
         /// PhotoLbl control.

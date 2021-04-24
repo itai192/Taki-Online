@@ -24,7 +24,7 @@
                 </asp:TableCell>
                 <asp:TableCell runat="server">
                     <asp:TextBox ID="Username" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator  ValidationGroup="signup" ID="RequiredUsername" runat="server" ErrorMessage="Please insert your username" ControlToValidate="Username"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator  ValidationGroup="signup" ID="RequiredUsername" runat="server" ErrorMessage="Please insert your username" ControlToValidate="Username" Display="Dynamic"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="UsernameValidator" runat="server" Display="Dynamic" ValidationGroup="signup" ValidationExpression="\w+" ErrorMessage="Username must be a word (english alphabet and numbers)" ControlToValidate="Username"></asp:RegularExpressionValidator>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">
@@ -52,14 +52,13 @@
                 </asp:TableCell>
                 <asp:TableCell runat="server">
                     <asp:TextBox ID="FName" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="FirstNameValidator" runat="server" ErrorMessage="Please insert your first name" ValidationGroup="signup" ControlToValidate="FName"></asp:RequiredFieldValidator></asp:TableCell>
+                    <asp:RequiredFieldValidator ID="FirstNameValidator" runat="server" ErrorMessage="Please insert your first name" ValidationGroup="signup" ControlToValidate="FName" Display="Dynamic"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="FirstNameWordValidator" runat="server" Display="Dynamic" ValidationGroup="signup" ValidationExpression="[A-Za-z]+" ErrorMessage="Name must be a word in english" ControlToValidate="FName"></asp:RegularExpressionValidator></asp:TableCell>
             </asp:TableRow>
-            
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server">
                     <asp:Label ID="LastNameLbl" runat="server" Text="Last Name:" AssociatedControlID="LName"></asp:Label>
                 </asp:TableCell>
-                <asp:TableCell runat="server"><asp:TextBox ID="LName" runat="server"></asp:TextBox><asp:RequiredFieldValidator ID="LastNameValidator" runat="server" ErrorMessage="Please insert your last name" ValidationGroup="signup" ControlToValidate="LName"></asp:RequiredFieldValidator></asp:TableCell>
+                <asp:TableCell runat="server"><asp:TextBox ID="LName" runat="server"></asp:TextBox><asp:RequiredFieldValidator ID="LastNameValidator" runat="server" ErrorMessage="Please insert your last name" ValidationGroup="signup" ControlToValidate="LName" Display="Dynamic"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="LastNameWordValidator" runat="server" Display="Dynamic" ValidationGroup="signup" ValidationExpression="[A-Za-z]+" ErrorMessage="Last name must be a word in english" ControlToValidate="LName"></asp:RegularExpressionValidator></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server">
@@ -80,9 +79,7 @@
                     <asp:Label ID="YearLbl" runat="server" Text="Select Year:" AssociatedControlID="YearLbl"></asp:Label><asp:DropDownList ID="YearSelect" runat="server" AutoPostBack="True" CausesValidation="True" OnSelectedIndexChanged="YearSelect_SelectedIndexChanged"></asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
-            
         </asp:Table>
         <asp:Button ID="SignUp" runat="server" Text="SIGN UP" OnClick="signup" ValidationGroup="signup" CssClass="CenterBtn" /><asp:Label ID="error" runat="server" Text=""></asp:Label>
     </asp:Panel>
-    
 </asp:Content>

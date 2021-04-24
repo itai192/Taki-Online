@@ -242,6 +242,10 @@ namespace BLL
             this.lName = lName;
             this.type = type;
             this.username = username;
+            if(BLL_Helper.UserExists(username))
+            {
+                throw new Exception("A user with that username already exists");
+            }
             DAL.UserDal.AddUser(email, password, (int)type, fName, lName, BirthDate,username);
             RankingHistoryDal.InsertRankHistory(username, BLL_Helper.GetCurrentSeason().SeasonID,InitailElo);
         }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BLL;
+using System.Data;
 namespace UI
 {
     public partial class Ladders : System.Web.UI.Page
@@ -18,6 +19,11 @@ namespace UI
             }
             Leaderboard.DataSource = BLL_Helper.GetAllPlayersInRankThisSeasonDataTable(int.Parse(RanksDropDown.SelectedValue));
             Leaderboard.DataBind();
+        }
+
+        protected void Leaderboard_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
