@@ -180,5 +180,9 @@ namespace BLL
         {
             return (int)(DateTime.Today - UserDal.AvarageBirthDate()).TotalDays / 365;
         }
+        public static int GetUserAmount()
+        {
+            return UserDal.UserCount();
+        }
     }
 }

@@ -14,14 +14,24 @@ namespace UI
     {
         
         protected void Application_Start(object sender, EventArgs e)
-        { 
+        {
+            
             Application["Users Online"] = 0;
             Application["Visitors Today"] = 0;
             Directory.SetCurrentDirectory(Server.MapPath("~"));
             string strong = Directory.GetCurrentDirectory();
             BLL.BLL_Helper.CreateDBHelperInDalHelper(ConfigurationManager.AppSettings["path"], ConfigurationManager.AppSettings["provider"]);
+            Timer dayTimer = new Timer();
+            dayTimer.AutoReset = true;
+            GC.KeepAlive(dayTimer);
+            dayTimer.Start();
+            dayTimer.Elapsed += ResetVisitorsToday;
+            dayTimer.Start();
         }
-
+        public void ResetVisitorsToday(object sender, ElapsedEventArgs e)
+        {
+            Application["Visitors Today"] = 0;
+        }
         protected void Session_Start(object sender, EventArgs e)
         {
             Application.Lock();

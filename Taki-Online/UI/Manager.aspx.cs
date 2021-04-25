@@ -12,10 +12,10 @@ namespace UI
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["User"]==null)
-            {
-                Response.Redirect("~/Home.aspx");
-            }
+            //if(Session["User"]==null)
+            //{
+            //    Response.Redirect("~/Home.aspx");
+            //}
             User user = (User)Session["User"];
             if (user.type!= UserType.Manager)
             {
@@ -23,6 +23,7 @@ namespace UI
             }
             OnilneLbl.Text = Application["Users Online"].ToString();
             VisitorsTodayLbl.Text = Application["Visitors Today"].ToString();
+            UserAmount.Text = BLL_Helper.GetUserAmount().ToString();
             List<int> games = BLL_Helper.GamesPlayedInMonth();
             for(int i = 0; i<games.Count;i++)
             {

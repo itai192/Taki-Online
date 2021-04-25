@@ -4,6 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     Online:<asp:Label ID="OnilneLbl" runat="server" ></asp:Label><br />
     Today:<asp:Label ID="VisitorsTodayLbl" runat="server"></asp:Label><br/>
+    General:<asp:Label ID="UserAmount" runat="server"></asp:Label><br/>
     <asp:Chart ID="GamesInDates" runat="server">
         <Series>
             <asp:Series Name="Games" XValueType="DateTime" Legend="Legend1" XAxisType="Primary" YValueType="Auto">
