@@ -161,6 +161,19 @@ namespace BLL
             return ret;
         }
         /// <summary>
+        /// returns a list of all users
+        /// </summary>
+        public static List<User> GetAllUsers()
+        {
+            DataTable dt = UserDal.SelectAllUsers();
+            List<User> users = new List<User>();
+            foreach(DataRow dr in dt.Rows)
+            {
+                users.Add(new User(dr));
+            }
+            return users;
+        }
+        /// <summary>
         /// gets all players whose rank this season is corresponding to the rank id
         /// </summary>
         public static List<User> GetAllUsersInRankThisSeason(int rankID)
@@ -180,6 +193,9 @@ namespace BLL
         {
             return (int)(DateTime.Today - UserDal.AvarageBirthDate()).TotalDays / 365;
         }
+        /// <summary>
+        /// returns the amount of users
+        /// </summary>
         public static int GetUserAmount()
         {
             return UserDal.UserCount();

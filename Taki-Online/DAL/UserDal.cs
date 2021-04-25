@@ -86,5 +86,12 @@ namespace DAL
         {
             return (int)DalHelper.SelectRow($"SELECT COUNT({USERNAMEFLD}) AS Amount FROM {Constants.USERSTBL}")["Amount"];
         }
+        /// <summary>
+        /// selects all users in user table
+        /// </summary>
+        public static DataTable SelectAllUsers()
+        {
+            return DalHelper.SelectTable($"SELECT * FROM {Constants.USERSTBL}");
+        }
     }
 }
