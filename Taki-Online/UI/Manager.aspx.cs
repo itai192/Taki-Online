@@ -12,12 +12,12 @@ namespace UI
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if(Session["User"]==null)
-            //{
-            //    Response.Redirect("~/Home.aspx");
-            //}
+            if (Session["User"] == null)
+            {
+                Response.Redirect("~/Home.aspx");
+            }
             User user = (User)Session["User"];
-            if (user.type!= UserType.Manager)
+            if (user.type != UserType.Manager)
             {
                 Response.Redirect("~/Home.aspx");
             }

@@ -79,6 +79,9 @@ namespace DAL
             string sql = $"SELECT CDate(Avg({BIRTHDATEFLD})) as avgbirth FROM {Constants.USERSTBL}";
             return (DateTime)DalHelper.SelectRow(sql)["avgbirth"];
         }
+        /// <summary>
+        /// Returns the amount of users
+        /// </summary>
         public static int UserCount()
         {
             return (int)DalHelper.SelectRow($"SELECT COUNT({USERNAMEFLD}) AS Amount FROM {Constants.USERSTBL}")["Amount"];

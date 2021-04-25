@@ -121,6 +121,31 @@ namespace BLL
             }
         }
         /// <summary>
+        /// Returns The users elo at season
+        /// </summary>
+        public int GetUserEloAtSeason(int seasonID)
+        {
+            try
+            {
+                int elo = (int)(double)UsersInGamesDal.FindPlayerRankInSeason(seasonID, username)["ELO"];
+                return elo;
+            }
+            catch
+            {
+                int elo = (int)UsersInGamesDal.FindPlayerStartRankInSeason(seasonID, username)["ELO"];
+                return elo;
+            }
+        }
+        /// <summary>
+        /// Returns The users beginning elo at season
+        /// </summary>
+        public int GetUserBeginningEloAtSeason(int seasonID)
+        {
+            int elo = (int)UsersInGamesDal.FindPlayerStartRankInSeason(seasonID, username)["ELO"];
+            return elo;
+        }
+
+        /// <summary>
         /// levels user up if he can level up
         /// </summary>
         public void LevelUpIfCan()

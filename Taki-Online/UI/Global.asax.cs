@@ -8,10 +8,15 @@ using BLL;
 using System.Configuration;
 using System.IO;
 using System.Timers;
+using System.Threading.Tasks;
+using Microsoft.Win32.SafeHandles;
 namespace UI
 {
     public class Global : System.Web.HttpApplication
     {
+        public Timer dayTimer;
+        public Timer SeasonTimer;
+        public Season currentSeason;
         
         protected void Application_Start(object sender, EventArgs e)
         {
@@ -21,12 +26,43 @@ namespace UI
             Directory.SetCurrentDirectory(Server.MapPath("~"));
             string strong = Directory.GetCurrentDirectory();
             BLL.BLL_Helper.CreateDBHelperInDalHelper(ConfigurationManager.AppSettings["path"], ConfigurationManager.AppSettings["provider"]);
-            Timer dayTimer = new Timer();
+            dayTimer = new Timer();
             dayTimer.AutoReset = true;
-            GC.KeepAlive(dayTimer);
+            dayTimer.Interval = TimeSpan.FromDays(1).TotalMilliseconds;
             dayTimer.Start();
             dayTimer.Elapsed += ResetVisitorsToday;
+            GC.KeepAlive(dayTimer);
             dayTimer.Start();
+        }
+        public void SetSeasonTimer()
+        {
+            if(SeasonTimer!=null)
+            {
+                SeasonTimer.Dispose();
+                SeasonTimer = null;
+            }
+            currentSeason = BLL_Helper.GetCurrentSeason();
+            TimeSpan timeToWait = currentSeason.EndDate-DateTime.Now;
+            if (timeToWait.TotalMilliseconds > int.MaxValue)
+            {
+                SeasonTimer = new Timer(int.MaxValue);
+                SeasonTimer.AutoReset = false;
+                SeasonTimer.Elapsed += ResetTimer;
+            }
+            else
+            {
+                SeasonTimer = new Timer(timeToWait.TotalMilliseconds);
+                SeasonTimer.AutoReset = false;
+                SeasonTimer.Elapsed += StartNewSeason;
+            }
+        }
+        public void StartNewSeason(object sender, ElapsedEventArgs e)
+        {
+
+        }
+        public void ResetTimer(object sender, ElapsedEventArgs e)
+        {
+            SetSeasonTimer();
         }
         public void ResetVisitorsToday(object sender, ElapsedEventArgs e)
         {
