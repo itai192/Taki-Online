@@ -29,6 +29,12 @@ namespace UI
             {
                 GamesInDates.Series[0].Points.AddXY(DateTime.Today.AddDays(-i), games[i]);
             }
+            List<Rank> ranks = BLL_Helper.GetAllRanks();
+            foreach(Rank rank in ranks)
+            {
+                int amount = BLL_Helper.GetAllUsersInRankThisSeason(rank.ID).Count;
+                LeagueDistrobution.Series[0].Points.AddXY(rank.name, amount);
+            }
         }
         
     }
