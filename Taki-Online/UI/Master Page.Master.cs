@@ -25,6 +25,9 @@ namespace UI
                 }
                 up.Cells.Add(CreateLinkCell(@"..\Account.aspx", "Account"));
                 up.Cells.Add(CreateButtonCell(LogOut, "Log Out"));
+                Username.Text = u.username;
+                ProfilePicture.pictureName = u.picture;
+                Userpanel.Visible = true;
             }
             else
             {

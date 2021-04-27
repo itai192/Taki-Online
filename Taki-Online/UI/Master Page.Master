@@ -1,5 +1,8 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master Page.master.cs" Inherits="UI.Master_Page" %>
 
+<%@ Register Src="~/Custom Controls/ProfilePicture.ascx" TagPrefix="uc1" TagName="ProfilePicture" %>
+
+
 <!DOCTYPE html>
 
 <html>
@@ -13,7 +16,16 @@
     <form id="form1" runat="server" style="height:100%;width:100vw">
         <div style="display:flex;flex-direction:column;height:100%;width:100vw;">
             <div style="display:flex;flex-direction:column;flex:0 1 auto;width:100vw;position:sticky;">
+                <div style="display:flex;flex-direction:row;justify-content:space-between">
+                <div>
             <img src="TAKI%20OnlineLogo.png" style="width: 375px" />
+                    </div>
+                <asp:Panel ID="Userpanel" runat="server" style="display:flex;text-align:center;flex-direction:column" Visible="false">
+                <uc1:ProfilePicture runat="server" ID="ProfilePicture" height="4em" width="4em" />
+                    <asp:Label ID="Username" runat="server" Text=""></asp:Label>
+            </asp:Panel>
+                    </div>
+                <div>
             <asp:Table ID="Table1" runat="server" Width="100%" GridLines="Both" CssClass="navbar">
                 <asp:TableRow runat="server">
                     <asp:TableCell runat="server">
@@ -28,7 +40,8 @@
             <div class="Content">  
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
             </div>
-        </div>
+    </div>
+</div>
     </form>
 </body>
 </html>

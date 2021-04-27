@@ -9,7 +9,7 @@
         <tr>
             <td><uc1:UserDetailsTable runat="server" ID="UserDetailsTable" /></td>
             <td>
-                <h3>Friends:</h3>
+                <h1>Friends:</h1>
                 <asp:GridView ID="Friends" runat="server" AutoGenerateColumns="False" OnRowCommand="Friends_RowCommand">
                     <Columns>
                         <asp:BoundField DataField="username" HeaderText="Username" />
