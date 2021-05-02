@@ -78,6 +78,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="SignUp.aspx" />
+    <Content Include="StyleSheet.css" />
     <Content Include="UserDetails.aspx" />
     <Content Include="UserDetailsTable.ascx" />
     <None Include="Web References\WebService\Reference.map">
