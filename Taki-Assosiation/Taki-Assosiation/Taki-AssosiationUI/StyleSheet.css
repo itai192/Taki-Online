@@ -7,3 +7,23 @@
 {
     height:100%
 }
+.content {
+    background-color:olive;
+}
+
+.BigTable {
+    table-layout: auto;
+    height: 100%;
+    width: 100%;
+}
+form
+{
+    height:100%;
+}
+td {
+    
+}
+
+.side {
+    width: 15%;
+}

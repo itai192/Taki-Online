@@ -10,17 +10,29 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <h1>Taki Assosiation</h1>
-            <asp:Table ID="Table1" runat="server" Width="100%" GridLines="Both">
-                <asp:TableRow runat="server">
-                    <asp:TableCell runat="server">
-                        <asp:Button ID="Home" runat="server" PostBackUrl="~/Home.aspx" Text="Home"/>
-                    </asp:TableCell>
-                </asp:TableRow>
-            </asp:Table>
-            <div>  
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+        <div style="border-style: dotted; height: 100%; display: flex; flex-direction: column">
+            <div style="display: flex">
+                <h1>Taki Assosiation</h1>
+                <div style="display: flex; flex-shrink: 0; flex-grow: 1">
+                    <table class="BigTable">
+                        <tr>
+                            <td class="side">
+                                <asp:Table ID="Table1" runat="server" Width="100%" GridLines="Both">
+                                    <asp:TableRow runat="server">
+                                        <asp:TableCell runat="server">
+                                            <asp:Button ID="Home" runat="server" PostBackUrl="~/Home.aspx" Text="Home" />
+                                        </asp:TableCell>
+                                    </asp:TableRow>
+                                </asp:Table>
+                            </td>
+                            <td>
+                                <div class="content">
+                                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </form>
