@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="Panel1" runat="server" DefaultButton="SignUpBtn">
+    <asp:Panel ID="Panel1" runat="server" DefaultButton="SignUpBtn" CssClass="CenterBox">
         <asp:Table ID="Table2" runat="server">
 
             <asp:TableRow runat="server">

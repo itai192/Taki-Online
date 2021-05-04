@@ -24,7 +24,10 @@ form
 {
     height:100%;
 }
-
+.CenterBox table
+{
+    margin:auto;
+}
 
 .side {
     width: 5%;
@@ -35,4 +38,15 @@ form
     width: 100%;
     background-color: aqua;
     border-radius: 20px;
+}
+.CenterBox {
+    margin: auto;
+    border-color: black;
+    border-style: solid;
+    border-width: medium;
+    padding: 5%;
+    background-color: teal;
+    max-width: 60vw;
+    margin-top: 5em;
+    width:auto;
 }
