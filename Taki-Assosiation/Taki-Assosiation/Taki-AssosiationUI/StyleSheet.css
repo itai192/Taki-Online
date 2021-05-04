@@ -1,14 +1,15 @@
-﻿body
-{
-    background-color:olive;
-    height:100vh;
+﻿body {
+    background-color: sandybrown;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
 }
 .navbar {
     vertical-align: top;
 }
 
 .content {
-    background-color:olive;
+    width:100%;
+    height:100%;
 }
 
 .BigTable {
@@ -28,15 +29,32 @@ form
 {
     margin:auto;
 }
+input[type=button], input[type=submit], input[type=reset] {
+    border: 2px solid black;
+    border-radius: 3px;
+    background-color: aqua;
+    transition-duration: 0.6s;
+    transition-property: background-color;
+}
+
+input[type=text], input[type=password] {
+    width: 15em;
+    height: 1.25em;
+    font-size: 20px;
+    background-color: cadetblue;
+}
+
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+    background-color: lightgreen;
+}
 
 .side {
     width: 5%;
-    background-color: maroon;
+    border:3px dashed aqua;
 }
 .sideButton {
     font-size: 150%;
     width: 100%;
-    background-color: aqua;
     border-radius: 20px;
 }
 .CenterBox {

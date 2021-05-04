@@ -27,6 +27,18 @@ namespace Taki_AssosiationUI
         {
             LoadUser();
         }
+
+        private static string Nice(string before)
+        {
+            string abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            foreach(char a in abc)
+            {
+                before = before.Replace(a + "",$" {a}");
+            }
+            before = (before[0] + "").ToUpper()[0]+before.Remove(0,1);
+            return before;
+        }
+
         public void LoadUser()
         {
             Controls.Clear();
@@ -36,7 +48,7 @@ namespace Taki_AssosiationUI
             foreach(PropertyInfo prop in properties)
             {
                 TableRow row = new TableRow();
-                row.Cells.Add(UIHelper.LableTableCell(prop.Name+":"));
+                row.Cells.Add(UIHelper.LableTableCell(Nice(prop.Name)+":"));
                 //if date
                 if(prop.PropertyType.IsEquivalentTo(typeof(DateTime)))
                 {
