@@ -1,12 +1,12 @@
 ﻿body
 {
-    background-color:darkcyan;
+    background-color:olive;
     height:100vh;
 }
-.navbar
-{
-    height:100%
+.navbar {
+    vertical-align: top;
 }
+
 .content {
     background-color:olive;
 }
@@ -14,16 +14,25 @@
 .BigTable {
     table-layout: auto;
     height: 100%;
-    width: 100%;
+    width: 100%; 
+}
+.BigTable td
+{
+    vertical-align:top;
 }
 form
 {
     height:100%;
 }
-td {
-    
-}
+
 
 .side {
-    width: 15%;
+    width: 5%;
+    background-color: maroon;
+}
+.sideButton {
+    font-size: 150%;
+    width: 100%;
+    background-color: aqua;
+    border-radius: 20px;
 }

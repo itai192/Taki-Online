@@ -19,18 +19,17 @@ namespace Taki_AssosiationUI
                 proxy.CookieContainer = new System.Net.CookieContainer();
                 Session["Proxy"] = proxy;
             }
-            proxy= (TakiWebService)Session["Proxy"];
-            TableRow up = Table1.Rows[0];
+            proxy = (TakiWebService)Session["Proxy"];
             if (proxy.IsSessionConnected())
             {
-                up.Cells.Add(CreateLinkCell(@"..\Leaderboard.aspx", "Leaderboard"));
-                up.Cells.Add(CreateButtonCell(LogOut, "Log Out"));
-                up.Cells.Add(CreateLinkCell(@"..\Account.aspx", "Account"));
+                Table1.Rows.Add(CreateLinkRow(@"..\Leaderboard.aspx", "Leaderboard"));
+                Table1.Rows.Add(CreateButtonRow(LogOut, "Log Out"));
+                Table1.Rows.Add(CreateLinkRow(@"..\Account.aspx", "Account"));
             }
             else
             {
-                up.Cells.Add(CreateLinkCell(@"..\SignUp.aspx", "Sign up"));
-                up.Cells.Add(CreateLinkCell(@"..\SignIn.aspx", "Sign in"));
+                Table1.Rows.Add(CreateLinkRow(@"..\SignUp.aspx", "Sign up"));
+                Table1.Rows.Add(CreateLinkRow(@"..\SignIn.aspx", "Sign in"));
             }
         }
         
@@ -39,23 +38,29 @@ namespace Taki_AssosiationUI
         {
 
         }
-        protected TableCell CreateLinkCell(string link, string text)
+        protected TableRow CreateLinkRow(string link, string text)
         {
+            TableRow row = new TableRow();
             TableCell cell = new TableCell();
             Button btn = new Button();
             btn.PostBackUrl = link;
             btn.Text = text;
+            btn.CssClass = "sideButton";
             cell.Controls.Add(btn);
-            return cell;
+            row.Cells.Add(cell);
+            return row;
         }
-        protected TableCell CreateButtonCell(EventHandler cmd, string text)
+        protected TableRow CreateButtonRow(EventHandler cmd, string text)
         {
+            TableRow row = new TableRow();
             TableCell cell = new TableCell();
             Button btn = new Button();
             btn.Text = text;
+            btn.CssClass = "sideButton";
             btn.Click += cmd;
             cell.Controls.Add(btn);
-            return cell;
+            row.Cells.Add(cell);
+            return row;
         }
         protected void LogOut(object sender, EventArgs e)
         {
