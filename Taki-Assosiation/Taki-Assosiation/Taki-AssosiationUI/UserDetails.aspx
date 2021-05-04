@@ -5,6 +5,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="CenterBox">
+        <h2>User Profile:</h2>
     <uc1:UserDetailsTable runat="server" ID="UserDetailsTable" />
     <asp:Label ID="ErrorLbl" runat="server" ></asp:Label>
+        </div>
 </asp:Content>

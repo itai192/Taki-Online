@@ -5,11 +5,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="CenterBox">
     <table>
         <tr>
-            <td><uc1:UserDetailsTable runat="server" ID="UserDetailsTable" /></td>
+            <td> <h2>Profile:</h2><uc1:UserDetailsTable runat="server" ID="UserDetailsTable" /></td>
             <td>
-                Friends:</>
+                <h2>Friends:</h2>
                 <asp:GridView ID="Friends" runat="server" AutoGenerateColumns="False" OnRowCommand="Friends_RowCommand">
                     <Columns>
                         <asp:BoundField DataField="username" HeaderText="Username" />
@@ -28,7 +29,7 @@
             </td>
         </tr>
     </table>
-
+    </div>
         <asp:Label ID="ErrorLbl" runat="server"></asp:Label>
    
 </asp:Content>
