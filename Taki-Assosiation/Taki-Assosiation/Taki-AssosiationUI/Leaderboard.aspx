@@ -2,7 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:DropDownList ID="RankDropDown" runat="server" ItemType="Taki_AssosiationUI.WebService.WSRank" AutoPostBack="True" DataTextField="name" DataValueField="ID" OnSelectedIndexChanged="RankDropDown_SelectedIndexChanged"></asp:DropDownList>
+    <div class="CenterBox">
+    Select Rank:<asp:DropDownList ID="RankDropDown" runat="server" ItemType="Taki_AssosiationUI.WebService.WSRank" AutoPostBack="True" DataTextField="name" DataValueField="ID" OnSelectedIndexChanged="RankDropDown_SelectedIndexChanged"></asp:DropDownList>
     <asp:GridView ID="LeaderboardGrid" runat="server" AutoGenerateColumns="False" OnRowCommand="Leaderboard_RowCommand">
                     <Columns>
                         <asp:BoundField DataField="username" HeaderText="Username" />
@@ -20,4 +21,5 @@
                         there are no users at that rank<br />
                     </EmptyDataTemplate>
                 </asp:GridView>
+        </div>
 </asp:Content>
