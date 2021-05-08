@@ -58,7 +58,13 @@ namespace UI
         }
         public void StartNewSeason(object sender, ElapsedEventArgs e)
         {
-
+            Season s = new Season(DateTime.Now, DateTime.Now.AddDays(60));
+            List<User> users = BLL_Helper.GetAllUsers();
+            foreach(User u in users)
+            {
+                u.SeasonStartRank(s.SeasonID, currentSeason.SeasonID);
+            }
+            currentSeason = s;
         }
         public void ResetTimer(object sender, ElapsedEventArgs e)
         {

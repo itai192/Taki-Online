@@ -35,7 +35,7 @@ namespace BLL
         /// </summary>
         public Season(DateTime StartDate, DateTime EndDate)
         {
-            DAL.SeasonsDal.CreateNewSeason(StartDate, EndDate);
+            this.SeasonID = DAL.SeasonsDal.CreateNewSeason(StartDate, EndDate);
             this.StartDate = StartDate;
             this.EndDate = EndDate;
         }

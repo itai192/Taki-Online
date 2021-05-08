@@ -144,7 +144,16 @@ namespace BLL
             int elo = (int)UsersInGamesDal.FindPlayerStartRankInSeason(seasonID, username)["ELO"];
             return elo;
         }
+        /// <summary>
+        /// Creates a new record in Rank History for new season based on old season
+        /// </summary>
+        public void SeasonStartRank(int newSeason, int oldSeason)
+        {
+            int elo = this.GetUserEloAtSeason(oldSeason);
+            int startElo = this.GetUserBeginningEloAtSeason(oldSeason);
+            RankingHistoryDal.InsertRankHistory(username, newSeason, ((elo + startElo) / 2));
 
+        }
         /// <summary>
         /// levels user up if he can level up
         /// </summary>

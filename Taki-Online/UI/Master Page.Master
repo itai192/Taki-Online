@@ -15,7 +15,6 @@
 <body>
     <form id="form1" runat="server" style="height:100%;width:100vw">
         <div style="display:flex;flex-direction:column;height:100%;width:100vw;">
-            <div style="display:flex;flex-direction:column;flex:0 1 auto;width:100vw;position:sticky;">
                 <div style="display:flex;flex-direction:row;justify-content:space-between">
                 <div>
             <img src="TAKI%20OnlineLogo.png" style="width: 375px" />
@@ -40,7 +39,7 @@
             <div class="Content">  
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
             </div>
-    </div>
+    
 </div>
     </form>
 </body>
